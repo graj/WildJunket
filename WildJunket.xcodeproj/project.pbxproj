@@ -1,0 +1,466 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		63EF2521158C6033004E2BFB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EF2520158C6033004E2BFB /* UIKit.framework */; };
+		63EF2523158C6033004E2BFB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EF2522158C6033004E2BFB /* Foundation.framework */; };
+		63EF2525158C6033004E2BFB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EF2524158C6033004E2BFB /* CoreGraphics.framework */; };
+		63EF252B158C6033004E2BFB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 63EF2529158C6033004E2BFB /* InfoPlist.strings */; };
+		63EF252D158C6033004E2BFB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EF252C158C6033004E2BFB /* main.m */; };
+		63EF2531158C6033004E2BFB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EF2530158C6033004E2BFB /* AppDelegate.m */; };
+		63EF2534158C6033004E2BFB /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63EF2532158C6033004E2BFB /* MainStoryboard.storyboard */; };
+		63EF2537158C6033004E2BFB /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EF2536158C6033004E2BFB /* FirstViewController.m */; };
+		63EF2539158C6033004E2BFB /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 63EF2538158C6033004E2BFB /* first.png */; };
+		63EF253B158C6033004E2BFB /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63EF253A158C6033004E2BFB /* first@2x.png */; };
+		63EF253E158C6033004E2BFB /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EF253D158C6033004E2BFB /* SecondViewController.m */; };
+		63EF2540158C6033004E2BFB /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 63EF253F158C6033004E2BFB /* second.png */; };
+		63EF2542158C6033004E2BFB /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63EF2541158C6033004E2BFB /* second@2x.png */; };
+		63EF254A158C6033004E2BFB /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EF2549158C6033004E2BFB /* SenTestingKit.framework */; };
+		63EF254B158C6033004E2BFB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EF2520158C6033004E2BFB /* UIKit.framework */; };
+		63EF254C158C6033004E2BFB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EF2522158C6033004E2BFB /* Foundation.framework */; };
+		63EF2554158C6033004E2BFB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 63EF2552158C6033004E2BFB /* InfoPlist.strings */; };
+		63EF2557158C6033004E2BFB /* WildJunketTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EF2556158C6033004E2BFB /* WildJunketTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		63EF254D158C6033004E2BFB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63EF2513158C6033004E2BFB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 63EF251B158C6033004E2BFB;
+			remoteInfo = WildJunket;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		63EF251C158C6033004E2BFB /* WildJunket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WildJunket.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		63EF2520158C6033004E2BFB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		63EF2522158C6033004E2BFB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		63EF2524158C6033004E2BFB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		63EF2528158C6033004E2BFB /* WildJunket-Info.plist */ = {isa = PBXFileReference; path = "WildJunket-Info.plist"; sourceTree = "<group>"; };
+		63EF252A158C6033004E2BFB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		63EF252C158C6033004E2BFB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		63EF252E158C6033004E2BFB /* WildJunket-Prefix.pch */ = {isa = PBXFileReference; path = "WildJunket-Prefix.pch"; sourceTree = "<group>"; };
+		63EF252F158C6033004E2BFB /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		63EF2530158C6033004E2BFB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		63EF2533158C6033004E2BFB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		63EF2535158C6033004E2BFB /* FirstViewController.h */ = {isa = PBXFileReference; path = FirstViewController.h; sourceTree = "<group>"; };
+		63EF2536158C6033004E2BFB /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		63EF2538158C6033004E2BFB /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
+		63EF253A158C6033004E2BFB /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
+		63EF253C158C6033004E2BFB /* SecondViewController.h */ = {isa = PBXFileReference; path = SecondViewController.h; sourceTree = "<group>"; };
+		63EF253D158C6033004E2BFB /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		63EF253F158C6033004E2BFB /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
+		63EF2541158C6033004E2BFB /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		63EF2548158C6033004E2BFB /* WildJunketTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WildJunketTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		63EF2549158C6033004E2BFB /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		63EF2551158C6033004E2BFB /* WildJunketTests-Info.plist */ = {isa = PBXFileReference; path = "WildJunketTests-Info.plist"; sourceTree = "<group>"; };
+		63EF2553158C6033004E2BFB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		63EF2555158C6033004E2BFB /* WildJunketTests.h */ = {isa = PBXFileReference; path = WildJunketTests.h; sourceTree = "<group>"; };
+		63EF2556158C6033004E2BFB /* WildJunketTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WildJunketTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		63EF2519158C6033004E2BFB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63EF2521158C6033004E2BFB /* UIKit.framework in Frameworks */,
+				63EF2523158C6033004E2BFB /* Foundation.framework in Frameworks */,
+				63EF2525158C6033004E2BFB /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63EF2544158C6033004E2BFB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63EF254A158C6033004E2BFB /* SenTestingKit.framework in Frameworks */,
+				63EF254B158C6033004E2BFB /* UIKit.framework in Frameworks */,
+				63EF254C158C6033004E2BFB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		63EF2511158C6033004E2BFB = {
+			isa = PBXGroup;
+			children = (
+				63EF2526158C6033004E2BFB /* WildJunket */,
+				63EF254F158C6033004E2BFB /* WildJunketTests */,
+				63EF251F158C6033004E2BFB /* Frameworks */,
+				63EF251D158C6033004E2BFB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		63EF251D158C6033004E2BFB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				63EF251C158C6033004E2BFB /* WildJunket.app */,
+				63EF2548158C6033004E2BFB /* WildJunketTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		63EF251F158C6033004E2BFB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				63EF2520158C6033004E2BFB /* UIKit.framework */,
+				63EF2522158C6033004E2BFB /* Foundation.framework */,
+				63EF2524158C6033004E2BFB /* CoreGraphics.framework */,
+				63EF2549158C6033004E2BFB /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		63EF2526158C6033004E2BFB /* WildJunket */ = {
+			isa = PBXGroup;
+			children = (
+				63EF252F158C6033004E2BFB /* AppDelegate.h */,
+				63EF2530158C6033004E2BFB /* AppDelegate.m */,
+				63EF2532158C6033004E2BFB /* MainStoryboard.storyboard */,
+				63EF2535158C6033004E2BFB /* FirstViewController.h */,
+				63EF2536158C6033004E2BFB /* FirstViewController.m */,
+				63EF2538158C6033004E2BFB /* first.png */,
+				63EF253A158C6033004E2BFB /* first@2x.png */,
+				63EF253C158C6033004E2BFB /* SecondViewController.h */,
+				63EF253D158C6033004E2BFB /* SecondViewController.m */,
+				63EF253F158C6033004E2BFB /* second.png */,
+				63EF2541158C6033004E2BFB /* second@2x.png */,
+				63EF2527158C6033004E2BFB /* Supporting Files */,
+			);
+			path = WildJunket;
+			sourceTree = "<group>";
+		};
+		63EF2527158C6033004E2BFB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				63EF2528158C6033004E2BFB /* WildJunket-Info.plist */,
+				63EF2529158C6033004E2BFB /* InfoPlist.strings */,
+				63EF252C158C6033004E2BFB /* main.m */,
+				63EF252E158C6033004E2BFB /* WildJunket-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		63EF254F158C6033004E2BFB /* WildJunketTests */ = {
+			isa = PBXGroup;
+			children = (
+				63EF2555158C6033004E2BFB /* WildJunketTests.h */,
+				63EF2556158C6033004E2BFB /* WildJunketTests.m */,
+				63EF2550158C6033004E2BFB /* Supporting Files */,
+			);
+			path = WildJunketTests;
+			sourceTree = "<group>";
+		};
+		63EF2550158C6033004E2BFB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				63EF2551158C6033004E2BFB /* WildJunketTests-Info.plist */,
+				63EF2552158C6033004E2BFB /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		63EF251B158C6033004E2BFB /* WildJunket */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63EF255A158C6033004E2BFB /* Build configuration list for PBXNativeTarget "WildJunket" */;
+			buildPhases = (
+				63EF2518158C6033004E2BFB /* Sources */,
+				63EF2519158C6033004E2BFB /* Frameworks */,
+				63EF251A158C6033004E2BFB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WildJunket;
+			productName = WildJunket;
+			productReference = 63EF251C158C6033004E2BFB /* WildJunket.app */;
+			productType = "com.apple.product-type.application";
+		};
+		63EF2547158C6033004E2BFB /* WildJunketTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63EF255D158C6033004E2BFB /* Build configuration list for PBXNativeTarget "WildJunketTests" */;
+			buildPhases = (
+				63EF2543158C6033004E2BFB /* Sources */,
+				63EF2544158C6033004E2BFB /* Frameworks */,
+				63EF2545158C6033004E2BFB /* Resources */,
+				63EF2546158C6033004E2BFB /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				63EF254E158C6033004E2BFB /* PBXTargetDependency */,
+			);
+			name = WildJunketTests;
+			productName = WildJunketTests;
+			productReference = 63EF2548158C6033004E2BFB /* WildJunketTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		63EF2513158C6033004E2BFB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 63EF2516158C6033004E2BFB /* Build configuration list for PBXProject "WildJunket" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 63EF2511158C6033004E2BFB;
+			productRefGroup = 63EF251D158C6033004E2BFB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				63EF251B158C6033004E2BFB /* WildJunket */,
+				63EF2547158C6033004E2BFB /* WildJunketTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		63EF251A158C6033004E2BFB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63EF252B158C6033004E2BFB /* InfoPlist.strings in Resources */,
+				63EF2534158C6033004E2BFB /* MainStoryboard.storyboard in Resources */,
+				63EF2539158C6033004E2BFB /* first.png in Resources */,
+				63EF253B158C6033004E2BFB /* first@2x.png in Resources */,
+				63EF2540158C6033004E2BFB /* second.png in Resources */,
+				63EF2542158C6033004E2BFB /* second@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63EF2545158C6033004E2BFB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63EF2554158C6033004E2BFB /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		63EF2546158C6033004E2BFB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		63EF2518158C6033004E2BFB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63EF252D158C6033004E2BFB /* main.m in Sources */,
+				63EF2531158C6033004E2BFB /* AppDelegate.m in Sources */,
+				63EF2537158C6033004E2BFB /* FirstViewController.m in Sources */,
+				63EF253E158C6033004E2BFB /* SecondViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63EF2543158C6033004E2BFB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63EF2557158C6033004E2BFB /* WildJunketTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		63EF254E158C6033004E2BFB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 63EF251B158C6033004E2BFB /* WildJunket */;
+			targetProxy = 63EF254D158C6033004E2BFB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		63EF2529158C6033004E2BFB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63EF252A158C6033004E2BFB /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		63EF2532158C6033004E2BFB /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63EF2533158C6033004E2BFB /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+		63EF2552158C6033004E2BFB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63EF2553158C6033004E2BFB /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		63EF2558158C6033004E2BFB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		63EF2559158C6033004E2BFB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		63EF255B158C6033004E2BFB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WildJunket/WildJunket-Prefix.pch";
+				INFOPLIST_FILE = "WildJunket/WildJunket-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		63EF255C158C6033004E2BFB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WildJunket/WildJunket-Prefix.pch";
+				INFOPLIST_FILE = "WildJunket/WildJunket-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		63EF255E158C6033004E2BFB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/WildJunket.app/WildJunket";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WildJunket/WildJunket-Prefix.pch";
+				INFOPLIST_FILE = "WildJunketTests/WildJunketTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		63EF255F158C6033004E2BFB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/WildJunket.app/WildJunket";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WildJunket/WildJunket-Prefix.pch";
+				INFOPLIST_FILE = "WildJunketTests/WildJunketTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		63EF2516158C6033004E2BFB /* Build configuration list for PBXProject "WildJunket" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63EF2558158C6033004E2BFB /* Debug */,
+				63EF2559158C6033004E2BFB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		63EF255A158C6033004E2BFB /* Build configuration list for PBXNativeTarget "WildJunket" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63EF255B158C6033004E2BFB /* Debug */,
+				63EF255C158C6033004E2BFB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		63EF255D158C6033004E2BFB /* Build configuration list for PBXNativeTarget "WildJunketTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63EF255E158C6033004E2BFB /* Debug */,
+				63EF255F158C6033004E2BFB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 63EF2513158C6033004E2BFB /* Project object */;
+}
