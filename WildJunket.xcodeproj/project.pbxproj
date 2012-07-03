@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63ABEE4815A33831008F8C16 /* mapmarker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ABEE4215A33831008F8C16 /* mapmarker@2x.png */; };
+		63ABEE4915A33831008F8C16 /* 38-airplane@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ABEE4315A33831008F8C16 /* 38-airplane@2x.png */; };
+		63ABEE4A15A33831008F8C16 /* 56-feed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ABEE4415A33831008F8C16 /* 56-feed@2x.png */; };
+		63ABEE4B15A33831008F8C16 /* 59-info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ABEE4515A33831008F8C16 /* 59-info@2x.png */; };
+		63ABEE4C15A33831008F8C16 /* 71-compass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ABEE4615A33831008F8C16 /* 71-compass@2x.png */; };
+		63ABEE4D15A33831008F8C16 /* 86-camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ABEE4715A33831008F8C16 /* 86-camera@2x.png */; };
+		63ABEE5415A338D1008F8C16 /* mapmarker.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ABEE4E15A338D1008F8C16 /* mapmarker.png */; };
+		63ABEE5515A338D1008F8C16 /* 38-airplane.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ABEE4F15A338D1008F8C16 /* 38-airplane.png */; };
+		63ABEE5615A338D1008F8C16 /* 56-feed.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ABEE5015A338D1008F8C16 /* 56-feed.png */; };
+		63ABEE5715A338D1008F8C16 /* 59-info.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ABEE5115A338D1008F8C16 /* 59-info.png */; };
+		63ABEE5815A338D1008F8C16 /* 71-compass.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ABEE5215A338D1008F8C16 /* 71-compass.png */; };
+		63ABEE5915A338D1008F8C16 /* 86-camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ABEE5315A338D1008F8C16 /* 86-camera.png */; };
 		63EF2521158C6033004E2BFB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EF2520158C6033004E2BFB /* UIKit.framework */; };
 		63EF2523158C6033004E2BFB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EF2522158C6033004E2BFB /* Foundation.framework */; };
 		63EF2525158C6033004E2BFB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EF2524158C6033004E2BFB /* CoreGraphics.framework */; };
@@ -14,12 +26,8 @@
 		63EF252D158C6033004E2BFB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EF252C158C6033004E2BFB /* main.m */; };
 		63EF2531158C6033004E2BFB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EF2530158C6033004E2BFB /* AppDelegate.m */; };
 		63EF2534158C6033004E2BFB /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63EF2532158C6033004E2BFB /* MainStoryboard.storyboard */; };
-		63EF2537158C6033004E2BFB /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EF2536158C6033004E2BFB /* FirstViewController.m */; };
-		63EF2539158C6033004E2BFB /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 63EF2538158C6033004E2BFB /* first.png */; };
-		63EF253B158C6033004E2BFB /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63EF253A158C6033004E2BFB /* first@2x.png */; };
-		63EF253E158C6033004E2BFB /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EF253D158C6033004E2BFB /* SecondViewController.m */; };
-		63EF2540158C6033004E2BFB /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 63EF253F158C6033004E2BFB /* second.png */; };
-		63EF2542158C6033004E2BFB /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63EF2541158C6033004E2BFB /* second@2x.png */; };
+		63EF2537158C6033004E2BFB /* RSSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EF2536158C6033004E2BFB /* RSSViewController.m */; };
+		63EF253E158C6033004E2BFB /* PhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EF253D158C6033004E2BFB /* PhotosViewController.m */; };
 		63EF254A158C6033004E2BFB /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EF2549158C6033004E2BFB /* SenTestingKit.framework */; };
 		63EF254B158C6033004E2BFB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EF2520158C6033004E2BFB /* UIKit.framework */; };
 		63EF254C158C6033004E2BFB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EF2522158C6033004E2BFB /* Foundation.framework */; };
@@ -38,30 +46,38 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		63ABEE4215A33831008F8C16 /* mapmarker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mapmarker@2x.png"; sourceTree = "<group>"; };
+		63ABEE4315A33831008F8C16 /* 38-airplane@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "38-airplane@2x.png"; sourceTree = "<group>"; };
+		63ABEE4415A33831008F8C16 /* 56-feed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "56-feed@2x.png"; sourceTree = "<group>"; };
+		63ABEE4515A33831008F8C16 /* 59-info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "59-info@2x.png"; sourceTree = "<group>"; };
+		63ABEE4615A33831008F8C16 /* 71-compass@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "71-compass@2x.png"; sourceTree = "<group>"; };
+		63ABEE4715A33831008F8C16 /* 86-camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "86-camera@2x.png"; sourceTree = "<group>"; };
+		63ABEE4E15A338D1008F8C16 /* mapmarker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapmarker.png; sourceTree = "<group>"; };
+		63ABEE4F15A338D1008F8C16 /* 38-airplane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "38-airplane.png"; sourceTree = "<group>"; };
+		63ABEE5015A338D1008F8C16 /* 56-feed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "56-feed.png"; sourceTree = "<group>"; };
+		63ABEE5115A338D1008F8C16 /* 59-info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "59-info.png"; sourceTree = "<group>"; };
+		63ABEE5215A338D1008F8C16 /* 71-compass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "71-compass.png"; sourceTree = "<group>"; };
+		63ABEE5315A338D1008F8C16 /* 86-camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "86-camera.png"; sourceTree = "<group>"; };
 		63EF251C158C6033004E2BFB /* WildJunket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WildJunket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63EF2520158C6033004E2BFB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		63EF2522158C6033004E2BFB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		63EF2524158C6033004E2BFB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		63EF2528158C6033004E2BFB /* WildJunket-Info.plist */ = {isa = PBXFileReference; path = "WildJunket-Info.plist"; sourceTree = "<group>"; };
+		63EF2528158C6033004E2BFB /* WildJunket-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WildJunket-Info.plist"; sourceTree = "<group>"; };
 		63EF252A158C6033004E2BFB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		63EF252C158C6033004E2BFB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		63EF252E158C6033004E2BFB /* WildJunket-Prefix.pch */ = {isa = PBXFileReference; path = "WildJunket-Prefix.pch"; sourceTree = "<group>"; };
-		63EF252F158C6033004E2BFB /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		63EF252E158C6033004E2BFB /* WildJunket-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WildJunket-Prefix.pch"; sourceTree = "<group>"; };
+		63EF252F158C6033004E2BFB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		63EF2530158C6033004E2BFB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		63EF2533158C6033004E2BFB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		63EF2535158C6033004E2BFB /* FirstViewController.h */ = {isa = PBXFileReference; path = FirstViewController.h; sourceTree = "<group>"; };
-		63EF2536158C6033004E2BFB /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		63EF2538158C6033004E2BFB /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
-		63EF253A158C6033004E2BFB /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		63EF253C158C6033004E2BFB /* SecondViewController.h */ = {isa = PBXFileReference; path = SecondViewController.h; sourceTree = "<group>"; };
-		63EF253D158C6033004E2BFB /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
-		63EF253F158C6033004E2BFB /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
-		63EF2541158C6033004E2BFB /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		63EF2535158C6033004E2BFB /* RSSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSSViewController.h; sourceTree = "<group>"; };
+		63EF2536158C6033004E2BFB /* RSSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSSViewController.m; sourceTree = "<group>"; };
+		63EF253C158C6033004E2BFB /* PhotosViewController.h */ = {isa = PBXFileReference; path = PhotosViewController.h; sourceTree = "<group>"; };
+		63EF253D158C6033004E2BFB /* PhotosViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotosViewController.m; sourceTree = "<group>"; };
 		63EF2548158C6033004E2BFB /* WildJunketTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WildJunketTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63EF2549158C6033004E2BFB /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		63EF2551158C6033004E2BFB /* WildJunketTests-Info.plist */ = {isa = PBXFileReference; path = "WildJunketTests-Info.plist"; sourceTree = "<group>"; };
+		63EF2551158C6033004E2BFB /* WildJunketTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WildJunketTests-Info.plist"; sourceTree = "<group>"; };
 		63EF2553158C6033004E2BFB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		63EF2555158C6033004E2BFB /* WildJunketTests.h */ = {isa = PBXFileReference; path = WildJunketTests.h; sourceTree = "<group>"; };
+		63EF2555158C6033004E2BFB /* WildJunketTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WildJunketTests.h; sourceTree = "<group>"; };
 		63EF2556158C6033004E2BFB /* WildJunketTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WildJunketTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,6 +105,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		63ABEE4015A33818008F8C16 /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				63ABEE4E15A338D1008F8C16 /* mapmarker.png */,
+				63ABEE4F15A338D1008F8C16 /* 38-airplane.png */,
+				63ABEE5015A338D1008F8C16 /* 56-feed.png */,
+				63ABEE5115A338D1008F8C16 /* 59-info.png */,
+				63ABEE5215A338D1008F8C16 /* 71-compass.png */,
+				63ABEE5315A338D1008F8C16 /* 86-camera.png */,
+				63ABEE4215A33831008F8C16 /* mapmarker@2x.png */,
+				63ABEE4315A33831008F8C16 /* 38-airplane@2x.png */,
+				63ABEE4415A33831008F8C16 /* 56-feed@2x.png */,
+				63ABEE4515A33831008F8C16 /* 59-info@2x.png */,
+				63ABEE4615A33831008F8C16 /* 71-compass@2x.png */,
+				63ABEE4715A33831008F8C16 /* 86-camera@2x.png */,
+			);
+			name = icons;
+			sourceTree = "<group>";
+		};
 		63EF2511158C6033004E2BFB = {
 			isa = PBXGroup;
 			children = (
@@ -122,17 +157,14 @@
 		63EF2526158C6033004E2BFB /* WildJunket */ = {
 			isa = PBXGroup;
 			children = (
+				63ABEE4015A33818008F8C16 /* icons */,
 				63EF252F158C6033004E2BFB /* AppDelegate.h */,
 				63EF2530158C6033004E2BFB /* AppDelegate.m */,
 				63EF2532158C6033004E2BFB /* MainStoryboard.storyboard */,
-				63EF2535158C6033004E2BFB /* FirstViewController.h */,
-				63EF2536158C6033004E2BFB /* FirstViewController.m */,
-				63EF2538158C6033004E2BFB /* first.png */,
-				63EF253A158C6033004E2BFB /* first@2x.png */,
-				63EF253C158C6033004E2BFB /* SecondViewController.h */,
-				63EF253D158C6033004E2BFB /* SecondViewController.m */,
-				63EF253F158C6033004E2BFB /* second.png */,
-				63EF2541158C6033004E2BFB /* second@2x.png */,
+				63EF2535158C6033004E2BFB /* RSSViewController.h */,
+				63EF2536158C6033004E2BFB /* RSSViewController.m */,
+				63EF253C158C6033004E2BFB /* PhotosViewController.h */,
+				63EF253D158C6033004E2BFB /* PhotosViewController.m */,
 				63EF2527158C6033004E2BFB /* Supporting Files */,
 			);
 			path = WildJunket;
@@ -240,10 +272,18 @@
 			files = (
 				63EF252B158C6033004E2BFB /* InfoPlist.strings in Resources */,
 				63EF2534158C6033004E2BFB /* MainStoryboard.storyboard in Resources */,
-				63EF2539158C6033004E2BFB /* first.png in Resources */,
-				63EF253B158C6033004E2BFB /* first@2x.png in Resources */,
-				63EF2540158C6033004E2BFB /* second.png in Resources */,
-				63EF2542158C6033004E2BFB /* second@2x.png in Resources */,
+				63ABEE4815A33831008F8C16 /* mapmarker@2x.png in Resources */,
+				63ABEE4915A33831008F8C16 /* 38-airplane@2x.png in Resources */,
+				63ABEE4A15A33831008F8C16 /* 56-feed@2x.png in Resources */,
+				63ABEE4B15A33831008F8C16 /* 59-info@2x.png in Resources */,
+				63ABEE4C15A33831008F8C16 /* 71-compass@2x.png in Resources */,
+				63ABEE4D15A33831008F8C16 /* 86-camera@2x.png in Resources */,
+				63ABEE5415A338D1008F8C16 /* mapmarker.png in Resources */,
+				63ABEE5515A338D1008F8C16 /* 38-airplane.png in Resources */,
+				63ABEE5615A338D1008F8C16 /* 56-feed.png in Resources */,
+				63ABEE5715A338D1008F8C16 /* 59-info.png in Resources */,
+				63ABEE5815A338D1008F8C16 /* 71-compass.png in Resources */,
+				63ABEE5915A338D1008F8C16 /* 86-camera.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,8 +320,8 @@
 			files = (
 				63EF252D158C6033004E2BFB /* main.m in Sources */,
 				63EF2531158C6033004E2BFB /* AppDelegate.m in Sources */,
-				63EF2537158C6033004E2BFB /* FirstViewController.m in Sources */,
-				63EF253E158C6033004E2BFB /* SecondViewController.m in Sources */,
+				63EF2537158C6033004E2BFB /* RSSViewController.m in Sources */,
+				63EF253E158C6033004E2BFB /* PhotosViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,6 +491,7 @@
 				63EF255C158C6033004E2BFB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		63EF255D158C6033004E2BFB /* Build configuration list for PBXNativeTarget "WildJunketTests" */ = {
 			isa = XCConfigurationList;
@@ -459,6 +500,7 @@
 				63EF255F158C6033004E2BFB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
