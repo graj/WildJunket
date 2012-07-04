@@ -10,7 +10,7 @@
         <scene sceneID="LzC-Zc-oe2">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YdR-ob-r2R" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="UNi-YI-NHd" sceneMemberID="viewController">
+                <tableViewController id="UNi-YI-NHd" customClass="RSSTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="yCc-HB-cKH">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -175,6 +175,9 @@
         </class>
         <class className="RSSNavViewController" superclassName="UINavigationController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RSSNavViewController.h"/>
+        </class>
+        <class className="RSSTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RSSTableViewController.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
