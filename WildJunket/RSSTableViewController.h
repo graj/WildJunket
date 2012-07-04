@@ -10,8 +10,14 @@
 
 @interface RSSTableViewController : UITableViewController{
     NSMutableArray *_allEntries;
+    
+    //Run operations in background
+    NSOperationQueue *_queue;
+    NSArray *_feeds;
 }
 
 @property (retain) NSMutableArray *allEntries;
+@property (retain) NSOperationQueue *queue;
+@property (retain) NSArray *feeds;
 
 @end
