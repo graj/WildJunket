@@ -287,13 +287,24 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (_webViewController == nil) {
+    [self performSegueWithIdentifier:@"rssdetail" sender:indexPath];
+   /* if (_webViewController == nil) {
         self.webViewController = [[[RSSFeedWebViewControler alloc] initWithNibName:@"RSSFeedWebViewControler" bundle:[NSBundle mainBundle]] autorelease];
     }
     RSSEntry *entry = [_allEntries objectAtIndex:indexPath.row];
     _webViewController.entry = entry;
-    [self.navigationController pushViewController:_webViewController animated:YES];
+    [self.navigationController pushViewController:_webViewController animated:YES];*/
     
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+
+    if([[segue identifier] isEqualToString:@"rssdetail"]){
+        NSIndexPath *indexPath=[self.tableView indexPathForSelectedRow];
+        RSSEntry *entry = [_allEntries objectAtIndex:indexPath.row];
+        self.webViewController=[segue destinationViewController];
+        self.webViewController.entry=entry;
+    }
 }
 
 -(void)didReceiveMemoryWarning{

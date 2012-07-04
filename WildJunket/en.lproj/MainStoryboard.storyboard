@@ -16,16 +16,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="id" id="soi-nB-ngZ">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="soi-nB-ngZ">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="Cpp-Ee-mQu" kind="push" id="kPw-zK-YEj"/>
+                                    <segue destination="O5Z-V0-fI3" kind="push" identifier="rssdetail" id="3UN-xE-plG"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -36,29 +36,34 @@
             <point key="canvasLocation" x="801" y="-125"/>
         </scene>
         <!--Feed Web View Controler-->
-        <scene sceneID="Tka-BS-z65">
+        <scene sceneID="TSP-ql-QBu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wBk-61-s4G" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="Cpp-Ee-mQu" customClass="RSSFeedWebViewControler" sceneMemberID="viewController">
-                    <webView key="view" clipsSubviews="YES" contentMode="scaleToFill" scalesPageToFit="YES" id="mwm-zp-00H">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j7Y-zd-zMX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="O5Z-V0-fI3" customClass="RSSFeedWebViewControler" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PMm-B5-2HW">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
-                    </webView>
-                    <navigationItem key="navigationItem" id="LRw-5n-7tm"/>
-                    <connections>
-                        <outlet property="webView" destination="mwm-zp-00H" id="5Mc-0d-LmE"/>
-                    </connections>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="David" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="toX-aR-WqH">
+                                <rect key="frame" x="139" y="112" width="44" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="rSO-K5-kEr"/>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1316" y="-125"/>
+            <point key="canvasLocation" x="1360" y="-125"/>
         </scene>
-        <!--Nav View Controller - RSS-->
+        <!--Navigation Controller - RSS-->
         <scene sceneID="Lno-Ay-7U7">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z7l-aB-IKk" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController definesPresentationContext="YES" id="IjH-7O-nI8" customClass="RSSNavViewController" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" id="IjH-7O-nI8" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="RSS" image="56-feed" id="mkB-fx-wTQ"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="csh-pw-Evr">
                         <autoresizingMask key="autoresizingMask"/>
@@ -200,9 +205,6 @@
             <relationships>
                 <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
             </relationships>
-        </class>
-        <class className="RSSNavViewController" superclassName="UINavigationController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RSSNavViewController.h"/>
         </class>
         <class className="RSSTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RSSTableViewController.h"/>
