@@ -17,22 +17,22 @@
 @synthesize allEntries = _allEntries;
 
 - (void)addRows {    
-    RSSEntry *entry1 = [[RSSEntry alloc] initWithBlogTitle:@"1" 
+    RSSEntry *entry1 = [[[RSSEntry alloc] initWithBlogTitle:@"1" 
                                                articleTitle:@"1" 
                                                  articleUrl:@"1" 
-                                                articleDate:[NSDate date]];
-    RSSEntry *entry2 = [[RSSEntry alloc] initWithBlogTitle:@"2" 
+                                                articleDate:[NSDate date]] autorelease];
+    RSSEntry *entry2 = [[[RSSEntry alloc] initWithBlogTitle:@"2" 
                                                articleTitle:@"2" 
                                                  articleUrl:@"2" 
-                                                articleDate:[NSDate date]];
-    RSSEntry *entry3 = [[RSSEntry alloc] initWithBlogTitle:@"3" 
+                                                articleDate:[NSDate date]] autorelease];
+    RSSEntry *entry3 = [[[RSSEntry alloc] initWithBlogTitle:@"3" 
                                                articleTitle:@"3" 
                                                  articleUrl:@"3" 
-                                                articleDate:[NSDate date]];    
+                                                articleDate:[NSDate date]] autorelease];    
     
     [_allEntries insertObject:entry1 atIndex:0];
     [_allEntries insertObject:entry2 atIndex:0];
-    [_allEntries insertObject:entry3 atIndex:0];        
+    [_allEntries insertObject:entry3 atIndex:0];       
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -47,7 +47,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"WildJunket Feed";
+    self.title = @"RSS";
     self.allEntries = [NSMutableArray array];
     [self addRows];    
 }
@@ -83,12 +83,12 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] ;
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
     
     RSSEntry *entry = [_allEntries objectAtIndex:indexPath.row];
     
-    NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
+    NSDateFormatter * dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
     [dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
     [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
     NSString *articleDateString = [dateFormatter stringFromDate:entry.articleDate];
@@ -149,6 +149,12 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+
+-(void)dealloc{
+    [_allEntries release];
+    _allEntries = nil;
+    [super dealloc];
 }
 
 @end
