@@ -37,6 +37,9 @@
 		63EE7EB115A4C88F0098FEE8 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EE7EA815A4C88F0098FEE8 /* Reachability.m */; };
 		63EE7EB715A4D0280098FEE8 /* GDataXMLElement-Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EE7EB415A4D0280098FEE8 /* GDataXMLElement-Extras.m */; };
 		63EE7EB815A4D0280098FEE8 /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EE7EB615A4D0280098FEE8 /* GDataXMLNode.m */; };
+		63EE7EBD15A4DDB90098FEE8 /* NSArray+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EE7EBA15A4DDB90098FEE8 /* NSArray+Extras.m */; };
+		63EE7EBE15A4DDB90098FEE8 /* NSDate+InternetDateTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EE7EBC15A4DDB90098FEE8 /* NSDate+InternetDateTime.m */; };
+		63EE7EC115A4DF290098FEE8 /* RSSFeedWebViewControler.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EE7EC015A4DF290098FEE8 /* RSSFeedWebViewControler.m */; };
 		63EF2521158C6033004E2BFB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EF2520158C6033004E2BFB /* UIKit.framework */; };
 		63EF2523158C6033004E2BFB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EF2522158C6033004E2BFB /* Foundation.framework */; };
 		63EF2525158C6033004E2BFB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EF2524158C6033004E2BFB /* CoreGraphics.framework */; };
@@ -111,6 +114,12 @@
 		63EE7EB415A4D0280098FEE8 /* GDataXMLElement-Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GDataXMLElement-Extras.m"; sourceTree = "<group>"; };
 		63EE7EB515A4D0280098FEE8 /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
 		63EE7EB615A4D0280098FEE8 /* GDataXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataXMLNode.m; sourceTree = "<group>"; };
+		63EE7EB915A4DDB90098FEE8 /* NSArray+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Extras.h"; sourceTree = "<group>"; };
+		63EE7EBA15A4DDB90098FEE8 /* NSArray+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Extras.m"; sourceTree = "<group>"; };
+		63EE7EBB15A4DDB90098FEE8 /* NSDate+InternetDateTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+InternetDateTime.h"; sourceTree = "<group>"; };
+		63EE7EBC15A4DDB90098FEE8 /* NSDate+InternetDateTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+InternetDateTime.m"; sourceTree = "<group>"; };
+		63EE7EBF15A4DF290098FEE8 /* RSSFeedWebViewControler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSFeedWebViewControler.h; sourceTree = "<group>"; };
+		63EE7EC015A4DF290098FEE8 /* RSSFeedWebViewControler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSFeedWebViewControler.m; sourceTree = "<group>"; };
 		63EF251C158C6033004E2BFB /* WildJunket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WildJunket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63EF2520158C6033004E2BFB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		63EF2522158C6033004E2BFB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -182,6 +191,10 @@
 		63EE7E6F15A4C0470098FEE8 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				63EE7EB915A4DDB90098FEE8 /* NSArray+Extras.h */,
+				63EE7EBA15A4DDB90098FEE8 /* NSArray+Extras.m */,
+				63EE7EBB15A4DDB90098FEE8 /* NSDate+InternetDateTime.h */,
+				63EE7EBC15A4DDB90098FEE8 /* NSDate+InternetDateTime.m */,
 				63EE7E6C15A4C0380098FEE8 /* RSSEntry.h */,
 				63EE7E6D15A4C0380098FEE8 /* RSSEntry.m */,
 			);
@@ -279,6 +292,8 @@
 				63EF2527158C6033004E2BFB /* Supporting Files */,
 				636729D315A4BAEE00A54ACE /* RSSNavViewController.h */,
 				636729D415A4BAEE00A54ACE /* RSSNavViewController.m */,
+				63EE7EBF15A4DF290098FEE8 /* RSSFeedWebViewControler.h */,
+				63EE7EC015A4DF290098FEE8 /* RSSFeedWebViewControler.m */,
 			);
 			path = WildJunket;
 			sourceTree = "<group>";
@@ -448,6 +463,9 @@
 				63EE7EB115A4C88F0098FEE8 /* Reachability.m in Sources */,
 				63EE7EB715A4D0280098FEE8 /* GDataXMLElement-Extras.m in Sources */,
 				63EE7EB815A4D0280098FEE8 /* GDataXMLNode.m in Sources */,
+				63EE7EBD15A4DDB90098FEE8 /* NSArray+Extras.m in Sources */,
+				63EE7EBE15A4DDB90098FEE8 /* NSDate+InternetDateTime.m in Sources */,
+				63EE7EC115A4DF290098FEE8 /* RSSFeedWebViewControler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

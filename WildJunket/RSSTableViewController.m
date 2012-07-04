@@ -11,6 +11,9 @@
 #import "ASIHTTPRequest.h"
 #import "GDataXMLNode.h"
 #import "GDataXMLElement-Extras.h"
+#import "NSDate+InternetDateTime.h"
+#import "NSArray+Extras.h"
+#import "RSSFeedWebViewControler.h"
 
 @interface RSSTableViewController ()
 
@@ -20,6 +23,7 @@
 @synthesize allEntries = _allEntries;
 @synthesize feeds = _feeds;
 @synthesize queue = _queue;
+@synthesize webViewController = _webViewController;
 
 - (void)refresh {
     for (NSString *feed in _feeds) {
@@ -48,7 +52,11 @@
                 
                 for (RSSEntry *entry in entries) {
                     
-                    int insertIdx = 0;                    
+                    int insertIdx = [_allEntries indexForInsertingObject:entry sortedUsingBlock:^(id a, id b) {
+                        RSSEntry *entry1 = (RSSEntry *) a;
+                        RSSEntry *entry2 = (RSSEntry *) b;
+                        return [entry1.articleDate compare:entry2.articleDate];
+                    }];                   
                     [_allEntries insertObject:entry atIndex:insertIdx];
                     [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:insertIdx inSection:0]]
                                           withRowAnimation:UITableViewRowAnimationRight];
@@ -85,7 +93,8 @@
             NSString *articleTitle = [item valueForChild:@"title"];
             NSString *articleUrl = [item valueForChild:@"link"];            
             NSString *articleDateString = [item valueForChild:@"pubDate"];        
-            NSDate *articleDate = nil;
+            NSDate *articleDate = [NSDate dateFromInternetDateTimeString:articleDateString formatHint:DateFormatHintRFC822];
+
             
             RSSEntry *entry = [[[RSSEntry alloc] initWithBlogTitle:blogTitle 
                                                       articleTitle:articleTitle 
@@ -118,7 +127,8 @@
         }
         
         NSString *articleDateString = [item valueForChild:@"updated"];        
-        NSDate *articleDate = nil;
+        NSDate *articleDate = [NSDate dateFromInternetDateTimeString:articleDateString formatHint:DateFormatHintRFC3339];
+        
         
         RSSEntry *entry = [[[RSSEntry alloc] initWithBlogTitle:blogTitle 
                                                   articleTitle:articleTitle 
@@ -275,15 +285,20 @@
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (_webViewController == nil) {
+        self.webViewController = [[[RSSFeedWebViewControler alloc] initWithNibName:@"RSSFeedWebViewControler" bundle:[NSBundle mainBundle]] autorelease];
+    }
+    RSSEntry *entry = [_allEntries objectAtIndex:indexPath.row];
+    _webViewController.entry = entry;
+    [self.navigationController pushViewController:_webViewController animated:YES];
+    
+}
+
+-(void)didReceiveMemoryWarning{
+    self.webViewController = nil;
+    [super didReceiveMemoryWarning];
 }
 
 -(void)dealloc{
@@ -293,6 +308,8 @@
     _queue = nil;
     [_feeds release];
     _feeds = nil;
+    [_webViewController release];
+    _webViewController = nil;
     [super dealloc];
 }
 

@@ -16,14 +16,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="id" id="soi-nB-ngZ">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="id" id="soi-nB-ngZ">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <segue destination="Cpp-Ee-mQu" kind="push" id="kPw-zK-YEj"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
@@ -31,6 +34,25 @@
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="801" y="-125"/>
+        </scene>
+        <!--Feed Web View Controler-->
+        <scene sceneID="Tka-BS-z65">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wBk-61-s4G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="Cpp-Ee-mQu" customClass="RSSFeedWebViewControler" sceneMemberID="viewController">
+                    <webView key="view" clipsSubviews="YES" contentMode="scaleToFill" scalesPageToFit="YES" id="mwm-zp-00H">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
+                    </webView>
+                    <navigationItem key="navigationItem" id="LRw-5n-7tm"/>
+                    <connections>
+                        <outlet property="webView" destination="mwm-zp-00H" id="5Mc-0d-LmE"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1316" y="-125"/>
         </scene>
         <!--Nav View Controller - RSS-->
         <scene sceneID="Lno-Ay-7U7">
@@ -169,6 +191,23 @@
         <image name="86-camera" width="16" height="16"/>
         <image name="mapmarker" width="16" height="16"/>
     </resources>
+    <classes>
+        <class className="PhotosViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotosViewController.h"/>
+        </class>
+        <class className="RSSFeedWebViewControler" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RSSFeedWebViewControler.h"/>
+            <relationships>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="RSSNavViewController" superclassName="UINavigationController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RSSNavViewController.h"/>
+        </class>
+        <class className="RSSTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RSSTableViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
