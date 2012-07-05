@@ -46,9 +46,20 @@
                           options:kNilOptions 
                           error:&error];
     
-    NSArray* latestLoans = [json objectForKey:@"response"]; //2
+    NSDictionary* location = [[[[[[json objectForKey:@"response"]objectForKey:@"checkins"]objectForKey:@"items"]objectAtIndex:0]objectForKey:@"venue"]objectForKey:@"location"];
     
-    NSLog(@"response: %@", latestLoans); //3
+    
+    NSString* country=[location objectForKey:@"country"];
+    NSString* city=[location objectForKey:@"city"];
+    
+    NSString* latitude=[location objectForKey:@"lat"];
+    NSString* longitude=[location objectForKey:@"lng"];
+    
+    NSLog(@"Pais: %@", country);
+    NSLog(@"Ciudad: %@", city);
+    NSLog(@"Lat: %@", latitude);
+    NSLog(@"Long: %@", longitude);
+
 }
 
 - (void)viewDidUnload
