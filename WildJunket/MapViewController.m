@@ -6,7 +6,11 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) //1
+#define fsqAuth [NSURL URLWithString:@"https://api.foursquare.com/v2/users/self/checkins?oauth_token=KN4AYPARK5GJ4GRKE2F3GIQWPEKIDX3WJFAKW4TUOP2YU3CV&limit=1"]
+
 #import "MapViewController.h"
+
 
 @interface MapViewController ()
 
@@ -27,7 +31,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+	dispatch_async(kBgQueue, ^{
+        NSData* data = [NSData dataWithContentsOfURL: fsqAuth];
+        [self performSelectorOnMainThread:@selector(fetchedData:) withObject:data waitUntilDone:YES];
+    });
+}
+
+- (void)fetchedData:(NSData *)responseData {
+    //parse out the json data
+    NSError* error;
+    NSDictionary* json = [NSJSONSerialization 
+                          JSONObjectWithData:responseData //1
+                          
+                          options:kNilOptions 
+                          error:&error];
+    
+    NSArray* latestLoans = [json objectForKey:@"response"]; //2
+    
+    NSLog(@"response: %@", latestLoans); //3
 }
 
 - (void)viewDidUnload
