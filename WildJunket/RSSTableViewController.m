@@ -85,7 +85,8 @@
     NSArray *channels = [rootElement elementsForName:@"channel"];
     for (GDataXMLElement *channel in channels) {            
         
-        NSString *blogTitle = [channel valueForChild:@"title"];                    
+        NSString *blogTitle = [channel valueForChild:@"title"];
+        
         
         NSArray *items = [channel elementsForName:@"item"];
         for (GDataXMLElement *item in items) {
@@ -109,8 +110,8 @@
 
 - (void)parseAtom:(GDataXMLElement *)rootElement entries:(NSMutableArray *)entries {
     
-    NSString *blogTitle = [rootElement valueForChild:@"title"];                    
-    
+    NSString *blogTitle = [rootElement valueForChild:@"title"];
+        
     NSArray *items = [rootElement elementsForName:@"entry"];
     for (GDataXMLElement *item in items) {
         
@@ -145,25 +146,6 @@
     NSLog(@"Error: %@", error);
 }
 
-- (void)addRows {    
-    RSSEntry *entry1 = [[[RSSEntry alloc] initWithBlogTitle:@"1" 
-                                               articleTitle:@"1" 
-                                                 articleUrl:@"1" 
-                                                articleDate:[NSDate date]] autorelease];
-    RSSEntry *entry2 = [[[RSSEntry alloc] initWithBlogTitle:@"2" 
-                                               articleTitle:@"2" 
-                                                 articleUrl:@"2" 
-                                                articleDate:[NSDate date]] autorelease];
-    RSSEntry *entry3 = [[[RSSEntry alloc] initWithBlogTitle:@"3" 
-                                               articleTitle:@"3" 
-                                                 articleUrl:@"3" 
-                                                articleDate:[NSDate date]] autorelease];    
-    
-    [_allEntries insertObject:entry1 atIndex:0];
-    [_allEntries insertObject:entry2 atIndex:0];
-    [_allEntries insertObject:entry3 atIndex:0];       
-}
-
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -175,26 +157,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];    
-    self.title = @"RSS";
+    //self.title = @"WildJunket";
     self.allEntries = [NSMutableArray array];
     self.queue = [[[NSOperationQueue alloc] init] autorelease];
-    self.feeds = [NSArray arrayWithObjects:@"http://feeds.feedburner.com/RayWenderlich",
-                  @"http://feeds.feedburner.com/vmwstudios",
-                  @"http://idtypealittlefaster.blogspot.com/feeds/posts/default", 
-                  @"http://www.71squared.com/feed/",
-                  @"http://cocoawithlove.com/feeds/posts/default",
-                  @"http://feeds2.feedburner.com/brandontreb",
-                  @"http://feeds.feedburner.com/CoryWilesBlog",
-                  @"http://geekanddad.wordpress.com/feed/",
-                  @"http://iphonedevelopment.blogspot.com/feeds/posts/default",
-                  @"http://karnakgames.com/wp/feed/",
-                  @"http://kwigbo.com/rss",
-                  @"http://shawnsbits.com/feed/",
-                  @"http://pocketcyclone.com/feed/",
-                  @"http://www.alexcurylo.com/blog/feed/",         
-                  @"http://feeds.feedburner.com/maniacdev",
-                  @"http://feeds.feedburner.com/macindie",
-                  nil];    
+    self.feeds = [NSArray arrayWithObjects:@"http://feeds.feedburner.com/wildjunket",nil];    
     [self refresh];
 }
 - (void)viewDidUnload
@@ -239,7 +205,7 @@
     NSString *articleDateString = [dateFormatter stringFromDate:entry.articleDate];
     
     cell.textLabel.text = entry.articleTitle;        
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", articleDateString, entry.blogTitle];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", articleDateString];
     
     return cell;
 }
@@ -288,12 +254,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [self performSegueWithIdentifier:@"rssdetail" sender:indexPath];
-   /* if (_webViewController == nil) {
-        self.webViewController = [[[RSSFeedWebViewControler alloc] initWithNibName:@"RSSFeedWebViewControler" bundle:[NSBundle mainBundle]] autorelease];
-    }
-    RSSEntry *entry = [_allEntries objectAtIndex:indexPath.row];
-    _webViewController.entry = entry;
-    [self.navigationController pushViewController:_webViewController animated:YES];*/
+
     
 }
 
