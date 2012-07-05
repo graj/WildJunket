@@ -20,6 +20,8 @@
 		63ABEE5715A338D1008F8C16 /* 59-info.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ABEE5115A338D1008F8C16 /* 59-info.png */; };
 		63ABEE5815A338D1008F8C16 /* 71-compass.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ABEE5215A338D1008F8C16 /* 71-compass.png */; };
 		63ABEE5915A338D1008F8C16 /* 86-camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ABEE5315A338D1008F8C16 /* 86-camera.png */; };
+		63DC11D815A5D03500E22683 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63DC11D715A5D03500E22683 /* MapKit.framework */; };
+		63DC11DC15A5D05A00E22683 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DC11DB15A5D05A00E22683 /* MapViewController.m */; };
 		63EE7E6215A4BDD10098FEE8 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EE7E6115A4BDD10098FEE8 /* libz.dylib */; };
 		63EE7E6415A4BDE10098FEE8 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EE7E6315A4BDE10098FEE8 /* CFNetwork.framework */; };
 		63EE7E6615A4BDEC0098FEE8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EE7E6515A4BDEC0098FEE8 /* SystemConfiguration.framework */; };
@@ -80,6 +82,9 @@
 		63ABEE5115A338D1008F8C16 /* 59-info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "59-info.png"; sourceTree = "<group>"; };
 		63ABEE5215A338D1008F8C16 /* 71-compass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "71-compass.png"; sourceTree = "<group>"; };
 		63ABEE5315A338D1008F8C16 /* 86-camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "86-camera.png"; sourceTree = "<group>"; };
+		63DC11D715A5D03500E22683 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		63DC11DA15A5D05A00E22683 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		63DC11DB15A5D05A00E22683 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		63EE7E6115A4BDD10098FEE8 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		63EE7E6315A4BDE10098FEE8 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		63EE7E6515A4BDEC0098FEE8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -146,6 +151,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63DC11D815A5D03500E22683 /* MapKit.framework in Frameworks */,
 				63EE7E6815A4BDF50098FEE8 /* MobileCoreServices.framework in Frameworks */,
 				63EE7E6615A4BDEC0098FEE8 /* SystemConfiguration.framework in Frameworks */,
 				63EE7E6415A4BDE10098FEE8 /* CFNetwork.framework in Frameworks */,
@@ -263,6 +269,7 @@
 		63EF251F158C6033004E2BFB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				63DC11D715A5D03500E22683 /* MapKit.framework */,
 				63EE7E6715A4BDF50098FEE8 /* MobileCoreServices.framework */,
 				63EE7E6515A4BDEC0098FEE8 /* SystemConfiguration.framework */,
 				63EE7E6315A4BDE10098FEE8 /* CFNetwork.framework */,
@@ -294,6 +301,8 @@
 				636729D415A4BAEE00A54ACE /* RSSNavViewController.m */,
 				63EE7EBF15A4DF290098FEE8 /* RSSFeedWebViewControler.h */,
 				63EE7EC015A4DF290098FEE8 /* RSSFeedWebViewControler.m */,
+				63DC11DA15A5D05A00E22683 /* MapViewController.h */,
+				63DC11DB15A5D05A00E22683 /* MapViewController.m */,
 			);
 			path = WildJunket;
 			sourceTree = "<group>";
@@ -466,6 +475,7 @@
 				63EE7EBD15A4DDB90098FEE8 /* NSArray+Extras.m in Sources */,
 				63EE7EBE15A4DDB90098FEE8 /* NSDate+InternetDateTime.m in Sources */,
 				63EE7EC115A4DF290098FEE8 /* RSSFeedWebViewControler.m in Sources */,
+				63DC11DC15A5D05A00E22683 /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
