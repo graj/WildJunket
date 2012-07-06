@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		633E9C0715A7A70700DA4C90 /* MKMapView+ZoomLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 633E9C0615A7A70700DA4C90 /* MKMapView+ZoomLevel.m */; };
 		636729D515A4BAEE00A54ACE /* RSSNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 636729D415A4BAEE00A54ACE /* RSSNavViewController.m */; };
 		63ABEE4815A33831008F8C16 /* mapmarker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ABEE4215A33831008F8C16 /* mapmarker@2x.png */; };
 		63ABEE4915A33831008F8C16 /* 38-airplane@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ABEE4315A33831008F8C16 /* 38-airplane@2x.png */; };
@@ -68,6 +69,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		633E9C0515A7A70700DA4C90 /* MKMapView+ZoomLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+ZoomLevel.h"; sourceTree = "<group>"; };
+		633E9C0615A7A70700DA4C90 /* MKMapView+ZoomLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+ZoomLevel.m"; sourceTree = "<group>"; };
 		636729D315A4BAEE00A54ACE /* RSSNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSNavViewController.h; sourceTree = "<group>"; };
 		636729D415A4BAEE00A54ACE /* RSSNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSNavViewController.m; sourceTree = "<group>"; };
 		63ABEE4215A33831008F8C16 /* mapmarker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mapmarker@2x.png"; sourceTree = "<group>"; };
@@ -203,6 +206,8 @@
 				63EE7EBC15A4DDB90098FEE8 /* NSDate+InternetDateTime.m */,
 				63EE7E6C15A4C0380098FEE8 /* RSSEntry.h */,
 				63EE7E6D15A4C0380098FEE8 /* RSSEntry.m */,
+				633E9C0515A7A70700DA4C90 /* MKMapView+ZoomLevel.h */,
+				633E9C0615A7A70700DA4C90 /* MKMapView+ZoomLevel.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -476,6 +481,7 @@
 				63EE7EBE15A4DDB90098FEE8 /* NSDate+InternetDateTime.m in Sources */,
 				63EE7EC115A4DF290098FEE8 /* RSSFeedWebViewControler.m in Sources */,
 				63DC11DC15A5D05A00E22683 /* MapViewController.m in Sources */,
+				633E9C0715A7A70700DA4C90 /* MKMapView+ZoomLevel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

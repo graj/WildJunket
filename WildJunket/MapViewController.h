@@ -7,11 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MapKit/MapKit.h>
+#import "MKMapView+ZoomLevel.h"
 
 @interface MapViewController : UIViewController{
     MKMapView *_mapview;
+    UILabel *_country;
+    UILabel *_city;
 }
 @property (retain) IBOutlet MKMapView *mapView;
+@property (retain) IBOutlet UILabel *country;
+@property (retain) IBOutlet UILabel *city;
+
 
 @end

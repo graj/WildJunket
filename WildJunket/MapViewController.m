@@ -9,6 +9,8 @@
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) //1
 #define fsqAuth [NSURL URLWithString:@"https://api.foursquare.com/v2/users/self/checkins?oauth_token=KN4AYPARK5GJ4GRKE2F3GIQWPEKIDX3WJFAKW4TUOP2YU3CV&limit=1"]
 
+#define ZOOM_LEVEL 10
+
 #import "MapViewController.h"
 
 
@@ -18,6 +20,8 @@
 
 @implementation MapViewController
 @synthesize mapView=_mapview;
+@synthesize country=_country;
+@synthesize city=_city;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -55,12 +59,16 @@
     NSString* latitude=[location objectForKey:@"lat"];
     NSString* longitude=[location objectForKey:@"lng"];
     
-    NSLog(@"Pais: %@", country);
-    NSLog(@"Ciudad: %@", city);
-    NSLog(@"Lat: %@", latitude);
-    NSLog(@"Long: %@", longitude);
+    [self setMapDetails:latitude longitude:longitude country:country city:city];
     
+}
+
+-(void)setMapDetails:(NSString *) latitude longitude:(NSString *) longitude country:(NSString *) country city:(NSString *) city{
     
+    [self.city setText:city];
+    [self.country setText:country];
+    CLLocationCoordinate2D centerCoord = {[latitude doubleValue], [longitude doubleValue]};
+    [self.mapView setCenterCoordinate:centerCoord zoomLevel:ZOOM_LEVEL animated:YES];
 
 }
 
