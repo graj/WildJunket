@@ -59,6 +59,8 @@
     NSLog(@"Ciudad: %@", city);
     NSLog(@"Lat: %@", latitude);
     NSLog(@"Long: %@", longitude);
+    
+    
 
 }
 
