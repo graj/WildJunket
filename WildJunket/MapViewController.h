@@ -9,16 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "MKMapView+ZoomLevel.h"
 
-@interface MapViewController : UIViewController{
+@interface MapViewController : UIViewController <UIScrollViewDelegate>{
     MKMapView *_mapview;
     UILabel *_country;
     UILabel *_city;
-    UIImageView *_imagen;
+    
 }
+
+@property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
 @property (retain) IBOutlet MKMapView *mapView;
 @property (retain) IBOutlet UILabel *country;
 @property (retain) IBOutlet UILabel *city;
-@property (retain) IBOutlet UIImageView *imagen;
+
 
 
 @end

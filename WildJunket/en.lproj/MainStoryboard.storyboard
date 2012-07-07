@@ -162,10 +162,14 @@
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" cocoaTouchSystemColor="lightTextColor"/>
                             </label>
-                            <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" id="t2l-Ee-XxI">
-                                <rect key="frame" x="0.0" y="44" width="320" height="189"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="QSo-yr-lrw">
+                                <rect key="frame" x="0.0" y="44" width="320" height="188"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <connections>
+                                    <outlet property="delegate" destination="dYn-sJ-6f2" id="pmn-ed-3qR"/>
+                                </connections>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -173,8 +177,8 @@
                     <connections>
                         <outlet property="city" destination="JyM-Fv-QWV" id="zth-Ln-NMR"/>
                         <outlet property="country" destination="gzr-jb-03X" id="jXc-1W-PRU"/>
-                        <outlet property="imagen" destination="t2l-Ee-XxI" id="Km5-iF-9PT"/>
                         <outlet property="mapView" destination="Koq-91-txi" id="YkW-a4-JG4"/>
+                        <outlet property="scrollView" destination="QSo-yr-lrw" id="vTk-l4-zVS"/>
                     </connections>
                 </viewController>
             </objects>
@@ -224,8 +228,8 @@
             <relationships>
                 <relationship kind="outlet" name="city" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="country" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="imagen" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
             </relationships>
         </class>
         <class className="PhotosViewController" superclassName="UIViewController">
