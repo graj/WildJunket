@@ -583,11 +583,13 @@
 		63EF255B158C6033004E2BFB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: David Garcia Fernandez (72SXJQDU59)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WildJunket/WildJunket-Prefix.pch";
 				INFOPLIST_FILE = "WildJunket/WildJunket-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1455C218-6843-4F69-BEA0-F24D33CF5839";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
