@@ -93,4 +93,16 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+-(void)dealloc{
+    [_mapview release];
+    _mapview = nil;
+    [_country release];
+    _country = nil;
+    [_city release];
+    _city = nil;
+    [_imagen release];
+    _imagen = nil;
+    [super dealloc];
+}
+
 @end
