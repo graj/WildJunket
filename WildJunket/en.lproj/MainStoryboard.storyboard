@@ -138,7 +138,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="Koq-91-txi">
-                                <rect key="frame" x="0.0" y="44" width="320" height="367"/>
+                                <rect key="frame" x="0.0" y="232" width="320" height="179"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" id="1e6-Gw-XK1">
@@ -162,6 +162,10 @@
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" cocoaTouchSystemColor="lightTextColor"/>
                             </label>
+                            <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" id="t2l-Ee-XxI">
+                                <rect key="frame" x="0.0" y="44" width="320" height="189"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -169,6 +173,7 @@
                     <connections>
                         <outlet property="city" destination="JyM-Fv-QWV" id="zth-Ln-NMR"/>
                         <outlet property="country" destination="gzr-jb-03X" id="jXc-1W-PRU"/>
+                        <outlet property="imagen" destination="t2l-Ee-XxI" id="Km5-iF-9PT"/>
                         <outlet property="mapView" destination="Koq-91-txi" id="YkW-a4-JG4"/>
                     </connections>
                 </viewController>
@@ -219,6 +224,7 @@
             <relationships>
                 <relationship kind="outlet" name="city" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="country" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="imagen" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
             </relationships>
         </class>

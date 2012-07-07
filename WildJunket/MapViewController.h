@@ -13,10 +13,12 @@
     MKMapView *_mapview;
     UILabel *_country;
     UILabel *_city;
+    UIImageView *_imagen;
 }
 @property (retain) IBOutlet MKMapView *mapView;
 @property (retain) IBOutlet UILabel *country;
 @property (retain) IBOutlet UILabel *city;
+@property (retain) IBOutlet UIImageView *imagen;
 
 
 @end
