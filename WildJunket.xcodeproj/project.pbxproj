@@ -30,10 +30,6 @@
 		635002A615AB92B100FC9BCF /* ThumbsMainToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6350029115AB92B100FC9BCF /* ThumbsMainToolbar.m */; };
 		635002A715AB92B100FC9BCF /* ThumbsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6350029315AB92B100FC9BCF /* ThumbsViewController.m */; };
 		635002A815AB92B100FC9BCF /* UIXToolbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6350029515AB92B100FC9BCF /* UIXToolbarView.m */; };
-		635002BB15AB92D000FC9BCF /* AppIcon-057.png in Resources */ = {isa = PBXBuildFile; fileRef = 635002A915AB92D000FC9BCF /* AppIcon-057.png */; };
-		635002BC15AB92D000FC9BCF /* AppIcon-072.png in Resources */ = {isa = PBXBuildFile; fileRef = 635002AA15AB92D000FC9BCF /* AppIcon-072.png */; };
-		635002BD15AB92D000FC9BCF /* AppIcon-114.png in Resources */ = {isa = PBXBuildFile; fileRef = 635002AB15AB92D000FC9BCF /* AppIcon-114.png */; };
-		635002BE15AB92D000FC9BCF /* AppIcon-144.png in Resources */ = {isa = PBXBuildFile; fileRef = 635002AC15AB92D000FC9BCF /* AppIcon-144.png */; };
 		635002BF15AB92D000FC9BCF /* Reader-Button-H.png in Resources */ = {isa = PBXBuildFile; fileRef = 635002AD15AB92D000FC9BCF /* Reader-Button-H.png */; };
 		635002C015AB92D000FC9BCF /* Reader-Button-H@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 635002AE15AB92D000FC9BCF /* Reader-Button-H@2x.png */; };
 		635002C115AB92D000FC9BCF /* Reader-Button-N.png in Resources */ = {isa = PBXBuildFile; fileRef = 635002AF15AB92D000FC9BCF /* Reader-Button-N.png */; };
@@ -153,10 +149,6 @@
 		6350029315AB92B100FC9BCF /* ThumbsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThumbsViewController.m; sourceTree = "<group>"; };
 		6350029415AB92B100FC9BCF /* UIXToolbarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIXToolbarView.h; sourceTree = "<group>"; };
 		6350029515AB92B100FC9BCF /* UIXToolbarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIXToolbarView.m; sourceTree = "<group>"; };
-		635002A915AB92D000FC9BCF /* AppIcon-057.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-057.png"; sourceTree = "<group>"; };
-		635002AA15AB92D000FC9BCF /* AppIcon-072.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-072.png"; sourceTree = "<group>"; };
-		635002AB15AB92D000FC9BCF /* AppIcon-114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-114.png"; sourceTree = "<group>"; };
-		635002AC15AB92D000FC9BCF /* AppIcon-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-144.png"; sourceTree = "<group>"; };
 		635002AD15AB92D000FC9BCF /* Reader-Button-H.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Button-H.png"; sourceTree = "<group>"; };
 		635002AE15AB92D000FC9BCF /* Reader-Button-H@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Button-H@2x.png"; sourceTree = "<group>"; };
 		635002AF15AB92D000FC9BCF /* Reader-Button-N.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Button-N.png"; sourceTree = "<group>"; };
@@ -339,10 +331,6 @@
 		63ABEE4015A33818008F8C16 /* icons */ = {
 			isa = PBXGroup;
 			children = (
-				635002A915AB92D000FC9BCF /* AppIcon-057.png */,
-				635002AA15AB92D000FC9BCF /* AppIcon-072.png */,
-				635002AB15AB92D000FC9BCF /* AppIcon-114.png */,
-				635002AC15AB92D000FC9BCF /* AppIcon-144.png */,
 				635002AD15AB92D000FC9BCF /* Reader-Button-H.png */,
 				635002AE15AB92D000FC9BCF /* Reader-Button-H@2x.png */,
 				635002AF15AB92D000FC9BCF /* Reader-Button-N.png */,
@@ -606,10 +594,6 @@
 				63ABEE5715A338D1008F8C16 /* 59-info.png in Resources */,
 				63ABEE5815A338D1008F8C16 /* 71-compass.png in Resources */,
 				63ABEE5915A338D1008F8C16 /* 86-camera.png in Resources */,
-				635002BB15AB92D000FC9BCF /* AppIcon-057.png in Resources */,
-				635002BC15AB92D000FC9BCF /* AppIcon-072.png in Resources */,
-				635002BD15AB92D000FC9BCF /* AppIcon-114.png in Resources */,
-				635002BE15AB92D000FC9BCF /* AppIcon-144.png in Resources */,
 				635002BF15AB92D000FC9BCF /* Reader-Button-H.png in Resources */,
 				635002C015AB92D000FC9BCF /* Reader-Button-H@2x.png in Resources */,
 				635002C115AB92D000FC9BCF /* Reader-Button-N.png in Resources */,
