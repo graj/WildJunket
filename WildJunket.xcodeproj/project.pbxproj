@@ -316,8 +316,6 @@
 				6350028B15AB92B100FC9BCF /* ReaderThumbsView.m */,
 				6350028C15AB92B100FC9BCF /* ReaderThumbView.h */,
 				6350028D15AB92B100FC9BCF /* ReaderThumbView.m */,
-				6350028E15AB92B100FC9BCF /* ReaderViewController.h */,
-				6350028F15AB92B100FC9BCF /* ReaderViewController.m */,
 				6350029015AB92B100FC9BCF /* ThumbsMainToolbar.h */,
 				6350029115AB92B100FC9BCF /* ThumbsMainToolbar.m */,
 				6350029215AB92B100FC9BCF /* ThumbsViewController.h */,
@@ -326,6 +324,25 @@
 				6350029515AB92B100FC9BCF /* UIXToolbarView.m */,
 			);
 			name = Reader;
+			sourceTree = "<group>";
+		};
+		635002CF15AB9ABD00FC9BCF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6350028E15AB92B100FC9BCF /* ReaderViewController.h */,
+				6350028F15AB92B100FC9BCF /* ReaderViewController.m */,
+				63EE7E7015A4C3980098FEE8 /* RSSTableViewController.h */,
+				63EE7E7115A4C3980098FEE8 /* RSSTableViewController.m */,
+				63EF253C158C6033004E2BFB /* PhotosViewController.h */,
+				63EF253D158C6033004E2BFB /* PhotosViewController.m */,
+				636729D315A4BAEE00A54ACE /* RSSNavViewController.h */,
+				636729D415A4BAEE00A54ACE /* RSSNavViewController.m */,
+				63EE7EBF15A4DF290098FEE8 /* RSSFeedWebViewControler.h */,
+				63EE7EC015A4DF290098FEE8 /* RSSFeedWebViewControler.m */,
+				63DC11DA15A5D05A00E22683 /* MapViewController.h */,
+				63DC11DB15A5D05A00E22683 /* MapViewController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		63ABEE4015A33818008F8C16 /* icons */ = {
@@ -457,25 +474,14 @@
 		63EF2526158C6033004E2BFB /* WildJunket */ = {
 			isa = PBXGroup;
 			children = (
+				635002CF15AB9ABD00FC9BCF /* Controllers */,
 				6350026F15AB929100FC9BCF /* Reader */,
 				6350026815AB81C400FC9BCF /* Resources */,
 				63EE7EB215A4CFFF0098FEE8 /* GDataXML */,
 				63EE7E7315A4C4690098FEE8 /* ASIHTTPRequest */,
-				63EE7E7015A4C3980098FEE8 /* RSSTableViewController.h */,
-				63EE7E7115A4C3980098FEE8 /* RSSTableViewController.m */,
 				63EE7E6F15A4C0470098FEE8 /* Classes */,
-				63EF252F158C6033004E2BFB /* AppDelegate.h */,
-				63EF2530158C6033004E2BFB /* AppDelegate.m */,
 				63EF2532158C6033004E2BFB /* MainStoryboard.storyboard */,
-				63EF253C158C6033004E2BFB /* PhotosViewController.h */,
-				63EF253D158C6033004E2BFB /* PhotosViewController.m */,
 				63EF2527158C6033004E2BFB /* Supporting Files */,
-				636729D315A4BAEE00A54ACE /* RSSNavViewController.h */,
-				636729D415A4BAEE00A54ACE /* RSSNavViewController.m */,
-				63EE7EBF15A4DF290098FEE8 /* RSSFeedWebViewControler.h */,
-				63EE7EC015A4DF290098FEE8 /* RSSFeedWebViewControler.m */,
-				63DC11DA15A5D05A00E22683 /* MapViewController.h */,
-				63DC11DB15A5D05A00E22683 /* MapViewController.m */,
 			);
 			path = WildJunket;
 			sourceTree = "<group>";
@@ -483,6 +489,8 @@
 		63EF2527158C6033004E2BFB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				63EF252F158C6033004E2BFB /* AppDelegate.h */,
+				63EF2530158C6033004E2BFB /* AppDelegate.m */,
 				63EF2528158C6033004E2BFB /* WildJunket-Info.plist */,
 				63EF2529158C6033004E2BFB /* InfoPlist.strings */,
 				63EF252C158C6033004E2BFB /* main.m */,
