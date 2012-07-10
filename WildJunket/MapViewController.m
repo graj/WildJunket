@@ -41,12 +41,25 @@
 
 - (void)viewDidLoad
 {
+   
     [super viewDidLoad];
 	dispatch_async(kBgQueue, ^{
         NSData* data = [NSData dataWithContentsOfURL: fsqAuth];
         [self performSelectorOnMainThread:@selector(fetchedData:) withObject:data waitUntilDone:YES];
     });
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+   
+    //Shows status bar
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+    
+	[super viewWillAppear:animated];
+    
+
+}
+
 
 - (void)fetchedData:(NSData *)responseData {
     //parse out the json data

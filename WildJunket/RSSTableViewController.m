@@ -156,6 +156,11 @@
 }
 
 - (void)viewDidLoad {
+    
+    //Shows status bar
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+    
+    
     [super viewDidLoad];    
     //self.title = @"WildJunket";
     self.allEntries = [NSMutableArray array];
@@ -163,6 +168,18 @@
     self.feeds = [NSArray arrayWithObjects:@"http://feeds.feedburner.com/wildjunket",nil];    
     [self refresh];
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    
+    //Shows status bar
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+    
+	[super viewWillAppear:animated];
+    
+    
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];

@@ -191,13 +191,14 @@
         <scene sceneID="7TG-Ec-hUv">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z3H-XQ-weo" sceneMemberID="firstResponder"/>
-                <viewController title="Magazine" id="WFV-7l-36B" userLabel="View Controller - Magazine" customClass="ReaderViewController" sceneMemberID="viewController">
+                <viewController title="Magazine" wantsFullScreenLayout="YES" id="WFV-7l-36B" userLabel="View Controller - Magazine" customClass="ReaderViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ych-iq-IIG">
-                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="431"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="WJ Magazine" image="71-compass" id="uvr-aY-yPL"/>
+                    <nil key="simulatedStatusBarMetrics"/>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="625" y="434"/>

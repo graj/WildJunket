@@ -90,7 +90,7 @@
 	NSString* errorString = [NSString stringWithFormat:
 							 @"<html><center><br /><br /><font size=+5 color='red'>Error<br /><br />Your request %@</font></center></html>",
 							 error.localizedDescription];
-	[self.webView loadHTMLString:errorString baseURL:nil];
+	//[self.webView loadHTMLString:errorString baseURL:nil];
 }
 
 

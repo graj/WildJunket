@@ -315,6 +315,8 @@
 	NSLog(@"%s %@", __FUNCTION__, NSStringFromCGRect(self.view.bounds));
 #endif
     
+    
+    
     //Creación del documento
     NSString *phrase = nil; // Document password (for unlocking most encrypted PDF files)
     NSArray *pdfs = [[NSBundle mainBundle] pathsForResourcesOfType:@"pdf" inDirectory:nil];
@@ -400,6 +402,9 @@
 	NSLog(@"%s %@", __FUNCTION__, NSStringFromCGRect(self.view.bounds));
 #endif
 
+    //Hide status bar
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+    
 	[super viewWillAppear:animated];
 
 	if (CGSizeEqualToSize(lastAppearSize, CGSizeZero) == false)
