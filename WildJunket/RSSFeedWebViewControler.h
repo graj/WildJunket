@@ -10,11 +10,13 @@
 
 @class RSSEntry;
 
-@interface RSSFeedWebViewControler : UIViewController{
+@interface RSSFeedWebViewControler : UIViewController <UIWebViewDelegate>{
     UIWebView *_webView;
     RSSEntry *_entry;
+    UIActivityIndicatorView *_activityIndicator;	
 }
 @property (retain) IBOutlet UIWebView *webView;
 @property (retain) RSSEntry *entry;
+@property (retain) UIActivityIndicatorView *activityIndicator;
 
 @end
