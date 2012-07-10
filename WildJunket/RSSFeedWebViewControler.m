@@ -61,7 +61,10 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return (interfaceOrientation == UIInterfaceOrientationPortrait ||
+            interfaceOrientation == UIInterfaceOrientationLandscapeLeft || 
+            interfaceOrientation == UIInterfaceOrientationLandscapeRight ||
+            interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown );
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView
