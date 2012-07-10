@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Exclude the build directory
 build/*
  
@@ -17,3 +18,20 @@ build/*
 *.pbxuser
 *.xcworkspace
 xcuserdata
+=======
+# Xcode
+build/*
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+*.xcworkspace
+!default.xcworkspace
+xcuserdata
+profile
+*.moved-aside
+>>>>>>> 9d744d4031eddfb2263f02872ad2e83118d112f1
