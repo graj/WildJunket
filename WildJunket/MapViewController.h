@@ -17,9 +17,9 @@
 }
 
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
-@property (retain) IBOutlet MKMapView *mapView;
-@property (retain) IBOutlet UILabel *country;
-@property (retain) IBOutlet UILabel *city;
+@property  IBOutlet MKMapView *mapView;
+@property  IBOutlet UILabel *country;
+@property  IBOutlet UILabel *city;
 
 
 

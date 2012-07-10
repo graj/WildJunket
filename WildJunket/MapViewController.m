@@ -205,14 +205,5 @@
             interfaceOrientation == UIInterfaceOrientationLandscapeRight ||
             interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown );}
 
--(void)dealloc{
-    [_mapview release];
-    _mapview = nil;
-    [_country release];
-    _country = nil;
-    [_city release];
-    _city = nil;
-   [super dealloc];
-}
 
 @end

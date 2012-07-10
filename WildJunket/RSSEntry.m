@@ -25,16 +25,5 @@
     return self;
 }
 
-- (void)dealloc {
-    [_blogTitle release];
-    _blogTitle = nil;
-    [_articleTitle release];
-    _articleTitle = nil;
-    [_articleUrl release];
-    _articleUrl = nil;
-    [_articleDate release];
-    _articleDate = nil;
-    [super dealloc];
-}
 
 @end
