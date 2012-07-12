@@ -1,6 +1,9 @@
 <<<<<<< HEAD
 # Exclude the build directory
 build/*
+
+#Art directory
+art/*
  
 # Exclude temp nibs and swap files
 *~.nib
