@@ -14,6 +14,7 @@
 #import "NSDate+InternetDateTime.h"
 #import "NSArray+Extras.h"
 #import "RSSFeedWebViewControler.h"
+#import "TFHpple.h"
 
 @interface RSSTableViewController ()
 
@@ -93,7 +94,29 @@
             
             NSString *articleTitle = [item valueForChild:@"title"];
             NSString *articleUrl = [item valueForChild:@"link"];            
-            NSString *articleDateString = [item valueForChild:@"pubDate"];        
+            NSString *articleDateString = [item valueForChild:@"pubDate"];
+            
+            //Obtengo el contenido
+            NSData*content=[[item valueForChild:@"content:encoded"] dataUsingEncoding:NSUTF8StringEncoding];
+            //NSString*content=[item valueForChild:@"content:encoded"];
+            
+            //Parseo el html para obtener la url de la imagen
+            TFHpple *htmlParser = [TFHpple hppleWithHTMLData:content];
+            NSString *xpathQuery = @"//div[@class='xc_pinterest']/a";
+            NSArray *nodes = [htmlParser searchWithXPathQuery:xpathQuery];
+            
+            //Obtengo la primera imagen                             
+            NSString * urlonclick=[[nodes objectAtIndex:0] objectForKey:@"onclick"];
+               
+            NSArray *components = [urlonclick componentsSeparatedByString:@"media="];
+            NSString *afterOpenBracket = [components objectAtIndex:1];
+            components = [afterOpenBracket componentsSeparatedByString:@"&"];
+            
+            
+            //URL de la primera foto limpia, parseada y lista para mostrar en pantalla
+            NSString *photoURL = [components objectAtIndex:0];
+           
+            
             NSDate *articleDate = [NSDate dateFromInternetDateTimeString:articleDateString formatHint:DateFormatHintRFC822];
 
             

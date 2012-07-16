@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		631CF5E515B40ED50043EE5A /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = 631CF5E015B40ED50043EE5A /* TFHpple.m */; };
+		631CF5E615B40ED50043EE5A /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 631CF5E215B40ED50043EE5A /* TFHppleElement.m */; };
+		631CF5E715B40ED50043EE5A /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 631CF5E415B40ED50043EE5A /* XPathQuery.m */; };
+		631CF5E915B410B30043EE5A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 631CF5E815B410B30043EE5A /* libxml2.dylib */; };
 		633E9C0715A7A70700DA4C90 /* MKMapView+ZoomLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 633E9C0615A7A70700DA4C90 /* MKMapView+ZoomLevel.m */; };
 		6350026A15AB820600FC9BCF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6350026915AB820600FC9BCF /* QuartzCore.framework */; };
 		6350026C15AB821000FC9BCF /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6350026B15AB821000FC9BCF /* MessageUI.framework */; };
@@ -106,6 +110,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		631CF5DF15B40ED50043EE5A /* TFHpple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHpple.h; sourceTree = "<group>"; };
+		631CF5E015B40ED50043EE5A /* TFHpple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHpple.m; sourceTree = "<group>"; };
+		631CF5E115B40ED50043EE5A /* TFHppleElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHppleElement.h; sourceTree = "<group>"; };
+		631CF5E215B40ED50043EE5A /* TFHppleElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHppleElement.m; sourceTree = "<group>"; };
+		631CF5E315B40ED50043EE5A /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
+		631CF5E415B40ED50043EE5A /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
+		631CF5E815B410B30043EE5A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		633E9C0515A7A70700DA4C90 /* MKMapView+ZoomLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+ZoomLevel.h"; sourceTree = "<group>"; };
 		633E9C0615A7A70700DA4C90 /* MKMapView+ZoomLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+ZoomLevel.m"; sourceTree = "<group>"; };
 		6350026915AB820600FC9BCF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -247,6 +258,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				631CF5E915B410B30043EE5A /* libxml2.dylib in Frameworks */,
 				6350026E15AB821E00FC9BCF /* ImageIO.framework in Frameworks */,
 				6350026C15AB821000FC9BCF /* MessageUI.framework in Frameworks */,
 				6350026A15AB820600FC9BCF /* QuartzCore.framework in Frameworks */,
@@ -274,6 +286,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		631CF5DD15B40E910043EE5A /* hpple */ = {
+			isa = PBXGroup;
+			children = (
+				631CF5DF15B40ED50043EE5A /* TFHpple.h */,
+				631CF5E015B40ED50043EE5A /* TFHpple.m */,
+				631CF5E115B40ED50043EE5A /* TFHppleElement.h */,
+				631CF5E215B40ED50043EE5A /* TFHppleElement.m */,
+				631CF5E315B40ED50043EE5A /* XPathQuery.h */,
+				631CF5E415B40ED50043EE5A /* XPathQuery.m */,
+			);
+			name = hpple;
+			sourceTree = "<group>";
+		};
 		6350026815AB81C400FC9BCF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -455,6 +480,7 @@
 		63EF251F158C6033004E2BFB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				631CF5E815B410B30043EE5A /* libxml2.dylib */,
 				6350026D15AB821E00FC9BCF /* ImageIO.framework */,
 				6350026B15AB821000FC9BCF /* MessageUI.framework */,
 				6350026915AB820600FC9BCF /* QuartzCore.framework */,
@@ -474,6 +500,7 @@
 		63EF2526158C6033004E2BFB /* WildJunket */ = {
 			isa = PBXGroup;
 			children = (
+				631CF5DD15B40E910043EE5A /* hpple */,
 				635002CF15AB9ABD00FC9BCF /* Controllers */,
 				6350026F15AB929100FC9BCF /* Reader */,
 				6350026815AB81C400FC9BCF /* Resources */,
@@ -692,6 +719,9 @@
 				635002A615AB92B100FC9BCF /* ThumbsMainToolbar.m in Sources */,
 				635002A715AB92B100FC9BCF /* ThumbsViewController.m in Sources */,
 				635002A815AB92B100FC9BCF /* UIXToolbarView.m in Sources */,
+				631CF5E515B40ED50043EE5A /* TFHpple.m in Sources */,
+				631CF5E615B40ED50043EE5A /* TFHppleElement.m in Sources */,
+				631CF5E715B40ED50043EE5A /* XPathQuery.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
