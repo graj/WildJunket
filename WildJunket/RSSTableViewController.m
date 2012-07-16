@@ -206,7 +206,6 @@
     //Shows status bar
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
     
-    
     [super viewDidLoad];    
     //self.title = @"WildJunket";
     self.allEntries = [NSMutableArray array];
