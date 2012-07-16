@@ -10,8 +10,8 @@
 
 @interface RSSCell : UITableViewCell
 
-@property (nonatomic, weak) IBOutlet UILabel *lblTitulo;
-@property (nonatomic, weak) IBOutlet UILabel *lblDatos;
-@property (nonatomic, weak) IBOutlet UIImageView *imageView;
+@property (nonatomic, retain) IBOutlet UILabel *lblTitulo;
+@property (nonatomic, retain) IBOutlet UILabel *lblDatos;
+@property (nonatomic, retain) IBOutlet UIImageView *imageView;
 
 @end
