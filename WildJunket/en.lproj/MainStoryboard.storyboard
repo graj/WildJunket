@@ -6,7 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller - WildJunket Feed-->
+        <!--Table View Controller-->
         <scene sceneID="LzC-Zc-oe2">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YdR-ob-r2R" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -53,7 +53,7 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="WildJunket Feed" id="cDk-jH-Hy7"/>
+                    <navigationItem key="navigationItem" id="cDk-jH-Hy7"/>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="801" y="-125"/>

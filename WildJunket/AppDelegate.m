@@ -14,7 +14,28 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    //Status bar negra
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
+    
     // Override point for customization after application launch.
+    UIImage *navBarImage = [UIImage imageNamed:@"nav-bar.png"];
+    
+    [[UINavigationBar appearance] setBackgroundImage:navBarImage 
+                                       forBarMetrics:UIBarMetricsDefault];
+    
+    
+    UIImage *barButton = [[UIImage imageNamed:@"bar-button.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 5, 0, 5)];
+    
+    [[UIBarButtonItem appearance] setBackgroundImage:barButton forState:UIControlStateNormal 
+                                          barMetrics:UIBarMetricsDefault];
+    
+    UIImage *backButton = [[UIImage imageNamed:@"back-button.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0,15,0,6)];
+    
+    
+    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButton forState:UIControlStateNormal 
+                                                    barMetrics:UIBarMetricsDefault];
+    
     return YES;
 }
 							
