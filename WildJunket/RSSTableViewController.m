@@ -16,6 +16,7 @@
 #import "RSSFeedWebViewControler.h"
 #import "TFHpple.h"
 #import "RSSCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface RSSTableViewController ()
 
@@ -275,13 +276,8 @@
     cell.lblTitulo.text=entry.articleTitle;
     cell.lblDatos.text=[NSString stringWithFormat:@"%@", articleDateString];
     
-    //Imagen
-     
-   // UIImage *noPicImageSmall = [[UIImage imageNamed:@"nopic-small.png"] retain];
-    
-    //cell.imageView = [[UIImageView alloc] initWithImage:noPicImageSmall];
-    cell.imageView.frame = CGRectMake(0, 5, 88, 88);
-    cell.imageView.image = [UIImage imageWithData: [NSData dataWithContentsOfURL: [NSURL URLWithString: entry.photoURL]]];
+    //Imagen CACHE
+    [cell.imageView setImageWithURL:[NSURL URLWithString:entry.photoURL] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
 
     
     return cell;

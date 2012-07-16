@@ -50,6 +50,7 @@
 		635002CC15AB92D000FC9BCF /* Reader-Thumbs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 635002BA15AB92D000FC9BCF /* Reader-Thumbs@2x.png */; };
 		635002CE15AB964E00FC9BCF /* wildjunket.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 635002CD15AB964E00FC9BCF /* wildjunket.pdf */; };
 		636729D515A4BAEE00A54ACE /* RSSNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 636729D415A4BAEE00A54ACE /* RSSNavViewController.m */; };
+		63681BE615B44E4A0051F1B7 /* libSDWebImageARC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63681BCC15B44D720051F1B7 /* libSDWebImageARC.a */; };
 		63ABEE4815A33831008F8C16 /* mapmarker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ABEE4215A33831008F8C16 /* mapmarker@2x.png */; };
 		63ABEE4915A33831008F8C16 /* 38-airplane@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ABEE4315A33831008F8C16 /* 38-airplane@2x.png */; };
 		63ABEE4A15A33831008F8C16 /* 56-feed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ABEE4415A33831008F8C16 /* 56-feed@2x.png */; };
@@ -102,6 +103,34 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		63681BC915B44D720051F1B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63681BC315B44D710051F1B7 /* SDWebImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 53922D6F148C55820056699D;
+			remoteInfo = SDWebImage;
+		};
+		63681BCB15B44D720051F1B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63681BC315B44D710051F1B7 /* SDWebImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 53761325155AD0D5005750A4;
+			remoteInfo = "SDWebImage ARC";
+		};
+		63681BCD15B44D720051F1B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63681BC315B44D710051F1B7 /* SDWebImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 531041E0157EAFA400BBABC3;
+			remoteInfo = "SDWebImage ARC+MKAnnotation";
+		};
+		63681BE415B44E440051F1B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63681BC315B44D710051F1B7 /* SDWebImage.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 53761307155AD0D5005750A4;
+			remoteInfo = "SDWebImage ARC";
+		};
 		63EF254D158C6033004E2BFB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 63EF2513158C6033004E2BFB /* Project object */;
@@ -179,6 +208,7 @@
 		635002CD15AB964E00FC9BCF /* wildjunket.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = wildjunket.pdf; sourceTree = "<group>"; };
 		636729D315A4BAEE00A54ACE /* RSSNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSNavViewController.h; sourceTree = "<group>"; };
 		636729D415A4BAEE00A54ACE /* RSSNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSNavViewController.m; sourceTree = "<group>"; };
+		63681BC315B44D710051F1B7 /* SDWebImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SDWebImage.xcodeproj; path = ../SDWebImage/SDWebImage.xcodeproj; sourceTree = "<group>"; };
 		63ABEE4215A33831008F8C16 /* mapmarker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mapmarker@2x.png"; sourceTree = "<group>"; };
 		63ABEE4315A33831008F8C16 /* 38-airplane@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "38-airplane@2x.png"; sourceTree = "<group>"; };
 		63ABEE4415A33831008F8C16 /* 56-feed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "56-feed@2x.png"; sourceTree = "<group>"; };
@@ -263,6 +293,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63681BE615B44E4A0051F1B7 /* libSDWebImageARC.a in Frameworks */,
 				631CF5E915B410B30043EE5A /* libxml2.dylib in Frameworks */,
 				6350026E15AB821E00FC9BCF /* ImageIO.framework in Frameworks */,
 				6350026C15AB821000FC9BCF /* MessageUI.framework in Frameworks */,
@@ -376,6 +407,16 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
+		63681BC415B44D710051F1B7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				63681BCA15B44D720051F1B7 /* libSDWebImage.a */,
+				63681BCC15B44D720051F1B7 /* libSDWebImageARC.a */,
+				63681BCE15B44D720051F1B7 /* libSDWebImageARC+MKAnnotation.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		63ABEE4015A33818008F8C16 /* icons */ = {
 			isa = PBXGroup;
 			children = (
@@ -469,6 +510,7 @@
 		63EF2511158C6033004E2BFB = {
 			isa = PBXGroup;
 			children = (
+				63681BC315B44D710051F1B7 /* SDWebImage.xcodeproj */,
 				63EF2526158C6033004E2BFB /* WildJunket */,
 				63EF254F158C6033004E2BFB /* WildJunketTests */,
 				63EF251F158C6033004E2BFB /* Frameworks */,
@@ -567,6 +609,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				63681BE515B44E440051F1B7 /* PBXTargetDependency */,
 			);
 			name = WildJunket;
 			productName = WildJunket;
@@ -610,6 +653,12 @@
 			mainGroup = 63EF2511158C6033004E2BFB;
 			productRefGroup = 63EF251D158C6033004E2BFB /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 63681BC415B44D710051F1B7 /* Products */;
+					ProjectRef = 63681BC315B44D710051F1B7 /* SDWebImage.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				63EF251B158C6033004E2BFB /* WildJunket */,
@@ -617,6 +666,30 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		63681BCA15B44D720051F1B7 /* libSDWebImage.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSDWebImage.a;
+			remoteRef = 63681BC915B44D720051F1B7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		63681BCC15B44D720051F1B7 /* libSDWebImageARC.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSDWebImageARC.a;
+			remoteRef = 63681BCB15B44D720051F1B7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		63681BCE15B44D720051F1B7 /* libSDWebImageARC+MKAnnotation.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libSDWebImageARC+MKAnnotation.a";
+			remoteRef = 63681BCD15B44D720051F1B7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		63EF251A158C6033004E2BFB /* Resources */ = {
@@ -746,6 +819,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		63681BE515B44E440051F1B7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "SDWebImage ARC";
+			targetProxy = 63681BE415B44E440051F1B7 /* PBXContainerItemProxy */;
+		};
 		63EF254E158C6033004E2BFB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 63EF251B158C6033004E2BFB /* WildJunket */;
@@ -837,8 +915,17 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: David Garcia Fernandez (72SXJQDU59)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WildJunket/WildJunket-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"/usr/include/libxml2/**",
+					"”$(OBJROOT)/UninstalledProducts/include”",
+					"”$(TARGET_BUILD_DIR)/usr/local/lib/include”",
+				);
 				INFOPLIST_FILE = "WildJunket/WildJunket-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = (
+					"-lxml2",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1455C218-6843-4F69-BEA0-F24D33CF5839";
 				WRAPPER_EXTENSION = app;
@@ -851,8 +938,17 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WildJunket/WildJunket-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"/usr/include/libxml2/**",
+					"”$(OBJROOT)/UninstalledProducts/include”",
+					"”$(TARGET_BUILD_DIR)/usr/local/lib/include”",
+				);
 				INFOPLIST_FILE = "WildJunket/WildJunket-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = (
+					"-lxml2",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
