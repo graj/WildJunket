@@ -15,6 +15,7 @@
 #import "NSArray+Extras.h"
 #import "RSSFeedWebViewControler.h"
 #import "TFHpple.h"
+#import "RSSCell.h"
 
 @interface RSSTableViewController ()
 
@@ -123,7 +124,7 @@
             RSSEntry *entry = [[[RSSEntry alloc] initWithBlogTitle:blogTitle 
                                                       articleTitle:articleTitle 
                                                         articleUrl:articleUrl 
-                                                       articleDate:articleDate] autorelease];
+                                                       articleDate:articleDate photoURL:photoURL] autorelease];
             [entries addObject:entry];
             
         }      
@@ -153,11 +154,32 @@
         NSString *articleDateString = [item valueForChild:@"updated"];        
         NSDate *articleDate = [NSDate dateFromInternetDateTimeString:articleDateString formatHint:DateFormatHintRFC3339];
         
+        //Obtengo el contenido
+        NSData*content=[[item valueForChild:@"content:encoded"] dataUsingEncoding:NSUTF8StringEncoding];
+        //NSString*content=[item valueForChild:@"content:encoded"];
+        
+        //Parseo el html para obtener la url de la imagen
+        TFHpple *htmlParser = [TFHpple hppleWithHTMLData:content];
+        NSString *xpathQuery = @"//div[@class='xc_pinterest']/a";
+        NSArray *nodes = [htmlParser searchWithXPathQuery:xpathQuery];
+        
+        //Obtengo la primera imagen                             
+        NSString * urlonclick=[[nodes objectAtIndex:0] objectForKey:@"onclick"];
+        
+        NSArray *components = [urlonclick componentsSeparatedByString:@"media="];
+        NSString *afterOpenBracket = [components objectAtIndex:1];
+        components = [afterOpenBracket componentsSeparatedByString:@"&"];
+        
+        
+        //URL de la primera foto limpia, parseada y lista para mostrar en pantalla
+        NSString *photoURL = [components objectAtIndex:0];
+        
         
         RSSEntry *entry = [[[RSSEntry alloc] initWithBlogTitle:blogTitle 
                                                   articleTitle:articleTitle 
                                                     articleUrl:articleUrl 
-                                                   articleDate:articleDate] autorelease];
+                                                   articleDate:articleDate photoURL:photoURL] autorelease];
+        
         [entries addObject:entry];
         
     }      
@@ -233,12 +255,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"rssCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    /*UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
-    }
+    }*/
+    
+    RSSCell *cell=[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
     
     RSSEntry *entry = [_allEntries objectAtIndex:indexPath.row];
     
@@ -247,8 +272,17 @@
     [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
     NSString *articleDateString = [dateFormatter stringFromDate:entry.articleDate];
     
-    cell.textLabel.text = entry.articleTitle;        
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", articleDateString];
+    cell.lblTitulo.text=entry.articleTitle;
+    cell.lblDatos.text=[NSString stringWithFormat:@"%@", articleDateString];
+    
+    //Imagen
+     
+   // UIImage *noPicImageSmall = [[UIImage imageNamed:@"nopic-small.png"] retain];
+    
+    //cell.imageView = [[UIImageView alloc] initWithImage:noPicImageSmall];
+    cell.imageView.frame = CGRectMake(0, 5, 88, 88);
+    cell.imageView.image = [UIImage imageWithData: [NSData dataWithContentsOfURL: [NSURL URLWithString: entry.photoURL]]];
+
     
     return cell;
 }

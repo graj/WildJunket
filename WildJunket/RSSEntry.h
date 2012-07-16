@@ -13,13 +13,15 @@
     NSString *_articleTitle;
     NSString *_articleUrl;
     NSDate *_articleDate;
+    NSString *_photoURL;
 }
 
 @property (copy) NSString *blogTitle;
 @property (copy) NSString *articleTitle;
 @property (copy) NSString *articleUrl;
 @property (copy) NSDate *articleDate;
+@property (copy) NSString *photoURL;
 
-- (id)initWithBlogTitle:(NSString*)blogTitle articleTitle:(NSString*)articleTitle articleUrl:(NSString*)articleUrl articleDate:(NSDate*)articleDate;
+- (id)initWithBlogTitle:(NSString*)blogTitle articleTitle:(NSString*)articleTitle articleUrl:(NSString*)articleUrl articleDate:(NSDate*)articleDate photoURL:(NSString*)photoURL;
 
 @end
