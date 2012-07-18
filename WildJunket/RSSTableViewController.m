@@ -270,6 +270,7 @@
     
     cell.lblTitulo.text=entry.articleTitle;
     cell.lblDatos.text=[NSString stringWithFormat:@"%@", articleDateString];
+    cell.lblTitulo.autoresizingMask   = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
     CAGradientLayer *gradient = [CAGradientLayer layer];
     gradient.frame = cell.bounds;
     gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:209.0/255.0 green:210.0/255.0 blue:211.0/255.0 alpha:1.0]CGColor], (id)[[UIColor whiteColor]CGColor], nil];
