@@ -340,7 +340,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [self performSegueWithIdentifier:@"rssdetail" sender:indexPath];
+    //Solo tengo que hacer eso si llamo al segue manualmente, sin haberlo puesto en storyboard
+    //[self performSegueWithIdentifier:@"rssdetail" sender:indexPath];
 
     
 }
