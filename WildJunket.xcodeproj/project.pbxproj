@@ -50,6 +50,7 @@
 		635002CC15AB92D000FC9BCF /* Reader-Thumbs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 635002BA15AB92D000FC9BCF /* Reader-Thumbs@2x.png */; };
 		635002CE15AB964E00FC9BCF /* wildjunket.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 635002CD15AB964E00FC9BCF /* wildjunket.pdf */; };
 		6360FC9D15B6B8AD00A58518 /* tab-selected-new.png in Resources */ = {isa = PBXBuildFile; fileRef = 6360FC9C15B6B8AD00A58518 /* tab-selected-new.png */; };
+		6360FC9F15B7135100A58518 /* tab-selected-new@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6360FC9E15B7135100A58518 /* tab-selected-new@2x.png */; };
 		636729D515A4BAEE00A54ACE /* RSSNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 636729D415A4BAEE00A54ACE /* RSSNavViewController.m */; };
 		63681BE615B44E4A0051F1B7 /* libSDWebImageARC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63681BCC15B44D720051F1B7 /* libSDWebImageARC.a */; };
 		63ABEE4815A33831008F8C16 /* mapmarker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ABEE4215A33831008F8C16 /* mapmarker@2x.png */; };
@@ -222,6 +223,7 @@
 		635002BA15AB92D000FC9BCF /* Reader-Thumbs@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Thumbs@2x.png"; sourceTree = "<group>"; };
 		635002CD15AB964E00FC9BCF /* wildjunket.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = wildjunket.pdf; sourceTree = "<group>"; };
 		6360FC9C15B6B8AD00A58518 /* tab-selected-new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-selected-new.png"; sourceTree = "<group>"; };
+		6360FC9E15B7135100A58518 /* tab-selected-new@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-selected-new@2x.png"; sourceTree = "<group>"; };
 		636729D315A4BAEE00A54ACE /* RSSNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSNavViewController.h; sourceTree = "<group>"; };
 		636729D415A4BAEE00A54ACE /* RSSNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSNavViewController.m; sourceTree = "<group>"; };
 		63681BC315B44D710051F1B7 /* SDWebImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SDWebImage.xcodeproj; path = ../SDWebImage/SDWebImage.xcodeproj; sourceTree = "<group>"; };
@@ -368,6 +370,7 @@
 		6350026815AB81C400FC9BCF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6360FC9E15B7135100A58518 /* tab-selected-new@2x.png */,
 				6360FC9C15B6B8AD00A58518 /* tab-selected-new.png */,
 				63C6187315B69E2600C3AE92 /* tab-bar@2x.png */,
 				63C6187415B69E2600C3AE92 /* tab-bar.png */,
@@ -786,6 +789,7 @@
 				63C6187515B69E2600C3AE92 /* tab-bar@2x.png in Resources */,
 				63C6187615B69E2600C3AE92 /* tab-bar.png in Resources */,
 				6360FC9D15B6B8AD00A58518 /* tab-selected-new.png in Resources */,
+				6360FC9F15B7135100A58518 /* tab-selected-new@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
