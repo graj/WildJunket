@@ -49,6 +49,22 @@
     [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonLands forState:UIControlStateNormal 
                                                     barMetrics:UIBarMetricsLandscapePhone];
     
+    //UIImage *tabBackground = [[UIImage imageNamed:@"tab-bar"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    
+    //[[UITabBar appearance] setBackgroundImage:tabBackground];
+    
+    //UIImage *tabBackgroundLands = [[UIImage imageNamed:@"tab-barlandscape"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    
+    //[[UITabBar appearance] setBackgroundImage:tabBackground forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    
+    //[[UITabBar appearance] setBackgroundImage:tabBackgroundLands forState:UIControlStateNormal barMetrics:UIBarMetricsLandscapePhone];
+     
+        
+    //[[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:120.0/255.0 green:120.0/255.0 blue:120.0/255.0 alpha:0.0],UITextAttributeTextColor,[UIColor colorWithRed:242.0 green:237.0 blue:237.0 alpha:1.0],UITextAttributeTextShadowColor,[NSValue valueWithUIOffset:UIOffsetMake(0,1)],UITextAttributeTextShadowOffset,[UIFont fontWithName:@"Helvetica" size:0.0],UITextAttributeFont,nil]forState:UIControlStateNormal];
+    
+    [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"tab-selected-new"]];
+    [[UITabBar appearance] setSelectedImageTintColor:[UIColor colorWithRed:255.0/255.0 green:203.0/255.0 blue:40.0/255.0 alpha:1.0]];
+    
     return YES;
 }
 							
