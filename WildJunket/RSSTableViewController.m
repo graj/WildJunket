@@ -17,6 +17,7 @@
 #import "TFHpple.h"
 #import "RSSCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <QuartzCore/CAGradientLayer.h>
 
 @interface RSSTableViewController ()
 
@@ -256,12 +257,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"rssCell";
-    
-    /*UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
-    }*/
-    
+   
     RSSCell *cell=[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     
@@ -274,6 +270,13 @@
     
     cell.lblTitulo.text=entry.articleTitle;
     cell.lblDatos.text=[NSString stringWithFormat:@"%@", articleDateString];
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = cell.bounds;
+    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:209.0/255.0 green:210.0/255.0 blue:211.0/255.0 alpha:1.0]CGColor], (id)[[UIColor whiteColor]CGColor], nil];
+    
+    
+    [cell.layer insertSublayer:gradient atIndex:0];
+    
     
     //Imagen CACHE
     [cell.imageView setImageWithURL:[NSURL URLWithString:entry.photoURL] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
@@ -281,6 +284,18 @@
     
     return cell;
 }
+
+/*- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    //Pone el color alternando filas
+    if(indexPath.row%2==0){
+        cell.backgroundColor = [UIColor colorWithRed:183.0/255.0 green:172.0/255.0 blue:50.0/255.0 alpha:1.0];
+    }
+    
+    else {
+        cell.backgroundColor = [UIColor colorWithRed:209.0/255.0 green:210.0/255.0 blue:211.0/255.0 alpha:1.0];
+    }
+}*/
 
 /*
 // Override to support conditional editing of the table view.
