@@ -190,6 +190,13 @@
 
 - (void)requestFailed:(ASIHTTPRequest *)request {
     NSError *error = [request error];
+    UIAlertView *alertView = [[UIAlertView alloc] 
+                              initWithTitle:@"Sorry"                                                             
+                              message:@"It was unable to load the data, please make sure you have internet connection."                                                          
+                              delegate:self                                              
+                              cancelButtonTitle:@"OK"                                                   
+                              otherButtonTitles:nil];
+    [alertView show];
     NSLog(@"Error: %@", error);
 }
 
