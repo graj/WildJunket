@@ -53,11 +53,65 @@
             break;
         case 1:
             //Email
+            if ([MFMailComposeViewController canSendMail])
+            {
+                MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
+                
+                mailer.mailComposeDelegate = self;
+                mailer.navigationBar.tintColor = [UIColor colorWithRed:140.0/255.0 green:98.0/255.0 blue:57.0/255.0 alpha:1.0];
+                [mailer.navigationBar setClearsContextBeforeDrawing:YES];
+                
+                [mailer setSubject:@" "];
+                
+                NSString *emailBody = [[[[[@"Woow check out this article from WildJunket.com:\n" stringByAppendingString:@"<a href=\""] stringByAppendingString:self.entry.articleUrl] stringByAppendingString:@"\">"] stringByAppendingString:self.entry.articleTitle] stringByAppendingString:@"</a>"];
+                
+                [mailer setMessageBody:emailBody isHTML:YES];
+                
+                [self presentModalViewController:mailer animated:YES];
+                
+                [mailer release];
+            }
+            else
+            {
+                UIAlertView *alertView = [[UIAlertView alloc]
+                                          initWithTitle:@"Sorry"
+                                          message:@"You can't send a email right now, make sure your device has an internet connection and you have at least one email account setup"
+                                          delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+                [alertView show];
+                
+            }
             break;
         case 2:
             //Cancel
             break;
     }
+}
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
+{
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            NSLog(@"Mail cancelled: you cancelled the operation and no email message was queued.");
+            break;
+        case MFMailComposeResultSaved:
+            NSLog(@"Mail saved: you saved the email message in the drafts folder.");
+            break;
+        case MFMailComposeResultSent:
+            NSLog(@"Mail send: the email message is queued in the outbox. It is ready to send.");
+            break;
+        case MFMailComposeResultFailed:
+            NSLog(@"Mail failed: the email message was not saved or queued, possibly due to an error.");
+            break;
+        default:
+            NSLog(@"Mail not sent.");
+            break;
+    }
+    
+    // Remove the mail view
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 

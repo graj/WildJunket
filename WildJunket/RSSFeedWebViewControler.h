@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
 
 @class RSSEntry;
 
-@interface RSSFeedWebViewControler : UIViewController <UIWebViewDelegate,UIActionSheetDelegate>{
+@interface RSSFeedWebViewControler : UIViewController <UIWebViewDelegate,UIActionSheetDelegate,MFMailComposeViewControllerDelegate>{
     UIWebView *_webView;
     RSSEntry *_entry;
     UIActivityIndicatorView *_activityIndicator;	
