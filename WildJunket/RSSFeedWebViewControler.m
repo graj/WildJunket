@@ -61,7 +61,7 @@
                 mailer.navigationBar.tintColor = [UIColor colorWithRed:140.0/255.0 green:98.0/255.0 blue:57.0/255.0 alpha:1.0];
                 [mailer.navigationBar setClearsContextBeforeDrawing:YES];
                 
-                [mailer setSubject:@" "];
+                [mailer setSubject:@"WildJunket cool article"];
                 
                 NSString *emailBody = [[[[[@"Woow check out this article from WildJunket.com:\n" stringByAppendingString:@"<a href=\""] stringByAppendingString:self.entry.articleUrl] stringByAppendingString:@"\">"] stringByAppendingString:self.entry.articleTitle] stringByAppendingString:@"</a>"];
                 

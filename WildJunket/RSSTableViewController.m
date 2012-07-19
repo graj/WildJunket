@@ -18,6 +18,7 @@
 #import "RSSCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <QuartzCore/CAGradientLayer.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface RSSTableViewController ()
 
@@ -215,7 +216,16 @@
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
     
     [super viewDidLoad];    
-    //self.title = @"WildJunket";
+   
+    //Title status bar
+    
+    CALayer *sublayer = [CALayer layer];
+    sublayer.contents = (id) [UIImage imageNamed:@"wj_title.png"].CGImage;
+    
+    sublayer.frame = CGRectMake(0, 0, 320, 44);
+    
+    [self.navigationController.navigationBar.layer addSublayer:sublayer];
+    
     self.allEntries = [NSMutableArray array];
     self.queue = [[[NSOperationQueue alloc] init] autorelease];
     self.feeds = [NSArray arrayWithObjects:@"http://feeds.feedburner.com/wildjunket",nil];    
