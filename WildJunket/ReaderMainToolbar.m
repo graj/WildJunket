@@ -43,6 +43,7 @@
 #define PRINT_BUTTON_WIDTH 40.0f
 #define EMAIL_BUTTON_WIDTH 40.0f
 #define MARK_BUTTON_WIDTH 40.0f
+#define SUBSCRIBE_BUTTON_WIDTH 160.0f
 
 #define TITLE_HEIGHT 28.0f
 
@@ -191,6 +192,23 @@
 				[self addSubview:printButton]; titleWidth -= (PRINT_BUTTON_WIDTH + BUTTON_SPACE);
 			}
 		}
+        
+        //SUBSCRIBE BUTTON
+        rightButtonX -= (SUBSCRIBE_BUTTON_WIDTH + BUTTON_SPACE);
+        UIButton *subscribeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        subscribeButton.frame=CGRectMake(rightButtonX, BUTTON_Y, SUBSCRIBE_BUTTON_WIDTH, BUTTON_HEIGHT);
+        [subscribeButton addTarget:self action:@selector(subscribeButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [subscribeButton setBackgroundImage:buttonH forState:UIControlStateHighlighted];
+        [subscribeButton setBackgroundImage:buttonN forState:UIControlStateNormal];
+        subscribeButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
+        subscribeButton.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
+        
+        [subscribeButton setTitle:@"Test" forState:UIControlStateNormal];
+        [self addSubview:subscribeButton]; 
+        titleWidth -= (SUBSCRIBE_BUTTON_WIDTH + BUTTON_SPACE);
+        
+        
 
 #endif // end of READER_ENABLE_PRINT Option
 
@@ -214,6 +232,8 @@
 
 			[self addSubview:titleLabel]; [titleLabel release];
 		}
+        
+        
 	}
 
 	return self;
@@ -351,6 +371,15 @@
 #endif
 
 	[delegate tappedInToolbar:self printButton:button];
+}
+
+- (void)subscribeButtonTapped:(UIButton *)button
+{
+#ifdef DEBUGX
+	NSLog(@"%s", __FUNCTION__);
+#endif
+    
+	[delegate tappedInToolbar:self subscribeButton:button];
 }
 
 - (void)emailButtonTapped:(UIButton *)button
