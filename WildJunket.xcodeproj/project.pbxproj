@@ -53,6 +53,7 @@
 		6360FC9F15B7135100A58518 /* tab-selected-new@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6360FC9E15B7135100A58518 /* tab-selected-new@2x.png */; };
 		636729D515A4BAEE00A54ACE /* RSSNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 636729D415A4BAEE00A54ACE /* RSSNavViewController.m */; };
 		63681BE615B44E4A0051F1B7 /* libSDWebImageARC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63681BCC15B44D720051F1B7 /* libSDWebImageARC.a */; };
+		636ADEE415B85C200035CE48 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 636ADEE315B85C200035CE48 /* Twitter.framework */; };
 		63ABEE4815A33831008F8C16 /* mapmarker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ABEE4215A33831008F8C16 /* mapmarker@2x.png */; };
 		63ABEE4915A33831008F8C16 /* 38-airplane@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ABEE4315A33831008F8C16 /* 38-airplane@2x.png */; };
 		63ABEE4A15A33831008F8C16 /* 56-feed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ABEE4415A33831008F8C16 /* 56-feed@2x.png */; };
@@ -227,6 +228,7 @@
 		636729D315A4BAEE00A54ACE /* RSSNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSNavViewController.h; sourceTree = "<group>"; };
 		636729D415A4BAEE00A54ACE /* RSSNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSNavViewController.m; sourceTree = "<group>"; };
 		63681BC315B44D710051F1B7 /* SDWebImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SDWebImage.xcodeproj; path = ../SDWebImage/SDWebImage.xcodeproj; sourceTree = "<group>"; };
+		636ADEE315B85C200035CE48 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		63ABEE4215A33831008F8C16 /* mapmarker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mapmarker@2x.png"; sourceTree = "<group>"; };
 		63ABEE4315A33831008F8C16 /* 38-airplane@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "38-airplane@2x.png"; sourceTree = "<group>"; };
 		63ABEE4415A33831008F8C16 /* 56-feed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "56-feed@2x.png"; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				636ADEE415B85C200035CE48 /* Twitter.framework in Frameworks */,
 				63681BE615B44E4A0051F1B7 /* libSDWebImageARC.a in Frameworks */,
 				631CF5E915B410B30043EE5A /* libxml2.dylib in Frameworks */,
 				6350026E15AB821E00FC9BCF /* ImageIO.framework in Frameworks */,
@@ -578,6 +581,7 @@
 		63EF251F158C6033004E2BFB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				636ADEE315B85C200035CE48 /* Twitter.framework */,
 				631CF5E815B410B30043EE5A /* libxml2.dylib */,
 				6350026D15AB821E00FC9BCF /* ImageIO.framework */,
 				6350026B15AB821000FC9BCF /* MessageUI.framework */,

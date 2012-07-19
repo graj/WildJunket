@@ -8,6 +8,7 @@
 
 #import "RSSFeedWebViewControler.h"
 #import "RSSEntry.h"
+#import <Twitter/Twitter.h>
 
 @interface RSSFeedWebViewControler ()
 
@@ -17,6 +18,47 @@
 @synthesize webView = _webView;
 @synthesize entry = _entry;
 @synthesize activityIndicator=_activityIndicator;
+
+-(IBAction)shareButton:(id)sender{
+    //Pulsado botón compartir, mostrar menu
+    UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"Share with the world" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Twitter", @"Email", nil];
+    popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+    [popupQuery showInView:self.view];
+    [popupQuery release];
+
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+	switch (buttonIndex) {
+        case 0:
+            if ([TWTweetComposeViewController canSendTweet])
+            {
+                TWTweetComposeViewController *tweetSheet =
+                [[TWTweetComposeViewController alloc] init];
+                NSString *text=[self.entry.articleTitle stringByAppendingString:@" (WildJunket.com)"];
+                [tweetSheet setInitialText:text];
+                [tweetSheet addURL:[NSURL URLWithString:self.entry.articleUrl]];
+                [self presentModalViewController:tweetSheet animated:YES];
+            }
+            else
+            {
+                UIAlertView *alertView = [[UIAlertView alloc]
+                                          initWithTitle:@"Sorry"
+                                          message:@"You can't send a tweet right now, make sure your device has an internet connection and you have at least one Twitter account setup"
+                                          delegate:self
+                                          cancelButtonTitle:@"OK"                                                   
+                                          otherButtonTitles:nil];
+                [alertView show];
+            }
+            break;
+        case 1:
+            //Email
+            break;
+        case 2:
+            //Cancel
+            break;
+    }
+}
 
 
 - (void)viewWillAppear:(BOOL)animated {

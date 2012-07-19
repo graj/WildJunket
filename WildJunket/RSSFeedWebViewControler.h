@@ -10,7 +10,7 @@
 
 @class RSSEntry;
 
-@interface RSSFeedWebViewControler : UIViewController <UIWebViewDelegate>{
+@interface RSSFeedWebViewControler : UIViewController <UIWebViewDelegate,UIActionSheetDelegate>{
     UIWebView *_webView;
     RSSEntry *_entry;
     UIActivityIndicatorView *_activityIndicator;	
@@ -18,5 +18,6 @@
 @property (retain) IBOutlet UIWebView *webView;
 @property (retain) RSSEntry *entry;
 @property (retain) UIActivityIndicatorView *activityIndicator;
+-(IBAction)shareButton:(id)sender;
 
 @end
