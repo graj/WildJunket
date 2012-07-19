@@ -21,7 +21,7 @@
 
 -(IBAction)shareButton:(id)sender{
     //Pulsado botón compartir, mostrar menu
-    UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"Share with the world" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Twitter", @"Email", nil];
+    UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"Share with the world" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Twitter", @"Email", @"Copy link", nil];
     popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
     [popupQuery showInView:self.view];
     [popupQuery release];
@@ -84,6 +84,13 @@
             }
             break;
         case 2:
+            {
+                //Copy link
+                UIPasteboard *pb = [UIPasteboard generalPasteboard];
+                [pb setString:self.entry.articleUrl];
+            }
+            break;
+        case 3:
             //Cancel
             break;
     }
