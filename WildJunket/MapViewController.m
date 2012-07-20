@@ -29,6 +29,9 @@
 @synthesize city=_city;
 @synthesize imageView = _imageView;
 @synthesize scrollView = _scrollView;
+@synthesize description=_descripcion;
+@synthesize dataView = _dataView;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,6 +46,17 @@
 {
    
     [super viewDidLoad];
+    
+    //Data background
+    UIImage *img = [UIImage imageNamed:@"mapviewbackground.png"];
+    CGSize imgSize = self.dataView.frame.size;
+    
+    UIGraphicsBeginImageContext( imgSize );
+    [img drawInRect:CGRectMake(0,0,imgSize.width,imgSize.height)];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    self.dataView.backgroundColor = [UIColor colorWithPatternImage:newImage];
+    
 	dispatch_async(kBgQueue, ^{
         NSData* data = [NSData dataWithContentsOfURL: fsqAuth];
         [self performSelectorOnMainThread:@selector(fetchedData:) withObject:data waitUntilDone:YES];
@@ -194,6 +208,7 @@
 
 - (void)viewDidUnload
 {
+    [self setDataView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

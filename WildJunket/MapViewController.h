@@ -13,6 +13,8 @@
     MKMapView *_mapview;
     UILabel *_country;
     UILabel *_city;
+    UILabel *_descripcion;
+    
     
 }
 
@@ -20,7 +22,8 @@
 @property  IBOutlet MKMapView *mapView;
 @property  IBOutlet UILabel *country;
 @property  IBOutlet UILabel *city;
-
+@property  IBOutlet UILabel *description;
+@property  IBOutlet UIView *dataView;
 
 
 @end
