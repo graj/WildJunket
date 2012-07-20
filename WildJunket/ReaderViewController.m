@@ -881,6 +881,16 @@
 	[thumbsViewController release]; // Release ThumbsViewController
 }
 
+
+- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar subscribeButton:(UIButton *)button
+{
+    
+    //Link a newsstand store
+    NSURL *appStoreUrl = [NSURL URLWithString:@"http://itunes.com/apps/wildjunket"];
+    [[UIApplication sharedApplication] openURL:appStoreUrl];
+    
+}
+
 - (void)tappedInToolbar:(ReaderMainToolbar *)toolbar printButton:(UIButton *)button
 {
 #ifdef DEBUGX

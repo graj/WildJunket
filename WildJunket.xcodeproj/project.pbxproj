@@ -12,6 +12,8 @@
 		631CF5E715B40ED50043EE5A /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 631CF5E415B40ED50043EE5A /* XPathQuery.m */; };
 		631CF5E915B410B30043EE5A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 631CF5E815B410B30043EE5A /* libxml2.dylib */; };
 		633E9C0715A7A70700DA4C90 /* MKMapView+ZoomLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 633E9C0615A7A70700DA4C90 /* MKMapView+ZoomLevel.m */; };
+		6346C48C15B959290093059A /* readerbutton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6346C48A15B959290093059A /* readerbutton@2x.png */; };
+		6346C48D15B959290093059A /* readerbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 6346C48B15B959290093059A /* readerbutton.png */; };
 		6350026A15AB820600FC9BCF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6350026915AB820600FC9BCF /* QuartzCore.framework */; };
 		6350026C15AB821000FC9BCF /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6350026B15AB821000FC9BCF /* MessageUI.framework */; };
 		6350026E15AB821E00FC9BCF /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6350026D15AB821E00FC9BCF /* ImageIO.framework */; };
@@ -169,6 +171,8 @@
 		631CF5E815B410B30043EE5A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		633E9C0515A7A70700DA4C90 /* MKMapView+ZoomLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+ZoomLevel.h"; sourceTree = "<group>"; };
 		633E9C0615A7A70700DA4C90 /* MKMapView+ZoomLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+ZoomLevel.m"; sourceTree = "<group>"; };
+		6346C48A15B959290093059A /* readerbutton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "readerbutton@2x.png"; sourceTree = "<group>"; };
+		6346C48B15B959290093059A /* readerbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = readerbutton.png; sourceTree = "<group>"; };
 		6350026915AB820600FC9BCF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		6350026B15AB821000FC9BCF /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		6350026D15AB821E00FC9BCF /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
@@ -477,6 +481,8 @@
 		63ABEE4015A33818008F8C16 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				6346C48A15B959290093059A /* readerbutton@2x.png */,
+				6346C48B15B959290093059A /* readerbutton.png */,
 				635002AD15AB92D000FC9BCF /* Reader-Button-H.png */,
 				635002AE15AB92D000FC9BCF /* Reader-Button-H@2x.png */,
 				635002AF15AB92D000FC9BCF /* Reader-Button-N.png */,
@@ -802,6 +808,8 @@
 				638C1EBE15B87F21005DEAED /* nav-bar.png in Resources */,
 				638C1EC115B87FF5005DEAED /* wj_title@2x.png in Resources */,
 				638C1EC215B87FF5005DEAED /* wj_title.png in Resources */,
+				6346C48C15B959290093059A /* readerbutton@2x.png in Resources */,
+				6346C48D15B959290093059A /* readerbutton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
