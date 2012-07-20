@@ -19,6 +19,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <QuartzCore/CAGradientLayer.h>
 #import <QuartzCore/QuartzCore.h>
+#import "SVProgressHUD.h"
 
 @interface RSSTableViewController ()
 
@@ -36,7 +37,8 @@
         ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
         [request setDelegate:self];
         [_queue addOperation:request];
-    }    
+    }
+    
 }
 
 - (void)requestFinished:(ASIHTTPRequest *)request {
@@ -72,6 +74,7 @@
             
         }        
     }];
+    [SVProgressHUD dismiss];
     
 }
 
@@ -191,6 +194,7 @@
 
 - (void)requestFailed:(ASIHTTPRequest *)request {
     NSError *error = [request error];
+    [SVProgressHUD dismiss];
     UIAlertView *alertView = [[UIAlertView alloc] 
                               initWithTitle:@"Sorry"                                                             
                               message:@"It was unable to load the data, please make sure you have internet connection."                                                          
@@ -228,6 +232,7 @@
     
     self.allEntries = [NSMutableArray array];
     self.queue = [[[NSOperationQueue alloc] init] autorelease];
+    [SVProgressHUD showWithStatus:@"Loading..."];
     self.feeds = [NSArray arrayWithObjects:@"http://feeds.feedburner.com/wildjunket",nil];    
     [self refresh];
 }

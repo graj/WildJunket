@@ -58,6 +58,8 @@
 		636ADEE415B85C200035CE48 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 636ADEE315B85C200035CE48 /* Twitter.framework */; };
 		6384D20D15B990CD007282D0 /* mapviewbackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6384D20B15B990CD007282D0 /* mapviewbackground@2x.png */; };
 		6384D20E15B990CD007282D0 /* mapviewbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 6384D20C15B990CD007282D0 /* mapviewbackground.png */; };
+		6384D21315B9EB85007282D0 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6384D21015B9EB85007282D0 /* SVProgressHUD.bundle */; };
+		6384D21415B9EB85007282D0 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 6384D21215B9EB85007282D0 /* SVProgressHUD.m */; };
 		638C1EBD15B87F21005DEAED /* nav-bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 638C1EBB15B87F21005DEAED /* nav-bar@2x.png */; };
 		638C1EBE15B87F21005DEAED /* nav-bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 638C1EBC15B87F21005DEAED /* nav-bar.png */; };
 		638C1EC115B87FF5005DEAED /* wj_title@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 638C1EBF15B87FF5005DEAED /* wj_title@2x.png */; };
@@ -239,6 +241,9 @@
 		636ADEE315B85C200035CE48 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		6384D20B15B990CD007282D0 /* mapviewbackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mapviewbackground@2x.png"; sourceTree = "<group>"; };
 		6384D20C15B990CD007282D0 /* mapviewbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapviewbackground.png; sourceTree = "<group>"; };
+		6384D21015B9EB85007282D0 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		6384D21115B9EB85007282D0 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		6384D21215B9EB85007282D0 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		638C1EBB15B87F21005DEAED /* nav-bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-bar@2x.png"; sourceTree = "<group>"; };
 		638C1EBC15B87F21005DEAED /* nav-bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-bar.png"; sourceTree = "<group>"; };
 		638C1EBF15B87FF5005DEAED /* wj_title@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wj_title@2x.png"; sourceTree = "<group>"; };
@@ -484,6 +489,16 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		6384D20F15B9EB85007282D0 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				6384D21015B9EB85007282D0 /* SVProgressHUD.bundle */,
+				6384D21115B9EB85007282D0 /* SVProgressHUD.h */,
+				6384D21215B9EB85007282D0 /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
 		63ABEE4015A33818008F8C16 /* icons */ = {
 			isa = PBXGroup;
 			children = (
@@ -620,6 +635,7 @@
 		63EF2526158C6033004E2BFB /* WildJunket */ = {
 			isa = PBXGroup;
 			children = (
+				6384D20F15B9EB85007282D0 /* SVProgressHUD */,
 				631CF5DD15B40E910043EE5A /* hpple */,
 				635002CF15AB9ABD00FC9BCF /* Controllers */,
 				6350026F15AB929100FC9BCF /* Reader */,
@@ -818,6 +834,7 @@
 				6346C48D15B959290093059A /* readerbutton.png in Resources */,
 				6384D20D15B990CD007282D0 /* mapviewbackground@2x.png in Resources */,
 				6384D20E15B990CD007282D0 /* mapviewbackground.png in Resources */,
+				6384D21315B9EB85007282D0 /* SVProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -897,6 +914,7 @@
 				631CF5E615B40ED50043EE5A /* TFHppleElement.m in Sources */,
 				631CF5E715B40ED50043EE5A /* XPathQuery.m in Sources */,
 				63CF5C0F15B42949000B3D46 /* RSSCell.m in Sources */,
+				6384D21415B9EB85007282D0 /* SVProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

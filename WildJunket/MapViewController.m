@@ -12,6 +12,7 @@
 #define ZOOM_LEVEL 10
 
 #import "MapViewController.h"
+#import "SVProgressHUD.h"
 
 
 @interface MapViewController ()
@@ -57,10 +58,12 @@
     UIGraphicsEndImageContext();
     self.dataView.backgroundColor = [UIColor colorWithPatternImage:newImage];
     
+    [SVProgressHUD showWithStatus:@"Locating WildJunket guys..."];
 	dispatch_async(kBgQueue, ^{
         NSData* data = [NSData dataWithContentsOfURL: fsqAuth];
         [self performSelectorOnMainThread:@selector(fetchedData:) withObject:data waitUntilDone:YES];
     });
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -98,6 +101,7 @@
     NSString* longitude=[location objectForKey:@"lng"];
     
     [self setMapDetails:latitude longitude:longitude country:country city:city detalle:detalle imageURL:imagenURL];
+    [SVProgressHUD dismiss];
     
 }
 
@@ -132,6 +136,7 @@
     CGFloat scaleHeight = scrollViewFrame.size.height / self.scrollView.contentSize.height;
     CGFloat minScale = MIN(scaleWidth, scaleHeight);
     self.scrollView.minimumZoomScale = minScale;
+    self.scrollView.backgroundColor=[UIColor blackColor];
     
     // 5
     self.scrollView.maximumZoomScale = 1.0f;
