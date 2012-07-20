@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 #import "MKMapView+ZoomLevel.h"
 
-@interface MapViewController : UIViewController <UIScrollViewDelegate>{
+@interface MapViewController : UIViewController <UIScrollViewDelegate, CLLocationManagerDelegate>{
     MKMapView *_mapview;
     UILabel *_country;
     UILabel *_city;
@@ -24,6 +25,8 @@
 @property  IBOutlet UILabel *city;
 @property  IBOutlet UILabel *description;
 @property  IBOutlet UIView *dataView;
+@property (strong, nonatomic) IBOutlet CLLocationManager *locationManager;
+@property NSString *countryCode;
 
 
 @end

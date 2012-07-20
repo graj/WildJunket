@@ -32,7 +32,8 @@
 @synthesize scrollView = _scrollView;
 @synthesize description=_descripcion;
 @synthesize dataView = _dataView;
-
+@synthesize locationManager;
+@synthesize countryCode;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -64,7 +65,63 @@
         [self performSelectorOnMainThread:@selector(fetchedData:) withObject:data waitUntilDone:YES];
     });
     
+    //Retrieving user location
+    self.locationManager.delegate = self;
+    [locationManager startUpdatingLocation];
+    
+    //Geocoding Block
+        
+    
+    /*[self.geoCoder reverseGeocodeLocation: locationManager.location completionHandler:
+     ^(NSArray *placemarks, NSError *error) {
+         
+         //Get nearby address
+         CLPlacemark *placemark = [placemarks objectAtIndex:0];
+         
+         //String to hold address
+         NSString *locatedAt = [[placemark.addressDictionary valueForKey:@"FormattedAddressLines"] componentsJoinedByString:@", "];
+         
+         //Print the location to console
+         NSLog(@"I am currently at %@",locatedAt);
+         
+         NSString *country = placemark.country;
+         
+         NSLog(@"City: %@",country);
+         
+                  
+                 
+     }];*/
+
+    
 }
+
+// this delegate is called when the app successfully finds your current location
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    //Geocoding Block
+    //Asking Google
+    NSString *urlStr=[[[[@"http://maps.google.com/maps/api/geocode/json?latlng=" stringByAppendingString:[[NSNumber numberWithDouble:newLocation.coordinate.latitude]stringValue]] stringByAppendingString:@","]stringByAppendingString:[[NSNumber numberWithDouble:newLocation.coordinate.longitude]stringValue]]stringByAppendingString:@"&sensor=true&language=en"];
+    
+    NSURL *url=[NSURL URLWithString:urlStr];
+    dispatch_async(kBgQueue, ^{
+        NSData* data = [NSData dataWithContentsOfURL: url];
+        [self performSelectorOnMainThread:@selector(getGoogleResponse:) withObject:data waitUntilDone:NO];
+    });
+    
+    [locationManager stopUpdatingLocation];
+
+    
+}
+
+// this delegate method is called if an error occurs in locating your current location
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error 
+{
+    [locationManager stopUpdatingLocation];
+    NSLog(@"locationManager:%@ didFailWithError:%@", manager, error);
+}
+
+
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -75,6 +132,44 @@
 	[super viewWillAppear:animated];
     
 
+}
+
+- (void)getGoogleResponse:(NSData *)responseData {
+    //parse out the json data
+    NSError* error;
+    NSDictionary* json = [NSJSONSerialization
+                          JSONObjectWithData:responseData //1
+                          
+                          options:kNilOptions
+                          error:&error];
+    
+    //NSString* countryCode = [[[[[json objectForKey:@"results"]objectAtIndex:0]objectForKey:@"address_components"]objectAtIndex:6]objectForKey:@"short_name"];
+    
+    
+    NSMutableArray *arr=[[[json objectForKey:@"results"]objectAtIndex:0]objectForKey:@"address_components"];
+    
+    NSDictionary *temp;
+    NSMutableArray *arrTemp;
+    NSString *strTemp;
+    NSString *country;
+    
+    for (int i=0; i<[arr count]; i++) {
+        temp=[arr objectAtIndex:i];
+        arrTemp=[temp objectForKey:@"types"];
+        for (int t=0; t<[arrTemp count]; t++) {
+            strTemp=[arrTemp objectAtIndex:t];
+            if([strTemp isEqualToString:@"country"])
+            {
+                //Lo he encontrado!!
+                country=[temp objectForKey:@"short_name"];
+                self.countryCode=country;
+            }
+        }
+        
+    }
+    NSLog(@"Country: %@", country);
+   
+    
 }
 
 
@@ -94,6 +189,7 @@
     NSDictionary* detalles=[[[[json objectForKey:@"response"]objectForKey:@"checkins"]objectForKey:@"items"]objectAtIndex:0];
 
     NSString* detalle=[detalles objectForKey:@"shout"];
+    NSString* countryCodeFSQ=[location objectForKey:@"cc"];
     NSString* country=[location objectForKey:@"country"];
     NSString* city=[location objectForKey:@"city"];
     
@@ -102,6 +198,18 @@
     
     [self setMapDetails:latitude longitude:longitude country:country city:city detalle:detalle imageURL:imagenURL];
     [SVProgressHUD dismiss];
+    
+    //Check the country codes
+    if([self.countryCode isEqualToString:countryCodeFSQ]){
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                  initWithTitle:@"What a casuality!"
+                                  message:@"Woww we are in the same country!"
+                                  delegate:self
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+        [alertView show];
+
+    }
     
 }
 
@@ -216,7 +324,9 @@
 
 - (void)viewDidUnload
 {
+    [locationManager stopUpdatingLocation];
     [self setDataView:nil];
+    [self setLocationManager:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
