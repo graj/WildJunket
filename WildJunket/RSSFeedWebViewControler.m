@@ -9,6 +9,7 @@
 #import "RSSFeedWebViewControler.h"
 #import "RSSEntry.h"
 #import <Twitter/Twitter.h>
+#import "SVProgressHUD.h"
 
 @interface RSSFeedWebViewControler ()
 
@@ -18,6 +19,7 @@
 @synthesize webView = _webView;
 @synthesize entry = _entry;
 @synthesize activityIndicator=_activityIndicator;
+@synthesize firstTime;
 
 -(IBAction)shareButton:(id)sender{
     //Pulsado botón compartir, mostrar menu
@@ -126,11 +128,13 @@
     
     NSURL *url = [NSURL URLWithString:_entry.articleUrl];    
     [_webView loadRequest:[NSURLRequest requestWithURL:url]];
-    self.activityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-	self.activityIndicator.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
-	self.activityIndicator.center = self.view.center;
-    [self.activityIndicator setColor:[UIColor brownColor]];
-    [self.view addSubview: self.activityIndicator];
+    self.firstTime=(BOOL*)YES;
+    
+    //self.activityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+	//self.activityIndicator.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
+	//self.activityIndicator.center = self.view.center;
+    //[self.activityIndicator setColor:[UIColor brownColor]];
+    //[self.view addSubview: self.activityIndicator];
     
     
 }
@@ -173,25 +177,29 @@
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
 	// starting the load, show the activity indicator in the status bar
-	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-	[self.activityIndicator startAnimating];
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+	//[self.activityIndicator startAnimating];
+    if(self.firstTime==(BOOL*)YES){
+        [SVProgressHUD showWithStatus:@"Loading article..."];
+    }
+    self.firstTime=(BOOL*)NO;
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
 	// finished loading, hide the activity indicator in the status bar
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-	[self.activityIndicator stopAnimating];
+	//[self.activityIndicator stopAnimating];
+    [SVProgressHUD dismiss];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
 	// load error, hide the activity indicator in the status bar
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    [SVProgressHUD dismiss];
     
-	// report the error inside the webview
-	//NSString* errorString = [NSString stringWithFormat:@"<html><center><br /><br /><font size=+5 color='red'>Error<br /><br />Your request %@</font></center></html>", error.localizedDescription];
-	//[self.webView loadHTMLString:errorString baseURL:nil];
+		
 }
 
 
