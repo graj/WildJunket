@@ -87,19 +87,21 @@
     NSDictionary* location = [[[[[[json objectForKey:@"response"]objectForKey:@"checkins"]objectForKey:@"items"]objectAtIndex:0]objectForKey:@"venue"]objectForKey:@"location"];
     
     NSString *imagenURL=[[[[[[[[json objectForKey:@"response"]objectForKey:@"checkins"]objectForKey:@"items"]objectAtIndex:0]objectForKey:@"photos"]objectForKey:@"items"]objectAtIndex:0]objectForKey:@"url"];
+    
+    NSDictionary* detalles=[[[[json objectForKey:@"response"]objectForKey:@"checkins"]objectForKey:@"items"]objectAtIndex:0];
 
-        
+    NSString* detalle=[detalles objectForKey:@"shout"];
     NSString* country=[location objectForKey:@"country"];
     NSString* city=[location objectForKey:@"city"];
     
     NSString* latitude=[location objectForKey:@"lat"];
     NSString* longitude=[location objectForKey:@"lng"];
     
-    [self setMapDetails:latitude longitude:longitude country:country city:city imageURL:imagenURL];
+    [self setMapDetails:latitude longitude:longitude country:country city:city detalle:detalle imageURL:imagenURL];
     
 }
 
--(void)setMapDetails:(NSString *) latitude longitude:(NSString *) longitude country:(NSString *) country city:(NSString *) city imageURL:(NSString*)imageURL{
+-(void)setMapDetails:(NSString *) latitude longitude:(NSString *) longitude country:(NSString *) country city:(NSString *) city detalle:(NSString *) detalle imageURL:(NSString*)imageURL{
     
     //Imagen del checkin
     NSURL *url = [NSURL URLWithString:imageURL];
@@ -143,6 +145,7 @@
     //Texts and map
     [self.city setText:city];
     [self.country setText:country];
+    [self.description setText:detalle];
     CLLocationCoordinate2D centerCoord = {[latitude doubleValue], [longitude doubleValue]};
     [self.mapView setCenterCoordinate:centerCoord zoomLevel:ZOOM_LEVEL animated:YES];
 
