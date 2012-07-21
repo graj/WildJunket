@@ -44,6 +44,19 @@
     return self;
 }
 
+- (void)checkOrientation
+{
+    //Orientation
+    if(UIInterfaceOrientationIsLandscape(self.interfaceOrientation)){
+        self.dataView.frame=CGRectMake(320, 0, 160, 130);
+        self.mapView.frame=CGRectMake(320, 130, 160, 160);
+    }
+    else{
+        self.dataView.frame=CGRectMake(0, 0, 160, 160);
+        self.mapView.frame=CGRectMake(160, 0, 160, 160);
+    }
+}
+
 - (void)viewDidLoad
 {
    
@@ -58,6 +71,9 @@
     UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     self.dataView.backgroundColor = [UIColor colorWithPatternImage:newImage];
+    
+    [self checkOrientation];
+    
     
     [SVProgressHUD showWithStatus:@"Locating WildJunket guys..."];
 	dispatch_async(kBgQueue, ^{
@@ -92,6 +108,32 @@
                  
      }];*/
 
+    
+}
+
+-(void)willRotateToInterfaceOrientation: (UIInterfaceOrientation)orientation duration:(NSTimeInterval)duration {
+    
+   
+    if ((orientation == UIInterfaceOrientationLandscapeLeft) || (orientation == UIInterfaceOrientationLandscapeRight)) {
+        
+        //Landscape
+                
+                     
+               
+    }
+    else{
+        
+    
+    }
+    
+   
+
+
+}
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+     //NSLog(@"Map position:%@, %@. Size: %@, %@", [[NSNumber numberWithDouble:self.mapView.frame.origin.x] stringValue],[[NSNumber numberWithDouble:self.mapView.frame.origin.y] stringValue], [[NSNumber numberWithDouble:self.mapView.frame.size.width] stringValue], [[NSNumber numberWithDouble:self.mapView.frame.size.height] stringValue]);
+    
+    [self checkOrientation];   
     
 }
 
@@ -142,8 +184,6 @@
                           
                           options:kNilOptions
                           error:&error];
-    
-    //NSString* countryCode = [[[[[json objectForKey:@"results"]objectAtIndex:0]objectForKey:@"address_components"]objectAtIndex:6]objectForKey:@"short_name"];
     
     
     NSMutableArray *arr=[[[json objectForKey:@"results"]objectAtIndex:0]objectForKey:@"address_components"];
@@ -260,8 +300,15 @@
     [self.city setText:city];
     [self.country setText:country];
     [self.description setText:detalle];
+    
+    CGSize textSize = [self.description.text sizeWithFont:self.description.font constrainedToSize:CGSizeMake(self.description.frame.size.width, MAXFLOAT) lineBreakMode:self.description.lineBreakMode];
+    self.description.frame = CGRectMake(self.country.frame.origin.x + 2, self.country.frame.origin.y+30, textSize.width, textSize.height);
+    
+    
     CLLocationCoordinate2D centerCoord = {[latitude doubleValue], [longitude doubleValue]};
     [self.mapView setCenterCoordinate:centerCoord zoomLevel:ZOOM_LEVEL animated:YES];
+    
+    [self checkOrientation];
 
 }
 
@@ -337,7 +384,9 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait ||
             interfaceOrientation == UIInterfaceOrientationLandscapeLeft || 
             interfaceOrientation == UIInterfaceOrientationLandscapeRight ||
-            interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown );}
+            interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown );
+
+}
 
 
 @end
