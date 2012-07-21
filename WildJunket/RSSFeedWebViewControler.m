@@ -10,6 +10,7 @@
 #import "RSSEntry.h"
 #import <Twitter/Twitter.h>
 #import "SVProgressHUD.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface RSSFeedWebViewControler ()
 
@@ -172,6 +173,33 @@
             interfaceOrientation == UIInterfaceOrientationLandscapeLeft || 
             interfaceOrientation == UIInterfaceOrientationLandscapeRight ||
             interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown );
+}
+
+-(void)willRotateToInterfaceOrientation: (UIInterfaceOrientation)orientation duration:(NSTimeInterval)duration {
+    
+    CALayer *sublayer = [CALayer layer];
+    sublayer.name=@"title";
+    if ((orientation == UIInterfaceOrientationLandscapeLeft) || (orientation == UIInterfaceOrientationLandscapeRight)) {
+        
+        //Cambia layer de título
+        
+        sublayer.contents = (id) [UIImage imageNamed:@"wj_title_landscape.png"].CGImage;
+        sublayer.frame = CGRectMake(0, 0, 480, 32);
+        
+    }
+    else{
+        sublayer.contents = (id) [UIImage imageNamed:@"wj_title.png"].CGImage;
+        sublayer.frame = CGRectMake(0, 0, 320, 44);
+    }
+    
+    for (CALayer *layer in self.navigationController.navigationBar.layer.sublayers) {
+        if ([layer.name isEqualToString:@"title"]) {
+            [layer removeFromSuperlayer];
+            break;
+        }
+    }
+    [self.navigationController.navigationBar.layer addSublayer:sublayer];
+    
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView

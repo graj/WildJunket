@@ -224,9 +224,15 @@
     //Title status bar
     
     CALayer *sublayer = [CALayer layer];
-    sublayer.contents = (id) [UIImage imageNamed:@"wj_title.png"].CGImage;
+    sublayer.name=@"title";
     
-    sublayer.frame = CGRectMake(0, 0, 320, 44);
+    if(self.interfaceOrientation==UIInterfaceOrientationPortrait || self.interfaceOrientation==UIInterfaceOrientationPortraitUpsideDown){
+        sublayer.contents = (id) [UIImage imageNamed:@"wj_title.png"].CGImage;
+        sublayer.frame = CGRectMake(0, 0, 320, 44);
+    }else {
+        sublayer.contents = (id) [UIImage imageNamed:@"wj_title_landscape.png"].CGImage;
+        sublayer.frame = CGRectMake(0, 0, 480, 32);
+    }
     
     [self.navigationController.navigationBar.layer addSublayer:sublayer];
     
@@ -235,6 +241,33 @@
     [SVProgressHUD showWithStatus:@"Loading..."];
     self.feeds = [NSArray arrayWithObjects:@"http://feeds.feedburner.com/wildjunket",nil];    
     [self refresh];
+}
+
+-(void)willRotateToInterfaceOrientation: (UIInterfaceOrientation)orientation duration:(NSTimeInterval)duration {
+    
+    CALayer *sublayer = [CALayer layer];
+    sublayer.name=@"title";
+    if ((orientation == UIInterfaceOrientationLandscapeLeft) || (orientation == UIInterfaceOrientationLandscapeRight)) {
+        
+        //Cambia layer de título
+        
+        sublayer.contents = (id) [UIImage imageNamed:@"wj_title_landscape.png"].CGImage;
+        sublayer.frame = CGRectMake(0, 0, 480, 32);
+
+    }
+    else{
+        sublayer.contents = (id) [UIImage imageNamed:@"wj_title.png"].CGImage;
+        sublayer.frame = CGRectMake(0, 0, 320, 44);
+    }
+    
+    for (CALayer *layer in self.navigationController.navigationBar.layer.sublayers) {
+        if ([layer.name isEqualToString:@"title"]) {
+            [layer removeFromSuperlayer];
+            break;
+        }
+    }
+    [self.navigationController.navigationBar.layer addSublayer:sublayer];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated

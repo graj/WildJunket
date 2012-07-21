@@ -163,6 +163,7 @@
                 //Lo he encontrado!!
                 country=[temp objectForKey:@"short_name"];
                 self.countryCode=country;
+                break;
             }
         }
         
