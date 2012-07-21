@@ -46,7 +46,19 @@
 
 - (void)checkOrientation
 {
-    //Orientation
+    if([[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortrait || [[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortraitUpsideDown){
+        
+        self.dataView.frame=CGRectMake(0, 0, 160, 160);
+        self.mapView.frame=CGRectMake(160, 0, 160, 160);
+
+    } else {
+        self.dataView.frame=CGRectMake(320, 0, 160, 130);
+        self.mapView.frame=CGRectMake(320, 130, 160, 160);
+
+    }
+    
+    
+    /*//Orientation
     if(UIInterfaceOrientationIsLandscape(self.interfaceOrientation)){
         self.dataView.frame=CGRectMake(320, 0, 160, 130);
         self.mapView.frame=CGRectMake(320, 130, 160, 160);
@@ -54,7 +66,7 @@
     else{
         self.dataView.frame=CGRectMake(0, 0, 160, 160);
         self.mapView.frame=CGRectMake(160, 0, 160, 160);
-    }
+    }*/
 }
 
 - (void)viewDidLoad
@@ -171,6 +183,7 @@
     //Shows status bar
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
     
+    [self checkOrientation];
 	[super viewWillAppear:animated];
     
 

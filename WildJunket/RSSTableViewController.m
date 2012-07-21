@@ -214,13 +214,7 @@
     return self;
 }
 
-- (void)viewDidLoad {
-    
-    //Shows status bar
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
-    
-    [super viewDidLoad];    
-   
+- (void)checkOrientation {
     //Title status bar
     
     CALayer *sublayer = [CALayer layer];
@@ -234,7 +228,24 @@
         sublayer.frame = CGRectMake(0, 0, 480, 32);
     }
     
+    for (CALayer *layer in self.navigationController.navigationBar.layer.sublayers) {
+        if ([layer.name isEqualToString:@"title"]) {
+            [layer removeFromSuperlayer];
+            break;
+        }
+    }
+    
     [self.navigationController.navigationBar.layer addSublayer:sublayer];
+}
+
+- (void)viewDidLoad {
+    
+    //Shows status bar
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+    
+    [super viewDidLoad];    
+   
+    [self checkOrientation];
     
     self.allEntries = [NSMutableArray array];
     self.queue = [[[NSOperationQueue alloc] init] autorelease];
@@ -275,6 +286,8 @@
     
     //Shows status bar
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+
+    [self checkOrientation];
     
 	[super viewWillAppear:animated];
     
