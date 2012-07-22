@@ -221,6 +221,9 @@
         }
         
     }
+    
+    [TestFlight passCheckpoint:@"googleResponse"];
+    
     NSLog(@"Country: %@", country);
    
     
@@ -249,6 +252,8 @@
     
     NSString* latitude=[location objectForKey:@"lat"];
     NSString* longitude=[location objectForKey:@"lng"];
+    
+    [TestFlight passCheckpoint:@"dataFromFSQ"];
     
     [self setMapDetails:latitude longitude:longitude country:country city:city detalle:detalle imageURL:imagenURL];
     [SVProgressHUD dismiss];

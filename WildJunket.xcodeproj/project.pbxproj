@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6309D38815BBEAAF00CCF62E /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6309D38715BBEAAF00CCF62E /* libTestFlight.a */; };
 		630AC9E815BA96F200965DA8 /* wj_title_landscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 630AC9E415BA96F200965DA8 /* wj_title_landscape@2x.png */; };
 		630AC9E915BA96F200965DA8 /* wj_title_landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 630AC9E515BA96F200965DA8 /* wj_title_landscape.png */; };
 		630AC9EA15BA96F200965DA8 /* nav-bar-landscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 630AC9E615BA96F200965DA8 /* nav-bar-landscape@2x.png */; };
@@ -169,6 +170,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6309D38615BBEA8E00CCF62E /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
+		6309D38715BBEAAF00CCF62E /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
 		630AC9E415BA96F200965DA8 /* wj_title_landscape@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wj_title_landscape@2x.png"; sourceTree = "<group>"; };
 		630AC9E515BA96F200965DA8 /* wj_title_landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wj_title_landscape.png; sourceTree = "<group>"; };
 		630AC9E615BA96F200965DA8 /* nav-bar-landscape@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-bar-landscape@2x.png"; sourceTree = "<group>"; };
@@ -365,6 +368,7 @@
 				63EF2521158C6033004E2BFB /* UIKit.framework in Frameworks */,
 				63EF2523158C6033004E2BFB /* Foundation.framework in Frameworks */,
 				63EF2525158C6033004E2BFB /* CoreGraphics.framework in Frameworks */,
+				6309D38815BBEAAF00CCF62E /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,6 +550,8 @@
 		63EE7E6F15A4C0470098FEE8 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				6309D38715BBEAAF00CCF62E /* libTestFlight.a */,
+				6309D38615BBEA8E00CCF62E /* TestFlight.h */,
 				63EE7EB915A4DDB90098FEE8 /* NSArray+Extras.h */,
 				63EE7EBA15A4DDB90098FEE8 /* NSArray+Extras.m */,
 				63EE7EBB15A4DDB90098FEE8 /* NSDate+InternetDateTime.h */,
@@ -1005,6 +1011,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-lxml2";
 				SDKROOT = iphoneos;
+				STRIP_INSTALLED_PRODUCT = NO;
 			};
 			name = Debug;
 		};
@@ -1015,7 +1022,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = YES;
+				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1026,6 +1033,7 @@
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-lxml2";
 				SDKROOT = iphoneos;
+				STRIP_INSTALLED_PRODUCT = NO;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1034,7 +1042,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: David Garcia Fernandez (72SXJQDU59)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: David Garcia Fernandez";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WildJunket/WildJunket-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1044,12 +1052,16 @@
 				);
 				INFOPLIST_FILE = "WildJunket/WildJunket-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/WildJunket\"",
+				);
 				OTHER_LDFLAGS = (
 					"-lxml2",
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1455C218-6843-4F69-BEA0-F24D33CF5839";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A59BDE4A-A1C9-4941-82DF-44E6EA2EFCBF";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1058,6 +1070,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: David Garcia Fernandez";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WildJunket/WildJunket-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1067,11 +1080,16 @@
 				);
 				INFOPLIST_FILE = "WildJunket/WildJunket-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/WildJunket\"",
+				);
 				OTHER_LDFLAGS = (
 					"-lxml2",
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A59BDE4A-A1C9-4941-82DF-44E6EA2EFCBF";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
