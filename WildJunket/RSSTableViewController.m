@@ -16,7 +16,7 @@
 #import "RSSFeedWebViewControler.h"
 #import "TFHpple.h"
 #import "RSSCell.h"
-#import <SDWebImage/UIImageView+WebCache.h>
+#import "UIImageView+WebCache.h"
 #import <QuartzCore/CAGradientLayer.h>
 #import <QuartzCore/QuartzCore.h>
 #import "SVProgressHUD.h"
