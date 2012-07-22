@@ -36,7 +36,9 @@
         case 0:
             if ([TWTweetComposeViewController canSendTweet])
             {
+                #ifdef CONFIGURATION_Beta
                 [TestFlight passCheckpoint:@"pulsadoTwitter"];
+                #endif
                 TWTweetComposeViewController *tweetSheet =
                 [[TWTweetComposeViewController alloc] init];
                 NSString *text=[self.entry.articleTitle stringByAppendingString:@" (WildJunket.com)"];
@@ -46,7 +48,9 @@
             }
             else
             {
+                #ifdef CONFIGURATION_Beta
                 [TestFlight passCheckpoint:@"errorTwitter"];
+                #endif
                 UIAlertView *alertView = [[UIAlertView alloc]
                                           initWithTitle:@"Sorry"
                                           message:@"You can't send a tweet right now, make sure your device has an internet connection and you have at least one Twitter account setup"
@@ -60,7 +64,9 @@
             //Email
             if ([MFMailComposeViewController canSendMail])
             {
+                #ifdef CONFIGURATION_Beta
                 [TestFlight passCheckpoint:@"canSendEmail"];
+                #endif
                 MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
                 
                 mailer.mailComposeDelegate = self;
@@ -79,7 +85,9 @@
             }
             else
             {
+                #ifdef CONFIGURATION_Beta
                 [TestFlight passCheckpoint:@"errorEmail"];
+                #endif
                 UIAlertView *alertView = [[UIAlertView alloc]
                                           initWithTitle:@"Sorry"
                                           message:@"You can't send a email right now, make sure your device has an internet connection and you have at least one email account setup"

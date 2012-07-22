@@ -16,17 +16,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 
+    #ifdef CONFIGURATION_Beta
     [TestFlight takeOff:@"dcfcd70d51df30edb83d9cfa8bb699a9_OTMwMzMyMDEyLTA3LTIyIDA0OjA3OjA2LjI2OTgzNw"];
-    
-    
-
-    //OJO!!! COMENTAR ESTO AL PUBLICAR
-    #define TESTING 1
-    #ifdef TESTING
-        [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
     #endif
-    
-    
     
     //Status bar negra
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];

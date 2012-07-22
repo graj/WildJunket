@@ -222,7 +222,9 @@
         
     }
     
+    #ifdef CONFIGURATION_Beta
     [TestFlight passCheckpoint:@"googleResponse"];
+    #endif
     
     NSLog(@"Country: %@", country);
    
@@ -253,7 +255,9 @@
     NSString* latitude=[location objectForKey:@"lat"];
     NSString* longitude=[location objectForKey:@"lng"];
     
+    #ifdef CONFIGURATION_Beta
     [TestFlight passCheckpoint:@"dataFromFSQ"];
+    #endif
     
     [self setMapDetails:latitude longitude:longitude country:country city:city detalle:detalle imageURL:imagenURL];
     [SVProgressHUD dismiss];
