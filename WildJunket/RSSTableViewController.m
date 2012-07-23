@@ -122,10 +122,17 @@
             
             //URL de la primera foto limpia, parseada y lista para mostrar en pantalla
             NSString *photoURL = [components objectAtIndex:0];
-           
+                      
             
             NSDate *articleDate = [NSDate dateFromInternetDateTimeString:articleDateString formatHint:DateFormatHintRFC822];
 
+            
+            //URL buena para Readability
+            NSArray *componentsURL = [[item valueForChild:@"content:encoded"] componentsSeparatedByString:@"The post <a href=\""];
+            NSString *afterOpenBracketURL = [componentsURL objectAtIndex:1];
+            componentsURL = [afterOpenBracketURL componentsSeparatedByString:@"\">"];
+            
+            articleUrl=[componentsURL objectAtIndex:0];
             
             RSSEntry *entry = [[[RSSEntry alloc] initWithBlogTitle:blogTitle 
                                                       articleTitle:articleTitle 
@@ -179,6 +186,13 @@
         
         //URL de la primera foto limpia, parseada y lista para mostrar en pantalla
         NSString *photoURL = [components objectAtIndex:0];
+        
+        //URL buena para Readability
+        NSArray *componentsURL = [[item valueForChild:@"content:encoded"] componentsSeparatedByString:@"The post <a href=\""];
+        NSString *afterOpenBracketURL = [componentsURL objectAtIndex:1];
+        componentsURL = [afterOpenBracketURL componentsSeparatedByString:@"\">"];
+        
+        articleUrl=[componentsURL objectAtIndex:0];
         
         
         RSSEntry *entry = [[[RSSEntry alloc] initWithBlogTitle:blogTitle 

@@ -20,7 +20,6 @@
 @synthesize webView = _webView;
 @synthesize entry = _entry;
 @synthesize activityIndicator=_activityIndicator;
-@synthesize firstTime;
 
 -(IBAction)shareButton:(id)sender{
     //Pulsado botón compartir, mostrar menu
@@ -139,9 +138,11 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     
-    NSURL *url = [NSURL URLWithString:_entry.articleUrl];    
+    //Shows status bar
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+    
+    NSURL *url = [NSURL URLWithString:[@"http://www.readability.com/m?url=" stringByAppendingString:_entry.articleUrl]];    
     [_webView loadRequest:[NSURLRequest requestWithURL:url]];
-    self.firstTime=(BOOL*)YES;
     
     //self.activityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
 	//self.activityIndicator.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
@@ -169,6 +170,9 @@
 
 - (void)viewDidLoad
 {
+    //Shows status bar
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+    
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
@@ -219,10 +223,7 @@
 	// starting the load, show the activity indicator in the status bar
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 	//[self.activityIndicator startAnimating];
-    if(self.firstTime==(BOOL*)YES){
-        [SVProgressHUD showWithStatus:@"Loading article..."];
-    }
-    self.firstTime=(BOOL*)NO;
+    [SVProgressHUD showWithStatus:@"Loading article..."];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView

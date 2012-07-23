@@ -18,7 +18,6 @@
 }
 @property (retain) IBOutlet UIWebView *webView;
 @property (retain) RSSEntry *entry;
-@property BOOL *firstTime;
 @property (retain) UIActivityIndicatorView *activityIndicator;
 -(IBAction)shareButton:(id)sender;
 

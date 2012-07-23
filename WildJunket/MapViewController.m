@@ -71,6 +71,8 @@
 
 - (void)viewDidLoad
 {
+    //Shows status bar
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
    
     [super viewDidLoad];
     
