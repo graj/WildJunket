@@ -66,6 +66,7 @@
 		635002CB15AB92D000FC9BCF /* Reader-Thumbs.png in Resources */ = {isa = PBXBuildFile; fileRef = 635002B915AB92D000FC9BCF /* Reader-Thumbs.png */; };
 		635002CC15AB92D000FC9BCF /* Reader-Thumbs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 635002BA15AB92D000FC9BCF /* Reader-Thumbs@2x.png */; };
 		635002CE15AB964E00FC9BCF /* wildjunket.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 635002CD15AB964E00FC9BCF /* wildjunket.pdf */; };
+		6350384B15BE86FB008AD32D /* UITabBarController+HideTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6350384A15BE86FB008AD32D /* UITabBarController+HideTabBar.m */; };
 		6360FC9D15B6B8AD00A58518 /* tab-selected-new.png in Resources */ = {isa = PBXBuildFile; fileRef = 6360FC9C15B6B8AD00A58518 /* tab-selected-new.png */; };
 		6360FC9F15B7135100A58518 /* tab-selected-new@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6360FC9E15B7135100A58518 /* tab-selected-new@2x.png */; };
 		636729D515A4BAEE00A54ACE /* RSSNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 636729D415A4BAEE00A54ACE /* RSSNavViewController.m */; };
@@ -246,6 +247,8 @@
 		635002B915AB92D000FC9BCF /* Reader-Thumbs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Thumbs.png"; sourceTree = "<group>"; };
 		635002BA15AB92D000FC9BCF /* Reader-Thumbs@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Thumbs@2x.png"; sourceTree = "<group>"; };
 		635002CD15AB964E00FC9BCF /* wildjunket.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = wildjunket.pdf; sourceTree = "<group>"; };
+		6350384915BE86FB008AD32D /* UITabBarController+HideTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+HideTabBar.h"; sourceTree = "<group>"; };
+		6350384A15BE86FB008AD32D /* UITabBarController+HideTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+HideTabBar.m"; sourceTree = "<group>"; };
 		6360FC9C15B6B8AD00A58518 /* tab-selected-new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-selected-new.png"; sourceTree = "<group>"; };
 		6360FC9E15B7135100A58518 /* tab-selected-new@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-selected-new@2x.png"; sourceTree = "<group>"; };
 		636729D315A4BAEE00A54ACE /* RSSNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSNavViewController.h; sourceTree = "<group>"; };
@@ -579,6 +582,8 @@
 			isa = PBXGroup;
 			children = (
 				6309D38715BBEAAF00CCF62E /* libTestFlight.a */,
+				6350384915BE86FB008AD32D /* UITabBarController+HideTabBar.h */,
+				6350384A15BE86FB008AD32D /* UITabBarController+HideTabBar.m */,
 				6309D38615BBEA8E00CCF62E /* TestFlight.h */,
 				63EE7EB915A4DDB90098FEE8 /* NSArray+Extras.h */,
 				63EE7EBA15A4DDB90098FEE8 /* NSArray+Extras.m */,
@@ -948,6 +953,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63EF2557158C6033004E2BFB /* WildJunketTests.m in Sources */,
+				6350384B15BE86FB008AD32D /* UITabBarController+HideTabBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

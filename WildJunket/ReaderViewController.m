@@ -38,6 +38,7 @@
 #define PAGEBAR_HEIGHT 48.0f
 
 #define TAP_AREA_SIZE 48.0f
+#define kAnimationDuration .3
 
 #pragma mark Properties
 
@@ -309,13 +310,33 @@
 }
 */
 
+- (void)setTabBarHidden:(BOOL)hidden animated:(BOOL)animated {
+	BOOL isHidden = self.tabBarController.tabBar.hidden;
+	if(hidden == isHidden)
+		return;
+	UIView *transitionView = [[[self.tabBarController.view.subviews reverseObjectEnumerator] allObjects] lastObject];
+	if(transitionView == nil) {
+		NSLog(@"could not get the container view!");
+		return;
+	}
+	CGRect viewFrame = self.tabBarController.view.frame;
+	CGRect tabBarFrame = self.tabBarController.tabBar.frame;
+	CGRect containerFrame = transitionView.frame;
+	tabBarFrame.origin.y = viewFrame.size.height - (hidden ? 0 : tabBarFrame.size.height);
+	containerFrame.size.height = viewFrame.size.height - (hidden ? 0 : tabBarFrame.size.height);
+	[UIView animateWithDuration:kAnimationDuration 
+					 animations:^{
+						 self.tabBarController.tabBar.frame = tabBarFrame;
+						 transitionView.frame = containerFrame;
+					 }
+	 ];
+}
+
 - (void)viewDidLoad
 {
 #ifdef DEBUGX
 	NSLog(@"%s %@", __FUNCTION__, NSStringFromCGRect(self.view.bounds));
 #endif
-    
-    
     
     //Creación del documento
     NSString *phrase = nil; // Document password (for unlocking most encrypted PDF files)
@@ -404,6 +425,9 @@
 
     //Hide status bar
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+    
+    //Hide tabbar
+    [self setTabBarHidden:YES animated:YES];
     
 	[super viewWillAppear:animated];
 
