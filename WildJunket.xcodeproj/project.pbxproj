@@ -71,6 +71,8 @@
 		6360FC9F15B7135100A58518 /* tab-selected-new@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6360FC9E15B7135100A58518 /* tab-selected-new@2x.png */; };
 		636729D515A4BAEE00A54ACE /* RSSNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 636729D415A4BAEE00A54ACE /* RSSNavViewController.m */; };
 		636ADEE415B85C200035CE48 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 636ADEE315B85C200035CE48 /* Twitter.framework */; };
+		63804C6315CC4BAC00DD3679 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 63804C6215CC4BAC00DD3679 /* iCarousel.m */; };
+		63804C6715CC4D7B00DD3679 /* PhotosNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63804C6615CC4D7B00DD3679 /* PhotosNavController.m */; };
 		6384D20D15B990CD007282D0 /* mapviewbackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6384D20B15B990CD007282D0 /* mapviewbackground@2x.png */; };
 		6384D20E15B990CD007282D0 /* mapviewbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 6384D20C15B990CD007282D0 /* mapviewbackground.png */; };
 		6384D21315B9EB85007282D0 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6384D21015B9EB85007282D0 /* SVProgressHUD.bundle */; };
@@ -254,6 +256,10 @@
 		636729D315A4BAEE00A54ACE /* RSSNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSNavViewController.h; sourceTree = "<group>"; };
 		636729D415A4BAEE00A54ACE /* RSSNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSNavViewController.m; sourceTree = "<group>"; };
 		636ADEE315B85C200035CE48 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		63804C6115CC4BAC00DD3679 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
+		63804C6215CC4BAC00DD3679 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
+		63804C6515CC4D7B00DD3679 /* PhotosNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosNavController.h; sourceTree = "<group>"; };
+		63804C6615CC4D7B00DD3679 /* PhotosNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosNavController.m; sourceTree = "<group>"; };
 		6384D20B15B990CD007282D0 /* mapviewbackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mapviewbackground@2x.png"; sourceTree = "<group>"; };
 		6384D20C15B990CD007282D0 /* mapviewbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapviewbackground.png; sourceTree = "<group>"; };
 		6384D21015B9EB85007282D0 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
@@ -529,8 +535,19 @@
 				63EE7EC015A4DF290098FEE8 /* RSSFeedWebViewControler.m */,
 				63DC11DA15A5D05A00E22683 /* MapViewController.h */,
 				63DC11DB15A5D05A00E22683 /* MapViewController.m */,
+				63804C6515CC4D7B00DD3679 /* PhotosNavController.h */,
+				63804C6615CC4D7B00DD3679 /* PhotosNavController.m */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		63804C6015CC4BAC00DD3679 /* iCarousel */ = {
+			isa = PBXGroup;
+			children = (
+				63804C6115CC4BAC00DD3679 /* iCarousel.h */,
+				63804C6215CC4BAC00DD3679 /* iCarousel.m */,
+			);
+			path = iCarousel;
 			sourceTree = "<group>";
 		};
 		6384D20F15B9EB85007282D0 /* SVProgressHUD */ = {
@@ -683,6 +700,7 @@
 		63EF2526158C6033004E2BFB /* WildJunket */ = {
 			isa = PBXGroup;
 			children = (
+				63804C6015CC4BAC00DD3679 /* iCarousel */,
 				6309D3AD15BBFF1C00CCF62E /* SDWebImage */,
 				6384D20F15B9EB85007282D0 /* SVProgressHUD */,
 				631CF5DD15B40E910043EE5A /* hpple */,
@@ -945,6 +963,8 @@
 				6309D3C715BBFF1C00CCF62E /* SDWebImagePrefetcher.m in Sources */,
 				6309D3C815BBFF1C00CCF62E /* UIButton+WebCache.m in Sources */,
 				6309D3C915BBFF1C00CCF62E /* UIImageView+WebCache.m in Sources */,
+				63804C6315CC4BAC00DD3679 /* iCarousel.m in Sources */,
+				63804C6715CC4D7B00DD3679 /* PhotosNavController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

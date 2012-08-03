@@ -13,6 +13,7 @@
 @end
 
 @implementation PhotosViewController
+@synthesize titulo;
 
 - (void)viewDidLoad
 {
@@ -36,6 +37,7 @@
 {
     
     
+    [self setTitulo:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "iCarousel.h"
 
-@interface PhotosViewController : UIViewController
+@interface PhotosViewController : UIViewController <iCarouselDataSource, iCarouselDelegate>
+
+@property (nonatomic) IBOutlet iCarousel *carousel;
+@property (weak, nonatomic) IBOutlet UILabel *titulo;
+
 
 @end
