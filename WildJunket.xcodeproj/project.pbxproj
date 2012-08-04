@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6302D14E15CC54C000A6BE31 /* FXImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6302D14B15CC54C000A6BE31 /* FXImageView.m */; };
+		6302D14F15CC54C000A6BE31 /* UIImage+FX.m in Sources */ = {isa = PBXBuildFile; fileRef = 6302D14D15CC54C000A6BE31 /* UIImage+FX.m */; };
+		6302D15715CD652C00A6BE31 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6302D15615CD652C00A6BE31 /* Photo.m */; };
+		6302D15A15CD653A00A6BE31 /* Album.m in Sources */ = {isa = PBXBuildFile; fileRef = 6302D15915CD653A00A6BE31 /* Album.m */; };
+		6302D15D15CD654900A6BE31 /* SubCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 6302D15C15CD654900A6BE31 /* SubCategory.m */; };
+		6302D16515CD6BCD00A6BE31 /* CategoryPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = 6302D16415CD6BCD00A6BE31 /* CategoryPhotos.m */; };
 		6309D38815BBEAAF00CCF62E /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6309D38715BBEAAF00CCF62E /* libTestFlight.a */; };
 		6309D3C215BBFF1C00CCF62E /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 6309D3AF15BBFF1C00CCF62E /* MKAnnotationView+WebCache.m */; };
 		6309D3C315BBFF1C00CCF62E /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 6309D3B115BBFF1C00CCF62E /* SDImageCache.m */; };
@@ -154,6 +160,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6302D14A15CC54C000A6BE31 /* FXImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXImageView.h; sourceTree = "<group>"; };
+		6302D14B15CC54C000A6BE31 /* FXImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXImageView.m; sourceTree = "<group>"; };
+		6302D14C15CC54C000A6BE31 /* UIImage+FX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FX.h"; sourceTree = "<group>"; };
+		6302D14D15CC54C000A6BE31 /* UIImage+FX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FX.m"; sourceTree = "<group>"; };
+		6302D15515CD652C00A6BE31 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
+		6302D15615CD652C00A6BE31 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
+		6302D15815CD653A00A6BE31 /* Album.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Album.h; sourceTree = "<group>"; };
+		6302D15915CD653A00A6BE31 /* Album.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Album.m; sourceTree = "<group>"; };
+		6302D15B15CD654900A6BE31 /* SubCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubCategory.h; sourceTree = "<group>"; };
+		6302D15C15CD654900A6BE31 /* SubCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubCategory.m; sourceTree = "<group>"; };
+		6302D16315CD6BCD00A6BE31 /* CategoryPhotos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryPhotos.h; sourceTree = "<group>"; };
+		6302D16415CD6BCD00A6BE31 /* CategoryPhotos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryPhotos.m; sourceTree = "<group>"; };
 		6309D38615BBEA8E00CCF62E /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		6309D38715BBEAAF00CCF62E /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
 		6309D3AE15BBFF1C00CCF62E /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
@@ -395,6 +413,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6302D14915CC54C000A6BE31 /* FXImageView */ = {
+			isa = PBXGroup;
+			children = (
+				6302D14A15CC54C000A6BE31 /* FXImageView.h */,
+				6302D14B15CC54C000A6BE31 /* FXImageView.m */,
+				6302D14C15CC54C000A6BE31 /* UIImage+FX.h */,
+				6302D14D15CC54C000A6BE31 /* UIImage+FX.m */,
+			);
+			path = FXImageView;
+			sourceTree = "<group>";
+		};
 		6309D3AD15BBFF1C00CCF62E /* SDWebImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -612,6 +641,14 @@
 				633E9C0615A7A70700DA4C90 /* MKMapView+ZoomLevel.m */,
 				63CF5C0D15B42949000B3D46 /* RSSCell.h */,
 				63CF5C0E15B42949000B3D46 /* RSSCell.m */,
+				6302D15515CD652C00A6BE31 /* Photo.h */,
+				6302D15615CD652C00A6BE31 /* Photo.m */,
+				6302D15815CD653A00A6BE31 /* Album.h */,
+				6302D15915CD653A00A6BE31 /* Album.m */,
+				6302D15B15CD654900A6BE31 /* SubCategory.h */,
+				6302D15C15CD654900A6BE31 /* SubCategory.m */,
+				6302D16315CD6BCD00A6BE31 /* CategoryPhotos.h */,
+				6302D16415CD6BCD00A6BE31 /* CategoryPhotos.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -700,6 +737,7 @@
 		63EF2526158C6033004E2BFB /* WildJunket */ = {
 			isa = PBXGroup;
 			children = (
+				6302D14915CC54C000A6BE31 /* FXImageView */,
 				63804C6015CC4BAC00DD3679 /* iCarousel */,
 				6309D3AD15BBFF1C00CCF62E /* SDWebImage */,
 				6384D20F15B9EB85007282D0 /* SVProgressHUD */,
@@ -965,6 +1003,12 @@
 				6309D3C915BBFF1C00CCF62E /* UIImageView+WebCache.m in Sources */,
 				63804C6315CC4BAC00DD3679 /* iCarousel.m in Sources */,
 				63804C6715CC4D7B00DD3679 /* PhotosNavController.m in Sources */,
+				6302D14E15CC54C000A6BE31 /* FXImageView.m in Sources */,
+				6302D14F15CC54C000A6BE31 /* UIImage+FX.m in Sources */,
+				6302D15715CD652C00A6BE31 /* Photo.m in Sources */,
+				6302D15A15CD653A00A6BE31 /* Album.m in Sources */,
+				6302D15D15CD654900A6BE31 /* SubCategory.m in Sources */,
+				6302D16515CD6BCD00A6BE31 /* CategoryPhotos.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
