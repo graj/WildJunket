@@ -16,9 +16,11 @@
     
 }
 
-@property (copy) NSString *name;
-@property (copy) NSMutableArray *albums;
-@property int *idCat;
-@property int *idSubCat;
+@property (nonatomic) NSString *name;
+@property (nonatomic) NSMutableArray *albums;
+@property int idCat;
+@property int idSubCat;
+
+- (id)init:(int)idSubCatParam idCatParam:(int)idCatParam nameParam:(NSString*)nameParam;
 
 @end

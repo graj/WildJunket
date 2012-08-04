@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "iCarousel.h"
+@class Album;
+@class Photo;
+@class CategoryPhotos;
+@class SubCategory;
 
 @interface PhotosViewController : UIViewController <iCarouselDataSource, iCarouselDelegate>
 

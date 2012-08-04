@@ -9,6 +9,40 @@
 #import "CategoryPhotos.h"
 
 @implementation CategoryPhotos
-@synthesize idCat,name,subCats;
+@synthesize idCat=_idCat;
+@synthesize name=_name;
+@synthesize subCats=_subCats;
+
+
+- (id)init:(int)idCatParam nameParam:(NSString*)nameParam
+{
+    if ((self = [super init])) {
+        self.idCat = idCatParam;
+        self.name = [nameParam copy];
+        self.subCats=[[NSMutableArray alloc] init];
+    }
+    return self;
+}
+
+
+
+
+- (BOOL)isEqual:(id)other {
+    if (other == self)
+        return YES;
+    if (!other || ![other isKindOfClass:[self class]])
+        return NO;
+    return [self isEqualToCategory:other];
+}
+
+- (BOOL)isEqualToCategory:(CategoryPhotos *)aCat {
+    if (self == aCat)
+        return YES;
+    if (self.idCat!=aCat.idCat)
+        return NO;
+    
+    return YES;
+}
+
 
 @end

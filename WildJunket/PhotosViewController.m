@@ -9,12 +9,16 @@
 #import "PhotosViewController.h"
 #import "FXImageView.h"
 #import "SVProgressHUD.h"
+#import "Album.h"
+#import "CategoryPhotos.h"
+#import "SubCategory.h"
 
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-#define smugmugCat [NSURL URLWithString:@"http://api.smugmug.com/services/api/json/1.3.0/?method=smugmug.categories.get&APIKey=bLmbO3nV8an2YhQpMogzNKA0toTHbfGU&NickName=wildjunket&pretty=true"]
+#define smugmugAlbums [NSURL URLWithString:@"http://api.smugmug.com/services/api/json/1.3.0/?method=smugmug.albums.get&APIKey=bLmbO3nV8an2YhQpMogzNKA0toTHbfGU&NickName=wildjunket&pretty=true"]
 
 @interface PhotosViewController ()
 @property (nonatomic) NSMutableArray *items;
+@property (nonatomic) NSMutableArray *categories;
 @end
 
 @implementation PhotosViewController
@@ -84,7 +88,7 @@
     //Llamada API de smugmug y tomar urls de las fotos de las categorías
     [SVProgressHUD showWithStatus:@"Loading WildJunket Photos..."];
 	dispatch_async(kBgQueue, ^{
-        NSData* data = [NSData dataWithContentsOfURL: smugmugCat];
+        NSData* data = [NSData dataWithContentsOfURL: smugmugAlbums];
         [self performSelectorOnMainThread:@selector(fetchedCatData:) withObject:data waitUntilDone:YES];
     });
     
@@ -99,9 +103,81 @@
                           options:kNilOptions
                           error:&error];
     
-    NSDictionary* location = [[[[[[json objectForKey:@"response"]objectForKey:@"checkins"]objectForKey:@"items"]objectAtIndex:0]objectForKey:@"venue"]objectForKey:@"location"];
     
-    NSString *imagenURL=[[[[[[[[json objectForKey:@"response"]objectForKey:@"checkins"]objectForKey:@"items"]objectAtIndex:0]objectForKey:@"photos"]objectForKey:@"items"]objectAtIndex:0]objectForKey:@"url"];
+    Album* album;
+    CategoryPhotos* category;
+    SubCategory* subCategory;
+    CategoryPhotos* categoryAux;
+    SubCategory* subCategoryAux;
+    int idAlbum;
+    int idCat;
+    int idSubCat;
+    NSString* nameAlbum;
+    NSString* nameCat;
+    NSString* nameSubCat;
+    NSString* key;
+    int idPhoto;
+    
+    //Instacio el array de las categorías
+    self.categories=[[NSMutableArray alloc] init];
+    
+    //Obtengo los albumes
+    NSMutableArray* albums = [json objectForKey:@"Albums"];
+    
+    for (int i=0; i<[albums count]; i++) {
+                
+        //Crea nuevo Album
+        idAlbum=[[[albums objectAtIndex:i] objectForKey:@"id"] intValue];
+        idCat=[[[[albums objectAtIndex:i] objectForKey:@"Category"] objectForKey:@"id"] intValue];
+        idSubCat=[[[[albums objectAtIndex:i] objectForKey:@"SubCategory"] objectForKey:@"id"] intValue];
+        nameAlbum=[[albums objectAtIndex:i] objectForKey:@"Title"];
+        nameCat=[[[albums objectAtIndex:i] objectForKey:@"Category"] objectForKey:@"Name"];
+        nameSubCat=[[[albums objectAtIndex:i] objectForKey:@"SubCategory"] objectForKey:@"Name"];
+        key=[[albums objectAtIndex:i] objectForKey:@"Key"];
+        
+        album=[[Album alloc] init:idAlbum idCatParam:idCat idSubCatParam:idSubCat nameParam:nameAlbum keyParam:key];
+        
+        //Crear objeto Categoria
+        category=[[CategoryPhotos alloc] init:idCat nameParam:nameCat];
+        
+        //Crear objeto Subcategoria
+        subCategory=[[SubCategory alloc] init:idSubCat idCatParam:idCat nameParam:nameSubCat];
+        
+        //Comprobar si la categoría existe
+        //Si la categoria no existe
+        if(![self.categories containsObject:category]){
+            [subCategory.albums addObject:album];
+            [category.subCats addObject:subCategory];
+            [self.categories addObject:category];
+        }
+        //Si existe compruebo que tiene subcategoria
+        else if (![[[self.categories objectAtIndex:[self.categories indexOfObject:category]] subCats]containsObject:subCategory]){
+            
+            categoryAux=[self.categories objectAtIndex:[self.categories indexOfObject:category]];
+            [subCategory.albums addObject:album];
+            [categoryAux.subCats addObject:subCategory];
+        }
+        //Existen las dos
+        else{
+            categoryAux=[self.categories objectAtIndex:[self.categories indexOfObject:category]];
+            subCategoryAux=[categoryAux.subCats objectAtIndex:[self.categories indexOfObject:subCategory]];
+            [subCategoryAux.albums addObject:album];
+        }
+                
+        
+        /*//Get Photos, llamada Smugmug, solo una vez por categoría
+        NSString *urlStr=[[[[@"http://maps.google.com/maps/api/geocode/json?latlng=" stringByAppendingString:[[NSNumber numberWithInt:idAlbum]stringValue]] stringByAppendingString:@"&AlbumKey="]stringByAppendingString:key]stringByAppendingString:@"&pretty=true"];
+        
+        NSURL *url=[NSURL URLWithString:urlStr];
+        
+        dispatch_async(kBgQueue, ^{
+            NSData* data = [NSData dataWithContentsOfURL: url];
+            [self performSelectorOnMainThread:@selector(getGoogleResponse:) withObject:data waitUntilDone:NO];
+        });*/
+     
+    }
+    
+    /*NSString *imagenURL=[[[[[[[[json objectForKey:@"response"]objectForKey:@"checkins"]objectForKey:@"items"]objectAtIndex:0]objectForKey:@"photos"]objectForKey:@"items"]objectAtIndex:0]objectForKey:@"url"];
     
     NSDictionary* detalles=[[[[json objectForKey:@"response"]objectForKey:@"checkins"]objectForKey:@"items"]objectAtIndex:0];
     
@@ -111,10 +187,10 @@
     NSString* city=[location objectForKey:@"city"];
     
     NSString* latitude=[location objectForKey:@"lat"];
-    NSString* longitude=[location objectForKey:@"lng"];
+    NSString* longitude=[location objectForKey:@"lng"];*/
     
 #ifdef CONFIGURATION_Beta
-    [TestFlight passCheckpoint:@"dataFromFSQ"];
+    [TestFlight passCheckpoint:@"leidos datos smugmug"];
 #endif
     
     [SVProgressHUD dismiss];
