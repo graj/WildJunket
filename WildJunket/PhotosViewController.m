@@ -12,6 +12,7 @@
 #import "Album.h"
 #import "CategoryPhotos.h"
 #import "SubCategory.h"
+#include <stdlib.h>
 
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
 #define smugmugAlbums [NSURL URLWithString:@"http://api.smugmug.com/services/api/json/1.3.0/?method=smugmug.albums.get&APIKey=bLmbO3nV8an2YhQpMogzNKA0toTHbfGU&NickName=wildjunket&pretty=true"]
@@ -24,7 +25,6 @@
 @implementation PhotosViewController
 @synthesize titulo;
 @synthesize carousel;
-@synthesize items;
 
 
 #pragma mark -
@@ -32,8 +32,27 @@
 
 - (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
+    
+    
+    //Llamada API de smugmug y tomar urls de las fotos de las categorías
+    [SVProgressHUD showWithStatus:@"Loading..."];
+    
+    //Obtiene los datos de categorías, subcategorías y álbumes
+    [self getDatosCategorias];
+    
+    //Meter en items las urls con las imagenes de las categorias
+    [self getImagenesCategorias];
+    
+    
+#ifdef CONFIGURATION_Beta
+    [TestFlight passCheckpoint:@"leidos datos smugmug"];
+#endif
+    
+    [SVProgressHUD dismiss];
+    
+ 
     //return the total number of items in the carousel
-    return [items count];
+    return [self.items count];
 }
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view
@@ -56,7 +75,7 @@
     ((FXImageView *)view).processedImage = [UIImage imageNamed:@"placeholder.png"];
     
     //set image with URL. FXImageView will then download and process the image
-    [(FXImageView *)view setImageWithContentsOfURL:[items objectAtIndex:index]];
+    [(FXImageView *)view setImageWithContentsOfURL:[self.items objectAtIndex:index]];
     
     return view;
 }
@@ -66,31 +85,113 @@
     
 }
 
+#pragma mark -
+#pragma mark view methods
+
 - (void)viewDidLoad
 {
-    //No quiero la Nav Bar en esta vista
-    self.navigationController.navigationBarHidden = YES;
-    
-    //tipo Wheel
-    self.carousel.type = iCarouselTypeWheel;
-    
-    //Meter en items las urls con las imagenes de las categorias
-    [self getImagesCategorias];
-    
-    
     
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    //tipo Wheel
+    
+    //No quiero la Nav Bar en esta vista
+    self.navigationController.navigationBarHidden = YES;
+
+    self.carousel.type = iCarouselTypeWheel;
+
 }
 
--(void) getImagesCategorias{
+-(void) getImagenesCategorias{
+    
+    //Instancio array de URL's
+    self.items=[[NSMutableArray alloc] init];
+    
+    int randomAlbum;
+    int randomSubCat;
+    SubCategory *subCatAux;
+    Album *albumAux;
+    NSString *urlStr;
+    NSURL *url;
+    
+    for (CategoryPhotos *cat in self.categories) {
+        
+        //De una subcategoría random y un álbum random
+        //Si tiene más de un elemento, si no cojo el primero
+        if([cat.subCats count]>1)
+            randomSubCat= arc4random() % ([cat.subCats count]-1);
+        else
+            randomSubCat=0;
+        subCatAux=[cat.subCats objectAtIndex:randomSubCat];
+        if([subCatAux.albums count]>1)
+            randomAlbum=arc4random() % ([subCatAux.albums count]-1);
+        else
+            randomAlbum=0;
+        albumAux=[subCatAux.albums objectAtIndex:randomAlbum];
+        
+        //Obtengo las fotos de ese álbum
+        urlStr=[[[[@"http://api.smugmug.com/services/api/json/1.3.0/?method=smugmug.images.get&APIKey=bLmbO3nV8an2YhQpMogzNKA0toTHbfGU&AlbumID=" stringByAppendingString:[[NSNumber numberWithInt:albumAux.idAlbum]stringValue]] stringByAppendingString:@"&AlbumKey="]stringByAppendingString:albumAux.key]stringByAppendingString:@"&pretty=true"];
+        
+        url=[NSURL URLWithString:urlStr];
+        
+        /*dispatch_async(kBgQueue, ^{
+            NSData* data = [NSData dataWithContentsOfURL: url];
+            [self performSelectorOnMainThread:@selector(getPhotosResponse:) withObject:data waitUntilDone:YES];
+        });*/
+        
+       
+        NSData* data = [NSData dataWithContentsOfURL: url];
+        [self getPhotosResponse:data];
+        
+    }
+     
+}
 
-    //Llamada API de smugmug y tomar urls de las fotos de las categorías
-    [SVProgressHUD showWithStatus:@"Loading WildJunket Photos..."];
-	dispatch_async(kBgQueue, ^{
-        NSData* data = [NSData dataWithContentsOfURL: smugmugAlbums];
-        [self performSelectorOnMainThread:@selector(fetchedCatData:) withObject:data waitUntilDone:YES];
-    });
+-(void) getPhotosResponse:(NSData *)responseData{
+    //parse out the json data
+    NSError* error;
+    int randomImagen;
+    
+    NSDictionary* json = [NSJSONSerialization
+                          JSONObjectWithData:responseData
+                          options:kNilOptions
+                          error:&error];
+    
+   
+    
+    //Obtengo las imagenes
+    NSMutableArray* imagenes = [[json objectForKey:@"Album"]objectForKey:@"Images"];
+    if([imagenes count]>1)
+        randomImagen = arc4random() % ([imagenes count]-1);
+    else
+        randomImagen=0;
+    
+    int imageID=[[[imagenes objectAtIndex:randomImagen]objectForKey:@"id"] intValue];
+    NSString *imageKey=[[imagenes objectAtIndex:randomImagen]objectForKey:@"Key"];
+    
+    //Obtengo la url de la imagen random
+    NSString *urlStr=[[[[@"http://api.smugmug.com/services/api/json/1.3.0/?method=smugmug.images.getURLs&APIKey=bLmbO3nV8an2YhQpMogzNKA0toTHbfGU&ImageID=" stringByAppendingString:[[NSNumber numberWithInt:imageID]stringValue]] stringByAppendingString:@"&ImageKey="]stringByAppendingString:imageKey]stringByAppendingString:@"&pretty=true"];
+    
+    NSURL *url=[NSURL URLWithString:urlStr];
+    NSData* dataImagen = [NSData dataWithContentsOfURL: url];
+    
+    json = [NSJSONSerialization
+                          JSONObjectWithData:dataImagen
+                          options:kNilOptions
+                          error:&error];
+    
+    NSString *urlImagen=[[json objectForKey:@"Image"]objectForKey:@"ThumbURL"];
+    
+    //Añado la url al array de URL's de categorías
+    [self.items addObject:urlImagen];    
+
+}
+
+-(void) getDatosCategorias{
+
+   	
+    NSData* data = [NSData dataWithContentsOfURL: smugmugAlbums];
+    [self fetchedCatData:data];
+   
     
     
 }
@@ -116,8 +217,7 @@
     NSString* nameCat;
     NSString* nameSubCat;
     NSString* key;
-    int idPhoto;
-    
+       
     //Instacio el array de las categorías
     self.categories=[[NSMutableArray alloc] init];
     
@@ -160,52 +260,28 @@
         //Existen las dos
         else{
             categoryAux=[self.categories objectAtIndex:[self.categories indexOfObject:category]];
-            subCategoryAux=[categoryAux.subCats objectAtIndex:[self.categories indexOfObject:subCategory]];
+            subCategoryAux=[categoryAux.subCats objectAtIndex:[categoryAux.subCats indexOfObject:subCategory]];
             [subCategoryAux.albums addObject:album];
         }
                 
-        
-        /*//Get Photos, llamada Smugmug, solo una vez por categoría
-        NSString *urlStr=[[[[@"http://maps.google.com/maps/api/geocode/json?latlng=" stringByAppendingString:[[NSNumber numberWithInt:idAlbum]stringValue]] stringByAppendingString:@"&AlbumKey="]stringByAppendingString:key]stringByAppendingString:@"&pretty=true"];
-        
-        NSURL *url=[NSURL URLWithString:urlStr];
-        
-        dispatch_async(kBgQueue, ^{
-            NSData* data = [NSData dataWithContentsOfURL: url];
-            [self performSelectorOnMainThread:@selector(getGoogleResponse:) withObject:data waitUntilDone:NO];
-        });*/
-     
+        //NSLog(@"Iteracion: %d", i);
+             
     }
     
-    /*NSString *imagenURL=[[[[[[[[json objectForKey:@"response"]objectForKey:@"checkins"]objectForKey:@"items"]objectAtIndex:0]objectForKey:@"photos"]objectForKey:@"items"]objectAtIndex:0]objectForKey:@"url"];
-    
-    NSDictionary* detalles=[[[[json objectForKey:@"response"]objectForKey:@"checkins"]objectForKey:@"items"]objectAtIndex:0];
-    
-    NSString* detalle=[detalles objectForKey:@"shout"];
-    NSString* countryCodeFSQ=[location objectForKey:@"cc"];
-    NSString* country=[location objectForKey:@"country"];
-    NSString* city=[location objectForKey:@"city"];
-    
-    NSString* latitude=[location objectForKey:@"lat"];
-    NSString* longitude=[location objectForKey:@"lng"];*/
-    
-#ifdef CONFIGURATION_Beta
-    [TestFlight passCheckpoint:@"leidos datos smugmug"];
-#endif
-    
-    [SVProgressHUD dismiss];
+
     
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     
+ 
+       
     //Shows status bar
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
     
 	[super viewWillAppear:animated];
-    
-    
+   
 }
 
 - (void)viewDidUnload
@@ -213,6 +289,7 @@
     
     
     [self setTitulo:nil];
+    self.carousel = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
