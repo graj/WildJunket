@@ -13,9 +13,9 @@
 @class CategoryPhotos;
 @class SubCategory;
 
-@interface PhotosViewController : UIViewController <iCarouselDataSource, iCarouselDelegate>
+@interface PhotosViewController : UIViewController 
 
-@property (nonatomic) IBOutlet iCarousel *carousel;
+
 @property (weak, nonatomic) IBOutlet UILabel *titulo;
 
 

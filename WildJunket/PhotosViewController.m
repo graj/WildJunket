@@ -17,7 +17,8 @@
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
 #define smugmugAlbums [NSURL URLWithString:@"http://api.smugmug.com/services/api/json/1.3.0/?method=smugmug.albums.get&APIKey=bLmbO3nV8an2YhQpMogzNKA0toTHbfGU&NickName=wildjunket&pretty=true"]
 
-@interface PhotosViewController ()
+@interface PhotosViewController () <iCarouselDataSource, iCarouselDelegate>
+@property (nonatomic) iCarousel *carousel;
 @property (nonatomic) NSMutableArray *items;
 @property (nonatomic) NSMutableArray *categories;
 @end
@@ -32,24 +33,6 @@
 - (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
     
-    
-    //Llamada API de smugmug y tomar urls de las fotos de las categorías
-    [SVProgressHUD showWithStatus:@"Loading..."];
-    
-    //Obtiene los datos de categorías, subcategorías y álbumes
-    [self getDatosCategorias];
-    
-    //Meter en items las urls con las imagenes de las categorias
-    [self getImagenesCategorias];
-    
-    
-#ifdef CONFIGURATION_Beta
-    [TestFlight passCheckpoint:@"leidos datos smugmug"];
-#endif
-    
-    [SVProgressHUD dismiss];
-    
- 
     //return the total number of items in the carousel
     return [self.items count];
 }
@@ -97,12 +80,44 @@
     
     //No quiero la Nav Bar en esta vista
     self.navigationController.navigationBarHidden = YES;
+    
+    //Get Data
+    
+    //Llamada API de smugmug y tomar urls de las fotos de las categorías
+    [SVProgressHUD showWithStatus:@"Loading..."];
+    
+    
+    dispatch_async(kBgQueue, ^{
+        //Obtiene los datos de categorías, subcategorías y álbumes
+        [self getDatosCategorias];
+        
+        //Meter en items las urls con las imagenes de las categorias
+        [self getImagenesCategorias];
+        
+        [self performSelectorOnMainThread:@selector(createCarousel) withObject:nil waitUntilDone:YES];
+        
+        #ifdef CONFIGURATION_Beta
+            [TestFlight passCheckpoint:@"leidos datos smugmug"];
+        #endif
+        
+        
+    });
+  
+}
 
+-(void) createCarousel{
+    //create carousel
+    self.carousel = [[iCarousel alloc] initWithFrame:self.view.bounds];
+    self.carousel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.carousel.type = iCarouselTypeWheel;
+    self.carousel.delegate = self;
+    self.carousel.dataSource = self;
+    
+    //add carousel to view
+    [self.view addSubview:carousel];
     
     titulo.text=[[self.categories objectAtIndex:0] name];
-    
-    
+    [SVProgressHUD dismiss];
 }
 
 -(void) getImagenesCategorias{
