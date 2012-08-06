@@ -26,7 +26,6 @@
 @synthesize titulo;
 @synthesize carousel;
 
-
 #pragma mark -
 #pragma mark iCarousel methods
 
@@ -279,9 +278,6 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    
- 
-       
     //Shows status bar
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
     

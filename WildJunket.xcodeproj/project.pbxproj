@@ -77,7 +77,6 @@
 		6360FC9F15B7135100A58518 /* tab-selected-new@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6360FC9E15B7135100A58518 /* tab-selected-new@2x.png */; };
 		636729D515A4BAEE00A54ACE /* RSSNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 636729D415A4BAEE00A54ACE /* RSSNavViewController.m */; };
 		636ADEE415B85C200035CE48 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 636ADEE315B85C200035CE48 /* Twitter.framework */; };
-		63804C6315CC4BAC00DD3679 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 63804C6215CC4BAC00DD3679 /* iCarousel.m */; };
 		63804C6715CC4D7B00DD3679 /* PhotosNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63804C6615CC4D7B00DD3679 /* PhotosNavController.m */; };
 		6384D20D15B990CD007282D0 /* mapviewbackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6384D20B15B990CD007282D0 /* mapviewbackground@2x.png */; };
 		6384D20E15B990CD007282D0 /* mapviewbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 6384D20C15B990CD007282D0 /* mapviewbackground.png */; };
@@ -147,6 +146,7 @@
 		63EF254C158C6033004E2BFB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EF2522158C6033004E2BFB /* Foundation.framework */; };
 		63EF2554158C6033004E2BFB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 63EF2552158C6033004E2BFB /* InfoPlist.strings */; };
 		63EF2557158C6033004E2BFB /* WildJunketTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EF2556158C6033004E2BFB /* WildJunketTests.m */; };
+		63F47EAC15CFB4C2009CDD1A /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 63F47EAB15CFB4C2009CDD1A /* iCarousel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -274,8 +274,6 @@
 		636729D315A4BAEE00A54ACE /* RSSNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSNavViewController.h; sourceTree = "<group>"; };
 		636729D415A4BAEE00A54ACE /* RSSNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSNavViewController.m; sourceTree = "<group>"; };
 		636ADEE315B85C200035CE48 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
-		63804C6115CC4BAC00DD3679 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
-		63804C6215CC4BAC00DD3679 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		63804C6515CC4D7B00DD3679 /* PhotosNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosNavController.h; sourceTree = "<group>"; };
 		63804C6615CC4D7B00DD3679 /* PhotosNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosNavController.m; sourceTree = "<group>"; };
 		6384D20B15B990CD007282D0 /* mapviewbackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mapviewbackground@2x.png"; sourceTree = "<group>"; };
@@ -375,6 +373,8 @@
 		63EF2553158C6033004E2BFB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		63EF2555158C6033004E2BFB /* WildJunketTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WildJunketTests.h; sourceTree = "<group>"; };
 		63EF2556158C6033004E2BFB /* WildJunketTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WildJunketTests.m; sourceTree = "<group>"; };
+		63F47EAA15CFB4C2009CDD1A /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
+		63F47EAB15CFB4C2009CDD1A /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -573,8 +573,8 @@
 		63804C6015CC4BAC00DD3679 /* iCarousel */ = {
 			isa = PBXGroup;
 			children = (
-				63804C6115CC4BAC00DD3679 /* iCarousel.h */,
-				63804C6215CC4BAC00DD3679 /* iCarousel.m */,
+				63F47EAA15CFB4C2009CDD1A /* iCarousel.h */,
+				63F47EAB15CFB4C2009CDD1A /* iCarousel.m */,
 			);
 			path = iCarousel;
 			sourceTree = "<group>";
@@ -1001,7 +1001,6 @@
 				6309D3C715BBFF1C00CCF62E /* SDWebImagePrefetcher.m in Sources */,
 				6309D3C815BBFF1C00CCF62E /* UIButton+WebCache.m in Sources */,
 				6309D3C915BBFF1C00CCF62E /* UIImageView+WebCache.m in Sources */,
-				63804C6315CC4BAC00DD3679 /* iCarousel.m in Sources */,
 				63804C6715CC4D7B00DD3679 /* PhotosNavController.m in Sources */,
 				6302D14E15CC54C000A6BE31 /* FXImageView.m in Sources */,
 				6302D14F15CC54C000A6BE31 /* UIImage+FX.m in Sources */,
@@ -1009,6 +1008,7 @@
 				6302D15A15CD653A00A6BE31 /* Album.m in Sources */,
 				6302D15D15CD654900A6BE31 /* SubCategory.m in Sources */,
 				6302D16515CD6BCD00A6BE31 /* CategoryPhotos.m in Sources */,
+				63F47EAC15CFB4C2009CDD1A /* iCarousel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
