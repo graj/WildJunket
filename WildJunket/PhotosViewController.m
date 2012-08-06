@@ -82,7 +82,9 @@
 
 //Evento al mover el carousel
 -(void)carouselCurrentItemIndexDidChange:(iCarousel *)carousel{
-    
+    int index = self.carousel.currentItemIndex;
+    titulo.text=[[self.categories objectAtIndex:index] name];
+
 }
 
 #pragma mark -
@@ -98,7 +100,10 @@
     self.navigationController.navigationBarHidden = YES;
 
     self.carousel.type = iCarouselTypeWheel;
-
+    
+    titulo.text=[[self.categories objectAtIndex:0] name];
+    
+    
 }
 
 -(void) getImagenesCategorias{
@@ -179,8 +184,8 @@
                           options:kNilOptions
                           error:&error];
     
-    NSString *urlImagen=[[json objectForKey:@"Image"]objectForKey:@"ThumbURL"];
-    
+    //NSURL *urlImagen=[[json objectForKey:@"Image"]objectForKey:@"ThumbURL"];
+    NSURL *urlImagen = [NSURL URLWithString:[[json objectForKey:@"Image"]objectForKey:@"ThumbURL"]];
     //Añado la url al array de URL's de categorías
     [self.items addObject:urlImagen];    
 
