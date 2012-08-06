@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6302D14E15CC54C000A6BE31 /* FXImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6302D14B15CC54C000A6BE31 /* FXImageView.m */; };
-		6302D14F15CC54C000A6BE31 /* UIImage+FX.m in Sources */ = {isa = PBXBuildFile; fileRef = 6302D14D15CC54C000A6BE31 /* UIImage+FX.m */; };
 		6302D15715CD652C00A6BE31 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6302D15615CD652C00A6BE31 /* Photo.m */; };
 		6302D15A15CD653A00A6BE31 /* Album.m in Sources */ = {isa = PBXBuildFile; fileRef = 6302D15915CD653A00A6BE31 /* Album.m */; };
 		6302D15D15CD654900A6BE31 /* SubCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 6302D15C15CD654900A6BE31 /* SubCategory.m */; };
@@ -160,10 +158,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6302D14A15CC54C000A6BE31 /* FXImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXImageView.h; sourceTree = "<group>"; };
-		6302D14B15CC54C000A6BE31 /* FXImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXImageView.m; sourceTree = "<group>"; };
-		6302D14C15CC54C000A6BE31 /* UIImage+FX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FX.h"; sourceTree = "<group>"; };
-		6302D14D15CC54C000A6BE31 /* UIImage+FX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FX.m"; sourceTree = "<group>"; };
 		6302D15515CD652C00A6BE31 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
 		6302D15615CD652C00A6BE31 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
 		6302D15815CD653A00A6BE31 /* Album.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Album.h; sourceTree = "<group>"; };
@@ -413,17 +407,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6302D14915CC54C000A6BE31 /* FXImageView */ = {
-			isa = PBXGroup;
-			children = (
-				6302D14A15CC54C000A6BE31 /* FXImageView.h */,
-				6302D14B15CC54C000A6BE31 /* FXImageView.m */,
-				6302D14C15CC54C000A6BE31 /* UIImage+FX.h */,
-				6302D14D15CC54C000A6BE31 /* UIImage+FX.m */,
-			);
-			path = FXImageView;
-			sourceTree = "<group>";
-		};
 		6309D3AD15BBFF1C00CCF62E /* SDWebImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -737,7 +720,6 @@
 		63EF2526158C6033004E2BFB /* WildJunket */ = {
 			isa = PBXGroup;
 			children = (
-				6302D14915CC54C000A6BE31 /* FXImageView */,
 				63804C6015CC4BAC00DD3679 /* iCarousel */,
 				6309D3AD15BBFF1C00CCF62E /* SDWebImage */,
 				6384D20F15B9EB85007282D0 /* SVProgressHUD */,
@@ -1002,8 +984,6 @@
 				6309D3C815BBFF1C00CCF62E /* UIButton+WebCache.m in Sources */,
 				6309D3C915BBFF1C00CCF62E /* UIImageView+WebCache.m in Sources */,
 				63804C6715CC4D7B00DD3679 /* PhotosNavController.m in Sources */,
-				6302D14E15CC54C000A6BE31 /* FXImageView.m in Sources */,
-				6302D14F15CC54C000A6BE31 /* UIImage+FX.m in Sources */,
 				6302D15715CD652C00A6BE31 /* Photo.m in Sources */,
 				6302D15A15CD653A00A6BE31 /* Album.m in Sources */,
 				6302D15D15CD654900A6BE31 /* SubCategory.m in Sources */,

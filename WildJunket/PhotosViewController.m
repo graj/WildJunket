@@ -7,7 +7,6 @@
 //
 
 #import "PhotosViewController.h"
-#import "FXImageView.h"
 #import "SVProgressHUD.h"
 #import "Album.h"
 #import "CategoryPhotos.h"
@@ -40,31 +39,7 @@
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view
 {
-    /*UIButton *button = (UIButton *)view;
-    //create new view if no view is available for recycling
-    if (button == nil)
-    {
-        FXImageView *imageView = [[[FXImageView alloc] initWithFrame:CGRectMake(0, 0, 200.0f, 200.0f)] autorelease];
-        imageView.contentMode = UIViewContentModeScaleAspectFit;
-        imageView.asynchronous = NO;
-        imageView.reflectionScale = 0.5f;
-        imageView.reflectionAlpha = 0.25f;
-        imageView.reflectionGap = 10.0f;
-        imageView.shadowOffset = CGSizeMake(0.0f, 2.0f);
-        imageView.shadowBlur = 5.0f;
-        button = (UIButton *)imageView;
-        
-        [button addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    
-    //show placeholder
-    ((FXImageView *)button).processedImage = [UIImage imageNamed:@"placeholder.png"];
-    
-    //set image with URL. FXImageView will then download and process the image
-    [(FXImageView *)button setImageWithContentsOfURL:[self.items objectAtIndex:index]];
-    
-    return button;*/
-    
+     
     UIButton *button = (UIButton *)view;
 	if (button == nil)
 	{
