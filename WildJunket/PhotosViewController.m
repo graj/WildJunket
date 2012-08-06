@@ -12,6 +12,7 @@
 #import "Album.h"
 #import "CategoryPhotos.h"
 #import "SubCategory.h"
+#import "UIButton+WebCache.h"
 #include <stdlib.h>
 
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
@@ -39,27 +40,45 @@
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view
 {
+    /*UIButton *button = (UIButton *)view;
     //create new view if no view is available for recycling
-    if (view == nil)
+    if (button == nil)
     {
         FXImageView *imageView = [[[FXImageView alloc] initWithFrame:CGRectMake(0, 0, 200.0f, 200.0f)] autorelease];
         imageView.contentMode = UIViewContentModeScaleAspectFit;
-        imageView.asynchronous = YES;
+        imageView.asynchronous = NO;
         imageView.reflectionScale = 0.5f;
         imageView.reflectionAlpha = 0.25f;
         imageView.reflectionGap = 10.0f;
         imageView.shadowOffset = CGSizeMake(0.0f, 2.0f);
         imageView.shadowBlur = 5.0f;
-        view = imageView;
+        button = (UIButton *)imageView;
+        
+        [button addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
     }
     
     //show placeholder
-    ((FXImageView *)view).processedImage = [UIImage imageNamed:@"placeholder.png"];
+    ((FXImageView *)button).processedImage = [UIImage imageNamed:@"placeholder.png"];
     
     //set image with URL. FXImageView will then download and process the image
-    [(FXImageView *)view setImageWithContentsOfURL:[self.items objectAtIndex:index]];
+    [(FXImageView *)button setImageWithContentsOfURL:[self.items objectAtIndex:index]];
     
-    return view;
+    return button;*/
+    
+    UIButton *button = (UIButton *)view;
+	if (button == nil)
+	{
+		//no button available to recycle, so create new one
+		button = [UIButton buttonWithType:UIButtonTypeCustom];
+		button.frame = CGRectMake(0, 0, 200.0f, 200.0f);
+		[button addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
+	}
+	
+    [button setImageWithURL:[self.items objectAtIndex:index] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+    
+   
+	return button;
+    
 }
 
 //Evento al mover el carousel
@@ -67,6 +86,21 @@
     int index = self.carousel.currentItemIndex;
     titulo.text=[[self.categories objectAtIndex:index] name];
 
+}
+
+#pragma mark -
+#pragma mark Button tap event
+
+- (void)buttonTapped:(UIButton *)sender
+{
+	//get item index for button
+	NSInteger index = [carousel indexOfItemViewOrSubview:sender];
+	
+    [[[[UIAlertView alloc] initWithTitle:@"Button Tapped"
+                                 message:[NSString stringWithFormat:@"You tapped button number %i", index]
+                                delegate:nil
+                       cancelButtonTitle:@"OK"
+                       otherButtonTitles:nil] autorelease] show];
 }
 
 #pragma mark -
@@ -198,8 +232,7 @@
                           options:kNilOptions
                           error:&error];
     
-    //NSURL *urlImagen=[[json objectForKey:@"Image"]objectForKey:@"ThumbURL"];
-    NSURL *urlImagen = [NSURL URLWithString:[[json objectForKey:@"Image"]objectForKey:@"ThumbURL"]];
+    NSURL *urlImagen = [NSURL URLWithString:[[json objectForKey:@"Image"]objectForKey:@"SmallURL"]];
     //Añado la url al array de URL's de categorías
     [self.items addObject:urlImagen];    
 
