@@ -33,7 +33,6 @@
 		6329209215D117DF00F3A81F /* PhotosAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6329209015D117DF00F3A81F /* PhotosAlbumViewController.m */; };
 		6329209315D117DF00F3A81F /* PhotosAlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6329209115D117DF00F3A81F /* PhotosAlbumViewController.xib */; };
 		6329209815D11E2600F3A81F /* PhotosAllViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6329209615D11E2600F3A81F /* PhotosAllViewController.m */; };
-		6329209915D11E2600F3A81F /* PhotosAllViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6329209715D11E2600F3A81F /* PhotosAllViewController.xib */; };
 		632920A215D1224300F3A81F /* BDDynamicGridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6329209C15D1224300F3A81F /* BDDynamicGridCell.m */; };
 		632920A315D1224300F3A81F /* BDDynamicGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6329209E15D1224300F3A81F /* BDDynamicGridViewController.m */; };
 		632920A415D1224300F3A81F /* BDRowInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 632920A115D1224300F3A81F /* BDRowInfo.m */; };
@@ -216,7 +215,6 @@
 		6329209115D117DF00F3A81F /* PhotosAlbumViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotosAlbumViewController.xib; sourceTree = "<group>"; };
 		6329209515D11E2600F3A81F /* PhotosAllViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosAllViewController.h; sourceTree = "<group>"; };
 		6329209615D11E2600F3A81F /* PhotosAllViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosAllViewController.m; sourceTree = "<group>"; };
-		6329209715D11E2600F3A81F /* PhotosAllViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotosAllViewController.xib; sourceTree = "<group>"; };
 		6329209B15D1224300F3A81F /* BDDynamicGridCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDDynamicGridCell.h; sourceTree = "<group>"; };
 		6329209C15D1224300F3A81F /* BDDynamicGridCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDDynamicGridCell.m; sourceTree = "<group>"; };
 		6329209D15D1224300F3A81F /* BDDynamicGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDDynamicGridViewController.h; sourceTree = "<group>"; };
@@ -826,7 +824,6 @@
 				63EF2532158C6033004E2BFB /* MainStoryboard.storyboard */,
 				6329209115D117DF00F3A81F /* PhotosAlbumViewController.xib */,
 				63F47EFD15D07D2A009CDD1A /* PhotosSubCatView.xib */,
-				6329209715D11E2600F3A81F /* PhotosAllViewController.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -960,7 +957,6 @@
 				6309D3DC15BC142F00CCF62E /* Icon@2x.png in Resources */,
 				63F47EFE15D07D2A009CDD1A /* PhotosSubCatView.xib in Resources */,
 				6329209315D117DF00F3A81F /* PhotosAlbumViewController.xib in Resources */,
-				6329209915D11E2600F3A81F /* PhotosAllViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

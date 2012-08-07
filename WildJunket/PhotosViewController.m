@@ -222,9 +222,7 @@
    	
     NSData* data = [NSData dataWithContentsOfURL: smugmugAlbums];
     [self fetchedCatData:data];
-   
-    
-    
+       
 }
 
 -(void)fetchedCatData:(NSData *)responseData{
@@ -321,6 +319,7 @@
     
     [self setTitulo:nil];
     self.carousel = nil;
+    self.items=nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

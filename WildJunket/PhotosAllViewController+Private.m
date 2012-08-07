@@ -8,6 +8,7 @@
 
 #import "PhotosAllViewController+Private.h"
 #import "Album.h"
+#import "SDWebImage/SDWebImageManager.h"
 
 
 @implementation PhotosAllViewController (Private)
@@ -28,14 +29,38 @@
 //Obtiene las imágenes
 -(NSArray*)_imagesFromBundle
 {
-    NSArray *images = [NSArray array];
+    images = [NSArray array];
     
+       
+    NSLog(@"Start creating images");
+    
+    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+        
     for (int i=0; i< _photosURL.count; i++) {
-        UIImage *image = [UIImage imageWithData: [NSData dataWithContentsOfURL: [_photosURL objectAtIndex:i]]];
+        
+        [manager downloadWithURL:[_photosURL objectAtIndex:i]
+                        delegate:self
+                         options:0
+                         success:^(UIImage *image)
+         {
+             
+             //Mete aqui el resto de codigo
+             images = [images arrayByAddingObject:image];
+             
+             
+             
+             
+             
+         }
+                         failure:nil];
+
+        /*UIImage *image = [UIImage imageWithData: [NSData dataWithContentsOfURL: [_photosURL objectAtIndex:i]]];
         if (image) {
             images = [images arrayByAddingObject:image];
-        }
+        }*/
     }
+    
+    NSLog(@"Finish creating images");
     return images;
 }
 
@@ -50,12 +75,17 @@
     NSString *urlStr;
     NSURL *url;
     
+    NSLog(@"Start getting photos ids");
+    
     //Obtengo las fotos de ese álbum
     urlStr=[[[[@"http://api.smugmug.com/services/api/json/1.3.0/?method=smugmug.images.get&APIKey=bLmbO3nV8an2YhQpMogzNKA0toTHbfGU&AlbumID=" stringByAppendingString:[[NSNumber numberWithInt:_album.idAlbum]stringValue]] stringByAppendingString:@"&AlbumKey="]stringByAppendingString:_album.key]stringByAppendingString:@"&pretty=true"];
         
     url=[NSURL URLWithString:urlStr];
         
     NSData* data = [NSData dataWithContentsOfURL: url];
+    
+    
+    NSLog(@"Finish  photos ids");
     [self getPhotosResponse:data];
        
     //load the placeholder image
@@ -67,10 +97,10 @@
     }
     [self reloadData];
     
-    NSArray *images = [self _imagesFromBundle];
-    for (int i = 0; i < images.count; i++) {
+    NSArray *imagesShow = [self _imagesFromBundle];
+    for (int i = 0; i < imagesShow.count; i++) {
         UIImageView *imageView = [_items objectAtIndex:i];
-        UIImage *image = [images objectAtIndex:i];
+        UIImage *image = [imagesShow objectAtIndex:i];
         imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
         
         [self performSelector:@selector(animateUpdate:)
@@ -83,40 +113,42 @@
 -(void) getPhotosResponse:(NSData *)responseData{
     //parse out the json data
     NSError* error;
-    int randomImagen;
+    int imageID;
+    NSString *imageKey;
     
     NSDictionary* json = [NSJSONSerialization
                           JSONObjectWithData:responseData
                           options:kNilOptions
                           error:&error];
     
-    
+    NSLog(@"Start getting photos urls");
     
     //Obtengo las imagenes
     NSMutableArray* imagenes = [[json objectForKey:@"Album"]objectForKey:@"Images"];
-    if([imagenes count]>1)
-        randomImagen = arc4random() % ([imagenes count]-1);
-    else
-        randomImagen=0;
+    for(int i=0; i<imagenes.count;i++){
+        imageID=[[[imagenes objectAtIndex:i]objectForKey:@"id"] intValue];
+        imageKey=[[imagenes objectAtIndex:i]objectForKey:@"Key"];
+        
+        //Obtengo la url de la imagen random
+        NSString *urlStr=[[[[@"http://api.smugmug.com/services/api/json/1.3.0/?method=smugmug.images.getURLs&APIKey=bLmbO3nV8an2YhQpMogzNKA0toTHbfGU&ImageID=" stringByAppendingString:[[NSNumber numberWithInt:imageID]stringValue]] stringByAppendingString:@"&ImageKey="]stringByAppendingString:imageKey]stringByAppendingString:@"&pretty=true"];
+        
+        NSURL *url=[NSURL URLWithString:urlStr];
+        NSData* dataImagen = [NSData dataWithContentsOfURL: url];
+        
+        json = [NSJSONSerialization
+                JSONObjectWithData:dataImagen
+                options:kNilOptions
+                error:&error];
+        
+        NSURL *urlImagen = [NSURL URLWithString:[[json objectForKey:@"Image"]objectForKey:@"ThumbURL"]];
+        //Añado la url al array de URL's de categorías
+        [_photosURL addObject:urlImagen];
+
+    }
     
-    int imageID=[[[imagenes objectAtIndex:randomImagen]objectForKey:@"id"] intValue];
-    NSString *imageKey=[[imagenes objectAtIndex:randomImagen]objectForKey:@"Key"];
     
-    //Obtengo la url de la imagen random
-    NSString *urlStr=[[[[@"http://api.smugmug.com/services/api/json/1.3.0/?method=smugmug.images.getURLs&APIKey=bLmbO3nV8an2YhQpMogzNKA0toTHbfGU&ImageID=" stringByAppendingString:[[NSNumber numberWithInt:imageID]stringValue]] stringByAppendingString:@"&ImageKey="]stringByAppendingString:imageKey]stringByAppendingString:@"&pretty=true"];
-    
-    NSURL *url=[NSURL URLWithString:urlStr];
-    NSData* dataImagen = [NSData dataWithContentsOfURL: url];
-    
-    json = [NSJSONSerialization
-            JSONObjectWithData:dataImagen
-            options:kNilOptions
-            error:&error];
-    
-    NSURL *urlImagen = [NSURL URLWithString:[[json objectForKey:@"Image"]objectForKey:@"SmallURL"]];
-    //Añado la url al array de URL's de categorías
-    [_photosURL addObject:urlImagen];
-    
+    NSLog(@"Finish getting photos urls");
+  
 }
 
 - (void) animateUpdate:(NSArray*)objects

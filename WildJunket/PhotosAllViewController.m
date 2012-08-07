@@ -8,7 +8,11 @@
 
 #import "PhotosAllViewController.h"
 #import "BDRowInfo.h"
+#import "SVProgressHUD.h"
+#import "Album.h"
 #import "PhotosAllViewController+Private.h"
+
+#define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
 
 @interface PhotosAllViewController ()
 
@@ -50,9 +54,17 @@
     self.onDoubleTap = ^(UIView* view, NSInteger viewIndex){
         NSLog(@"Double tap on %@, at %d", view, viewIndex);
     };
-    [self _demoAsyncDataLoading];
-    [self buildBarButtons];
-
+    
+    [SVProgressHUD showWithStatus:[@"Loading " stringByAppendingString:self.album.name]];
+    
+    dispatch_async(kBgQueue, ^{
+        [self _demoAsyncDataLoading];
+        [self buildBarButtons];
+        [SVProgressHUD dismiss];
+        
+    });
+    
+    
 }
 
 - (void)animateReload
@@ -91,6 +103,7 @@
 {
     [super viewDidUnload];
     self.album=nil;
+    self.items=nil;
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }

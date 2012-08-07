@@ -18,6 +18,7 @@
     Album *_album;
     NSArray *_items;
     NSMutableArray *_photosURL;
+    NSArray *images;
 }
 
 

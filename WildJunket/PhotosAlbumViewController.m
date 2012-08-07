@@ -225,6 +225,7 @@
     [self setTitulo:nil];
     self.carousel = nil;
     self.subCategory=nil;
+    self.items=nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
