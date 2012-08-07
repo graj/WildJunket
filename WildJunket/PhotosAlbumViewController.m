@@ -11,6 +11,7 @@
 #import "SVProgressHUD.h"
 #import "Album.h"
 #import "CategoryPhotos.h"
+#import "PhotosAllViewController.h"
 #import "SubCategory.h"
 #import "UIButton+WebCache.h"
 #include <stdlib.h>
@@ -70,16 +71,16 @@
 
 - (void)buttonTapped:(UIButton *)sender
 {
-	//get item index for button
+    //get item index for button
 	NSInteger index = [carousel indexOfItemViewOrSubview:sender];
-	
+	Album *album=[self.subCategory.albums objectAtIndex:index];
     
     //Hacer esto para llamar al otro controller, hay que hacerlo programaticamente
     
-    /*PhotosViewController *myNewVC = [[PhotosViewController alloc] init];
-     myNewVC.navigationItem.title = sub.title
-     
-     [self.navigationController pushViewController:myNewVC animated:YES];}*/
+    PhotosAllViewController *allVC = [[PhotosAllViewController alloc] initWithAlbum:album];
+    allVC.navigationItem.title = album.name;
+    
+    [self.navigationController pushViewController:allVC animated:YES];
     
 }
 

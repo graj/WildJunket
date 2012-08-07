@@ -32,6 +32,8 @@
 		631CF5E915B410B30043EE5A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 631CF5E815B410B30043EE5A /* libxml2.dylib */; };
 		6329209215D117DF00F3A81F /* PhotosAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6329209015D117DF00F3A81F /* PhotosAlbumViewController.m */; };
 		6329209315D117DF00F3A81F /* PhotosAlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6329209115D117DF00F3A81F /* PhotosAlbumViewController.xib */; };
+		6329209815D11E2600F3A81F /* PhotosAllViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6329209615D11E2600F3A81F /* PhotosAllViewController.m */; };
+		6329209915D11E2600F3A81F /* PhotosAllViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6329209715D11E2600F3A81F /* PhotosAllViewController.xib */; };
 		633E9C0715A7A70700DA4C90 /* MKMapView+ZoomLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 633E9C0615A7A70700DA4C90 /* MKMapView+ZoomLevel.m */; };
 		6346C48C15B959290093059A /* readerbutton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6346C48A15B959290093059A /* readerbutton@2x.png */; };
 		6346C48D15B959290093059A /* readerbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 6346C48B15B959290093059A /* readerbutton.png */; };
@@ -208,6 +210,9 @@
 		6329208F15D117DF00F3A81F /* PhotosAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosAlbumViewController.h; sourceTree = "<group>"; };
 		6329209015D117DF00F3A81F /* PhotosAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosAlbumViewController.m; sourceTree = "<group>"; };
 		6329209115D117DF00F3A81F /* PhotosAlbumViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotosAlbumViewController.xib; sourceTree = "<group>"; };
+		6329209515D11E2600F3A81F /* PhotosAllViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosAllViewController.h; sourceTree = "<group>"; };
+		6329209615D11E2600F3A81F /* PhotosAllViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosAllViewController.m; sourceTree = "<group>"; };
+		6329209715D11E2600F3A81F /* PhotosAllViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotosAllViewController.xib; sourceTree = "<group>"; };
 		633E9C0515A7A70700DA4C90 /* MKMapView+ZoomLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+ZoomLevel.h"; sourceTree = "<group>"; };
 		633E9C0615A7A70700DA4C90 /* MKMapView+ZoomLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+ZoomLevel.m"; sourceTree = "<group>"; };
 		6346C48A15B959290093059A /* readerbutton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "readerbutton@2x.png"; sourceTree = "<group>"; };
@@ -563,6 +568,8 @@
 				63F47EF715D05FF5009CDD1A /* PhotosSubCatViewController.m */,
 				6329208F15D117DF00F3A81F /* PhotosAlbumViewController.h */,
 				6329209015D117DF00F3A81F /* PhotosAlbumViewController.m */,
+				6329209515D11E2600F3A81F /* PhotosAllViewController.h */,
+				6329209615D11E2600F3A81F /* PhotosAllViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -788,6 +795,7 @@
 				63EF2532158C6033004E2BFB /* MainStoryboard.storyboard */,
 				6329209115D117DF00F3A81F /* PhotosAlbumViewController.xib */,
 				63F47EFD15D07D2A009CDD1A /* PhotosSubCatView.xib */,
+				6329209715D11E2600F3A81F /* PhotosAllViewController.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -921,6 +929,7 @@
 				6309D3DC15BC142F00CCF62E /* Icon@2x.png in Resources */,
 				63F47EFE15D07D2A009CDD1A /* PhotosSubCatView.xib in Resources */,
 				6329209315D117DF00F3A81F /* PhotosAlbumViewController.xib in Resources */,
+				6329209915D11E2600F3A81F /* PhotosAllViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1017,6 +1026,7 @@
 				63F47EAC15CFB4C2009CDD1A /* iCarousel.m in Sources */,
 				63F47EF815D05FF6009CDD1A /* PhotosSubCatViewController.m in Sources */,
 				6329209215D117DF00F3A81F /* PhotosAlbumViewController.m in Sources */,
+				6329209815D11E2600F3A81F /* PhotosAllViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
