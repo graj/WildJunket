@@ -59,9 +59,6 @@
     
     dispatch_async(kBgQueue, ^{
         [self _demoAsyncDataLoading];
-        [self buildBarButtons];
-        [SVProgressHUD dismiss];
-        
     });
     
     

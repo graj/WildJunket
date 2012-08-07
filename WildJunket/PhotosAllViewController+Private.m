@@ -8,6 +8,7 @@
 
 #import "PhotosAllViewController+Private.h"
 #import "Album.h"
+#import "SVProgressHUD.h"
 #import "SDWebImage/SDWebImageManager.h"
 
 
@@ -30,10 +31,7 @@
 -(NSArray*)_imagesFromURL:(NSURL*)url item:(int)item
 {
     images = [NSArray array];
-    
-       
-    NSLog(@"Start creating images");
-    
+   
     SDWebImageManager *manager = [SDWebImageManager sharedManager];
            
         [manager downloadWithURL:url
@@ -56,8 +54,6 @@
          }
                          failure:nil];
    
-    
-    NSLog(@"Finish creating images");
     return images;
 }
 
@@ -80,34 +76,37 @@
     url=[NSURL URLWithString:urlStr];
         
     NSData* data = [NSData dataWithContentsOfURL: url];
+   
+    int numPhotos=[self getnumeroPhotos:data];
     
-    
-    NSLog(@"Finish  photos ids");
-    
-    
-    [self getPhotosResponse:data];
-       
     //load the placeholder image
-    /*for (int i=0; i <_photosURL.count; i++) {
+    for (int i=0; i <numPhotos; i++) {
         UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"placeholder.png"]];
         imageView.frame = CGRectMake(0, 0, 44, 44);
         imageView.clipsToBounds = YES;
         _items = [_items arrayByAddingObject:imageView];
-        
-        [self _imagesFromURL:[_photosURL objectAtIndex:i] item:i];
-    }*/
+    }
     
+    [SVProgressHUD dismiss];
     
+    [self reloadData];
     
-    /*for (int i = 0; i < imagesShow.count; i++) {
-        UIImageView *imageView = [_items objectAtIndex:i];
-        UIImage *image = [imagesShow objectAtIndex:i];
-        imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
-        
-        [self performSelector:@selector(animateUpdate:)
-                   withObject:[NSArray arrayWithObjects:imageView, image, nil]
-                   afterDelay:0.2 + (arc4random()%3) + (arc4random() %10 * 0.1)];
-    }*/
+    //Toma el url de cada foto y llama al método para bajarlas asíncronamente
+    [self getPhotosResponse:data];
+    
+}
+
+-(int)getnumeroPhotos:(NSData*)response{
+    NSError* error;
+    NSDictionary* json = [NSJSONSerialization
+                          JSONObjectWithData:response
+                          options:kNilOptions
+                          error:&error];
+    
+    //Obtengo las imagenes
+    NSMutableArray* imagenes = [[json objectForKey:@"Album"]objectForKey:@"Images"];
+    return imagenes.count;
+    
 }
 
 
@@ -121,9 +120,7 @@
                           JSONObjectWithData:responseData
                           options:kNilOptions
                           error:&error];
-    
-    NSLog(@"Start getting photos urls");
-    
+        
     //Obtengo las imagenes
     NSMutableArray* imagenes = [[json objectForKey:@"Album"]objectForKey:@"Images"];
     for(int i=0; i<imagenes.count;i++){
@@ -144,25 +141,12 @@
         NSURL *urlImagen = [NSURL URLWithString:[[json objectForKey:@"Image"]objectForKey:@"ThumbURL"]];
         //Añado la url al array de URL's de categorías
         [_photosURL addObject:urlImagen];
-        
-        
-        //Crea el marco de las imagenes con el placeholder y llama al método que baja la imagen asincronamente
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"placeholder.png"]];
-        imageView.frame = CGRectMake(0, 0, 44, 44);
-        imageView.clipsToBounds = YES;
-        _items = [_items arrayByAddingObject:imageView];
-        
-        [self reloadData];
-        
-        
+                
+        //Llamada al método que baja la imagen asincronamente
         [self _imagesFromURL:urlImagen item:i];
 
-
     }
-    
-    
-    NSLog(@"Finish getting photos urls");
-  
+     
 }
 
 - (void) animateUpdate:(NSArray*)objects
