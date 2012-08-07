@@ -9,6 +9,7 @@
 #import "PhotosAllViewController+Private.h"
 #import "Album.h"
 #import "SVProgressHUD.h"
+#import "Photo.h"
 #import "SDWebImage/SDWebImageManager.h"
 
 
@@ -115,6 +116,7 @@
     NSError* error;
     int imageID;
     NSString *imageKey;
+    Photo* photoObj;
     
     NSDictionary* json = [NSJSONSerialization
                           JSONObjectWithData:responseData
@@ -139,8 +141,11 @@
                 error:&error];
         
         NSURL *urlImagen = [NSURL URLWithString:[[json objectForKey:@"Image"]objectForKey:@"ThumbURL"]];
+        
+        NSURL *urlShow = [NSURL URLWithString:[[json objectForKey:@"Image"]objectForKey:@"LargeURL"]];
         //Añado la url al array de URL's de categorías
-        [_photosURL addObject:urlImagen];
+        photoObj=[[Photo alloc] init:imageID idAlbum:self.album.idAlbum key:imageKey thumb:urlImagen showPhoto:urlShow];
+        [_photosURL addObject:photoObj];
                 
         //Llamada al método que baja la imagen asincronamente
         [self _imagesFromURL:urlImagen item:i];

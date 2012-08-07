@@ -10,6 +10,7 @@
 #import "BDRowInfo.h"
 #import "SVProgressHUD.h"
 #import "Album.h"
+#import "Photo.h"
 #import "PhotosAllViewController+Private.h"
 
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
@@ -22,6 +23,7 @@
 @implementation PhotosAllViewController
 @synthesize album=_album;
 @synthesize items=_items;
+@synthesize photosURL=_photosURL;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -47,14 +49,11 @@
     self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
     self.delegate = self;
     
-    self.onLongPress = ^(UIView* view, NSInteger viewIndex){
-        NSLog(@"Long press on %@, at %d", view, viewIndex);
-    };
+    self.onSingleTap = ^(UIView* view, NSInteger viewIndex){
+        
     
-    self.onDoubleTap = ^(UIView* view, NSInteger viewIndex){
-        NSLog(@"Double tap on %@, at %d", view, viewIndex);
     };
-    
+        
     [SVProgressHUD showWithStatus:[@"Loading " stringByAppendingString:self.album.name]];
     
     dispatch_async(kBgQueue, ^{
@@ -101,6 +100,7 @@
     [super viewDidUnload];
     self.album=nil;
     self.items=nil;
+    _photosURL=nil;
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }

@@ -14,13 +14,12 @@
     int _idAlbum;
     NSString* _key;
     NSString* _name;
-    NSMutableArray* _photos;
+
     
 }
 
 @property (nonatomic) NSString *key;
 @property (nonatomic) NSString *name;
-@property (nonatomic) NSMutableArray *photos;
 @property int idCat;
 @property int idSubCat;
 @property int idAlbum;

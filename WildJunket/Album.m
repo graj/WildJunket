@@ -13,7 +13,6 @@
 @synthesize idCat=_idCat;
 @synthesize idSubCat=_idSubCat;
 @synthesize name=_name;
-@synthesize photos=_photos;
 @synthesize key=_key;
 
 - (id)init:(int)idAlbumParam idCatParam:(int)idCatParam idSubCatParam:(int)idSubCatParam nameParam:(NSString*)nameParam keyParam:(NSString*)keyParam
@@ -24,7 +23,6 @@
         self.idSubCat = idSubCatParam;
         self.name = [nameParam copy];
         self.key= [keyParam copy];
-        self.photos=[[NSMutableArray alloc] init];
         
     }
     return self;

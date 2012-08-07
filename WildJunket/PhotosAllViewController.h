@@ -26,5 +26,6 @@
 
 - (id)initWithAlbum:(Album*)album;
 @property (nonatomic) NSArray *items;
+@property(nonatomic)NSMutableArray *photosURL;
 
 @end
