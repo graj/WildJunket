@@ -1,33 +1,33 @@
 //
-//  PhotosSubCatViewController.m
+//  PhotosAlbumViewController.m
 //  WildJunket
 //
-//  Created by David García Fernández on 16/06/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by david on 07/08/12.
+//
 //
 
-#import "PhotosSubCatViewController.h"
+
+#import "PhotosAlbumViewController.h"
 #import "SVProgressHUD.h"
 #import "Album.h"
 #import "CategoryPhotos.h"
 #import "SubCategory.h"
-#import "PhotosAlbumViewController.h"
 #import "UIButton+WebCache.h"
 #include <stdlib.h>
 
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
 
 
-@interface PhotosSubCatViewController () <iCarouselDataSource, iCarouselDelegate>
+@interface PhotosAlbumViewController () <iCarouselDataSource, iCarouselDelegate>
 @property (nonatomic) iCarousel *carousel;
 @property (nonatomic) NSMutableArray *items;
 
 @end
 
-@implementation PhotosSubCatViewController
+@implementation PhotosAlbumViewController
 @synthesize titulo;
 @synthesize carousel;
-@synthesize category=_category;
+@synthesize subCategory=_subCategory;
 
 #pragma mark -
 #pragma mark iCarousel methods
@@ -61,7 +61,7 @@
 //Evento al mover el carousel
 -(void)carouselCurrentItemIndexDidChange:(iCarousel *)carousel{
     int index = self.carousel.currentItemIndex;
-    titulo.text=[[self.category.subCats objectAtIndex:index] name];
+    titulo.text=[[self.subCategory.albums objectAtIndex:index] name];
     
 }
 
@@ -70,26 +70,26 @@
 
 - (void)buttonTapped:(UIButton *)sender
 {
-    //get item index for button
+	//get item index for button
 	NSInteger index = [carousel indexOfItemViewOrSubview:sender];
-	SubCategory *subCat=[self.category.subCats objectAtIndex:index];
+	
     
     //Hacer esto para llamar al otro controller, hay que hacerlo programaticamente
     
-    PhotosAlbumViewController *albumVC = [[PhotosAlbumViewController alloc] initWithSubCategory:subCat];
-    albumVC.navigationItem.title = subCat.name;
-    
-    [self.navigationController pushViewController:albumVC animated:YES];
+    /*PhotosViewController *myNewVC = [[PhotosViewController alloc] init];
+     myNewVC.navigationItem.title = sub.title
+     
+     [self.navigationController pushViewController:myNewVC animated:YES];}*/
     
 }
 
 #pragma mark -
 #pragma mark view methods
 
-- (id)initWithCategory:(CategoryPhotos*)category
+- (id)initWithSubCategory:(SubCategory*)subCategory
 {
     if ((self = [super init])) {
-        self.category=category;
+        self.subCategory=subCategory;
         
     }
     return self;
@@ -111,7 +111,7 @@
     self.titulo.textColor=[UIColor blackColor];
     
     //Llamada API de smugmug y tomar urls de las fotos de las categorías
-    [SVProgressHUD showWithStatus:[@"Loading " stringByAppendingString:self.category.name]];
+    [SVProgressHUD showWithStatus:[@"Loading " stringByAppendingString:self.subCategory.name]];
     
     
     dispatch_async(kBgQueue, ^{
@@ -141,7 +141,7 @@
     //add carousel to view
     [self.view addSubview:carousel];
     
-    titulo.text=[[self.category.subCats objectAtIndex:0] name];
+    titulo.text=[[self.subCategory.albums objectAtIndex:0] name];
     [self.titulo setHidden:NO];
     [SVProgressHUD dismiss];
 }
@@ -151,23 +151,13 @@
     //Instancio array de URL's
     self.items=[[NSMutableArray alloc] init];
     
-    int randomAlbum;
-    Album *albumAux;
     NSString *urlStr;
     NSURL *url;
     
-    for (SubCategory *cat in self.category.subCats) {
-        
-        //De un álbum random
-        //Si tiene más de un elemento, si no cojo el primero
-        if([cat.albums count]>1)
-            randomAlbum=arc4random() % ([cat.albums count]-1);
-        else
-            randomAlbum=0;
-        albumAux=[cat.albums objectAtIndex:randomAlbum];
-        
+    for (Album *alb in self.subCategory.albums) {
+                 
         //Obtengo las fotos de ese álbum
-        urlStr=[[[[@"http://api.smugmug.com/services/api/json/1.3.0/?method=smugmug.images.get&APIKey=bLmbO3nV8an2YhQpMogzNKA0toTHbfGU&AlbumID=" stringByAppendingString:[[NSNumber numberWithInt:albumAux.idAlbum]stringValue]] stringByAppendingString:@"&AlbumKey="]stringByAppendingString:albumAux.key]stringByAppendingString:@"&pretty=true"];
+        urlStr=[[[[@"http://api.smugmug.com/services/api/json/1.3.0/?method=smugmug.images.get&APIKey=bLmbO3nV8an2YhQpMogzNKA0toTHbfGU&AlbumID=" stringByAppendingString:[[NSNumber numberWithInt:alb.idAlbum]stringValue]] stringByAppendingString:@"&AlbumKey="]stringByAppendingString:alb.key]stringByAppendingString:@"&pretty=true"];
         
         url=[NSURL URLWithString:urlStr];
         
@@ -233,7 +223,7 @@
     
     [self setTitulo:nil];
     self.carousel = nil;
-    self.category=nil;
+    self.subCategory=nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -247,4 +237,3 @@
 }
 
 @end
-
