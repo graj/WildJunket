@@ -108,8 +108,6 @@
     [self.titulo setHidden:YES];
     
     //Apariencia
-    self.view.backgroundColor=[UIColor whiteColor];
-    self.titulo.textColor=[UIColor blackColor];
     
     //Llamada API de smugmug y tomar urls de las fotos de las categorías
     [SVProgressHUD showWithStatus:[@"Loading " stringByAppendingString:self.subCategory.name]];
