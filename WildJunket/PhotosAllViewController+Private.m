@@ -81,7 +81,7 @@
     
     //load the placeholder image
     for (int i=0; i <numPhotos; i++) {
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"placeholder.png"]];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"placeholderphotos.png"]];
         imageView.frame = CGRectMake(0, 0, 44, 44);
         imageView.clipsToBounds = YES;
         _items = [_items arrayByAddingObject:imageView];

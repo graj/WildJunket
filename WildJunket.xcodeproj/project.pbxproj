@@ -11,6 +11,7 @@
 		6302D15A15CD653A00A6BE31 /* Album.m in Sources */ = {isa = PBXBuildFile; fileRef = 6302D15915CD653A00A6BE31 /* Album.m */; };
 		6302D15D15CD654900A6BE31 /* SubCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 6302D15C15CD654900A6BE31 /* SubCategory.m */; };
 		6302D16515CD6BCD00A6BE31 /* CategoryPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = 6302D16415CD6BCD00A6BE31 /* CategoryPhotos.m */; };
+		6306EE1015D162F900F14B94 /* placeholderphotos.png in Resources */ = {isa = PBXBuildFile; fileRef = 6306EE0F15D162F900F14B94 /* placeholderphotos.png */; };
 		6309D38815BBEAAF00CCF62E /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6309D38715BBEAAF00CCF62E /* libTestFlight.a */; };
 		6309D3C215BBFF1C00CCF62E /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 6309D3AF15BBFF1C00CCF62E /* MKAnnotationView+WebCache.m */; };
 		6309D3C315BBFF1C00CCF62E /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 6309D3B115BBFF1C00CCF62E /* SDImageCache.m */; };
@@ -175,6 +176,7 @@
 		6302D15C15CD654900A6BE31 /* SubCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubCategory.m; sourceTree = "<group>"; };
 		6302D16315CD6BCD00A6BE31 /* CategoryPhotos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryPhotos.h; sourceTree = "<group>"; };
 		6302D16415CD6BCD00A6BE31 /* CategoryPhotos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryPhotos.m; sourceTree = "<group>"; };
+		6306EE0F15D162F900F14B94 /* placeholderphotos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholderphotos.png; sourceTree = "<group>"; };
 		6309D38615BBEA8E00CCF62E /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		6309D38715BBEAAF00CCF62E /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
 		6309D3AE15BBFF1C00CCF62E /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
@@ -524,6 +526,7 @@
 				63BB49F715B4BEBE00CAE398 /* bar-button.png */,
 				63BB49F815B4BEBE00CAE398 /* bar-button@2x.png */,
 				63CF5C1515B43B46000B3D46 /* placeholder.png */,
+				6306EE0F15D162F900F14B94 /* placeholderphotos.png */,
 				635002CD15AB964E00FC9BCF /* wildjunket.pdf */,
 				63ABEE4015A33818008F8C16 /* icons */,
 			);
@@ -957,6 +960,7 @@
 				6309D3DC15BC142F00CCF62E /* Icon@2x.png in Resources */,
 				63F47EFE15D07D2A009CDD1A /* PhotosSubCatView.xib in Resources */,
 				6329209315D117DF00F3A81F /* PhotosAlbumViewController.xib in Resources */,
+				6306EE1015D162F900F14B94 /* placeholderphotos.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
