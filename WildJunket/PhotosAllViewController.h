@@ -7,19 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BDDynamicGridViewController.h"
 
 @class Album;
 @class Photo;
 @class CategoryPhotos;
 @class SubCategory;
-
-@interface PhotosAllViewController : UIViewController{
+ 
+@interface PhotosAllViewController : BDDynamicGridViewController <BDDynamicGridViewDelegate>{
     Album *_album;
+    NSArray *_items;
 }
 
 
 @property (strong, nonatomic) Album *album;
 
 - (id)initWithAlbum:(Album*)album;
+@property (nonatomic) NSArray *items;
 
 @end

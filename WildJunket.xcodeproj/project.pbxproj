@@ -34,6 +34,10 @@
 		6329209315D117DF00F3A81F /* PhotosAlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6329209115D117DF00F3A81F /* PhotosAlbumViewController.xib */; };
 		6329209815D11E2600F3A81F /* PhotosAllViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6329209615D11E2600F3A81F /* PhotosAllViewController.m */; };
 		6329209915D11E2600F3A81F /* PhotosAllViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6329209715D11E2600F3A81F /* PhotosAllViewController.xib */; };
+		632920A215D1224300F3A81F /* BDDynamicGridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6329209C15D1224300F3A81F /* BDDynamicGridCell.m */; };
+		632920A315D1224300F3A81F /* BDDynamicGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6329209E15D1224300F3A81F /* BDDynamicGridViewController.m */; };
+		632920A415D1224300F3A81F /* BDRowInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 632920A115D1224300F3A81F /* BDRowInfo.m */; };
+		632920AB15D123FD00F3A81F /* PhotosAllViewController+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 632920AA15D123FD00F3A81F /* PhotosAllViewController+Private.m */; };
 		633E9C0715A7A70700DA4C90 /* MKMapView+ZoomLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 633E9C0615A7A70700DA4C90 /* MKMapView+ZoomLevel.m */; };
 		6346C48C15B959290093059A /* readerbutton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6346C48A15B959290093059A /* readerbutton@2x.png */; };
 		6346C48D15B959290093059A /* readerbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 6346C48B15B959290093059A /* readerbutton.png */; };
@@ -213,6 +217,15 @@
 		6329209515D11E2600F3A81F /* PhotosAllViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosAllViewController.h; sourceTree = "<group>"; };
 		6329209615D11E2600F3A81F /* PhotosAllViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosAllViewController.m; sourceTree = "<group>"; };
 		6329209715D11E2600F3A81F /* PhotosAllViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotosAllViewController.xib; sourceTree = "<group>"; };
+		6329209B15D1224300F3A81F /* BDDynamicGridCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDDynamicGridCell.h; sourceTree = "<group>"; };
+		6329209C15D1224300F3A81F /* BDDynamicGridCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDDynamicGridCell.m; sourceTree = "<group>"; };
+		6329209D15D1224300F3A81F /* BDDynamicGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDDynamicGridViewController.h; sourceTree = "<group>"; };
+		6329209E15D1224300F3A81F /* BDDynamicGridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDDynamicGridViewController.m; sourceTree = "<group>"; };
+		6329209F15D1224300F3A81F /* BDDynamicGridViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDDynamicGridViewDelegate.h; sourceTree = "<group>"; };
+		632920A015D1224300F3A81F /* BDRowInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDRowInfo.h; sourceTree = "<group>"; };
+		632920A115D1224300F3A81F /* BDRowInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDRowInfo.m; sourceTree = "<group>"; };
+		632920A915D123FC00F3A81F /* PhotosAllViewController+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PhotosAllViewController+Private.h"; sourceTree = "<group>"; };
+		632920AA15D123FD00F3A81F /* PhotosAllViewController+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PhotosAllViewController+Private.m"; sourceTree = "<group>"; };
 		633E9C0515A7A70700DA4C90 /* MKMapView+ZoomLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+ZoomLevel.h"; sourceTree = "<group>"; };
 		633E9C0615A7A70700DA4C90 /* MKMapView+ZoomLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+ZoomLevel.m"; sourceTree = "<group>"; };
 		6346C48A15B959290093059A /* readerbutton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "readerbutton@2x.png"; sourceTree = "<group>"; };
@@ -471,6 +484,21 @@
 			name = hpple;
 			sourceTree = "<group>";
 		};
+		6329209A15D1224300F3A81F /* BDDynamicGrid */ = {
+			isa = PBXGroup;
+			children = (
+				6329209B15D1224300F3A81F /* BDDynamicGridCell.h */,
+				6329209C15D1224300F3A81F /* BDDynamicGridCell.m */,
+				6329209D15D1224300F3A81F /* BDDynamicGridViewController.h */,
+				6329209E15D1224300F3A81F /* BDDynamicGridViewController.m */,
+				6329209F15D1224300F3A81F /* BDDynamicGridViewDelegate.h */,
+				632920A015D1224300F3A81F /* BDRowInfo.h */,
+				632920A115D1224300F3A81F /* BDRowInfo.m */,
+			);
+			name = BDDynamicGrid;
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		6350026815AB81C400FC9BCF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -570,6 +598,8 @@
 				6329209015D117DF00F3A81F /* PhotosAlbumViewController.m */,
 				6329209515D11E2600F3A81F /* PhotosAllViewController.h */,
 				6329209615D11E2600F3A81F /* PhotosAllViewController.m */,
+				632920A915D123FC00F3A81F /* PhotosAllViewController+Private.h */,
+				632920AA15D123FD00F3A81F /* PhotosAllViewController+Private.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -741,6 +771,7 @@
 		63EF2526158C6033004E2BFB /* WildJunket */ = {
 			isa = PBXGroup;
 			children = (
+				6329209A15D1224300F3A81F /* BDDynamicGrid */,
 				63F47F0015D07E08009CDD1A /* Views */,
 				63804C6015CC4BAC00DD3679 /* iCarousel */,
 				6309D3AD15BBFF1C00CCF62E /* SDWebImage */,
@@ -1027,6 +1058,10 @@
 				63F47EF815D05FF6009CDD1A /* PhotosSubCatViewController.m in Sources */,
 				6329209215D117DF00F3A81F /* PhotosAlbumViewController.m in Sources */,
 				6329209815D11E2600F3A81F /* PhotosAllViewController.m in Sources */,
+				632920A215D1224300F3A81F /* BDDynamicGridCell.m in Sources */,
+				632920A315D1224300F3A81F /* BDDynamicGridViewController.m in Sources */,
+				632920A415D1224300F3A81F /* BDRowInfo.m in Sources */,
+				632920AB15D123FD00F3A81F /* PhotosAllViewController+Private.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
