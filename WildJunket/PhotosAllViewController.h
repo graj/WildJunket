@@ -17,6 +17,7 @@
 @interface PhotosAllViewController : BDDynamicGridViewController <BDDynamicGridViewDelegate>{
     Album *_album;
     NSArray *_items;
+    NSMutableArray *_photosURL;
 }
 
 
