@@ -11,6 +11,7 @@
 #import "SVProgressHUD.h"
 #import "Album.h"
 #import "Photo.h"
+#import "PhotoShowViewController.h"
 #import "PhotosAllViewController+Private.h"
 
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
@@ -50,8 +51,11 @@
     self.delegate = self;
     
     self.onSingleTap = ^(UIView* view, NSInteger viewIndex){
+        //Llamada al view para mostrar toda la fotos
+        PhotoShowViewController *photoVC = [[PhotoShowViewController alloc]initWithURL:[[self.photosURL objectAtIndex:viewIndex] showPhoto]];
         
-    
+        [self.navigationController pushViewController:photoVC animated:YES];
+
     };
         
     [SVProgressHUD showWithStatus:[@"Loading " stringByAppendingString:self.album.name]];

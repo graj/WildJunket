@@ -105,6 +105,8 @@
 		63ABEE5715A338D1008F8C16 /* 59-info.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ABEE5115A338D1008F8C16 /* 59-info.png */; };
 		63ABEE5815A338D1008F8C16 /* 71-compass.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ABEE5215A338D1008F8C16 /* 71-compass.png */; };
 		63ABEE5915A338D1008F8C16 /* 86-camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ABEE5315A338D1008F8C16 /* 86-camera.png */; };
+		63B54A8815D1927800EE05F1 /* PhotoShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B54A8715D1927800EE05F1 /* PhotoShowViewController.m */; };
+		63B54A8B15D192A900EE05F1 /* PhotoShowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B54A8A15D192A900EE05F1 /* PhotoShowView.xib */; };
 		63BB49FB15B4BEBE00CAE398 /* back-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 63BB49F515B4BEBE00CAE398 /* back-button.png */; };
 		63BB49FC15B4BEBE00CAE398 /* back-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63BB49F615B4BEBE00CAE398 /* back-button@2x.png */; };
 		63BB49FD15B4BEBE00CAE398 /* bar-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 63BB49F715B4BEBE00CAE398 /* bar-button.png */; };
@@ -317,6 +319,9 @@
 		63ABEE5115A338D1008F8C16 /* 59-info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "59-info.png"; sourceTree = "<group>"; };
 		63ABEE5215A338D1008F8C16 /* 71-compass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "71-compass.png"; sourceTree = "<group>"; };
 		63ABEE5315A338D1008F8C16 /* 86-camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "86-camera.png"; sourceTree = "<group>"; };
+		63B54A8615D1927800EE05F1 /* PhotoShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoShowViewController.h; sourceTree = "<group>"; };
+		63B54A8715D1927800EE05F1 /* PhotoShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoShowViewController.m; sourceTree = "<group>"; };
+		63B54A8A15D192A900EE05F1 /* PhotoShowView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoShowView.xib; sourceTree = "<group>"; };
 		63BB49F515B4BEBE00CAE398 /* back-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-button.png"; sourceTree = "<group>"; };
 		63BB49F615B4BEBE00CAE398 /* back-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-button@2x.png"; sourceTree = "<group>"; };
 		63BB49F715B4BEBE00CAE398 /* bar-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar-button.png"; sourceTree = "<group>"; };
@@ -601,6 +606,8 @@
 				6329209615D11E2600F3A81F /* PhotosAllViewController.m */,
 				632920A915D123FC00F3A81F /* PhotosAllViewController+Private.h */,
 				632920AA15D123FD00F3A81F /* PhotosAllViewController+Private.m */,
+				63B54A8615D1927800EE05F1 /* PhotoShowViewController.h */,
+				63B54A8715D1927800EE05F1 /* PhotoShowViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -827,6 +834,7 @@
 				63EF2532158C6033004E2BFB /* MainStoryboard.storyboard */,
 				6329209115D117DF00F3A81F /* PhotosAlbumViewController.xib */,
 				63F47EFD15D07D2A009CDD1A /* PhotosSubCatView.xib */,
+				63B54A8A15D192A900EE05F1 /* PhotoShowView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -961,6 +969,7 @@
 				63F47EFE15D07D2A009CDD1A /* PhotosSubCatView.xib in Resources */,
 				6329209315D117DF00F3A81F /* PhotosAlbumViewController.xib in Resources */,
 				6306EE1015D162F900F14B94 /* placeholderphotos.png in Resources */,
+				63B54A8B15D192A900EE05F1 /* PhotoShowView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1062,6 +1071,7 @@
 				632920A315D1224300F3A81F /* BDDynamicGridViewController.m in Sources */,
 				632920A415D1224300F3A81F /* BDRowInfo.m in Sources */,
 				632920AB15D123FD00F3A81F /* PhotosAllViewController+Private.m in Sources */,
+				63B54A8815D1927800EE05F1 /* PhotoShowViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
