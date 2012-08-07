@@ -212,9 +212,9 @@
                           error:&error];
     
     NSURL *urlImagen = [NSURL URLWithString:[[json objectForKey:@"Image"]objectForKey:@"SmallURL"]];
-    //Añado la url al array de URL's de categorías
-    [self.items addObject:urlImagen];    
-
+    
+    if(urlImagen!=nil)
+        [self.items addObject:urlImagen];
 }
 
 -(void) getDatosCategorias{

@@ -47,9 +47,13 @@
              //Mete aqui el resto de codigo
              images = [images arrayByAddingObject:image];
              
+             UIImageView *imageView = [_items objectAtIndex:i];
+             imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
              
-             
-             
+             [self performSelector:@selector(animateUpdate:)
+                        withObject:[NSArray arrayWithObjects:imageView, image, nil]
+                        afterDelay:0.2 + (arc4random()%3) + (arc4random() %10 * 0.1)];
+                    
              
          }
                          failure:nil];
@@ -97,8 +101,8 @@
     }
     [self reloadData];
     
-    NSArray *imagesShow = [self _imagesFromBundle];
-    for (int i = 0; i < imagesShow.count; i++) {
+    [self _imagesFromBundle];
+    /*for (int i = 0; i < imagesShow.count; i++) {
         UIImageView *imageView = [_items objectAtIndex:i];
         UIImage *image = [imagesShow objectAtIndex:i];
         imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
@@ -106,7 +110,7 @@
         [self performSelector:@selector(animateUpdate:)
                    withObject:[NSArray arrayWithObjects:imageView, image, nil]
                    afterDelay:0.2 + (arc4random()%3) + (arc4random() %10 * 0.1)];
-    }
+    }*/
 }
 
 
