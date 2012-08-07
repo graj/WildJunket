@@ -27,7 +27,7 @@
 }
 
 //Obtiene las imágenes
--(NSArray*)_imagesFromBundle
+-(NSArray*)_imagesFromURL:(NSURL*)url item:(int)item
 {
     images = [NSArray array];
     
@@ -35,10 +35,8 @@
     NSLog(@"Start creating images");
     
     SDWebImageManager *manager = [SDWebImageManager sharedManager];
-        
-    for (int i=0; i< _photosURL.count; i++) {
-        
-        [manager downloadWithURL:[_photosURL objectAtIndex:i]
+           
+        [manager downloadWithURL:url
                         delegate:self
                          options:0
                          success:^(UIImage *image)
@@ -47,7 +45,7 @@
              //Mete aqui el resto de codigo
              images = [images arrayByAddingObject:image];
              
-             UIImageView *imageView = [_items objectAtIndex:i];
+             UIImageView *imageView = [_items objectAtIndex:item];
              imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
              
              [self performSelector:@selector(animateUpdate:)
@@ -57,12 +55,7 @@
              
          }
                          failure:nil];
-
-        /*UIImage *image = [UIImage imageWithData: [NSData dataWithContentsOfURL: [_photosURL objectAtIndex:i]]];
-        if (image) {
-            images = [images arrayByAddingObject:image];
-        }*/
-    }
+   
     
     NSLog(@"Finish creating images");
     return images;
@@ -90,18 +83,22 @@
     
     
     NSLog(@"Finish  photos ids");
+    
+    
     [self getPhotosResponse:data];
        
     //load the placeholder image
-    for (int i=0; i <_photosURL.count; i++) {
+    /*for (int i=0; i <_photosURL.count; i++) {
         UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"placeholder.png"]];
         imageView.frame = CGRectMake(0, 0, 44, 44);
         imageView.clipsToBounds = YES;
         _items = [_items arrayByAddingObject:imageView];
-    }
-    [self reloadData];
+        
+        [self _imagesFromURL:[_photosURL objectAtIndex:i] item:i];
+    }*/
     
-    [self _imagesFromBundle];
+    
+    
     /*for (int i = 0; i < imagesShow.count; i++) {
         UIImageView *imageView = [_items objectAtIndex:i];
         UIImage *image = [imagesShow objectAtIndex:i];
@@ -147,6 +144,19 @@
         NSURL *urlImagen = [NSURL URLWithString:[[json objectForKey:@"Image"]objectForKey:@"ThumbURL"]];
         //Añado la url al array de URL's de categorías
         [_photosURL addObject:urlImagen];
+        
+        
+        //Crea el marco de las imagenes con el placeholder y llama al método que baja la imagen asincronamente
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"placeholder.png"]];
+        imageView.frame = CGRectMake(0, 0, 44, 44);
+        imageView.clipsToBounds = YES;
+        _items = [_items arrayByAddingObject:imageView];
+        
+        [self reloadData];
+        
+        
+        [self _imagesFromURL:urlImagen item:i];
+
 
     }
     
