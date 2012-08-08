@@ -99,10 +99,7 @@
 {
     
     [super viewDidLoad];
-    
-    //Backgroud image
-    self.view.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"photosbackground3.png"]];
-
+    //tipo Wheel
     
     //Mostrar Nav Bar
     [self.navigationController setNavigationBarHidden: NO animated:YES];
