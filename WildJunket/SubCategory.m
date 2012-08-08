@@ -13,7 +13,7 @@
 @synthesize idSubCat=_idSubCat;
 @synthesize name=_name;
 @synthesize albums=_albums;
-
+@synthesize thumbnailURL=_thumbnailURL;
 
 - (id)init:(int)idSubCatParam idCatParam:(int)idCatParam nameParam:(NSString*)nameParam
 {
@@ -25,6 +25,11 @@
     }
     return self;
 }
+
+-(void)setThumbnailPhotoURL:(NSURL *)thumbnailURL{
+    self.thumbnailURL=thumbnailURL;
+}
+
 
 
 - (BOOL)isEqual:(id)other {

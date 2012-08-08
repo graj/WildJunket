@@ -12,6 +12,7 @@
 #import "CategoryPhotos.h"
 #import "SubCategory.h"
 #import "PhotosSubCatViewController.h"
+#import "PhotosAlbumViewController.h"
 #import "UIButton+WebCache.h"
 #import <QuartzCore/QuartzCore.h> 
 #include <stdlib.h>
@@ -20,9 +21,8 @@
 #define smugmugAlbums [NSURL URLWithString:@"http://api.smugmug.com/services/api/json/1.3.0/?method=smugmug.albums.get&APIKey=bLmbO3nV8an2YhQpMogzNKA0toTHbfGU&NickName=wildjunket&pretty=true"]
 
 @interface PhotosViewController () <iCarouselDataSource, iCarouselDelegate>
-@property (nonatomic) iCarousel *carousel;
-@property (nonatomic) NSMutableArray *items;
-@property (nonatomic) NSMutableArray *categories;
+@property (nonatomic, retain) iCarousel *carousel;
+@property (nonatomic, retain) NSMutableArray *categories;
 @end
 
 @implementation PhotosViewController
@@ -36,7 +36,7 @@
 {
     
     //return the total number of items in the carousel
-    return [self.items count];
+    return [self.categories count];
 }
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view
@@ -53,7 +53,7 @@
 		[button addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
 	}
 	
-    [button setImageWithURL:[self.items objectAtIndex:index] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+    [button setImageWithURL:[[self.categories objectAtIndex:index] thumbnailURL] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
     
     
    
@@ -79,10 +79,24 @@
     
     //Hacer esto para llamar al otro controller, hay que hacerlo programaticamente
     
-    PhotosSubCatViewController *subCatVC = [[PhotosSubCatViewController alloc] initWithCategory:cat];
-    subCatVC.navigationItem.title = cat.name;
+    //Si tiene subcategorías se llama a estas
+    if(cat.subCats.count>1){
     
-    [self.navigationController pushViewController:subCatVC animated:YES];
+        PhotosSubCatViewController *subCatVC = [[PhotosSubCatViewController alloc] initWithCategory:cat];
+        subCatVC.navigationItem.title = cat.name;
+    
+        [self.navigationController pushViewController:subCatVC animated:YES];
+    }
+    //Si no se muestran los álbumes
+    else{
+        
+        SubCategory *subCatAux=[cat.subCats objectAtIndex:0];
+        subCatAux.name=cat.name;
+        PhotosAlbumViewController *albumVC = [[PhotosAlbumViewController alloc] initWithSubCategory:subCatAux];
+        albumVC.navigationItem.title = cat.name;
+        
+        [self.navigationController pushViewController:albumVC animated:YES];
+    }
 
 }
 
@@ -139,7 +153,7 @@
     
     //add carousel to view
     [self.view addSubview:carousel];
-    
+        
     titulo.text=[[self.categories objectAtIndex:0] name];
     [self.titulo setHidden:NO];
     [SVProgressHUD dismiss];
@@ -148,7 +162,6 @@
 -(void) getImagenesCategorias{
     
     //Instancio array de URL's
-    self.items=[[NSMutableArray alloc] init];
     int randomAlbum;
     int randomSubCat;
     SubCategory *subCatAux;
@@ -168,6 +181,7 @@
         else
             randomSubCat=0;
         subCatAux=[cat.subCats objectAtIndex:randomSubCat];
+        
         if([subCatAux.albums count]>1)
             randomAlbum=arc4random() % ([subCatAux.albums count]-1);
         else
@@ -186,7 +200,7 @@
         
         dispatch_group_async(group, kBgQueue, ^{
             NSData* data = [NSData dataWithContentsOfURL: url];
-            [self getPhotosResponse:data];
+            [self getPhotosResponse:data category:cat];
         });
         
     }
@@ -198,7 +212,7 @@
      
 }
 
--(void) getPhotosResponse:(NSData *)responseData{
+-(void) getPhotosResponse:(NSData *)responseData category:(CategoryPhotos*)category{
     //parse out the json data
     NSError* error;
     int randomImagen;
@@ -212,6 +226,8 @@
     
     //Obtengo las imagenes
     NSMutableArray* imagenes = [[json objectForKey:@"Album"]objectForKey:@"Images"];
+    
+    if(imagenes.count>0) {
     if([imagenes count]>1)
         randomImagen = arc4random() % ([imagenes count]-1);
     else
@@ -233,8 +249,10 @@
     
     NSURL *urlImagen = [NSURL URLWithString:[[json objectForKey:@"Image"]objectForKey:@"SmallURL"]];
     
-    if(urlImagen!=nil)
-        [self.items addObject:urlImagen];
+    if(urlImagen!=nil){
+        [category setThumbnailPhotoURL:urlImagen];
+    }
+    }
 }
 
 -(void) getDatosCategorias{
@@ -339,7 +357,7 @@
     
     [self setTitulo:nil];
     self.carousel = nil;
-    self.items=nil;
+    self.categories=nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

@@ -21,7 +21,6 @@
 
 @interface PhotosAlbumViewController () <iCarouselDataSource, iCarouselDelegate>
 @property (nonatomic) iCarousel *carousel;
-@property (nonatomic) NSMutableArray *items;
 
 @end
 
@@ -37,7 +36,7 @@
 {
     
     //return the total number of items in the carousel
-    return [self.items count];
+    return [self.subCategory.albums count];
 }
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view
@@ -54,7 +53,7 @@
 		[button addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
 	}
     
-    [button setImageWithURL:[self.items objectAtIndex:index] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+    [button setImageWithURL:[[self.subCategory.albums objectAtIndex:index] thumbnailURL] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
         
 	return button;
     
@@ -154,9 +153,6 @@
 
 -(void) getImagenesSubCategorias{
     
-    //Instancio array de URL's
-    self.items=[[NSMutableArray alloc] init];
-    
     NSString *urlStr;
     NSURL *url;
     
@@ -171,7 +167,7 @@
         
         dispatch_group_async(group, kBgQueue, ^{
             NSData* data = [NSData dataWithContentsOfURL: url];
-            [self getPhotosResponse:data];
+            [self getPhotosResponse:data album:alb];
         });
         
     }
@@ -183,7 +179,7 @@
     
 }
 
--(void) getPhotosResponse:(NSData *)responseData{
+-(void) getPhotosResponse:(NSData *)responseData album:(Album*)album{
     //parse out the json data
     NSError* error;
     int randomImagen;
@@ -197,6 +193,8 @@
     
     //Obtengo las imagenes
     NSMutableArray* imagenes = [[json objectForKey:@"Album"]objectForKey:@"Images"];
+    
+    if(imagenes.count>0){
     if([imagenes count]>1)
         randomImagen = arc4random() % ([imagenes count]-1);
     else
@@ -207,6 +205,8 @@
     
     //Obtengo la url de la imagen random
     NSString *urlStr=[[[[@"http://api.smugmug.com/services/api/json/1.3.0/?method=smugmug.images.getURLs&APIKey=bLmbO3nV8an2YhQpMogzNKA0toTHbfGU&ImageID=" stringByAppendingString:[[NSNumber numberWithInt:imageID]stringValue]] stringByAppendingString:@"&ImageKey="]stringByAppendingString:imageKey]stringByAppendingString:@"&pretty=true"];
+    
+    
     
     NSURL *url=[NSURL URLWithString:urlStr];
     NSData* dataImagen = [NSData dataWithContentsOfURL: url];
@@ -219,7 +219,12 @@
     NSURL *urlImagen = [NSURL URLWithString:[[json objectForKey:@"Image"]objectForKey:@"SmallURL"]];
     //Añado la url al array de URL's de categorías
     if(urlImagen!=nil)
-        [self.items addObject:urlImagen];
+        [album setThumbnailPhotoURL:urlImagen];
+    }
+    else{
+        //Si un álbum no tiene fotos se borra
+        [self.subCategory.albums removeObject:album];
+    }
     
 }
 
@@ -240,7 +245,6 @@
     [self setTitulo:nil];
     self.carousel = nil;
     self.subCategory=nil;
-    self.items=nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

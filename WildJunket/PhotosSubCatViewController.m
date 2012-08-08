@@ -20,7 +20,6 @@
 
 @interface PhotosSubCatViewController () <iCarouselDataSource, iCarouselDelegate>
 @property (nonatomic) iCarousel *carousel;
-@property (nonatomic) NSMutableArray *items;
 
 @end
 
@@ -36,7 +35,7 @@
 {
     
     //return the total number of items in the carousel
-    return [self.items count];
+    return [self.category.subCats count];
 }
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view
@@ -53,7 +52,7 @@
 		[button addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
 	}
 	
-    [button setImageWithURL:[self.items objectAtIndex:index] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+    [button setImageWithURL:[[self.category.subCats objectAtIndex:index] thumbnailURL] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
       
     
 	return button;
@@ -153,10 +152,7 @@
 }
 
 -(void) getImagenesSubCategorias{
-    
-    //Instancio array de URL's
-    self.items=[[NSMutableArray alloc] init];
-    
+       
     int randomAlbum;
     Album *albumAux;
     NSString *urlStr;
@@ -181,7 +177,7 @@
         
         dispatch_group_async(group, kBgQueue, ^{
             NSData* data = [NSData dataWithContentsOfURL: url];
-            [self getPhotosResponse:data];
+            [self getPhotosResponse:data subCat:cat];
         });
         
     }
@@ -193,7 +189,7 @@
     
 }
 
--(void) getPhotosResponse:(NSData *)responseData{
+-(void) getPhotosResponse:(NSData *)responseData subCat:(SubCategory*)subcat{
     //parse out the json data
     NSError* error;
     int randomImagen;
@@ -207,6 +203,8 @@
     
     //Obtengo las imagenes
     NSMutableArray* imagenes = [[json objectForKey:@"Album"]objectForKey:@"Images"];
+    
+    if(imagenes.count>0){
     if([imagenes count]>1)
         randomImagen = arc4random() % ([imagenes count]-1);
     else
@@ -228,7 +226,8 @@
     
     NSURL *urlImagen = [NSURL URLWithString:[[json objectForKey:@"Image"]objectForKey:@"SmallURL"]];
     if(urlImagen!=nil)
-        [self.items addObject:urlImagen];
+        [subcat setThumbnailPhotoURL:urlImagen];
+    }
 }
 
 
@@ -248,7 +247,6 @@
     [self setTitulo:nil];
     self.carousel = nil;
     self.category=nil;
-    self.items=nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

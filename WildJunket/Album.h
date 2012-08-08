@@ -14,16 +14,20 @@
     int _idAlbum;
     NSString* _key;
     NSString* _name;
-
+    NSURL* _thumbnailURL;
     
 }
 
 @property (nonatomic) NSString *key;
 @property (nonatomic) NSString *name;
+@property (nonatomic) NSMutableArray *albums;
+@property (nonatomic) NSURL *thumbnailURL;
 @property int idCat;
 @property int idSubCat;
 @property int idAlbum;
 
 - (id)init:(int)idAlbumParam idCatParam:(int)idCatParam idSubCatParam:(int)idSubCatParam nameParam:(NSString*)nameParam keyParam:(NSString*)keyParam;
+
+-(void)setThumbnailPhotoURL:(NSURL *)thumbnailURL;
 
 @end

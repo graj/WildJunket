@@ -12,6 +12,7 @@
 @synthesize idCat=_idCat;
 @synthesize name=_name;
 @synthesize subCats=_subCats;
+@synthesize thumbnailURL=_thumbnailURL;
 
 
 - (id)init:(int)idCatParam nameParam:(NSString*)nameParam
@@ -24,6 +25,9 @@
     return self;
 }
 
+-(void)setThumbnailPhotoURL:(NSURL *)thumbnailURL{
+    self.thumbnailURL=thumbnailURL;
+}
 
 
 

@@ -14,6 +14,7 @@
 @synthesize idSubCat=_idSubCat;
 @synthesize name=_name;
 @synthesize key=_key;
+@synthesize thumbnailURL=_thumbnailURL;
 
 - (id)init:(int)idAlbumParam idCatParam:(int)idCatParam idSubCatParam:(int)idSubCatParam nameParam:(NSString*)nameParam keyParam:(NSString*)keyParam
 {
@@ -28,5 +29,8 @@
     return self;
 }
 
+-(void)setThumbnailPhotoURL:(NSURL *)thumbnailURL{
+    self.thumbnailURL=thumbnailURL;
+}
 
 @end
