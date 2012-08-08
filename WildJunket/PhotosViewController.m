@@ -47,15 +47,14 @@
 	{
 		//no button available to recycle, so create new one
 		button = [UIButton buttonWithType:UIButtonTypeCustom];
-		button.frame = CGRectMake(0, 0, 250.0f, 250.0f);
-        button.imageView.layer.cornerRadius = 10.0;
-        button.imageView.layer.masksToBounds = YES;
+		button.frame = CGRectMake(0, 0, 200.0f, 200.0f);
 		[button addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
 	}
 	
     [button setImageWithURL:[self.items objectAtIndex:index] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
     
-    
+    button.layer.cornerRadius = 10.0;
+    button.layer.masksToBounds = YES;
    
 	return button;
     
@@ -131,11 +130,6 @@
     self.carousel.type = iCarouselTypeWheel;
     self.carousel.delegate = self;
     self.carousel.dataSource = self;
-    
-    //Offset
-    CGSize offset = CGSizeMake(0.0f, 38.0f);
-    self.carousel.contentOffset = offset;
-
     
     //add carousel to view
     [self.view addSubview:carousel];
