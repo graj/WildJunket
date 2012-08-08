@@ -95,6 +95,18 @@
     
     //No quiero la Nav Bar en esta vista
     self.navigationController.navigationBarHidden = YES;
+    
+    
+    /*UILabel* test=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    test.font = [UIFont fontWithName:@"System" size: 14.0];
+    test.shadowColor = [UIColor grayColor];
+	test.shadowOffset = CGSizeMake(1,1);
+	test.textColor = [UIColor blueColor];
+    test.textAlignment = UITextAlignmentRight;
+    test.text=@"Testing...";
+    self.titulo=test;
+    [self.view addSubview:test];*/
+    
     [self.titulo setHidden:YES];
     
     //Llamada API de smugmug y tomar urls de las fotos de las categorías
