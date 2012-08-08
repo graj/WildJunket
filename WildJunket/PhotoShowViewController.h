@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
 
-@interface PhotoShowViewController : UIViewController <UIScrollViewDelegate>{
+@interface PhotoShowViewController : UIViewController <UIScrollViewDelegate, UIActionSheetDelegate,MFMailComposeViewControllerDelegate>{
     NSURL * _photoURL;
 }
 
