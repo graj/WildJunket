@@ -54,6 +54,8 @@
 	
     [button setImageWithURL:[self.items objectAtIndex:index] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
     
+    button.layer.cornerRadius = 10.0;
+    button.layer.masksToBounds = YES;
     
 	return button;
     
