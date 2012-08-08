@@ -101,11 +101,14 @@
     [super viewDidLoad];
     //tipo Wheel
     
-    //Mostrar Nav Bar
-    [self.navigationController setNavigationBarHidden: NO animated:YES];
+    //No quiero la Nav Bar en esta vista
+    self.navigationController.navigationBarHidden = NO;
     
     [self.titulo setHidden:YES];
     
+    //Apariencia
+    self.view.backgroundColor=[UIColor whiteColor];
+    self.titulo.textColor=[UIColor blackColor];
     
     //Llamada API de smugmug y tomar urls de las fotos de las categorías
     [SVProgressHUD showWithStatus:[@"Loading " stringByAppendingString:self.category.name]];
