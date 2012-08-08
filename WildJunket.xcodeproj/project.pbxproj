@@ -107,6 +107,10 @@
 		63ABEE5915A338D1008F8C16 /* 86-camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ABEE5315A338D1008F8C16 /* 86-camera.png */; };
 		63B54A8815D1927800EE05F1 /* PhotoShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B54A8715D1927800EE05F1 /* PhotoShowViewController.m */; };
 		63B54A8B15D192A900EE05F1 /* PhotoShowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B54A8A15D192A900EE05F1 /* PhotoShowView.xib */; };
+		63B54A9215D2819F00EE05F1 /* photosbackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63B54A9015D2819F00EE05F1 /* photosbackground@2x.png */; };
+		63B54A9315D2819F00EE05F1 /* photosbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 63B54A9115D2819F00EE05F1 /* photosbackground.png */; };
+		63B54A9915D282C900EE05F1 /* photosbackground3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63B54A9515D282C900EE05F1 /* photosbackground3@2x.png */; };
+		63B54A9A15D282C900EE05F1 /* photosbackground3.png in Resources */ = {isa = PBXBuildFile; fileRef = 63B54A9615D282C900EE05F1 /* photosbackground3.png */; };
 		63BB49FB15B4BEBE00CAE398 /* back-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 63BB49F515B4BEBE00CAE398 /* back-button.png */; };
 		63BB49FC15B4BEBE00CAE398 /* back-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63BB49F615B4BEBE00CAE398 /* back-button@2x.png */; };
 		63BB49FD15B4BEBE00CAE398 /* bar-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 63BB49F715B4BEBE00CAE398 /* bar-button.png */; };
@@ -322,6 +326,10 @@
 		63B54A8615D1927800EE05F1 /* PhotoShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoShowViewController.h; sourceTree = "<group>"; };
 		63B54A8715D1927800EE05F1 /* PhotoShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoShowViewController.m; sourceTree = "<group>"; };
 		63B54A8A15D192A900EE05F1 /* PhotoShowView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoShowView.xib; sourceTree = "<group>"; };
+		63B54A9015D2819F00EE05F1 /* photosbackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photosbackground@2x.png"; sourceTree = "<group>"; };
+		63B54A9115D2819F00EE05F1 /* photosbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photosbackground.png; sourceTree = "<group>"; };
+		63B54A9515D282C900EE05F1 /* photosbackground3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photosbackground3@2x.png"; sourceTree = "<group>"; };
+		63B54A9615D282C900EE05F1 /* photosbackground3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photosbackground3.png; sourceTree = "<group>"; };
 		63BB49F515B4BEBE00CAE398 /* back-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-button.png"; sourceTree = "<group>"; };
 		63BB49F615B4BEBE00CAE398 /* back-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-button@2x.png"; sourceTree = "<group>"; };
 		63BB49F715B4BEBE00CAE398 /* bar-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar-button.png"; sourceTree = "<group>"; };
@@ -507,6 +515,10 @@
 		6350026815AB81C400FC9BCF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				63B54A9515D282C900EE05F1 /* photosbackground3@2x.png */,
+				63B54A9615D282C900EE05F1 /* photosbackground3.png */,
+				63B54A9015D2819F00EE05F1 /* photosbackground@2x.png */,
+				63B54A9115D2819F00EE05F1 /* photosbackground.png */,
 				6309D3CA15BC140300CCF62E /* appicons */,
 				630AC9E415BA96F200965DA8 /* wj_title_landscape@2x.png */,
 				630AC9E515BA96F200965DA8 /* wj_title_landscape.png */,
@@ -970,6 +982,10 @@
 				6329209315D117DF00F3A81F /* PhotosAlbumViewController.xib in Resources */,
 				6306EE1015D162F900F14B94 /* placeholderphotos.png in Resources */,
 				63B54A8B15D192A900EE05F1 /* PhotoShowView.xib in Resources */,
+				63B54A9215D2819F00EE05F1 /* photosbackground@2x.png in Resources */,
+				63B54A9315D2819F00EE05F1 /* photosbackground.png in Resources */,
+				63B54A9915D282C900EE05F1 /* photosbackground3@2x.png in Resources */,
+				63B54A9A15D282C900EE05F1 /* photosbackground3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
