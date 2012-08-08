@@ -7,6 +7,7 @@
 //
 
 #import "PhotoShowViewController.h"
+#import <Twitter/Twitter.h>
 
 @interface PhotoShowViewController ()
 @property (nonatomic, strong) UIImageView *imageView;
@@ -70,6 +71,102 @@
     singleTapRecognizer.numberOfTapsRequired = 1;
     singleTapRecognizer.numberOfTouchesRequired = 1;
     [self.scrollView addGestureRecognizer:singleTapRecognizer];
+    
+    [self setBoton];
+}
+
+-(void) setBoton{
+    
+    UIBarButtonItem * reloadButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(share)];
+        
+    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects: reloadButton, nil];
+}
+
+-(void) share{
+    //Pulsado botón compartir, mostrar menu
+    UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"Share with the world" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Twitter", @"Email", @"Copy link", nil];
+    popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+    [popupQuery showInView:self.view];
+    
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+	switch (buttonIndex) {
+        case 0:
+            if ([TWTweetComposeViewController canSendTweet])
+            {
+#ifdef CONFIGURATION_Beta
+                [TestFlight passCheckpoint:@"pulsadoTwitter"];
+#endif
+                TWTweetComposeViewController *tweetSheet =
+                [[TWTweetComposeViewController alloc] init];
+                NSString *text=@"Amazing photo from WildJunket.com";
+                [tweetSheet setInitialText:text];
+                [tweetSheet addURL:self.photoURL];
+                [self presentModalViewController:tweetSheet animated:YES];
+            }
+            else
+            {
+#ifdef CONFIGURATION_Beta
+                [TestFlight passCheckpoint:@"errorTwitter"];
+#endif
+                UIAlertView *alertView = [[UIAlertView alloc]
+                                          initWithTitle:@"Sorry"
+                                          message:@"You can't send a tweet right now, make sure your device has an internet connection and you have at least one Twitter account setup"
+                                          delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+                [alertView show];
+            }
+            break;
+        case 1:
+            //Email
+            if ([MFMailComposeViewController canSendMail])
+            {
+#ifdef CONFIGURATION_Beta
+                [TestFlight passCheckpoint:@"canSendEmail"];
+#endif
+                MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
+                
+                mailer.mailComposeDelegate = self;
+                mailer.navigationBar.tintColor = [UIColor colorWithRed:140.0/255.0 green:98.0/255.0 blue:57.0/255.0 alpha:1.0];
+                [mailer.navigationBar setClearsContextBeforeDrawing:YES];
+                
+                [mailer setSubject:@"WildJunket cool photo"];
+                
+                NSString *emailBody = [@"Woow check out this phto from WildJunket.com:\n" stringByAppendingString:[self.photoURL absoluteString]];
+                
+                [mailer setMessageBody:emailBody isHTML:YES];
+                
+                [self presentModalViewController:mailer animated:YES];
+                
+            }
+            else
+            {
+#ifdef CONFIGURATION_Beta
+                [TestFlight passCheckpoint:@"errorEmail"];
+#endif
+                UIAlertView *alertView = [[UIAlertView alloc]
+                                          initWithTitle:@"Sorry"
+                                          message:@"You can't send a email right now, make sure your device has an internet connection and you have at least one email account setup"
+                                          delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+                [alertView show];
+                
+            }
+            break;
+        case 2:
+        {
+            //Copy link
+            UIPasteboard *pb = [UIPasteboard generalPasteboard];
+            [pb setString:[self.photoURL absoluteString]];
+        }
+            break;
+        case 3:
+            //Cancel
+            break;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
