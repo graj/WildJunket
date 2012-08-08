@@ -89,9 +89,7 @@
 {
     
     [super viewDidLoad];
-    
-    //Backgroud image
-    self.view.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"photosbackground.png"]];
+    //tipo Wheel
     
     //No quiero la Nav Bar en esta vista
     self.navigationController.navigationBarHidden = YES;
