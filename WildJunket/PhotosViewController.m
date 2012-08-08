@@ -13,6 +13,7 @@
 #import "SubCategory.h"
 #import "PhotosSubCatViewController.h"
 #import "UIButton+WebCache.h"
+#import <QuartzCore/QuartzCore.h> 
 #include <stdlib.h>
 
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
@@ -52,6 +53,8 @@
 	
     [button setImageWithURL:[self.items objectAtIndex:index] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
     
+    button.layer.cornerRadius = 10.0;
+    button.layer.masksToBounds = YES;
    
 	return button;
     
@@ -95,17 +98,6 @@
     
     //No quiero la Nav Bar en esta vista
     self.navigationController.navigationBarHidden = YES;
-    
-    
-    /*UILabel* test=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
-    test.font = [UIFont fontWithName:@"System" size: 14.0];
-    test.shadowColor = [UIColor grayColor];
-	test.shadowOffset = CGSizeMake(1,1);
-	test.textColor = [UIColor blueColor];
-    test.textAlignment = UITextAlignmentRight;
-    test.text=@"Testing...";
-    self.titulo=test;
-    [self.view addSubview:test];*/
     
     [self.titulo setHidden:YES];
     
