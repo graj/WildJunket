@@ -137,16 +137,18 @@
     
     //Instancio array de URL's
     self.items=[[NSMutableArray alloc] init];
-    
     int randomAlbum;
     int randomSubCat;
     SubCategory *subCatAux;
     Album *albumAux;
     NSString *urlStr;
     NSURL *url;
+
+    dispatch_group_t group = dispatch_group_create();
     
     for (CategoryPhotos *cat in self.categories) {
         
+                            
         //De una subcategoría random y un álbum random
         //Si tiene más de un elemento, si no cojo el primero
         if([cat.subCats count]>1)
@@ -170,11 +172,17 @@
             [self performSelectorOnMainThread:@selector(getPhotosResponse:) withObject:data waitUntilDone:YES];
         });*/
         
-       
-        NSData* data = [NSData dataWithContentsOfURL: url];
-        [self getPhotosResponse:data];
+        dispatch_group_async(group, kBgQueue, ^{
+            NSData* data = [NSData dataWithContentsOfURL: url];
+            [self getPhotosResponse:data];
+        });
         
     }
+    
+    //Espera hasta que el grupo de threads ha terminado
+    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+    
+    dispatch_release(group);
      
 }
 
