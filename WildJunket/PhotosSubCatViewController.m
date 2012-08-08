@@ -153,6 +153,8 @@
     NSString *urlStr;
     NSURL *url;
     
+    dispatch_group_t group = dispatch_group_create();
+    
     for (SubCategory *cat in self.category.subCats) {
         
         //De un álbum random
@@ -168,10 +170,17 @@
         
         url=[NSURL URLWithString:urlStr];
         
-        NSData* data = [NSData dataWithContentsOfURL: url];
-        [self getPhotosResponse:data];
+        dispatch_group_async(group, kBgQueue, ^{
+            NSData* data = [NSData dataWithContentsOfURL: url];
+            [self getPhotosResponse:data];
+        });
         
     }
+    
+    //Espera hasta que el grupo de threads ha terminado
+    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+    
+    dispatch_release(group);
     
 }
 
