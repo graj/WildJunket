@@ -17,17 +17,23 @@
 #include <stdlib.h>
 
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-
+#define portraitSize CGRectMake(0, 0, 225.0f, 225.0f)
+#define landscapeSize CGRectMake(0, 0, 150.0f, 150.0f)
+#define radiusPortrait 382.0f
+#define radiusLandscape 312.0f
 
 @interface PhotosAlbumViewController () <iCarouselDataSource, iCarouselDelegate>
 @property (nonatomic) iCarousel *carousel;
-
+@property bool portrait;
+@property (nonatomic) CGFloat radius;
 @end
 
 @implementation PhotosAlbumViewController
 @synthesize titulo;
 @synthesize carousel;
 @synthesize subCategory=_subCategory;
+@synthesize portrait;
+@synthesize radius;
 
 #pragma mark -
 #pragma mark iCarousel methods
@@ -47,7 +53,10 @@
 	{
 		//no button available to recycle, so create new one
 		button = [UIButton buttonWithType:UIButtonTypeCustom];
-		button.frame = CGRectMake(0, 0, 225.0f, 225.0f);
+		if(portrait)
+            button.frame = portraitSize;
+        else
+            button.frame = landscapeSize;
         button.imageView.layer.cornerRadius = 10.0;
         button.imageView.layer.masksToBounds = YES;
 		[button addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
@@ -64,6 +73,22 @@
     int index = self.carousel.currentItemIndex;
     titulo.text=[[self.subCategory.albums objectAtIndex:index] name];
     
+}
+
+- (CGFloat)carousel:(iCarousel *)_carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value
+{
+    switch (option)
+    {
+            
+        case iCarouselOptionRadius:
+        {
+            return self.radius;
+        }
+        default:
+        {
+            return value;
+        }
+    }
 }
 
 #pragma mark -
@@ -103,6 +128,7 @@
     //Backgroud image
     self.view.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"photosbackground3.png"]];
 
+    [self checkOrientation];
     
     //No quiero la Nav Bar en esta vista
     self.navigationController.navigationBarHidden = NO;
@@ -234,9 +260,51 @@
     //Shows status bar
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
     
+    [self checkOrientation];
+    [self.carousel reloadData];
+    
 	[super viewWillAppear:animated];
     
 }
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    
+    [self checkOrientation];
+    [self.carousel reloadData];
+    
+}
+
+-(void)checkOrientation{
+    
+    if([[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortrait || [[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortraitUpsideDown){
+        
+        //Portrait
+        self.portrait=YES;
+        self.radius=radiusPortrait;
+        
+        //Offset
+        CGSize offset = CGSizeMake(0.0f, 38.0f);
+        self.carousel.contentOffset = offset;
+        
+        self.titulo.frame=CGRectMake(20, 6, 280.0f, 72.0f);
+        
+        [self.titulo setFont:[UIFont fontWithName:@"GillSans-Bold" size:26]];
+        
+    } else {
+        //Landscape
+        self.portrait=NO;
+        self.radius=radiusLandscape;
+        
+        //Offset
+        CGSize offset = CGSizeMake(0.0f, 28.0f);
+        self.carousel.contentOffset = offset;
+        
+        self.titulo.frame=CGRectMake(20, -12, 440.0f, 72.0f);
+        
+        [self.titulo setFont:[UIFont fontWithName:@"GillSans-Bold" size:23]];
+    }
+}
+
 
 - (void)viewDidUnload
 {

@@ -136,8 +136,6 @@
     
     [super viewDidLoad];
     
-    //self.titulo.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    
     [self checkOrientation];
     
     //Backgroud image
