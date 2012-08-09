@@ -427,7 +427,7 @@
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
     
     //Hide tabbar
-    [self setTabBarHidden:YES animated:YES];
+    //[self setTabBarHidden:YES animated:YES];
     
 	[super viewWillAppear:animated];
 
@@ -910,7 +910,7 @@
 {
     
     //Link a newsstand store
-    NSURL *appStoreUrl = [NSURL URLWithString:@"http://itunes.com/apps/wildjunket"];
+    NSURL *appStoreUrl = [NSURL URLWithString:@"itms://itunes.com/apps/wildjunket"];
     [[UIApplication sharedApplication] openURL:appStoreUrl];
     
 }
