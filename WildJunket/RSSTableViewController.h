@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class RSSFeedWebViewControler;
+@class RSSMoreFeedsViewController;
 @interface RSSTableViewController : UITableViewController{
     NSMutableArray *_allEntries;
     
@@ -16,12 +17,13 @@
     NSOperationQueue *_queue;
     NSArray *_feeds;
     RSSFeedWebViewControler *_webViewController;
+    RSSMoreFeedsViewController *_moreFeedsViewController;
 }
 
 @property (retain) NSMutableArray *allEntries;
 @property (retain) NSOperationQueue *queue;
 @property (retain) NSArray *feeds;
 @property (retain) RSSFeedWebViewControler *webViewController;
-
+@property (retain) RSSMoreFeedsViewController *moreFeedsViewController;
 
 @end

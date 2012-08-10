@@ -79,6 +79,7 @@
 		635002CC15AB92D000FC9BCF /* Reader-Thumbs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 635002BA15AB92D000FC9BCF /* Reader-Thumbs@2x.png */; };
 		635002CE15AB964E00FC9BCF /* wildjunket.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 635002CD15AB964E00FC9BCF /* wildjunket.pdf */; };
 		6350384B15BE86FB008AD32D /* UITabBarController+HideTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6350384A15BE86FB008AD32D /* UITabBarController+HideTabBar.m */; };
+		6353970815D544940015AFAB /* RSSMoreFeedsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353970715D544930015AFAB /* RSSMoreFeedsViewController.m */; };
 		6360FC9D15B6B8AD00A58518 /* tab-selected-new.png in Resources */ = {isa = PBXBuildFile; fileRef = 6360FC9C15B6B8AD00A58518 /* tab-selected-new.png */; };
 		6360FC9F15B7135100A58518 /* tab-selected-new@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6360FC9E15B7135100A58518 /* tab-selected-new@2x.png */; };
 		636729D515A4BAEE00A54ACE /* RSSNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 636729D415A4BAEE00A54ACE /* RSSNavViewController.m */; };
@@ -294,6 +295,8 @@
 		635002CD15AB964E00FC9BCF /* wildjunket.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = wildjunket.pdf; sourceTree = "<group>"; };
 		6350384915BE86FB008AD32D /* UITabBarController+HideTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+HideTabBar.h"; sourceTree = "<group>"; };
 		6350384A15BE86FB008AD32D /* UITabBarController+HideTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+HideTabBar.m"; sourceTree = "<group>"; };
+		6353970615D544930015AFAB /* RSSMoreFeedsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSMoreFeedsViewController.h; sourceTree = "<group>"; };
+		6353970715D544930015AFAB /* RSSMoreFeedsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSMoreFeedsViewController.m; sourceTree = "<group>"; };
 		6360FC9C15B6B8AD00A58518 /* tab-selected-new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-selected-new.png"; sourceTree = "<group>"; };
 		6360FC9E15B7135100A58518 /* tab-selected-new@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-selected-new@2x.png"; sourceTree = "<group>"; };
 		636729D315A4BAEE00A54ACE /* RSSNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSNavViewController.h; sourceTree = "<group>"; };
@@ -620,6 +623,8 @@
 				632920AA15D123FD00F3A81F /* PhotosAllViewController+Private.m */,
 				63B54A8615D1927800EE05F1 /* PhotoShowViewController.h */,
 				63B54A8715D1927800EE05F1 /* PhotoShowViewController.m */,
+				6353970615D544930015AFAB /* RSSMoreFeedsViewController.h */,
+				6353970715D544930015AFAB /* RSSMoreFeedsViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1088,6 +1093,7 @@
 				632920A415D1224300F3A81F /* BDRowInfo.m in Sources */,
 				632920AB15D123FD00F3A81F /* PhotosAllViewController+Private.m in Sources */,
 				63B54A8815D1927800EE05F1 /* PhotoShowViewController.m in Sources */,
+				6353970815D544940015AFAB /* RSSMoreFeedsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

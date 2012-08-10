@@ -51,6 +51,29 @@
                                     <segue destination="O5Z-V0-fI3" kind="push" identifier="rssdetail" id="3UN-xE-plG"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="moreFeeds" id="BkM-rY-0nP">
+                                <rect key="frame" x="0.0" y="119" width="320" height="97"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="96"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="More WildJunket Feeds" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="gsL-U6-RqN">
+                                            <rect key="frame" x="20" y="20" width="280" height="56"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="22"/>
+                                            <color key="textColor" red="0.54901960780000003" green="0.38431372549999998" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="0.35294117650000001" green="0.2901960784" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <size key="shadowOffset" width="1" height="1"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <segue destination="Nr2-AD-taB" kind="push" identifier="moreFeedsSeg" id="a7c-rw-u7f"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" id="cDk-jH-Hy7"/>
@@ -93,6 +116,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j7Y-zd-zMX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1360" y="-125"/>
+        </scene>
+        <!--More Feeds View Controller-->
+        <scene sceneID="nB0-d5-LFk">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zlH-p6-40X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="Nr2-AD-taB" customClass="RSSMoreFeedsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FT2-0Y-Vzl">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" id="2zd-kA-G6T">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Nr2-AD-taB" id="jbQ-z0-aXw"/>
+                                </connections>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="rMd-ia-ZnB"/>
+                    <connections>
+                        <outlet property="webView" destination="2zd-kA-G6T" id="wKc-76-7wW"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1358" y="466"/>
         </scene>
         <!--Nav View Controller - RSS-->
         <scene sceneID="Lno-Ay-7U7">
@@ -230,7 +281,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NSW-wY-WM2" sceneMemberID="firstResponder"/>
                 <customObject id="eYy-wf-FTu" customClass="CLLocationManager"/>
             </objects>
-            <point key="canvasLocation" x="1038" y="434"/>
+            <point key="canvasLocation" x="708" y="472"/>
         </scene>
         <!--View Controller - Magazine-->
         <scene sceneID="7TG-Ec-hUv">
@@ -246,7 +297,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z3H-XQ-weo" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="625" y="434"/>
+            <point key="canvasLocation" x="295" y="472"/>
         </scene>
         <!--Photos Nav Controller - Photos-->
         <scene sceneID="uD4-Ks-PRa">
@@ -309,6 +360,12 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RSSFeedWebViewControler.h"/>
             <relationships>
                 <relationship kind="action" name="shareButton:"/>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="RSSMoreFeedsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RSSMoreFeedsViewController.h"/>
+            <relationships>
                 <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
             </relationships>
         </class>

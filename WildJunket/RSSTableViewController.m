@@ -14,6 +14,7 @@
 #import "NSDate+InternetDateTime.h"
 #import "NSArray+Extras.h"
 #import "RSSFeedWebViewControler.h"
+#import "RSSMoreFeedsViewController.h"
 #import "TFHpple.h"
 #import "RSSCell.h"
 #import "UIImageView+WebCache.h"
@@ -30,6 +31,7 @@
 @synthesize feeds = _feeds;
 @synthesize queue = _queue;
 @synthesize webViewController = _webViewController;
+@synthesize moreFeedsViewController=_moreFeedsViewController;
 
 - (void)refresh {
     for (NSString *feed in _feeds) {
@@ -333,16 +335,30 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [_allEntries count];
+    return [_allEntries count]+1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"rssCell";
+    static NSString *CellIdentifierMoreFeeds = @"moreFeeds";
    
-    RSSCell *cell=[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     
+    if(indexPath.row==[_allEntries count]){
+        UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:CellIdentifierMoreFeeds];
+      
+        CAGradientLayer *gradient = [CAGradientLayer layer];
+        gradient.frame = cell.bounds;
+        gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:169.0/255.0 green:180.0/255.0 blue:171.0/255.0 alpha:1.0]CGColor], (id)[[UIColor whiteColor]CGColor], nil];
+        
+        [cell.layer insertSublayer:gradient atIndex:0];
+        
+        return cell;
+    }
+    else{
+        
+        RSSCell *cell=[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     RSSEntry *entry = [_allEntries objectAtIndex:indexPath.row];
     
     NSDateFormatter * dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
@@ -363,9 +379,10 @@
     
     //Imagen CACHE
     [cell.imageView setImageWithURL:[NSURL URLWithString:entry.photoURL] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+        return cell;
 
-    
-    return cell;
+
+    }
 }
 
 /*- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -437,10 +454,15 @@
         self.webViewController=[segue destinationViewController];
         self.webViewController.entry=entry;
     }
+    if([[segue identifier] isEqualToString:@"moreFeedsSeg"]){
+        self.moreFeedsViewController=[segue destinationViewController];
+        self.moreFeedsViewController.url=[NSURL URLWithString:@"http://www.wildjunket.com/page/2/"];
+    }
 }
 
 -(void)didReceiveMemoryWarning{
     self.webViewController = nil;
+    self.moreFeedsViewController=nil;
     [super didReceiveMemoryWarning];
 }
 
@@ -453,6 +475,8 @@
     _feeds = nil;
     [_webViewController release];
     _webViewController = nil;
+    [_moreFeedsViewController release];
+    _webViewController=nil;
     [super dealloc];
 }
 
