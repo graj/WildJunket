@@ -80,6 +80,7 @@
 		635002CE15AB964E00FC9BCF /* wildjunket.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 635002CD15AB964E00FC9BCF /* wildjunket.pdf */; };
 		6350384B15BE86FB008AD32D /* UITabBarController+HideTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6350384A15BE86FB008AD32D /* UITabBarController+HideTabBar.m */; };
 		6353970815D544940015AFAB /* RSSMoreFeedsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353970715D544930015AFAB /* RSSMoreFeedsViewController.m */; };
+		6353970C15D590850015AFAB /* TempViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353970B15D590850015AFAB /* TempViewController.m */; };
 		6360FC9D15B6B8AD00A58518 /* tab-selected-new.png in Resources */ = {isa = PBXBuildFile; fileRef = 6360FC9C15B6B8AD00A58518 /* tab-selected-new.png */; };
 		6360FC9F15B7135100A58518 /* tab-selected-new@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6360FC9E15B7135100A58518 /* tab-selected-new@2x.png */; };
 		636729D515A4BAEE00A54ACE /* RSSNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 636729D415A4BAEE00A54ACE /* RSSNavViewController.m */; };
@@ -297,6 +298,8 @@
 		6350384A15BE86FB008AD32D /* UITabBarController+HideTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+HideTabBar.m"; sourceTree = "<group>"; };
 		6353970615D544930015AFAB /* RSSMoreFeedsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSMoreFeedsViewController.h; sourceTree = "<group>"; };
 		6353970715D544930015AFAB /* RSSMoreFeedsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSMoreFeedsViewController.m; sourceTree = "<group>"; };
+		6353970A15D590840015AFAB /* TempViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TempViewController.h; sourceTree = "<group>"; };
+		6353970B15D590850015AFAB /* TempViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempViewController.m; sourceTree = "<group>"; };
 		6360FC9C15B6B8AD00A58518 /* tab-selected-new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-selected-new.png"; sourceTree = "<group>"; };
 		6360FC9E15B7135100A58518 /* tab-selected-new@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-selected-new@2x.png"; sourceTree = "<group>"; };
 		636729D315A4BAEE00A54ACE /* RSSNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSNavViewController.h; sourceTree = "<group>"; };
@@ -625,6 +628,8 @@
 				63B54A8715D1927800EE05F1 /* PhotoShowViewController.m */,
 				6353970615D544930015AFAB /* RSSMoreFeedsViewController.h */,
 				6353970715D544930015AFAB /* RSSMoreFeedsViewController.m */,
+				6353970A15D590840015AFAB /* TempViewController.h */,
+				6353970B15D590850015AFAB /* TempViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1094,6 +1099,7 @@
 				632920AB15D123FD00F3A81F /* PhotosAllViewController+Private.m in Sources */,
 				63B54A8815D1927800EE05F1 /* PhotoShowViewController.m in Sources */,
 				6353970815D544940015AFAB /* RSSMoreFeedsViewController.m in Sources */,
+				6353970C15D590850015AFAB /* TempViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1185,7 +1191,7 @@
 				);
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AC953EC1-ACEC-41F9-B817-9DD9E9DA0E07";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8538A681-AF6A-4069-9099-693B71DDF507";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Beta;
@@ -1263,7 +1269,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: David Garcia Fernandez";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: David Garcia Fernandez (72SXJQDU59)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WildJunket/WildJunket-Prefix.pch";
 				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
@@ -1275,7 +1281,7 @@
 				);
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AC953EC1-ACEC-41F9-B817-9DD9E9DA0E07";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2BDD0ECD-C7DC-4CF3-A796-85C1908E7B46";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1296,7 +1302,7 @@
 				);
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AC953EC1-ACEC-41F9-B817-9DD9E9DA0E07";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8538A681-AF6A-4069-9099-693B71DDF507";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

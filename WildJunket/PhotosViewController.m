@@ -159,10 +159,6 @@
         
         [self performSelectorOnMainThread:@selector(createCarousel) withObject:nil waitUntilDone:YES];
         
-        #ifdef CONFIGURATION_Beta
-            [TestFlight passCheckpoint:@"leidos datos smugmug"];
-        #endif
-        
         
     });
   
@@ -223,6 +219,10 @@
         
         url=[NSURL URLWithString:urlStr];
         
+        #ifdef CONFIGURATION_Beta
+            [TestFlight passCheckpoint:@"get imagenes categoria"];
+        #endif
+        
         /*dispatch_async(kBgQueue, ^{
             NSData* data = [NSData dataWithContentsOfURL: url];
             [self performSelectorOnMainThread:@selector(getPhotosResponse:) withObject:data waitUntilDone:YES];
@@ -239,6 +239,10 @@
     dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
     
     dispatch_release(group);
+    
+    #ifdef CONFIGURATION_Beta
+        [TestFlight passCheckpoint:@"leidos fotos categorias"];
+    #endif
      
 }
 
@@ -281,6 +285,7 @@
     
     if(urlImagen!=nil){
         [category setThumbnailPhotoURL:urlImagen];
+      
     }
     }
 }
@@ -361,11 +366,11 @@
             [subCategoryAux.albums addObject:album];
         }
                 
-        //NSLog(@"Iteracion: %d", i);
-             
     }
     
-
+    #ifdef CONFIGURATION_Beta
+        [TestFlight passCheckpoint:@"leidos datos smugmug"];
+    #endif
     
 }
 

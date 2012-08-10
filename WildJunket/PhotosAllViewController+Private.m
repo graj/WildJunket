@@ -95,6 +95,10 @@
     //Toma el url de cada foto y llama al método para bajarlas asíncronamente
     [self getPhotosResponse:data];
     
+    #ifdef CONFIGURATION_Beta
+        [TestFlight passCheckpoint:@"muestra todas las fotos"];
+    #endif
+    
 }
 
 -(int)getnumeroPhotos:(NSData*)response{

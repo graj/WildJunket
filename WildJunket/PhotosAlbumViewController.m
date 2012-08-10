@@ -203,6 +203,9 @@
     
     dispatch_release(group);
     
+    #ifdef CONFIGURATION_Beta
+        [TestFlight passCheckpoint:@"leidos fotos albumes"];
+    #endif
 }
 
 -(void) getPhotosResponse:(NSData *)responseData album:(Album*)album{

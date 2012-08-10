@@ -214,6 +214,10 @@
     
     dispatch_release(group);
     
+    #ifdef CONFIGURATION_Beta
+        [TestFlight passCheckpoint:@"leidos datos subcategorias"];
+    #endif
+    
 }
 
 -(void) getPhotosResponse:(NSData *)responseData subCat:(SubCategory*)subcat{
