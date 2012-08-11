@@ -12,6 +12,7 @@
 #import "CategoryPhotos.h"
 #import "SubCategory.h"
 #import "PhotosAlbumViewController.h"
+#import "PhotosAllViewController.h"
 #import "UIButton+WebCache.h"
 #include <stdlib.h>
 
@@ -102,10 +103,23 @@
     
     //Hacer esto para llamar al otro controller, hay que hacerlo programaticamente
     
-    PhotosAlbumViewController *albumVC = [[PhotosAlbumViewController alloc] initWithSubCategory:subCat];
-    albumVC.navigationItem.title = subCat.name;
+    if(subCat.albums.count>1){
     
-    [self.navigationController pushViewController:albumVC animated:YES];
+        PhotosAlbumViewController *albumVC = [[PhotosAlbumViewController alloc] initWithSubCategory:subCat];
+        albumVC.navigationItem.title = subCat.name;
+    
+        [self.navigationController pushViewController:albumVC animated:YES];
+    } else{
+        
+        //Si solo tiene álbumes es que ese es el álbum
+        Album* albumAux=[subCat.albums objectAtIndex:0];
+        PhotosAllViewController *allVC = [[PhotosAllViewController alloc] initWithAlbum:albumAux];
+        allVC.navigationItem.title = albumAux.name;
+        allVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:allVC animated:YES];
+
+        
+    }
     
 }
 

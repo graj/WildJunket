@@ -104,6 +104,7 @@
     
     PhotosAllViewController *allVC = [[PhotosAllViewController alloc] initWithAlbum:album];
     allVC.navigationItem.title = album.name;
+    allVC.hidesBottomBarWhenPushed = YES;
     
     [self.navigationController pushViewController:allVC animated:YES];
     

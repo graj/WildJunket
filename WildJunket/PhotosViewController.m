@@ -14,6 +14,7 @@
 #import "PhotosSubCatViewController.h"
 #import "PhotosAlbumViewController.h"
 #import "UIButton+WebCache.h"
+#import "PhotosAllViewController.h"
 #import <QuartzCore/QuartzCore.h> 
 #include <stdlib.h>
 
@@ -119,11 +120,24 @@
     else{
         
         SubCategory *subCatAux=[cat.subCats objectAtIndex:0];
-        subCatAux.name=cat.name;
-        PhotosAlbumViewController *albumVC = [[PhotosAlbumViewController alloc] initWithSubCategory:subCatAux];
-        albumVC.navigationItem.title = cat.name;
         
-        [self.navigationController pushViewController:albumVC animated:YES];
+        if(subCatAux.albums.count>1){
+            subCatAux.name=cat.name;
+            PhotosAlbumViewController *albumVC = [[PhotosAlbumViewController alloc] initWithSubCategory:subCatAux];
+            albumVC.navigationItem.title = cat.name;
+        
+            [self.navigationController pushViewController:albumVC animated:YES];
+        }
+        else{
+            //Si solo tiene una subcategoría  solo un álbum pasa a las fotos
+            Album* albumAux=[subCatAux.albums objectAtIndex:0];
+            PhotosAllViewController *allVC = [[PhotosAllViewController alloc] initWithAlbum:albumAux];
+            allVC.navigationItem.title = albumAux.name;
+            allVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:allVC animated:YES];
+            
+
+        }
     }
 
 }
@@ -336,6 +350,9 @@
         
         //Crear objeto Categoria
         category=[[CategoryPhotos alloc] init:idCat nameParam:nameCat];
+        
+        if(nameSubCat==nil)
+            nameSubCat=nameAlbum;
         
         //Crear objeto Subcategoria
         subCategory=[[SubCategory alloc] init:idSubCat idCatParam:idCat nameParam:nameSubCat];
