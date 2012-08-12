@@ -13,12 +13,14 @@
 #import "WhereViewController.h"
 #import "SVProgressHUD.h"
 #import "UIView+Screenshot.h"
+#import "FSQEntry.h"
 
 @interface WhereViewController ()
 
 @end
 
 @implementation WhereViewController
+@synthesize fsqEntries=_fsqEntries;
 
 - (void)initPaperFold
 {
@@ -34,10 +36,14 @@
     [_paperFoldView setCenterContentView:_centerTableView];
     [_centerTableView setDelegate:self];
     [_centerTableView setDataSource:self];
+    //para diferenciarlas en los delegados y datasoure
+    _centerTableView.tag=1;
     
     _leftTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0,100,[self.view bounds].size.height)];
     [_leftTableView setRowHeight:100];
     [_leftTableView setDataSource:self];
+    [_leftTableView setDelegate:self];
+    _leftTableView.tag=0;
     [_paperFoldView setLeftFoldContentView:_leftTableView];
     
     UIView *line = [[UIView alloc] initWithFrame:CGRectMake(-1,0,1,[self.view bounds].size.height)];
@@ -60,9 +66,80 @@
     //[_paperFoldView setEnableRightFoldDragging:NO];
 }
 
+-(void)getDatosFSQ:(NSData*)responseData{
+    //Obtiene los datos de FSQ, parsea  y setean en fqlEntries array
+    
+    
+    NSError* error;
+    NSDictionary* location;
+    NSURL *imagenURL;
+    NSDictionary* detalles;
+    NSString* detalle;
+    NSString* countryCodeFSQ;
+    NSString* country;
+    NSString* city;
+    double latitude;
+    double longitude;
+    FSQEntry *fsqEntry;
+    
+    self.fsqEntries=[[NSMutableArray alloc] init];
+    
+    NSDictionary* json = [NSJSONSerialization
+                          JSONObjectWithData:responseData //1
+                          
+                          options:kNilOptions
+                          error:&error];
+    NSMutableArray *items=[[[json objectForKey:@"response"]objectForKey:@"checkins"]objectForKey:@"items"];
+    
+    for(int i=0; i<items.count; i++){
+        
+        location = [[[items objectAtIndex:i]objectForKey:@"venue"]objectForKey:@"location"];
+        
+        //Comprobar que tiene foto, si no, usar el placeholder
+        @try {
+            imagenURL=[NSURL URLWithString:[[[[[items objectAtIndex:i]objectForKey:@"photos"]objectForKey:@"items"]objectAtIndex:0]objectForKey:@"url"]];
+            
+        }
+        @catch (NSException * e) {
+            NSLog(@"Exception: %@", e);
+        }
+                
+        detalles=[items objectAtIndex:i];
+        
+        detalle=[detalles objectForKey:@"shout"];
+        countryCodeFSQ=[location objectForKey:@"cc"];
+        country=[location objectForKey:@"country"];
+        city=[location objectForKey:@"city"];
+        
+        latitude=[[location objectForKey:@"lat"] doubleValue];
+        longitude=[[location objectForKey:@"lng"] doubleValue];
+        
+        fsqEntry=[[FSQEntry alloc] init:country city:city description:detalle photo:imagenURL latitude:latitude longitude:longitude countryCode:countryCodeFSQ];
+        
+        [self.fsqEntries addObject:fsqEntry];
+
+    }
+    
+#ifdef CONFIGURATION_Beta
+    [TestFlight passCheckpoint:@"readedDataFromFSQ"];
+#endif
+    
+    [SVProgressHUD dismiss];
+    
+
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+    [SVProgressHUD showWithStatus:@"Locating WildJunket guys..."];
+	dispatch_async(kBgQueue, ^{
+        NSData* data = [NSData dataWithContentsOfURL: fsqAuth];
+        [self performSelectorOnMainThread:@selector(getDatosFSQ:) withObject:data waitUntilDone:YES];
+    });
+
 	
     [self initPaperFold];
   
@@ -71,6 +148,11 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    self.paperFoldView=nil;
+    self.mapView=nil;
+    self.leftTableView=nil;
+    self.centerTableView=nil;
+    self.locationManager=nil;    
     // Release any retained subviews of the main view.
 }
 
@@ -83,7 +165,16 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    //left tableview
+    if(tableView.tag==0){
+        return self.fsqEntries.count;
+    }
+    //Center tableview
+    else{
+        return 3;
+        
+    }
+    
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -94,10 +185,24 @@
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
-    if (indexPath.row==0) [cell.textLabel setText:@"<-- unfold left view"];
-    else if (indexPath.row==1)[cell.textLabel setText:@"unfold right view -->"];
-    else if (indexPath.row==2)[cell.textLabel setText:@"--> restore <--"];
+    
+    //left tableview
+    if(tableView.tag==0){
+        cell.textLabel.text=[[self.fsqEntries objectAtIndex:indexPath.row] countryCode];
+        
+    }
+    //center tableview
+    else{
+        if (indexPath.row==0) [cell.textLabel setText:@"<-- unfold left view"];
+        else if (indexPath.row==1)[cell.textLabel setText:@"unfold right view -->"];
+        else if (indexPath.row==2)[cell.textLabel setText:@"--> restore <--"];
+        
+        
+    }
+    
     return cell;
+  
+    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

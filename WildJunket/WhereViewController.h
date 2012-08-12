@@ -13,10 +13,13 @@
 
 @interface WhereViewController : UIViewController <MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate, PaperFoldViewDelegate, UIScrollViewDelegate, CLLocationManagerDelegate>{
     
+    NSMutableArray *_fsqEntries;
+    
 }
 
 @property (nonatomic, strong) PaperFoldView *paperFoldView;
 @property (strong, nonatomic) MKMapView *mapView;
+@property (strong, nonatomic) NSMutableArray *fsqEntries;
 @property (strong, nonatomic) UITableView *leftTableView, *centerTableView;
 @property (strong, nonatomic) IBOutlet CLLocationManager *locationManager;
 
