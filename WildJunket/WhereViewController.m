@@ -6,7 +6,7 @@
 //
 //
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-#define fsqAuth [NSURL URLWithString:@"https://api.foursquare.com/v2/users/self/checkins?oauth_token=KN4AYPARK5GJ4GRKE2F3GIQWPEKIDX3WJFAKW4TUOP2YU3CV&limit=10&v=20120608"]
+#define fsqAuth [NSURL URLWithString:@"https://api.foursquare.com/v2/users/self/checkins?oauth_token=KN4AYPARK5GJ4GRKE2F3GIQWPEKIDX3WJFAKW4TUOP2YU3CV&limit=4&v=20120608"]
 
 #define ZOOM_LEVEL 10
 
@@ -14,6 +14,7 @@
 #import "SVProgressHUD.h"
 #import "UIView+Screenshot.h"
 #import "FSQEntry.h"
+#import "CountryCodeCell.h"
 
 @interface WhereViewController ()
 
@@ -36,14 +37,11 @@
     [_paperFoldView setCenterContentView:_centerTableView];
     [_centerTableView setDelegate:self];
     [_centerTableView setDataSource:self];
-    //para diferenciarlas en los delegados y datasoure
-    _centerTableView.tag=1;
     
     _leftTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0,100,[self.view bounds].size.height)];
     [_leftTableView setRowHeight:100];
     [_leftTableView setDataSource:self];
     [_leftTableView setDelegate:self];
-    _leftTableView.tag=0;
     [_paperFoldView setLeftFoldContentView:_leftTableView];
     
     UIView *line = [[UIView alloc] initWithFrame:CGRectMake(-1,0,1,[self.view bounds].size.height)];
@@ -125,7 +123,7 @@
 #endif
     
     [SVProgressHUD dismiss];
-    
+    [self initPaperFold];
 
 }
 
@@ -141,7 +139,7 @@
     });
 
 	
-    [self initPaperFold];
+    
   
 }
 
@@ -166,12 +164,10 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     //left tableview
-    if(tableView.tag==0){
+    if(tableView==_leftTableView){
         return self.fsqEntries.count;
-    }
-    //Center tableview
-    else{
-        return 3;
+    }else{
+        return 0;
         
     }
     
@@ -179,28 +175,26 @@
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *identifier = @"UITableViewCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (!cell)
-    {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-    }
     
-    //left tableview
-    if(tableView.tag==0){
-        cell.textLabel.text=[[self.fsqEntries objectAtIndex:indexPath.row] countryCode];
-        
-    }
-    //center tableview
-    else{
-        if (indexPath.row==0) [cell.textLabel setText:@"<-- unfold left view"];
-        else if (indexPath.row==1)[cell.textLabel setText:@"unfold right view -->"];
-        else if (indexPath.row==2)[cell.textLabel setText:@"--> restore <--"];
-        
-        
-    }
+    if(tableView==_leftTableView){
+        static NSString *identifier = @"CountryCodeCell";
+        CountryCodeCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     
-    return cell;
+        if (!cell)
+        {
+            
+            cell = [[CountryCodeCell alloc] initWithStyle:UITableViewCellStyleDefault                                           reuseIdentifier:identifier];
+            
+        }
+
+        //left tableview
+        cell.primaryLabel.text=[[self.fsqEntries objectAtIndex:indexPath.row] countryCode];
+             
+        return cell;
+        
+    }else{
+        return nil;
+    }
   
     
 }
