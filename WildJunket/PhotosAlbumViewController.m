@@ -84,6 +84,12 @@
         {
             return self.radius;
         }
+        case iCarouselOptionFadeMin:
+            return -0.2;
+        case iCarouselOptionFadeMax:
+            return 0.2;
+        case iCarouselOptionFadeRange:
+            return 2.0;
         default:
         {
             return value;
