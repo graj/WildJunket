@@ -16,8 +16,9 @@
 @synthesize latitude=_latitue;
 @synthesize longitude=_longitude;
 @synthesize countryCode=_countryCode;
+@synthesize date=_date;
 
-- (id)init:(NSString*)country city:(NSString*)city description:(NSString*)description photo:(NSURL*)photo latitude:(double)latitude longitude:(double)longitude countryCode:(NSString*)countryCode
+- (id)init:(NSString*)country city:(NSString*)city description:(NSString*)description photo:(NSURL*)photo latitude:(double)latitude longitude:(double)longitude countryCode:(NSString*)countryCode date:(NSDate*)date
 {
     if ((self = [super init])) {
         self.latitude = latitude;
@@ -27,6 +28,7 @@
         self.description=[description copy];
         self.city= [city copy];
         self.countryCode=[countryCode copy];
+        self.date=[date copy];
         
     }
     return self;

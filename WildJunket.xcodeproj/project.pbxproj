@@ -53,6 +53,7 @@
 		634C558815D7C2DE00EA7349 /* WhereViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 634C558715D7C2DE00EA7349 /* WhereViewController.m */; };
 		634C558B15D7D07200EA7349 /* FSQEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 634C558A15D7D07200EA7349 /* FSQEntry.m */; };
 		634C559515D83ED600EA7349 /* CountryCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 634C559415D83ED600EA7349 /* CountryCodeCell.m */; };
+		634C559915D9BB4700EA7349 /* CenterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 634C559815D9BB4700EA7349 /* CenterCell.m */; };
 		6350026A15AB820600FC9BCF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6350026915AB820600FC9BCF /* QuartzCore.framework */; };
 		6350026C15AB821000FC9BCF /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6350026B15AB821000FC9BCF /* MessageUI.framework */; };
 		6350026E15AB821E00FC9BCF /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6350026D15AB821E00FC9BCF /* ImageIO.framework */; };
@@ -272,6 +273,8 @@
 		634C558A15D7D07200EA7349 /* FSQEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSQEntry.m; sourceTree = "<group>"; };
 		634C559315D83ED600EA7349 /* CountryCodeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryCodeCell.h; sourceTree = "<group>"; };
 		634C559415D83ED600EA7349 /* CountryCodeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryCodeCell.m; sourceTree = "<group>"; };
+		634C559715D9BB4600EA7349 /* CenterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenterCell.h; sourceTree = "<group>"; };
+		634C559815D9BB4700EA7349 /* CenterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CenterCell.m; sourceTree = "<group>"; };
 		6350026915AB820600FC9BCF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		6350026B15AB821000FC9BCF /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		6350026D15AB821E00FC9BCF /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
@@ -770,6 +773,8 @@
 				634C558A15D7D07200EA7349 /* FSQEntry.m */,
 				634C559315D83ED600EA7349 /* CountryCodeCell.h */,
 				634C559415D83ED600EA7349 /* CountryCodeCell.m */,
+				634C559715D9BB4600EA7349 /* CenterCell.h */,
+				634C559815D9BB4700EA7349 /* CenterCell.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1168,6 +1173,7 @@
 				634C558815D7C2DE00EA7349 /* WhereViewController.m in Sources */,
 				634C558B15D7D07200EA7349 /* FSQEntry.m in Sources */,
 				634C559515D83ED600EA7349 /* CountryCodeCell.m in Sources */,
+				634C559915D9BB4700EA7349 /* CenterCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

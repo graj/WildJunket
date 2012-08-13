@@ -15,6 +15,7 @@
 #import "UIView+Screenshot.h"
 #import "FSQEntry.h"
 #import "CountryCodeCell.h"
+#import "CenterCell.h"
 
 @interface WhereViewController ()
 
@@ -32,8 +33,8 @@
     _mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0,0,240,[self.view bounds].size.height)];
     [_paperFoldView setRightFoldContentView:_mapView rightViewFoldCount:3 rightViewPullFactor:0.9];
     
-    _centerTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0,[self.view bounds].size.width,[self.view bounds].size.height)];
-    [_centerTableView setRowHeight:120];
+    _centerTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0,[self.view bounds].size.width, 680)];
+    [_centerTableView setRowHeight:[self.view bounds].size.height];
     [_paperFoldView setCenterContentView:_centerTableView];
     [_centerTableView setDelegate:self];
     [_centerTableView setDataSource:self];
@@ -79,6 +80,7 @@
     double latitude;
     double longitude;
     FSQEntry *fsqEntry;
+    NSDate *date;
     
     self.fsqEntries=[[NSMutableArray alloc] init];
     
@@ -111,8 +113,9 @@
         
         latitude=[[location objectForKey:@"lat"] doubleValue];
         longitude=[[location objectForKey:@"lng"] doubleValue];
+        date=[self getDateFromEpoch:[detalles objectForKey:@"createdAt"]];
         
-        fsqEntry=[[FSQEntry alloc] init:country city:city description:detalle photo:imagenURL latitude:latitude longitude:longitude countryCode:countryCodeFSQ];
+        fsqEntry=[[FSQEntry alloc] init:country city:city description:detalle photo:imagenURL latitude:latitude longitude:longitude countryCode:countryCodeFSQ date:date];
         
         [self.fsqEntries addObject:fsqEntry];
 
@@ -125,6 +128,24 @@
     [SVProgressHUD dismiss];
     [self initPaperFold];
 
+}
+
+-(NSDate*)getDateFromEpoch:(NSString*)epochTime{
+    // (Step 1) Convert epoch time to SECONDS since 1970
+    NSTimeInterval seconds = [epochTime doubleValue];
+    //NSLog (@"Epoch time %@ equates to %qi seconds since 1970", epochTime, (long long) seconds);
+    
+    // (Step 2) Create NSDate object
+    NSDate *epochNSDate = [[NSDate alloc] initWithTimeIntervalSince1970:seconds];
+    //NSLog (@"Epoch time %@ equates to UTC %@", epochTime, epochNSDate);
+    
+    // (Step 3) Use NSDateFormatter to display epochNSDate in local time zone
+    //NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //[dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss zzz"];
+    //NSLog (@"Epoch time %@ equates to %@", epochTime, [dateFormatter stringFromDate:epochNSDate]);
+    
+    return epochNSDate;
+    
 }
 
 - (void)viewDidLoad
@@ -167,7 +188,7 @@
     if(tableView==_leftTableView){
         return self.fsqEntries.count;
     }else{
-        return 0;
+        return 1;
         
     }
     
@@ -175,7 +196,6 @@
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     if(tableView==_leftTableView){
         static NSString *identifier = @"CountryCodeCell";
         CountryCodeCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
@@ -193,7 +213,25 @@
         return cell;
         
     }else{
-        return nil;
+        static NSString *identifier = @"CenterCell";
+        CenterCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        
+        if (!cell)
+        {
+            
+            cell = [[CenterCell alloc] initWithStyle:UITableViewCellStyleDefault                                           reuseIdentifier:identifier];
+            
+        }
+        
+        int selectedLeftIndex=_leftTableView.indexPathForSelectedRow.row;
+        cell.countryLabel.text=[[self.fsqEntries objectAtIndex:selectedLeftIndex] country];
+        cell.cityLabel.text=[[self.fsqEntries objectAtIndex:selectedLeftIndex] city];
+        cell.dateLabel.text=@"Fecha";
+        cell.descLabel.text=[[self.fsqEntries objectAtIndex:selectedLeftIndex] description];
+        
+        
+        return cell;
+
     }
   
     
@@ -201,22 +239,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row==0)
-    {
-        // unfold left view
-        [self.paperFoldView setPaperFoldState:PaperFoldStateLeftUnfolded];
+    if(tableView==_leftTableView){
+      
+        // restore to center
+        [self.paperFoldView setPaperFoldState:PaperFoldStateDefault];
+        [self.centerTableView reloadData];
     }
-    else if (indexPath.row==1)
-    {
-        // unfold right view
-        [self.paperFoldView setPaperFoldState:PaperFoldStateRightUnfolded];
-    }
-    else if (indexPath.row==2)
-    {
+    else{
         // restore to center
         [self.paperFoldView setPaperFoldState:PaperFoldStateDefault];
     }
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
 }
 
 #pragma mark paper fold delegate
