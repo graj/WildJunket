@@ -7,7 +7,9 @@
 //
 
 #import "PhotoShowViewController.h"
+#import "SVProgressHUD.h"
 #import <Twitter/Twitter.h>
+#define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
 
 @interface PhotoShowViewController ()
 @property (nonatomic, strong) UIImageView *imageView;
@@ -46,32 +48,6 @@
     
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden: YES animated:YES];
-    
-    // 1
-    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:self.photoURL]];
-    self.imageView = [[UIImageView alloc] initWithImage:image];
-    self.imageView.frame = (CGRect){.origin=CGPointMake(0.0f, 0.0f), .size=image.size};
-    [self.scrollView addSubview:self.imageView];
-    
-    // 2
-    self.scrollView.contentSize = image.size;
-    
-    // 3
-    /*UITapGestureRecognizer *doubleTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewDoubleTapped:)];
-    doubleTapRecognizer.numberOfTapsRequired = 2;
-    doubleTapRecognizer.numberOfTouchesRequired = 1;
-    [self.scrollView addGestureRecognizer:doubleTapRecognizer];*/
-    
-    UITapGestureRecognizer *twoFingerTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewTwoFingerTapped:)];
-    twoFingerTapRecognizer.numberOfTapsRequired = 1;
-    twoFingerTapRecognizer.numberOfTouchesRequired = 2;
-    [self.scrollView addGestureRecognizer:twoFingerTapRecognizer];
-    
-    UITapGestureRecognizer *singleTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewSingleTapped:)];
-    singleTapRecognizer.numberOfTapsRequired = 1;
-    singleTapRecognizer.numberOfTouchesRequired = 1;
-    [self.scrollView addGestureRecognizer:singleTapRecognizer];
-    
     [self setBoton];
 }
 
@@ -194,12 +170,42 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    //Aquí va a cargar la foto
+    
+    [SVProgressHUD show];
+    
+    dispatch_async(kBgQueue, ^{
+        // 1
+        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:self.photoURL]];
+        [self performSelectorOnMainThread:@selector(setImage:) withObject:image waitUntilDone:YES];
 
-- (void)viewWillAppear:(BOOL)animated {
+                
+    });
+
     
-    [super viewWillAppear:animated];
+}
+
+-(void)setImage:(UIImage*)image{
     
-    [self.navigationController setNavigationBarHidden: YES animated:YES];
+    self.imageView = [[UIImageView alloc] initWithImage:image];
+    self.imageView.frame = (CGRect){.origin=CGPointMake(0.0f, 0.0f), .size=image.size};
+    [self.scrollView addSubview:self.imageView];
+    
+    // 2
+    self.scrollView.contentSize = image.size;
+    
+    
+    UITapGestureRecognizer *twoFingerTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewTwoFingerTapped:)];
+    twoFingerTapRecognizer.numberOfTapsRequired = 1;
+    twoFingerTapRecognizer.numberOfTouchesRequired = 2;
+    [self.scrollView addGestureRecognizer:twoFingerTapRecognizer];
+    
+    UITapGestureRecognizer *singleTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewSingleTapped:)];
+    singleTapRecognizer.numberOfTapsRequired = 1;
+    singleTapRecognizer.numberOfTouchesRequired = 1;
+    [self.scrollView addGestureRecognizer:singleTapRecognizer];
+    
     
     // 4
     CGRect scrollViewFrame = self.scrollView.frame;
@@ -214,6 +220,18 @@
     
     // 6
     [self centerScrollViewContents];
+    
+    [SVProgressHUD dismiss];
+
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
+    [self.navigationController setNavigationBarHidden: YES animated:YES];
+    
+    
 }
 
 - (void)centerScrollViewContents {
