@@ -24,6 +24,8 @@
         cityLabel.textAlignment = UITextAlignmentRight;
         cityLabel.textColor = [UIColor whiteColor];
         cityLabel.backgroundColor=[UIColor clearColor];
+        cityLabel.shadowColor=[UIColor blackColor];
+        cityLabel.shadowOffset=CGSizeMake(0.0, -1.0);
         cityLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight;
         
         //Country Label
@@ -33,20 +35,23 @@
         countryLabel.textAlignment = UITextAlignmentRight;
         countryLabel.textColor = [UIColor whiteColor];
         countryLabel.backgroundColor=[UIColor clearColor];
+        countryLabel.shadowColor=[UIColor blackColor];
+        countryLabel.shadowOffset=CGSizeMake(0.0, -1.0);
+
         countryLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight;
         
         //Date Label
         dateLabel = [[UILabel alloc]init];
-        dateLabel.font = [UIFont fontWithName:@"Vernada" size:20];
+        dateLabel.font = [UIFont fontWithName:@"Vernada-Italic" size:15];
         [self.contentView addSubview:dateLabel];
-        dateLabel.textAlignment = UITextAlignmentLeft;
+        dateLabel.textAlignment = UITextAlignmentRight;
         dateLabel.textColor = [UIColor whiteColor];
         dateLabel.backgroundColor=[UIColor clearColor];
         dateLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight;
         
         //Description Label
         descLabel = [[UILabel alloc]init];
-        descLabel.font = [UIFont fontWithName:@"Verdana" size:15];
+        descLabel.font = [UIFont fontWithName:@"Verdana" size:18];
         descLabel.lineBreakMode=UILineBreakModeWordWrap;
         descLabel.minimumFontSize=12;
         descLabel.numberOfLines=0;
@@ -63,15 +68,16 @@
         CGFloat boundsX = contentRect.origin.x;
         CGFloat boundsY = contentRect.origin.y;
 
-        scrollView=[[UIScrollView alloc] initWithFrame:CGRectMake(boundsX, boundsY+210, width, 270)];
+        scrollView=[[UIScrollView alloc] initWithFrame:CGRectMake(boundsX, boundsY+200, width, 280)];
         scrollView.autoresizesSubviews=YES;
         scrollView.contentMode=UIViewContentModeScaleToFill;
+        scrollView.backgroundColor=[UIColor clearColor];
         [self.contentView addSubview:scrollView];
         
         
         //Cell
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        self.contentView.backgroundColor=[UIColor blackColor];
+        self.contentView.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"photosbackground3.png"]];
 
     }
     return self;
@@ -85,13 +91,13 @@
     CGFloat boundsY = contentRect.origin.y;
     
     //City Label
-    cityLabel.frame = CGRectMake(boundsX, boundsY+30, width, 32);
+    cityLabel.frame = CGRectMake(boundsX, boundsY+20, width, 32);
     
     //Country Label
-    countryLabel.frame = CGRectMake(boundsX, boundsY+70, width, 32);
+    countryLabel.frame = CGRectMake(boundsX, boundsY+60, width, 32);
     
     //Data Label
-    dateLabel.frame = CGRectMake(boundsX, boundsY+110, width, 22);
+    dateLabel.frame = CGRectMake(boundsX, boundsY+100, width, 22);
     
     //Description Label
     descLabel.frame = CGRectMake(boundsX, boundsY+130, width, 60);

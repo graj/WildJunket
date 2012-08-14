@@ -122,7 +122,7 @@
         
         latitude=[[location objectForKey:@"lat"] doubleValue];
         longitude=[[location objectForKey:@"lng"] doubleValue];
-        date=[self getDateFromEpoch:[detalles objectForKey:@"createdAt"]];
+        date=[detalles objectForKey:@"createdAt"];
         
         fsqEntry=[[FSQEntry alloc] init:country city:city description:detalle photo:imagenURL latitude:latitude longitude:longitude countryCode:countryCodeFSQ date:date];
         
@@ -139,7 +139,7 @@
 
 }
 
--(NSDate*)getDateFromEpoch:(NSString*)epochTime{
+-(NSString*)getDateFromEpoch:(NSString*)epochTime{
     // (Step 1) Convert epoch time to SECONDS since 1970
     NSTimeInterval seconds = [epochTime doubleValue];
     //NSLog (@"Epoch time %@ equates to %qi seconds since 1970", epochTime, (long long) seconds);
@@ -149,11 +149,11 @@
     //NSLog (@"Epoch time %@ equates to UTC %@", epochTime, epochNSDate);
     
     // (Step 3) Use NSDateFormatter to display epochNSDate in local time zone
-    //NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    //[dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss zzz"];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MMMM dd, YYYY"];
     //NSLog (@"Epoch time %@ equates to %@", epochTime, [dateFormatter stringFromDate:epochNSDate]);
     
-    return epochNSDate;
+    return [dateFormatter stringFromDate:epochNSDate];
     
 }
 
@@ -237,7 +237,7 @@
         int selectedLeftIndex=_leftTableView.indexPathForSelectedRow.row;
         cell.countryLabel.text=[[self.fsqEntries objectAtIndex:selectedLeftIndex] country];
         cell.cityLabel.text=[[self.fsqEntries objectAtIndex:selectedLeftIndex] city];
-        cell.dateLabel.text=@"Fecha";
+        cell.dateLabel.text=[self getDateFromEpoch:[[self.fsqEntries objectAtIndex:selectedLeftIndex] date]];
         cell.descLabel.text=[[self.fsqEntries objectAtIndex:selectedLeftIndex] description];
         
         //Imagen del checkin y scrollview

@@ -16,7 +16,7 @@
     double _latitue;
     double _longitude;
     NSString *_countryCode;
-    NSDate *_date;
+    NSString *_date;
 }
 
 @property (nonatomic) NSString *country;
@@ -24,10 +24,10 @@
 @property (nonatomic) NSString *description;
 @property (nonatomic) NSString *countryCode;
 @property (nonatomic) NSURL *photo;
-@property (nonatomic) NSDate *date;
+@property (nonatomic) NSString *date;
 @property double latitude;
 @property double longitude;
 
-- (id)init:(NSString*)country city:(NSString*)city description:(NSString*)description photo:(NSURL*)photo latitude:(double)latitude longitude:(double)longitude countryCode:(NSString*)countryCode date:(NSDate*)date;
+- (id)init:(NSString*)country city:(NSString*)city description:(NSString*)description photo:(NSURL*)photo latitude:(double)latitude longitude:(double)longitude countryCode:(NSString*)countryCode date:(NSString*)date;
 
 @end
