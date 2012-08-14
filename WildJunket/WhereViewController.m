@@ -89,7 +89,7 @@
     double latitude;
     double longitude;
     FSQEntry *fsqEntry;
-    NSDate *date;
+    NSString *date;
     
     self.fsqEntries=[[NSMutableArray alloc] init];
     
@@ -220,6 +220,7 @@
 
         //left tableview
         cell.primaryLabel.text=[[self.fsqEntries objectAtIndex:indexPath.row] countryCode];
+        cell.cityLabel.text=[[self.fsqEntries objectAtIndex:indexPath.row] city];
              
         return cell;
         
