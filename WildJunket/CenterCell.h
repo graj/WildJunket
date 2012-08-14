@@ -22,6 +22,7 @@
 @property (nonatomic,retain) UILabel *countryLabel;
 @property (nonatomic,retain) UILabel *dateLabel;
 @property (nonatomic,retain) UILabel *descLabel;
+@property bool portrait;
 
 -(void)checkOrientations:(bool)portrait;
 
