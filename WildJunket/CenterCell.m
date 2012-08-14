@@ -22,7 +22,8 @@
         cityLabel.font = [UIFont fontWithName:@"GillSans-Bold" size:30];
         [self.contentView addSubview:cityLabel];
         cityLabel.textAlignment = UITextAlignmentRight;
-        cityLabel.textColor = [UIColor blackColor];
+        cityLabel.textColor = [UIColor whiteColor];
+        cityLabel.backgroundColor=[UIColor clearColor];
         cityLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight;
         
         //Country Label
@@ -30,7 +31,8 @@
         countryLabel.font = [UIFont fontWithName:@"GillSans-Bold" size:30];
         [self.contentView addSubview:countryLabel];
         countryLabel.textAlignment = UITextAlignmentRight;
-        countryLabel.textColor = [UIColor blackColor];
+        countryLabel.textColor = [UIColor whiteColor];
+        countryLabel.backgroundColor=[UIColor clearColor];
         countryLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight;
         
         //Date Label
@@ -38,7 +40,8 @@
         dateLabel.font = [UIFont fontWithName:@"Vernada" size:20];
         [self.contentView addSubview:dateLabel];
         dateLabel.textAlignment = UITextAlignmentLeft;
-        dateLabel.textColor = [UIColor blackColor];
+        dateLabel.textColor = [UIColor whiteColor];
+        dateLabel.backgroundColor=[UIColor clearColor];
         dateLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight;
         
         //Description Label
@@ -49,7 +52,8 @@
         descLabel.numberOfLines=0;
         [self.contentView addSubview:descLabel];
         descLabel.textAlignment = UITextAlignmentLeft;
-        descLabel.textColor = [UIColor blackColor];
+        descLabel.textColor = [UIColor whiteColor];
+        descLabel.backgroundColor=[UIColor clearColor];
         descLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight;
         
         
@@ -67,8 +71,8 @@
         
         //Cell
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-        
+        self.contentView.backgroundColor=[UIColor blackColor];
+
     }
     return self;
 }

@@ -38,6 +38,7 @@
     [self.view addSubview:_paperFoldView];
     
     _mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0,0,240,[self.view bounds].size.height)];
+    _mapView.mapType=MKMapTypeHybrid;
     [_paperFoldView setRightFoldContentView:_mapView rightViewFoldCount:3 rightViewPullFactor:0.9];
     
     _centerTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0,[self.view bounds].size.width, [self.view bounds].size.height)];
@@ -286,11 +287,11 @@
         
         // 6
         [self centerScrollViewContents];
-
         
+        [self updateMap];
         
         return cell;
-
+         
     }  
     
 }
@@ -361,6 +362,7 @@
         // restore to center
         [self.paperFoldView setPaperFoldState:PaperFoldStateDefault];
         [self.centerTableView reloadData];
+        
     }
     else{
         // restore to center
@@ -369,6 +371,13 @@
     
 }
 
+-(void)updateMap{
+    
+    int selectedLeftIndex=_leftTableView.indexPathForSelectedRow.row;
+    CLLocationCoordinate2D centerCoord = {[[self.fsqEntries objectAtIndex:selectedLeftIndex] latitude], [[self.fsqEntries objectAtIndex:selectedLeftIndex] longitude]};
+    [_mapView setCenterCoordinate:centerCoord zoomLevel:ZOOM_LEVEL animated:YES];
+
+}
 #pragma mark paper fold delegate
 
 - (void)paperFoldView:(id)paperFoldView didFoldAutomatically:(BOOL)automated toState:(PaperFoldState)paperFoldState
