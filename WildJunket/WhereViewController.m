@@ -40,8 +40,9 @@
     _mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0,0,240,[self.view bounds].size.height)];
     [_paperFoldView setRightFoldContentView:_mapView rightViewFoldCount:3 rightViewPullFactor:0.9];
     
-    _centerTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0,[self.view bounds].size.width, [self.view bounds].size.height+200)];
-    [_centerTableView setRowHeight:[self.view bounds].size.height+200];
+    _centerTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0,[self.view bounds].size.width, [self.view bounds].size.height)];
+    [_centerTableView setRowHeight:[self.view bounds].size.height];
+    _centerTableView.scrollEnabled=NO;
     [_paperFoldView setCenterContentView:_centerTableView];
     [_centerTableView setDelegate:self];
     [_centerTableView setDataSource:self];
@@ -241,12 +242,19 @@
         //Imagen del checkin y scrollview
         
         self.scrollView=cell.scrollView;
+        
+        //Clean subviews
+        NSArray *viewsToRemove = [self.scrollView subviews];
+        for (UIView *v in viewsToRemove) [v removeFromSuperview];
+        
         NSURL *url = [[self.fsqEntries objectAtIndex:selectedLeftIndex] photo];
         NSData *urlData = [NSData dataWithContentsOfURL:url];
         UIImage *image = [UIImage imageWithData:urlData];
         
         self.imageView = [[UIImageView alloc] initWithImage:image];
         self.imageView.frame = (CGRect){.origin=CGPointMake(0.0f, 0.0f), .size=image.size};
+        self.imageView.layer.cornerRadius = 15.0;
+        self.imageView.layer.masksToBounds = YES;
         [cell.scrollView addSubview:self.imageView];
         
         // 2

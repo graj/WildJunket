@@ -59,7 +59,9 @@
         CGFloat boundsX = contentRect.origin.x;
         CGFloat boundsY = contentRect.origin.y;
 
-        scrollView=[[UIScrollView alloc] initWithFrame:CGRectMake(boundsX, boundsY+200, width, 480)];
+        scrollView=[[UIScrollView alloc] initWithFrame:CGRectMake(boundsX, boundsY+210, width, 270)];
+        scrollView.autoresizesSubviews=YES;
+        scrollView.contentMode=UIViewContentModeScaleToFill;
         [self.contentView addSubview:scrollView];
         
         
@@ -79,16 +81,16 @@
     CGFloat boundsY = contentRect.origin.y;
     
     //City Label
-    cityLabel.frame = CGRectMake(boundsX, boundsY+25, width, 32);
+    cityLabel.frame = CGRectMake(boundsX, boundsY+30, width, 32);
     
     //Country Label
-    countryLabel.frame = CGRectMake(boundsX, boundsY+65, width, 32);
+    countryLabel.frame = CGRectMake(boundsX, boundsY+70, width, 32);
     
     //Data Label
-    dateLabel.frame = CGRectMake(boundsX, boundsY+105, width, 22);
+    dateLabel.frame = CGRectMake(boundsX, boundsY+110, width, 22);
     
     //Description Label
-    descLabel.frame = CGRectMake(boundsX, boundsY+135, width, 50);
+    descLabel.frame = CGRectMake(boundsX, boundsY+130, width, 60);
 
 }
 
