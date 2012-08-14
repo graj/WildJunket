@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CenterCell : UITableViewCell <UIScrollViewDelegate>{
+@interface CenterCell : UITableViewCell {
     UILabel *cityLabel;
     UILabel *countryLabel;
     UILabel *dateLabel;

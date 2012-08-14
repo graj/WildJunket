@@ -53,8 +53,15 @@
         descLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight;
         
         
-        //Scroll View
-        scrollView=[UIScrollView alloc];
+        //Scroll View, tengo que hacer esto aquí, en layoutSubviews peta
+        CGRect contentRect = self.contentView.bounds;
+        CGFloat width=self.contentView.bounds.size.width;
+        CGFloat boundsX = contentRect.origin.x;
+        CGFloat boundsY = contentRect.origin.y;
+
+        scrollView=[[UIScrollView alloc] initWithFrame:CGRectMake(boundsX, boundsY+200, width, 480)];
+        [self.contentView addSubview:scrollView];
+        
         
         //Cell
         self.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -82,10 +89,6 @@
     
     //Description Label
     descLabel.frame = CGRectMake(boundsX, boundsY+135, width, 50);
-    
-    //Description Label
-    scrollView.frame = CGRectMake(boundsX, boundsY+200, width, 480);
-
 
 }
 

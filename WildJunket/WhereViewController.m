@@ -18,11 +18,18 @@
 #import "CenterCell.h"
 
 @interface WhereViewController ()
+@property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) UIScrollView *scrollView;
+
+- (void)centerScrollViewContents;
+- (void)scrollViewDoubleTapped:(UITapGestureRecognizer*)recognizer;
+- (void)scrollViewTwoFingerTapped:(UITapGestureRecognizer*)recognizer;
 
 @end
 
 @implementation WhereViewController
 @synthesize fsqEntries=_fsqEntries;
+@synthesize imageView,scrollView;
 
 - (void)initPaperFold
 {
@@ -33,8 +40,8 @@
     _mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0,0,240,[self.view bounds].size.height)];
     [_paperFoldView setRightFoldContentView:_mapView rightViewFoldCount:3 rightViewPullFactor:0.9];
     
-    _centerTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0,[self.view bounds].size.width, 680)];
-    [_centerTableView setRowHeight:[self.view bounds].size.height];
+    _centerTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0,[self.view bounds].size.width, [self.view bounds].size.height+200)];
+    [_centerTableView setRowHeight:[self.view bounds].size.height+200];
     [_paperFoldView setCenterContentView:_centerTableView];
     [_centerTableView setDelegate:self];
     [_centerTableView setDataSource:self];
@@ -171,7 +178,9 @@
     self.mapView=nil;
     self.leftTableView=nil;
     self.centerTableView=nil;
-    self.locationManager=nil;    
+    self.locationManager=nil;
+    self.imageView=nil;
+    self.scrollView=nil;
     // Release any retained subviews of the main view.
 }
 
@@ -229,13 +238,113 @@
         cell.dateLabel.text=@"Fecha";
         cell.descLabel.text=[[self.fsqEntries objectAtIndex:selectedLeftIndex] description];
         
+        //Imagen del checkin y scrollview
+        
+        self.scrollView=cell.scrollView;
+        NSURL *url = [[self.fsqEntries objectAtIndex:selectedLeftIndex] photo];
+        NSData *urlData = [NSData dataWithContentsOfURL:url];
+        UIImage *image = [UIImage imageWithData:urlData];
+        
+        self.imageView = [[UIImageView alloc] initWithImage:image];
+        self.imageView.frame = (CGRect){.origin=CGPointMake(0.0f, 0.0f), .size=image.size};
+        [cell.scrollView addSubview:self.imageView];
+        
+        // 2
+        cell.scrollView.contentSize = image.size;
+        cell.scrollView.delegate=self;
+        
+        // 3
+        UITapGestureRecognizer *doubleTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewDoubleTapped:)];
+        doubleTapRecognizer.numberOfTapsRequired = 2;
+        doubleTapRecognizer.numberOfTouchesRequired = 1;
+        [cell.scrollView addGestureRecognizer:doubleTapRecognizer];
+        
+        UITapGestureRecognizer *twoFingerTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewTwoFingerTapped:)];
+        twoFingerTapRecognizer.numberOfTapsRequired = 1;
+        twoFingerTapRecognizer.numberOfTouchesRequired = 2;
+        [cell.scrollView addGestureRecognizer:twoFingerTapRecognizer];
+        
+        // 4
+        CGRect scrollViewFrame = cell.scrollView.frame;
+        CGFloat scaleWidth = scrollViewFrame.size.width / cell.scrollView.contentSize.width;
+        CGFloat scaleHeight = scrollViewFrame.size.height / cell.scrollView.contentSize.height;
+        CGFloat minScale = MIN(scaleWidth, scaleHeight);
+        cell.scrollView.minimumZoomScale = minScale;
+        cell.scrollView.backgroundColor=[UIColor blackColor];
+        
+        // 5
+        cell.scrollView.maximumZoomScale = 1.0f;
+        cell.scrollView.zoomScale = minScale;
+        
+        // 6
+        [self centerScrollViewContents];
+
+        
         
         return cell;
 
-    }
-  
+    }  
     
 }
+
+- (void)centerScrollViewContents {
+    CGSize boundsSize = self.scrollView.bounds.size;
+    CGRect contentsFrame = self.imageView.frame;
+    
+    if (contentsFrame.size.width < boundsSize.width) {
+        contentsFrame.origin.x = (boundsSize.width - contentsFrame.size.width) / 2.0f;
+    } else {
+        contentsFrame.origin.x = 0.0f;
+    }
+    
+    if (contentsFrame.size.height < boundsSize.height) {
+        contentsFrame.origin.y = (boundsSize.height - contentsFrame.size.height) / 2.0f;
+    } else {
+        contentsFrame.origin.y = 0.0f;
+    }
+    
+    self.imageView.frame = contentsFrame;
+}
+
+- (void)scrollViewDoubleTapped:(UITapGestureRecognizer*)recognizer {
+    // 1
+    CGPoint pointInView = [recognizer locationInView:self.imageView];
+    
+    // 2
+    CGFloat newZoomScale = self.scrollView.zoomScale * 1.5f;
+    newZoomScale = MIN(newZoomScale, self.scrollView.maximumZoomScale);
+    
+    // 3
+    CGSize scrollViewSize = self.scrollView.bounds.size;
+    
+    CGFloat w = scrollViewSize.width / newZoomScale;
+    CGFloat h = scrollViewSize.height / newZoomScale;
+    CGFloat x = pointInView.x - (w / 2.0f);
+    CGFloat y = pointInView.y - (h / 2.0f);
+    
+    CGRect rectToZoomTo = CGRectMake(x, y, w, h);
+    
+    // 4
+    [self.scrollView zoomToRect:rectToZoomTo animated:YES];
+}
+
+- (void)scrollViewTwoFingerTapped:(UITapGestureRecognizer*)recognizer {
+    // Zoom out slightly, capping at the minimum zoom scale specified by the scroll view
+    CGFloat newZoomScale = self.scrollView.zoomScale / 1.5f;
+    newZoomScale = MAX(newZoomScale, self.scrollView.minimumZoomScale);
+    [self.scrollView setZoomScale:newZoomScale animated:YES];
+}
+
+- (UIView*)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    // Return the view that you want to zoom
+    return self.imageView;
+}
+
+- (void)scrollViewDidZoom:(UIScrollView *)scrollView {
+    // The scroll view has zoomed, so you need to re-center the contents
+    [self centerScrollViewContents];
+}
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
