@@ -23,4 +23,6 @@
 @property (nonatomic,retain) UILabel *dateLabel;
 @property (nonatomic,retain) UILabel *descLabel;
 
+-(void)checkOrientations:(bool)portrait;
+
 @end

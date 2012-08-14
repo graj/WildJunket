@@ -241,6 +241,19 @@
         cell.dateLabel.text=[self getDateFromEpoch:[[self.fsqEntries objectAtIndex:selectedLeftIndex] date]];
         cell.descLabel.text=[[self.fsqEntries objectAtIndex:selectedLeftIndex] description];
         
+        
+        //Orientation
+        if([[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortrait || [[UIApplication sharedApplication] statusBarOrientation]==UIInterfaceOrientationPortraitUpsideDown){
+            
+            [cell checkOrientations:YES];
+
+        }
+        else{
+           [cell checkOrientations:NO];
+        }
+        
+        
+        
         //Imagen del checkin y scrollview
         
         self.scrollView=cell.scrollView;
@@ -255,12 +268,19 @@
         
         self.imageView = [[UIImageView alloc] initWithImage:image];
         self.imageView.frame = (CGRect){.origin=CGPointMake(0.0f, 0.0f), .size=image.size};
-        self.imageView.layer.cornerRadius = 15.0;
-        self.imageView.layer.masksToBounds = YES;
         [cell.scrollView addSubview:self.imageView];
+        self.imageView.contentMode=UIViewContentModeScaleAspectFit;
+        self.scrollView.contentMode=UIViewContentModeScaleAspectFit;
+        self.scrollView.layer.cornerRadius = 15.0;
+        self.scrollView.layer.masksToBounds = YES;
+      
+        [self.scrollView sizeToFit];
+        
+        [imageView sizeToFit];
+        
         
         // 2
-        cell.scrollView.contentSize = image.size;
+        cell.scrollView.contentSize = cell.scrollView.frame.size;
         cell.scrollView.delegate=self;
         
         // 3
@@ -283,7 +303,7 @@
         cell.scrollView.backgroundColor=[UIColor blackColor];
         
         // 5
-        cell.scrollView.maximumZoomScale = 1.0f;
+        cell.scrollView.maximumZoomScale = 0.6f;
         cell.scrollView.zoomScale = minScale;
         
         // 6
@@ -379,6 +399,13 @@
     [_mapView setCenterCoordinate:centerCoord zoomLevel:ZOOM_LEVEL animated:YES];
 
 }
+
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    [_centerTableView reloadData];
+
+}
+
 #pragma mark paper fold delegate
 
 - (void)paperFoldView:(id)paperFoldView didFoldAutomatically:(BOOL)automated toState:(PaperFoldState)paperFoldState

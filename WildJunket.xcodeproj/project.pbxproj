@@ -1265,7 +1265,7 @@
 				);
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AC953EC1-ACEC-41F9-B817-9DD9E9DA0E07";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8538A681-AF6A-4069-9099-693B71DDF507";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Beta;
@@ -1343,7 +1343,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: David Garcia Fernandez";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: David Garcia Fernandez (72SXJQDU59)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WildJunket/WildJunket-Prefix.pch";
 				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
@@ -1355,7 +1355,7 @@
 				);
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AC953EC1-ACEC-41F9-B817-9DD9E9DA0E07";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2BDD0ECD-C7DC-4CF3-A796-85C1908E7B46";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1376,7 +1376,7 @@
 				);
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AC953EC1-ACEC-41F9-B817-9DD9E9DA0E07";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8538A681-AF6A-4069-9099-693B71DDF507";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
