@@ -20,6 +20,7 @@
 @interface WhereViewController ()
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UIScrollView *scrollView;
+@property NSString *countryCode;
 
 - (void)centerScrollViewContents;
 - (void)scrollViewDoubleTapped:(UITapGestureRecognizer*)recognizer;
@@ -29,7 +30,7 @@
 
 @implementation WhereViewController
 @synthesize fsqEntries=_fsqEntries;
-@synthesize imageView,scrollView;
+@synthesize imageView,scrollView, locationManager, countryCode;
 
 - (void)initPaperFold
 {
@@ -134,6 +135,21 @@
     [TestFlight passCheckpoint:@"readedDataFromFSQ"];
 #endif
     
+    //Check the country codes
+    NSString *lastCountryCode=[[self.fsqEntries objectAtIndex:0] countryCode];
+    if([self.countryCode isEqualToString:lastCountryCode]){
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                  initWithTitle:@"What a casuality!"
+                                  message:@"Woww we are in the same country!"
+                                  delegate:self
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+        [alertView show];
+        
+    }
+
+    
+    
     [SVProgressHUD dismiss];
     [self initPaperFold];
 
@@ -168,7 +184,10 @@
         [self performSelectorOnMainThread:@selector(getDatosFSQ:) withObject:data waitUntilDone:YES];
     });
 
-	
+    //Retrieving user location
+    self.locationManager.delegate = self;
+    [locationManager startUpdatingLocation];
+
     
   
 }
@@ -405,6 +424,75 @@
     [_centerTableView reloadData];
 
 }
+
+- (void)getGoogleResponse:(NSData *)responseData {
+    //parse out the json data
+    NSError* error;
+    NSDictionary* json = [NSJSONSerialization
+                          JSONObjectWithData:responseData //1
+                          
+                          options:kNilOptions
+                          error:&error];
+    
+    
+    NSMutableArray *arr=[[[json objectForKey:@"results"]objectAtIndex:0]objectForKey:@"address_components"];
+    
+    NSDictionary *temp;
+    NSMutableArray *arrTemp;
+    NSString *strTemp;
+    NSString *country;
+    
+    for (int i=0; i<[arr count]; i++) {
+        temp=[arr objectAtIndex:i];
+        arrTemp=[temp objectForKey:@"types"];
+        for (int t=0; t<[arrTemp count]; t++) {
+            strTemp=[arrTemp objectAtIndex:t];
+            if([strTemp isEqualToString:@"country"])
+            {
+                //Lo he encontrado!!
+                country=[temp objectForKey:@"short_name"];
+                self.countryCode=country;
+                break;
+            }
+        }
+        
+    }
+    
+#ifdef CONFIGURATION_Beta
+    [TestFlight passCheckpoint:@"googleResponse"];
+#endif
+    
+    NSLog(@"Country: %@", country);
+    
+    
+}
+
+#pragma mark locationmanager
+// this delegate is called when the app successfully finds your current location
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    //Geocoding Block
+    //Asking Google
+    NSString *urlStr=[[[[@"http://maps.google.com/maps/api/geocode/json?latlng=" stringByAppendingString:[[NSNumber numberWithDouble:newLocation.coordinate.latitude]stringValue]] stringByAppendingString:@","]stringByAppendingString:[[NSNumber numberWithDouble:newLocation.coordinate.longitude]stringValue]]stringByAppendingString:@"&sensor=true&language=en"];
+    
+    NSURL *url=[NSURL URLWithString:urlStr];
+    dispatch_async(kBgQueue, ^{
+        NSData* data = [NSData dataWithContentsOfURL: url];
+        [self performSelectorOnMainThread:@selector(getGoogleResponse:) withObject:data waitUntilDone:NO];
+    });
+    
+    [locationManager stopUpdatingLocation];
+    
+    
+}
+
+// this delegate method is called if an error occurs in locating your current location
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    [locationManager stopUpdatingLocation];
+    NSLog(@"locationManager:%@ didFailWithError:%@", manager, error);
+}
+
 
 #pragma mark paper fold delegate
 
