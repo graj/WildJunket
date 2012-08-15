@@ -21,6 +21,7 @@
 #import <QuartzCore/CAGradientLayer.h>
 #import <QuartzCore/QuartzCore.h>
 #import "SVProgressHUD.h"
+#import "ODRefreshControl.h"
 
 @interface RSSTableViewController ()
 
@@ -34,6 +35,7 @@
 @synthesize moreFeedsViewController=_moreFeedsViewController;
 
 - (void)refresh {
+    
     for (NSString *feed in _feeds) {
         NSURL *url = [NSURL URLWithString:feed];
         ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
@@ -58,6 +60,9 @@
             [self parseFeed:doc.rootElement entries:entries];                
             
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                
+                [_allEntries removeAllObjects];
+                [self.tableView reloadData];
                 
                 for (RSSEntry *entry in entries) {
                     
@@ -265,9 +270,21 @@
     
     self.allEntries = [NSMutableArray array];
     self.queue = [[[NSOperationQueue alloc] init] autorelease];
+    
+    ODRefreshControl *refreshControl = [[ODRefreshControl alloc] initInScrollView:self.tableView];
+    [refreshControl addTarget:self action:@selector(dropViewDidBeginRefreshing:) forControlEvents:UIControlEventValueChanged];
+
+    
     [SVProgressHUD showWithStatus:@"Loading..."];
     self.feeds = [NSArray arrayWithObjects:@"http://feeds.feedburner.com/wildjunket",nil];    
     [self refresh];
+}
+
+- (void)dropViewDidBeginRefreshing:(ODRefreshControl *)refreshControl
+{
+    [self refresh];
+    [refreshControl endRefreshing];
+    
 }
 
 -(void)willRotateToInterfaceOrientation: (UIInterfaceOrientation)orientation duration:(NSTimeInterval)duration {
