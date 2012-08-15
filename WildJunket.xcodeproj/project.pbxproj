@@ -108,6 +108,10 @@
 		638C1EC115B87FF5005DEAED /* wj_title@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 638C1EBF15B87FF5005DEAED /* wj_title@2x.png */; };
 		638C1EC215B87FF5005DEAED /* wj_title.png in Resources */ = {isa = PBXBuildFile; fileRef = 638C1EC015B87FF5005DEAED /* wj_title.png */; };
 		63959CD715DC1AD9006BEBF1 /* ODRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 63959CD615DC1AD9006BEBF1 /* ODRefreshControl.m */; };
+		63959CDE15DC25D6006BEBF1 /* MJPopupBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 63959CDB15DC25D6006BEBF1 /* MJPopupBackgroundView.m */; };
+		63959CDF15DC25D6006BEBF1 /* UIViewController+MJPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63959CDD15DC25D6006BEBF1 /* UIViewController+MJPopupViewController.m */; };
+		63959CE715DC26A1006BEBF1 /* PopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63959CE515DC26A1006BEBF1 /* PopupViewController.m */; };
+		63959CE815DC26A1006BEBF1 /* PopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63959CE615DC26A1006BEBF1 /* PopupViewController.xib */; };
 		63ABEE4815A33831008F8C16 /* mapmarker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ABEE4215A33831008F8C16 /* mapmarker@2x.png */; };
 		63ABEE4915A33831008F8C16 /* 38-airplane@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ABEE4315A33831008F8C16 /* 38-airplane@2x.png */; };
 		63ABEE4A15A33831008F8C16 /* 56-feed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63ABEE4415A33831008F8C16 /* 56-feed@2x.png */; };
@@ -355,6 +359,13 @@
 		638C1EC015B87FF5005DEAED /* wj_title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wj_title.png; sourceTree = "<group>"; };
 		63959CD515DC1AD9006BEBF1 /* ODRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODRefreshControl.h; sourceTree = "<group>"; };
 		63959CD615DC1AD9006BEBF1 /* ODRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ODRefreshControl.m; sourceTree = "<group>"; };
+		63959CDA15DC25D6006BEBF1 /* MJPopupBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPopupBackgroundView.h; sourceTree = "<group>"; };
+		63959CDB15DC25D6006BEBF1 /* MJPopupBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPopupBackgroundView.m; sourceTree = "<group>"; };
+		63959CDC15DC25D6006BEBF1 /* UIViewController+MJPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MJPopupViewController.h"; sourceTree = "<group>"; };
+		63959CDD15DC25D6006BEBF1 /* UIViewController+MJPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MJPopupViewController.m"; sourceTree = "<group>"; };
+		63959CE415DC26A1006BEBF1 /* PopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupViewController.h; sourceTree = "<group>"; };
+		63959CE515DC26A1006BEBF1 /* PopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopupViewController.m; sourceTree = "<group>"; };
+		63959CE615DC26A1006BEBF1 /* PopupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopupViewController.xib; sourceTree = "<group>"; };
 		63ABEE4215A33831008F8C16 /* mapmarker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mapmarker@2x.png"; sourceTree = "<group>"; };
 		63ABEE4315A33831008F8C16 /* 38-airplane@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "38-airplane@2x.png"; sourceTree = "<group>"; };
 		63ABEE4415A33831008F8C16 /* 56-feed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "56-feed@2x.png"; sourceTree = "<group>"; };
@@ -687,6 +698,8 @@
 				63B54A8715D1927800EE05F1 /* PhotoShowViewController.m */,
 				6353970615D544930015AFAB /* RSSMoreFeedsViewController.h */,
 				6353970715D544930015AFAB /* RSSMoreFeedsViewController.m */,
+				63959CE415DC26A1006BEBF1 /* PopupViewController.h */,
+				63959CE515DC26A1006BEBF1 /* PopupViewController.m */,
 				634C558615D7C2DE00EA7349 /* WhereViewController.h */,
 				634C558715D7C2DE00EA7349 /* WhereViewController.m */,
 			);
@@ -719,6 +732,17 @@
 				63959CD615DC1AD9006BEBF1 /* ODRefreshControl.m */,
 			);
 			path = ODRefreshControl;
+			sourceTree = "<group>";
+		};
+		63959CD915DC25CA006BEBF1 /* MJPopup */ = {
+			isa = PBXGroup;
+			children = (
+				63959CDA15DC25D6006BEBF1 /* MJPopupBackgroundView.h */,
+				63959CDB15DC25D6006BEBF1 /* MJPopupBackgroundView.m */,
+				63959CDC15DC25D6006BEBF1 /* UIViewController+MJPopupViewController.h */,
+				63959CDD15DC25D6006BEBF1 /* UIViewController+MJPopupViewController.m */,
+			);
+			name = MJPopup;
 			sourceTree = "<group>";
 		};
 		63ABEE4015A33818008F8C16 /* icons */ = {
@@ -875,6 +899,7 @@
 		63EF2526158C6033004E2BFB /* WildJunket */ = {
 			isa = PBXGroup;
 			children = (
+				63959CD915DC25CA006BEBF1 /* MJPopup */,
 				63959CD415DC1AD9006BEBF1 /* ODRefreshControl */,
 				634C556C15D7C2B200EA7349 /* PaperFold */,
 				6329209A15D1224300F3A81F /* BDDynamicGrid */,
@@ -933,6 +958,7 @@
 				6329209115D117DF00F3A81F /* PhotosAlbumViewController.xib */,
 				63F47EFD15D07D2A009CDD1A /* PhotosSubCatView.xib */,
 				63B54A8A15D192A900EE05F1 /* PhotoShowView.xib */,
+				63959CE615DC26A1006BEBF1 /* PopupViewController.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1072,6 +1098,7 @@
 				63B54A9315D2819F00EE05F1 /* photosbackground.png in Resources */,
 				63B54A9915D282C900EE05F1 /* photosbackground3@2x.png in Resources */,
 				63B54A9A15D282C900EE05F1 /* photosbackground3.png in Resources */,
+				63959CE815DC26A1006BEBF1 /* PopupViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1188,6 +1215,9 @@
 				634C559515D83ED600EA7349 /* CountryCodeCell.m in Sources */,
 				634C559915D9BB4700EA7349 /* CenterCell.m in Sources */,
 				63959CD715DC1AD9006BEBF1 /* ODRefreshControl.m in Sources */,
+				63959CDE15DC25D6006BEBF1 /* MJPopupBackgroundView.m in Sources */,
+				63959CDF15DC25D6006BEBF1 /* UIViewController+MJPopupViewController.m in Sources */,
+				63959CE715DC26A1006BEBF1 /* PopupViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

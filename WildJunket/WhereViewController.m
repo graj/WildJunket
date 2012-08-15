@@ -17,6 +17,9 @@
 #import "CountryCodeCell.h"
 #import "CenterCell.h"
 #import "SDWebImage/SDWebImageManager.h"
+#import "PopupViewController.h"
+#import "UIViewController+MJPopupViewController.h"
+
 
 @interface WhereViewController ()
 @property (nonatomic, strong) UIImageView *imageView;
@@ -190,7 +193,19 @@
     //Retrieving user location
     self.locationManager.delegate = self;
     [locationManager startUpdatingLocation];
-
+    
+    //Comprueba si es la primera vez que se ejecuta la app
+    if (![@"1" isEqualToString:[[NSUserDefaults standardUserDefaults]
+                                objectForKey:@"Avalue"]]) {
+        [[NSUserDefaults standardUserDefaults] setValue:@"1" forKey:@"Avalue"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        PopupViewController *popupController = [[PopupViewController alloc] initWithNibName:@"PopupViewController" bundle:nil];
+        [self presentPopupViewController:popupController animationType:MJPopupViewAnimationSlideLeftRight];
+       
+    }
+    
+  
     
   
 }
@@ -497,10 +512,10 @@
 }
 
 // this delegate method is called if an error occurs in locating your current location
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+- (void)locationManager:(CLLocationManager *)managerLoc didFailWithError:(NSError *)error
 {
     [locationManager stopUpdatingLocation];
-    NSLog(@"locationManager:%@ didFailWithError:%@", manager, error);
+    NSLog(@"locationManager:%@ didFailWithError:%@", managerLoc, error);
 }
 
 
