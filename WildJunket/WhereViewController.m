@@ -16,10 +16,12 @@
 #import "FSQEntry.h"
 #import "CountryCodeCell.h"
 #import "CenterCell.h"
+#import "SDWebImage/SDWebImageManager.h"
 
 @interface WhereViewController ()
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) SDWebImageManager *manager;
 @property NSString *countryCode;
 
 - (void)centerScrollViewContents;
@@ -30,7 +32,7 @@
 
 @implementation WhereViewController
 @synthesize fsqEntries=_fsqEntries;
-@synthesize imageView,scrollView, locationManager, countryCode;
+@synthesize imageView,scrollView, locationManager, countryCode, manager;
 
 - (void)initPaperFold
 {
@@ -177,6 +179,7 @@
 {
     [super viewDidLoad];
     
+    self.manager = [SDWebImageManager sharedManager];
     
     [SVProgressHUD showWithStatus:@"Locating WildJunket guys..."];
 	dispatch_async(kBgQueue, ^{
@@ -280,23 +283,30 @@
         //Clean subviews
         NSArray *viewsToRemove = [self.scrollView subviews];
         for (UIView *v in viewsToRemove) [v removeFromSuperview];
-        
+             
         NSURL *url = [[self.fsqEntries objectAtIndex:selectedLeftIndex] photo];
-        NSData *urlData = [NSData dataWithContentsOfURL:url];
-        UIImage *image = [UIImage imageWithData:urlData];
         
-        self.imageView = [[UIImageView alloc] initWithImage:image];
-        self.imageView.frame = (CGRect){.origin=CGPointMake(0.0f, 0.0f), .size=image.size};
-        [cell.scrollView addSubview:self.imageView];
-        self.imageView.contentMode=UIViewContentModeScaleAspectFit;
+        [manager downloadWithURL:url
+                        delegate:self
+                         options:0
+                         success:^(UIImage *image)
+         {
+             self.imageView = [[UIImageView alloc] initWithImage:image];
+             self.imageView.frame = (CGRect){.origin=CGPointMake(0.0f, 0.0f), .size=image.size};
+             [cell.scrollView addSubview:self.imageView];
+             self.imageView.clipsToBounds=YES;
+             self.imageView.contentMode=UIViewContentModeScaleAspectFit;
+             [imageView sizeToFit];
+
+         }
+                         failure:nil];
+        
         self.scrollView.contentMode=UIViewContentModeScaleAspectFit;
         self.scrollView.layer.cornerRadius = 15.0;
         self.scrollView.layer.masksToBounds = YES;
-      
+        
         [self.scrollView sizeToFit];
-        
-        [imageView sizeToFit];
-        
+
         
         // 2
         cell.scrollView.contentSize = cell.scrollView.frame.size;
@@ -322,7 +332,7 @@
         cell.scrollView.backgroundColor=[UIColor blackColor];
         
         // 5
-        cell.scrollView.maximumZoomScale = 0.6f;
+        cell.scrollView.maximumZoomScale = 0.55f;
         cell.scrollView.zoomScale = minScale;
         
         // 6
