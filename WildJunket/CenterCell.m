@@ -80,6 +80,13 @@
         //Cell
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.contentView.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"photosbackground3.png"]];
+        
+        //Dingbat
+        UIImageView* dingbat=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"dingbat_trans.png"]];
+        
+        dingbat.frame=CGRectMake(20, 60, 110, 56);
+        
+        [self.contentView addSubview:dingbat];
 
     }
     return self;
