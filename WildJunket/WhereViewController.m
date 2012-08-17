@@ -307,22 +307,17 @@
                          success:^(UIImage *image)
          {
              self.imageView = [[UIImageView alloc] initWithImage:image];
-             self.imageView.frame = (CGRect){.origin=CGPointMake(0.0f, 0.0f), .size=image.size};
+             self.imageView.frame = (CGRect){.origin=CGPointMake(0.0f, 0.0f), .size=self.scrollView.frame.size};
              [cell.scrollView addSubview:self.imageView];
              self.imageView.clipsToBounds=YES;
-             self.imageView.contentMode=UIViewContentModeScaleAspectFit;
-             [imageView sizeToFit];
-
+             self.imageView.contentMode=UIViewContentModeScaleAspectFill;
+            
          }
                          failure:nil];
         
-        self.scrollView.contentMode=UIViewContentModeScaleAspectFit;
         self.scrollView.layer.cornerRadius = 15.0;
         self.scrollView.layer.masksToBounds = YES;
-        
-        [self.scrollView sizeToFit];
-
-        
+               
         // 2
         cell.scrollView.contentSize = cell.scrollView.frame.size;
         cell.scrollView.delegate=self;
@@ -347,7 +342,7 @@
         cell.scrollView.backgroundColor=[UIColor blackColor];
         
         // 5
-        cell.scrollView.maximumZoomScale = 0.55f;
+        cell.scrollView.maximumZoomScale = 2.0f;
         cell.scrollView.zoomScale = minScale;
         
         // 6
