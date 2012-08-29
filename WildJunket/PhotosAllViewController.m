@@ -13,6 +13,7 @@
 #import "Photo.h"
 #import "PhotoShowViewController.h"
 #import "PhotosAllViewController+Private.h"
+#import "Reachability.h"
 
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
 
@@ -25,6 +26,15 @@
 @synthesize album=_album;
 @synthesize items=_items;
 @synthesize photosURL=_photosURL;
+
+-(BOOL)reachable {
+    Reachability *r = [Reachability reachabilityWithHostName:@"google.com"];
+    NetworkStatus internetStatus = [r currentReachabilityStatus];
+    if(internetStatus == NotReachable) {
+        return NO;
+    }
+    return YES;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -57,12 +67,23 @@
         [self.navigationController pushViewController:photoVC animated:YES];
 
     };
-        
-    [SVProgressHUD showWithStatus:[@"Loading " stringByAppendingString:self.album.name]];
     
-    dispatch_async(kBgQueue, ^{
-        [self _demoAsyncDataLoading];
-    });
+    if([self reachable]){
+        [SVProgressHUD showWithStatus:[@"Loading " stringByAppendingString:self.album.name]];
+        
+        dispatch_async(kBgQueue, ^{
+            [self _demoAsyncDataLoading];
+        });
+        
+    }
+    else{
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                  initWithTitle:@"Connection"
+                                  message:@"An Internet Connection is needed"                                      delegate:self
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+        [alertView show];
+    }
     
     
 }

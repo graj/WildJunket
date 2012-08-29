@@ -19,6 +19,7 @@
 #import "SDWebImage/SDWebImageManager.h"
 #import "PopupViewController.h"
 #import "UIViewController+MJPopupViewController.h"
+#import "Reachability.h"
 
 
 @interface WhereViewController ()
@@ -36,6 +37,15 @@
 @implementation WhereViewController
 @synthesize fsqEntries=_fsqEntries;
 @synthesize imageView,scrollView, locationManager, countryCode, manager;
+
+-(BOOL)reachable {
+    Reachability *r = [Reachability reachabilityWithHostName:@"google.com"];
+    NetworkStatus internetStatus = [r currentReachabilityStatus];
+    if(internetStatus == NotReachable) {
+        return NO;
+    }
+    return YES;
+}
 
 - (void)initPaperFold
 {
@@ -182,28 +192,40 @@
 {
     [super viewDidLoad];
     
-    self.manager = [SDWebImageManager sharedManager];
-    
-    [SVProgressHUD showWithStatus:@"Locating WildJunket guys..."];
-	dispatch_async(kBgQueue, ^{
-        NSData* data = [NSData dataWithContentsOfURL: fsqAuth];
-        [self performSelectorOnMainThread:@selector(getDatosFSQ:) withObject:data waitUntilDone:YES];
-    });
-
-    //Retrieving user location
-    self.locationManager.delegate = self;
-    [locationManager startUpdatingLocation];
-    
-    //Comprueba si es la primera vez que se ejecuta la app
-    if (![@"1" isEqualToString:[[NSUserDefaults standardUserDefaults]
-                                objectForKey:@"Avalue"]]) {
-        [[NSUserDefaults standardUserDefaults] setValue:@"1" forKey:@"Avalue"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+    if ([self reachable]) {
+        self.manager = [SDWebImageManager sharedManager];
         
-        PopupViewController *popupController = [[PopupViewController alloc] initWithNibName:@"PopupViewController" bundle:nil];
-        [self presentPopupViewController:popupController animationType:MJPopupViewAnimationSlideLeftRight];
-       
+        [SVProgressHUD showWithStatus:@"Locating WildJunket guys..."];
+        dispatch_async(kBgQueue, ^{
+            NSData* data = [NSData dataWithContentsOfURL: fsqAuth];
+            [self performSelectorOnMainThread:@selector(getDatosFSQ:) withObject:data waitUntilDone:YES];
+        });
+        
+        //Retrieving user location
+        self.locationManager.delegate = self;
+        [locationManager startUpdatingLocation];
+        
+        //Comprueba si es la primera vez que se ejecuta la app
+        if (![@"1" isEqualToString:[[NSUserDefaults standardUserDefaults]
+                                    objectForKey:@"Avalue"]]) {
+            [[NSUserDefaults standardUserDefaults] setValue:@"1" forKey:@"Avalue"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            PopupViewController *popupController = [[PopupViewController alloc] initWithNibName:@"PopupViewController" bundle:nil];
+            [self presentPopupViewController:popupController animationType:MJPopupViewAnimationSlideLeftRight];
+            
+        }
+
     }
+    else {
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                  initWithTitle:@"Connection"
+                                  message:@"An Internet Connection is needed"                                      delegate:self
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+        [alertView show];
+    }
+    
     
   
     

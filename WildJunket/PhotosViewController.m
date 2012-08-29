@@ -17,6 +17,7 @@
 #import "PhotosAllViewController.h"
 #import <QuartzCore/QuartzCore.h> 
 #include <stdlib.h>
+#include "Reachability.h"
 
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
 #define smugmugAlbums [NSURL URLWithString:@"http://api.smugmug.com/services/api/json/1.3.0/?method=smugmug.albums.get&APIKey=bLmbO3nV8an2YhQpMogzNKA0toTHbfGU&NickName=wildjunket&pretty=true"]
@@ -38,6 +39,15 @@
 @synthesize carousel;
 @synthesize portrait;
 @synthesize radius;
+
+-(BOOL)reachable {
+    Reachability *r = [Reachability reachabilityWithHostName:@"google.com"];
+    NetworkStatus internetStatus = [r currentReachabilityStatus];
+    if(internetStatus == NotReachable) {
+        return NO;
+    }
+    return YES;
+}
 
 #pragma mark -
 #pragma mark iCarousel methods
@@ -167,25 +177,37 @@
     
     [self.titulo setHidden:YES];
     
-    //Llamada API de smugmug y tomar urls de las fotos de las categorías
-    [SVProgressHUD showWithStatus:@"Loading WildJunket Photos..."];
-    
-    
-    dispatch_async(kBgQueue, ^{
-        //Obtiene los datos de categorías, subcategorías y álbumes
-        [self getDatosCategorias];
+    if([self reachable]){
+        //Llamada API de smugmug y tomar urls de las fotos de las categorías
+        [SVProgressHUD showWithStatus:@"Loading WildJunket Photos..."];
         
-        //Meter en items las urls con las imagenes de las categorias
-        [self getImagenesCategorias];
         
-        [self performSelectorOnMainThread:@selector(createCarousel) withObject:nil waitUntilDone:YES];
-        
-        #ifdef CONFIGURATION_Beta
+        dispatch_async(kBgQueue, ^{
+            //Obtiene los datos de categorías, subcategorías y álbumes
+            [self getDatosCategorias];
+            
+            //Meter en items las urls con las imagenes de las categorias
+            [self getImagenesCategorias];
+            
+            [self performSelectorOnMainThread:@selector(createCarousel) withObject:nil waitUntilDone:YES];
+            
+#ifdef CONFIGURATION_Beta
             [TestFlight passCheckpoint:@"leidos datos smugmug"];
-        #endif
-        
-        
-    });
+#endif
+            
+            
+        });
+    }
+    else{
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                  initWithTitle:@"Connection"
+                                  message:@"An Internet Connection is needed"                                      delegate:self
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+        [alertView show];
+    }
+    
+   
   
 }
 

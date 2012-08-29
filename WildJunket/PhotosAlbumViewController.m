@@ -15,6 +15,7 @@
 #import "SubCategory.h"
 #import "UIButton+WebCache.h"
 #include <stdlib.h>
+#include "Reachability.h"
 
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
 #define portraitSize CGRectMake(0, 0, 225.0f, 225.0f)
@@ -34,6 +35,15 @@
 @synthesize subCategory=_subCategory;
 @synthesize portrait;
 @synthesize radius;
+
+-(BOOL)reachable {
+    Reachability *r = [Reachability reachabilityWithHostName:@"google.com"];
+    NetworkStatus internetStatus = [r currentReachabilityStatus];
+    if(internetStatus == NotReachable) {
+        return NO;
+    }
+    return YES;
+}
 
 #pragma mark -
 #pragma mark iCarousel methods
@@ -143,25 +153,34 @@
     [self.titulo setHidden:YES];
     
     //Apariencia
-    
-    //Llamada API de smugmug y tomar urls de las fotos de las categorías
-    [SVProgressHUD showWithStatus:[@"Loading " stringByAppendingString:self.subCategory.name]];
-    
-    
-    dispatch_async(kBgQueue, ^{
+    if([self reachable]){
+        //Llamada API de smugmug y tomar urls de las fotos de las categorías
+        [SVProgressHUD showWithStatus:[@"Loading " stringByAppendingString:self.subCategory.name]];
         
-        //Meter en items las urls con las imagenes de las categorias
-        [self getImagenesSubCategorias];
         
-        [self performSelectorOnMainThread:@selector(createCarousel) withObject:nil waitUntilDone:YES];
-        
+        dispatch_async(kBgQueue, ^{
+            
+            //Meter en items las urls con las imagenes de las categorias
+            [self getImagenesSubCategorias];
+            
+            [self performSelectorOnMainThread:@selector(createCarousel) withObject:nil waitUntilDone:YES];
+            
 #ifdef CONFIGURATION_Beta
-        [TestFlight passCheckpoint:@"leidos datos smugmug"];
+            [TestFlight passCheckpoint:@"leidos datos smugmug"];
 #endif
-        
-        
-    });
-    
+            
+            
+        });
+    }
+    else{
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                  initWithTitle:@"Connection"
+                                  message:@"An Internet Connection is needed"                                      delegate:self
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+        [alertView show];
+    }
+   
 }
 
 -(void) createCarousel{

@@ -8,6 +8,7 @@
 
 #import "PhotoShowViewController.h"
 #import "SVProgressHUD.h"
+#import "Reachability.h"
 #import <Twitter/Twitter.h>
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
 
@@ -25,6 +26,15 @@
 @synthesize scrollView = _scrollView;
 @synthesize imageView = _imageView;
 @synthesize photoURL=_photoURL;
+
+-(BOOL)reachable {
+    Reachability *r = [Reachability reachabilityWithHostName:@"google.com"];
+    NetworkStatus internetStatus = [r currentReachabilityStatus];
+    if(internetStatus == NotReachable) {
+        return NO;
+    }
+    return YES;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
