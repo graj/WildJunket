@@ -11,7 +11,7 @@
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) //1
 
 @implementation CenterCell
-@synthesize cityLabel, countryLabel, dateLabel, descLabel, scrollView, portrait;
+@synthesize cityLabel, countryLabel, dateLabel, descLabel, scrollView, portrait, dingBat;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -82,11 +82,8 @@
         self.contentView.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"photosbackground3.png"]];
         
         //Dingbat
-        UIImageView* dingbat=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"dingbat_trans.png"]];
-        
-        dingbat.frame=CGRectMake(20, 60, 110, 56);
-        
-        [self.contentView addSubview:dingbat];
+        dingBat=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"dingbat_trans.png"]];
+        [self.contentView addSubview:dingBat];
 
     }
     return self;
@@ -126,6 +123,9 @@
         //ScrollView
         scrollView.frame=CGRectMake(boundsX, boundsY+200, width, 280);
         
+        //Dingbat
+        dingBat.frame=CGRectMake(20, 60, 110, 56);
+        
         
     }else{
         
@@ -155,6 +155,11 @@
         
         //ScrollView
         scrollView.frame=CGRectMake(boundsX+250, boundsY+5, 220, 240);
+        
+        //Dingbat
+        dingBat.frame=CGRectMake(20, 120, 110, 56);
+        
+
     }
 
 

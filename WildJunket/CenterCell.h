@@ -14,7 +14,7 @@
     UILabel *dateLabel;
     UILabel *descLabel;
     UIScrollView *scrollView;
-    
+    UIView *dingBat;
 }
 
 @property (nonatomic, strong) UIScrollView *scrollView;
@@ -22,6 +22,7 @@
 @property (nonatomic,retain) UILabel *countryLabel;
 @property (nonatomic,retain) UILabel *dateLabel;
 @property (nonatomic,retain) UILabel *descLabel;
+@property (nonatomic,retain) UIView *dingBat;
 @property bool portrait;
 
 -(void)checkOrientations:(bool)portrait;
