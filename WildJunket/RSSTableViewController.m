@@ -116,19 +116,19 @@
             
             //Parseo el html para obtener la url de la imagen
             TFHpple *htmlParser = [TFHpple hppleWithHTMLData:content];
-            NSString *xpathQuery = @"//div[@class='xc_pinterest']/a";
+            NSString *xpathQuery = @"//img[@class='aligncenter']";
             NSArray *nodes = [htmlParser searchWithXPathQuery:xpathQuery];
             
             //Obtengo la primera imagen                             
-            NSString * urlonclick=[[nodes objectAtIndex:0] objectForKey:@"onclick"];
+            //NSString * urlonclick=[[nodes objectAtIndex:0] objectForKey:@"src"];
                
-            NSArray *components = [urlonclick componentsSeparatedByString:@"media="];
-            NSString *afterOpenBracket = [components objectAtIndex:1];
-            components = [afterOpenBracket componentsSeparatedByString:@"&"];
+            //NSArray *components = [urlonclick componentsSeparatedByString:@"media="];
+            //NSString *afterOpenBracket = [components objectAtIndex:1];
+            //components = [afterOpenBracket componentsSeparatedByString:@"&"];
             
             
             //URL de la primera foto limpia, parseada y lista para mostrar en pantalla
-            NSString *photoURL = [components objectAtIndex:0];
+            NSString *photoURL = [[nodes objectAtIndex:0] objectForKey:@"src"];
                       
             
             NSDate *articleDate = [NSDate dateFromInternetDateTimeString:articleDateString formatHint:DateFormatHintRFC822];
