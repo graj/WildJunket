@@ -181,6 +181,7 @@
 		63EF2557158C6033004E2BFB /* WildJunketTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63EF2556158C6033004E2BFB /* WildJunketTests.m */; };
 		63F47EF815D05FF6009CDD1A /* PhotosSubCatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63F47EF715D05FF5009CDD1A /* PhotosSubCatViewController.m */; };
 		63F47EFE15D07D2A009CDD1A /* PhotosSubCatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63F47EFD15D07D2A009CDD1A /* PhotosSubCatView.xib */; };
+		63FA2CF41621EBBF005324AA /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63FA2CF31621EBBF005324AA /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -467,6 +468,7 @@
 		63F47EF615D05FF5009CDD1A /* PhotosSubCatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosSubCatViewController.h; sourceTree = "<group>"; };
 		63F47EF715D05FF5009CDD1A /* PhotosSubCatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosSubCatViewController.m; sourceTree = "<group>"; };
 		63F47EFD15D07D2A009CDD1A /* PhotosSubCatView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotosSubCatView.xib; sourceTree = "<group>"; };
+		63FA2CF31621EBBF005324AA /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -864,6 +866,7 @@
 		63EF2511158C6033004E2BFB = {
 			isa = PBXGroup;
 			children = (
+				63FA2CF31621EBBF005324AA /* Default-568h@2x.png */,
 				63EF2526158C6033004E2BFB /* WildJunket */,
 				63EF254F158C6033004E2BFB /* WildJunketTests */,
 				63EF251F158C6033004E2BFB /* Frameworks */,
@@ -1107,6 +1110,7 @@
 				63959CE815DC26A1006BEBF1 /* PopupViewController.xib in Resources */,
 				638DBD0A15DDBA1900395A28 /* dingbat_trans@2x.png in Resources */,
 				638DBD0B15DDBA1900395A28 /* dingbat_trans.png in Resources */,
+				63FA2CF41621EBBF005324AA /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
