@@ -154,7 +154,13 @@
         descLabel.frame = CGRectMake(boundsX+20, boundsY+120, 240, 140);
         
         //ScrollView
-        scrollView.frame=CGRectMake(boundsX+250, boundsY+5, 220, 240);
+        if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad && IS_IPHONE_5){
+            scrollView.frame=CGRectMake(boundsX+250, boundsY+5, 305, 240);
+        }
+        else{
+            scrollView.frame=CGRectMake(boundsX+250, boundsY+5, 220, 240);
+        }
+        
         
         //Dingbat
         dingBat.frame=CGRectMake(20, 120, 110, 56);

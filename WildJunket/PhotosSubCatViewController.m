@@ -344,7 +344,12 @@
         CGSize offset = CGSizeMake(0.0f, 28.0f);
         self.carousel.contentOffset = offset;
         
-        self.titulo.frame=CGRectMake(20, -12, 440.0f, 72.0f);
+        if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad && IS_IPHONE_5){
+            self.titulo.frame=CGRectMake(20, -10, 528.0f, 72.0f);
+        }
+        else{
+            self.titulo.frame=CGRectMake(20, -10, 440.0f, 72.0f);
+        }
         
         [self.titulo setFont:[UIFont fontWithName:@"GillSans-Bold" size:23]];
     }
