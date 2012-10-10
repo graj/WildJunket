@@ -16,6 +16,7 @@
 
 @interface PhotoShowViewController ()
 @property (nonatomic, strong) UIImageView *imageView;
+@property bool canSocial;
 
 - (void)centerScrollViewContents;
 //- (void)scrollViewDoubleTapped:(UITapGestureRecognizer*)recognizer;
@@ -60,6 +61,14 @@
     
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden: YES animated:YES];
+    //Comprobar que tiene la clase social (ios 6 o superior)
+    if(NSClassFromString(@"SLComposeViewController")) {
+        // Do something
+        self.canSocial=YES;
+    }
+    else
+        self.canSocial=NO;
+    
     [self setBoton];
 }
 
@@ -72,43 +81,24 @@
 
 -(void) share{
     //Pulsado botón compartir, mostrar menu
-    UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"Share with the world" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Twitter", @"Facebook", @"Email", @"Copy link", nil];
+    UIActionSheet *popupQuery;
+    if(self.canSocial)
+        popupQuery = [[UIActionSheet alloc] initWithTitle:@"Share with the world" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Facebook",@"Twitter", @"Email", @"Copy link", nil];
+    else
+        popupQuery = [[UIActionSheet alloc] initWithTitle:@"Share with the world" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Twitter", @"Email", @"Copy link", nil];
     popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
     [popupQuery showInView:self.view];
     
 }
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-	switch (buttonIndex) {
-        case 0:
-            if ([TWTweetComposeViewController canSendTweet])
-            {
-#ifdef CONFIGURATION_Beta
-                [TestFlight passCheckpoint:@"pulsadoTwitter"];
-#endif
-                TWTweetComposeViewController *tweetSheet =
-                [[TWTweetComposeViewController alloc] init];
-                NSString *text=@"Amazing photo from WildJunket.com";
-                [tweetSheet setInitialText:text];
-                [tweetSheet addURL:self.photoURL];
-                [self presentModalViewController:tweetSheet animated:YES];
-            }
-            else
-            {
-#ifdef CONFIGURATION_Beta
-                [TestFlight passCheckpoint:@"errorTwitter"];
-#endif
-                UIAlertView *alertView = [[UIAlertView alloc]
-                                          initWithTitle:@"Sorry"
-                                          message:@"You can't send a tweet right now, make sure your device has an internet connection and you have at least one Twitter account setup"
-                                          delegate:self
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-                [alertView show];
-            }
-            break;
+	
+    if(!self.canSocial)
+        buttonIndex++;
+    
+    switch (buttonIndex) {
             
-        case 1:
+        case 0:
             if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
             {
 #ifdef CONFIGURATION_Beta
@@ -149,6 +139,36 @@
                 [alertView show];
             }
             break;
+            
+        case 1:
+            if ([TWTweetComposeViewController canSendTweet])
+            {
+#ifdef CONFIGURATION_Beta
+                [TestFlight passCheckpoint:@"pulsadoTwitter"];
+#endif
+                TWTweetComposeViewController *tweetSheet =
+                [[TWTweetComposeViewController alloc] init];
+                NSString *text=@"Amazing photo from WildJunket.com";
+                [tweetSheet setInitialText:text];
+                [tweetSheet addURL:self.photoURL];
+                [self presentModalViewController:tweetSheet animated:YES];
+            }
+            else
+            {
+#ifdef CONFIGURATION_Beta
+                [TestFlight passCheckpoint:@"errorTwitter"];
+#endif
+                UIAlertView *alertView = [[UIAlertView alloc]
+                                          initWithTitle:@"Sorry"
+                                          message:@"You can't send a tweet right now, make sure your device has an internet connection and you have at least one Twitter account setup"
+                                          delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+                [alertView show];
+            }
+            break;
+            
+       
             
         case 2:
             //Email

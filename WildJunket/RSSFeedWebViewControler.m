@@ -15,6 +15,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface RSSFeedWebViewControler ()
+@property bool canSocial;
 
 @end
 
@@ -25,7 +26,11 @@
 
 -(IBAction)shareButton:(id)sender{
     //Pulsado botón compartir, mostrar menu
-    UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"Share with the world" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Twitter",@"Facebook",@"Email", @"Copy link", nil];
+    UIActionSheet *popupQuery;
+    if(self.canSocial)
+        popupQuery = [[UIActionSheet alloc] initWithTitle:@"Share with the world" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Facebook",@"Twitter", @"Email", @"Copy link", nil];
+    else
+        popupQuery = [[UIActionSheet alloc] initWithTitle:@"Share with the world" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Twitter", @"Email", @"Copy link", nil];
     popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
     [popupQuery showInView:self.view];
     [popupQuery release];
@@ -33,42 +38,14 @@
 }
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-	switch (buttonIndex) {
+	
+    if(!self.canSocial)
+        buttonIndex++;
+    
+    
+    switch (buttonIndex) {
+        
         case 0:
-            if ([TWTweetComposeViewController canSendTweet])
-            {
-                #ifdef CONFIGURATION_Beta
-                [TestFlight passCheckpoint:@"pulsadoTwitter"];
-                #endif
-                TWTweetComposeViewController *tweetSheet =
-                [[TWTweetComposeViewController alloc] init];
-                NSString *text=[self.entry.articleTitle stringByAppendingString:@" (WildJunket.com)"];
-                [tweetSheet setInitialText:text];
-                [tweetSheet addURL:[NSURL URLWithString:self.entry.articleUrl]];
-                [self presentModalViewController:tweetSheet animated:YES];
-            }
-            else
-            {
-                #ifdef CONFIGURATION_Beta
-                [TestFlight passCheckpoint:@"errorTwitter"];
-                #endif
-                UIAlertView *alertView = [[UIAlertView alloc]
-                                          initWithTitle:@"Sorry"
-                                          message:@"You can't send a tweet right now, make sure your device has an internet connection and you have at least one Twitter account setup"
-                                          delegate:self
-                                          cancelButtonTitle:@"OK"                                                   
-                                          otherButtonTitles:nil];
-                [alertView show];
-            }
-            break;
-            
-        case 1:
-            
-            //Comprobar que en esta version se puede usar esa clase
-            if(NSClassFromString(@"SLComposeViewController")) {
-                // Do something
-                int c=0;
-            }
             
             if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
             {
@@ -110,6 +87,35 @@
                 [alertView show];
             }
             break;
+        
+        case 1:
+            if ([TWTweetComposeViewController canSendTweet])
+            {
+                #ifdef CONFIGURATION_Beta
+                [TestFlight passCheckpoint:@"pulsadoTwitter"];
+                #endif
+                TWTweetComposeViewController *tweetSheet =
+                [[TWTweetComposeViewController alloc] init];
+                NSString *text=[self.entry.articleTitle stringByAppendingString:@" (WildJunket.com)"];
+                [tweetSheet setInitialText:text];
+                [tweetSheet addURL:[NSURL URLWithString:self.entry.articleUrl]];
+                [self presentModalViewController:tweetSheet animated:YES];
+            }
+            else
+            {
+                #ifdef CONFIGURATION_Beta
+                [TestFlight passCheckpoint:@"errorTwitter"];
+                #endif
+                UIAlertView *alertView = [[UIAlertView alloc]
+                                          initWithTitle:@"Sorry"
+                                          message:@"You can't send a tweet right now, make sure your device has an internet connection and you have at least one Twitter account setup"
+                                          delegate:self
+                                          cancelButtonTitle:@"OK"                                                   
+                                          otherButtonTitles:nil];
+                [alertView show];
+            }
+            break;
+            
             
         case 2:
             //Email
@@ -229,6 +235,14 @@
 {
     //Shows status bar
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+    
+    //Comprobar que tiene la clase social (ios 6 o superior)
+    if(NSClassFromString(@"SLComposeViewController")) {
+        // Do something
+        self.canSocial=YES;
+    }
+    else
+        self.canSocial=NO;
     
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
