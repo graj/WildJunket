@@ -8,6 +8,8 @@
 
 #import "PhotoShowViewController.h"
 #import "SVProgressHUD.h"
+#import <Accounts/Accounts.h>
+#import <Social/Social.h>
 #import "Reachability.h"
 #import <Twitter/Twitter.h>
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
@@ -70,7 +72,7 @@
 
 -(void) share{
     //Pulsado botón compartir, mostrar menu
-    UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"Share with the world" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Twitter", @"Email", @"Copy link", nil];
+    UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"Share with the world" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Twitter", @"Facebook", @"Email", @"Copy link", nil];
     popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
     [popupQuery showInView:self.view];
     
@@ -105,7 +107,50 @@
                 [alertView show];
             }
             break;
+            
         case 1:
+            if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
+            {
+#ifdef CONFIGURATION_Beta
+                [TestFlight passCheckpoint:@"pulsadoFacebook"];
+#endif
+                SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+                
+                SLComposeViewControllerCompletionHandler myBlock = ^(SLComposeViewControllerResult result){
+                    if (result == SLComposeViewControllerResultCancelled) {
+                        
+                        NSLog(@"Cancelled");
+                        
+                    } else
+                        
+                    {
+                        NSLog(@"Done");
+                    }
+                    
+                    [controller dismissViewControllerAnimated:YES completion:Nil];
+                };
+                controller.completionHandler =myBlock;
+                NSString *text=@"Amazing photo from WildJunket.com";
+                [controller setInitialText:text];
+                [controller addURL:self.photoURL];
+                [self presentModalViewController:controller animated:YES];
+            }
+            else
+            {
+#ifdef CONFIGURATION_Beta
+                [TestFlight passCheckpoint:@"errorFacebook"];
+#endif
+                UIAlertView *alertView = [[UIAlertView alloc]
+                                          initWithTitle:@"Sorry"
+                                          message:@"You can't post to Facebook right now, make sure your device has an internet connection and you have at least one Facebook account setup"
+                                          delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+                [alertView show];
+            }
+            break;
+            
+        case 2:
             //Email
             if ([MFMailComposeViewController canSendMail])
             {
@@ -142,14 +187,14 @@
                 
             }
             break;
-        case 2:
+        case 3:
         {
             //Copy link
             UIPasteboard *pb = [UIPasteboard generalPasteboard];
             [pb setString:[self.photoURL absoluteString]];
         }
             break;
-        case 3:
+        case 4:
             //Cancel
             break;
     }

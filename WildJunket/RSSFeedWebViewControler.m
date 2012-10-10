@@ -63,6 +63,13 @@
             break;
             
         case 1:
+            
+            //Comprobar que en esta version se puede usar esa clase
+            if(NSClassFromString(@"SLComposeViewController")) {
+                // Do something
+                int c=0;
+            }
+            
             if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
             {
 #ifdef CONFIGURATION_Beta
@@ -249,8 +256,17 @@
         
         //Cambia layer de título
         
-        sublayer.contents = (id) [UIImage imageNamed:@"wj_title_landscape.png"].CGImage;
-        sublayer.frame = CGRectMake(0, 0, 480, 32);
+        
+        if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad && IS_IPHONE_5){
+            sublayer.contents = (id) [UIImage imageNamed:@"wj_title_landscape-568h.png"].CGImage;
+            sublayer.frame = CGRectMake(0, 0, 568, 32);
+        }
+        else{
+            sublayer.contents = (id) [UIImage imageNamed:@"wj_title_landscape.png"].CGImage;
+            sublayer.frame = CGRectMake(0, 0, 480, 32);   
+        }
+        
+        
         
     }
     else{
@@ -265,7 +281,6 @@
         }
     }
     [self.navigationController.navigationBar.layer addSublayer:sublayer];
-    
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView

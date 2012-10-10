@@ -25,7 +25,17 @@
     
     // Override point for customization after application launch.
     UIImage *navBarImage = [UIImage imageNamed:@"nav-bar.png"];
-    UIImage *navBarImageLands = [UIImage imageNamed:@"nav-bar-landscape.png"];
+    
+    //Depende si es iPhone 5 o no
+    UIImage *navBarImageLands;
+    if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad && IS_IPHONE_5)
+    {
+        
+        navBarImageLands = [UIImage imageNamed:@"nav-bar-landscape-568h.png"];
+    }
+    else{
+        navBarImageLands = [UIImage imageNamed:@"nav-bar-landscape.png"];
+    }
     
     [[UINavigationBar appearance] setBackgroundImage:navBarImage 
                                        forBarMetrics:UIBarMetricsDefault];

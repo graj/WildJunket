@@ -245,8 +245,14 @@
         sublayer.contents = (id) [UIImage imageNamed:@"wj_title.png"].CGImage;
         sublayer.frame = CGRectMake(0, 0, 320, 44);
     }else {
-        sublayer.contents = (id) [UIImage imageNamed:@"wj_title_landscape.png"].CGImage;
-        sublayer.frame = CGRectMake(0, 0, 480, 32);
+        if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad && IS_IPHONE_5){
+            sublayer.contents = (id) [UIImage imageNamed:@"wj_title_landscape-568h.png"].CGImage;
+            sublayer.frame = CGRectMake(0, 0, 568, 32);
+        }
+        else{
+            sublayer.contents = (id) [UIImage imageNamed:@"wj_title_landscape.png"].CGImage;
+            sublayer.frame = CGRectMake(0, 0, 480, 32);
+        }
     }
     
     for (CALayer *layer in self.navigationController.navigationBar.layer.sublayers) {
@@ -294,10 +300,14 @@
     if ((orientation == UIInterfaceOrientationLandscapeLeft) || (orientation == UIInterfaceOrientationLandscapeRight)) {
         
         //Cambia layer de título
-        
-        sublayer.contents = (id) [UIImage imageNamed:@"wj_title_landscape.png"].CGImage;
-        sublayer.frame = CGRectMake(0, 0, 480, 32);
-
+        if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad && IS_IPHONE_5){
+            sublayer.contents = (id) [UIImage imageNamed:@"wj_title_landscape-568h.png"].CGImage;
+            sublayer.frame = CGRectMake(0, 0, 568, 32);
+        }
+        else{
+            sublayer.contents = (id) [UIImage imageNamed:@"wj_title_landscape.png"].CGImage;
+            sublayer.frame = CGRectMake(0, 0, 480, 32);
+        }
     }
     else{
         sublayer.contents = (id) [UIImage imageNamed:@"wj_title.png"].CGImage;
