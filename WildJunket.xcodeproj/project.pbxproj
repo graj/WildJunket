@@ -142,6 +142,9 @@
 		63C6187515B69E2600C3AE92 /* tab-bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63C6187315B69E2600C3AE92 /* tab-bar@2x.png */; };
 		63C6187615B69E2600C3AE92 /* tab-bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 63C6187415B69E2600C3AE92 /* tab-bar.png */; };
 		63CF0166162462B8008814AE /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63CF0164162462B8008814AE /* libTestFlight.a */; };
+		63CF016C1625A475008814AE /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63CF016B1625A475008814AE /* Social.framework */; };
+		63CF016E1625A5D2008814AE /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63CF016D1625A5D1008814AE /* Accounts.framework */; };
+		63CF01701625C7FC008814AE /* nav-bar-landscape-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63CF016F1625C7FC008814AE /* nav-bar-landscape-568h@2x.png */; };
 		63CF5C0F15B42949000B3D46 /* RSSCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 63CF5C0E15B42949000B3D46 /* RSSCell.m */; };
 		63CF5C1615B43B46000B3D46 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 63CF5C1515B43B46000B3D46 /* placeholder.png */; };
 		63DC11D815A5D03500E22683 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63DC11D715A5D03500E22683 /* MapKit.framework */; };
@@ -400,6 +403,9 @@
 		63C6187415B69E2600C3AE92 /* tab-bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-bar.png"; sourceTree = "<group>"; };
 		63CF0164162462B8008814AE /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
 		63CF0165162462B8008814AE /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
+		63CF016B1625A475008814AE /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		63CF016D1625A5D1008814AE /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		63CF016F1625C7FC008814AE /* nav-bar-landscape-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-bar-landscape-568h@2x.png"; sourceTree = "<group>"; };
 		63CF5C0D15B42949000B3D46 /* RSSCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSCell.h; sourceTree = "<group>"; };
 		63CF5C0E15B42949000B3D46 /* RSSCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSCell.m; sourceTree = "<group>"; };
 		63CF5C1515B43B46000B3D46 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
@@ -476,6 +482,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63CF016E1625A5D2008814AE /* Accounts.framework in Frameworks */,
+				63CF016C1625A475008814AE /* Social.framework in Frameworks */,
 				6384D21F15B9FD8A007282D0 /* CoreLocation.framework in Frameworks */,
 				636ADEE415B85C200035CE48 /* Twitter.framework in Frameworks */,
 				631CF5E915B410B30043EE5A /* libxml2.dylib in Frameworks */,
@@ -597,6 +605,7 @@
 		6350026815AB81C400FC9BCF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				63CF016F1625C7FC008814AE /* nav-bar-landscape-568h@2x.png */,
 				638DBD0815DDBA1900395A28 /* dingbat_trans@2x.png */,
 				638DBD0915DDBA1900395A28 /* dingbat_trans.png */,
 				63B54A9515D282C900EE05F1 /* photosbackground3@2x.png */,
@@ -886,6 +895,8 @@
 		63EF251F158C6033004E2BFB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				63CF016D1625A5D1008814AE /* Accounts.framework */,
+				63CF016B1625A475008814AE /* Social.framework */,
 				6384D21E15B9FD8A007282D0 /* CoreLocation.framework */,
 				636ADEE315B85C200035CE48 /* Twitter.framework */,
 				631CF5E815B410B30043EE5A /* libxml2.dylib */,
@@ -1111,6 +1122,7 @@
 				638DBD0A15DDBA1900395A28 /* dingbat_trans@2x.png in Resources */,
 				638DBD0B15DDBA1900395A28 /* dingbat_trans.png in Resources */,
 				63FA2CF41621EBBF005324AA /* Default-568h@2x.png in Resources */,
+				63CF01701625C7FC008814AE /* nav-bar-landscape-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
