@@ -116,7 +116,9 @@
             
             //Parseo el html para obtener la url de la imagen
             TFHpple *htmlParser = [TFHpple hppleWithHTMLData:content];
-            NSString *xpathQuery = @"//img[@class='aligncenter']";
+            
+            //Devuelve todos los elementos que contengan jpg o png y sean href o src
+            NSString *xpathQuery = @"//*[contains(@href, 'jpg') or contains(@href, 'png') or contains(@src, 'jpg') or contains(@src, 'png')]";
             NSArray *nodes = [htmlParser searchWithXPathQuery:xpathQuery];
             
             //Obtengo la primera imagen                             
@@ -129,6 +131,13 @@
             
             //URL de la primera foto limpia, parseada y lista para mostrar en pantalla
             NSString *photoURL = [[nodes objectAtIndex:0] objectForKey:@"src"];
+            
+            if(photoURL==nil){
+                //Elegir otra opcion
+                photoURL = [[nodes objectAtIndex:0] objectForKey:@"href"];
+                
+            }
+            
                       
             
             NSDate *articleDate = [NSDate dateFromInternetDateTimeString:articleDateString formatHint:DateFormatHintRFC822];
