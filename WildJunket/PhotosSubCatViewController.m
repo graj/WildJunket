@@ -279,11 +279,11 @@
     else
         randomImagen=0;
     
-    int imageID=[[[imagenes objectAtIndex:randomImagen]objectForKey:@"id"] intValue];
+    long long int imageID=[[[imagenes objectAtIndex:randomImagen]objectForKey:@"id"] longLongValue];
     NSString *imageKey=[[imagenes objectAtIndex:randomImagen]objectForKey:@"Key"];
     
     //Obtengo la url de la imagen random
-    NSString *urlStr=[[[[@"http://api.smugmug.com/services/api/json/1.3.0/?method=smugmug.images.getURLs&APIKey=bLmbO3nV8an2YhQpMogzNKA0toTHbfGU&ImageID=" stringByAppendingString:[[NSNumber numberWithInt:imageID]stringValue]] stringByAppendingString:@"&ImageKey="]stringByAppendingString:imageKey]stringByAppendingString:@"&pretty=true"];
+    NSString *urlStr=[[[[@"http://api.smugmug.com/services/api/json/1.3.0/?method=smugmug.images.getURLs&APIKey=bLmbO3nV8an2YhQpMogzNKA0toTHbfGU&ImageID=" stringByAppendingString:[[NSNumber numberWithLongLong:imageID]stringValue]] stringByAppendingString:@"&ImageKey="]stringByAppendingString:imageKey]stringByAppendingString:@"&pretty=true"];
     
     NSURL *url=[NSURL URLWithString:urlStr];
     NSData* dataImagen = [NSData dataWithContentsOfURL: url];

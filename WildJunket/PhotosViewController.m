@@ -255,14 +255,17 @@
             randomSubCat=0;
         subCatAux=[cat.subCats objectAtIndex:randomSubCat];
         
+               
         if([subCatAux.albums count]>1)
             randomAlbum=arc4random() % ([subCatAux.albums count]-1);
         else
             randomAlbum=0;
         albumAux=[subCatAux.albums objectAtIndex:randomAlbum];
         
+        urlStr=nil;
         //Obtengo las fotos de ese álbum
         urlStr=[[[[@"http://api.smugmug.com/services/api/json/1.3.0/?method=smugmug.images.get&APIKey=bLmbO3nV8an2YhQpMogzNKA0toTHbfGU&AlbumID=" stringByAppendingString:[[NSNumber numberWithInt:albumAux.idAlbum]stringValue]] stringByAppendingString:@"&AlbumKey="]stringByAppendingString:albumAux.key]stringByAppendingString:@"&pretty=true"];
+        
         
         url=[NSURL URLWithString:urlStr];
         
@@ -295,8 +298,6 @@
                           options:kNilOptions
                           error:&error];
     
-   
-    
     //Obtengo las imagenes
     NSMutableArray* imagenes = [[json objectForKey:@"Album"]objectForKey:@"Images"];
     
@@ -306,11 +307,11 @@
     else
         randomImagen=0;
     
-    int imageID=[[[imagenes objectAtIndex:randomImagen]objectForKey:@"id"] intValue];
+    long long int imageID=[[[imagenes objectAtIndex:randomImagen]objectForKey:@"id"] longLongValue];
     NSString *imageKey=[[imagenes objectAtIndex:randomImagen]objectForKey:@"Key"];
     
     //Obtengo la url de la imagen random
-    NSString *urlStr=[[[[@"http://api.smugmug.com/services/api/json/1.3.0/?method=smugmug.images.getURLs&APIKey=bLmbO3nV8an2YhQpMogzNKA0toTHbfGU&ImageID=" stringByAppendingString:[[NSNumber numberWithInt:imageID]stringValue]] stringByAppendingString:@"&ImageKey="]stringByAppendingString:imageKey]stringByAppendingString:@"&pretty=true"];
+    NSString *urlStr=[[[[@"http://api.smugmug.com/services/api/json/1.3.0/?method=smugmug.images.getURLs&APIKey=bLmbO3nV8an2YhQpMogzNKA0toTHbfGU&ImageID=" stringByAppendingString:[[NSNumber numberWithLongLong:imageID]stringValue]] stringByAppendingString:@"&ImageKey="]stringByAppendingString:imageKey]stringByAppendingString:@"&pretty=true"];
     
     NSURL *url=[NSURL URLWithString:urlStr];
     NSData* dataImagen = [NSData dataWithContentsOfURL: url];

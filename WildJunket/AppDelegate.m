@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Appirater.h"
 #import "TestFlight.h"
 
 @implementation AppDelegate
@@ -19,6 +20,13 @@
     #ifdef CONFIGURATION_Beta
     [TestFlight takeOff:@"dcfcd70d51df30edb83d9cfa8bb699a9_OTMwMzMyMDEyLTA3LTIyIDA0OjA3OjA2LjI2OTgzNw"];
     #endif
+    
+    //Appirater config
+    [Appirater setAppId:@"572498897"];
+    [Appirater setDaysUntilPrompt:5];
+    [Appirater setUsesUntilPrompt:5];
+    [Appirater setSignificantEventsUntilPrompt:-1];
+    [Appirater setTimeBeforeReminding:3];
     
     //Status bar negra
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
@@ -80,6 +88,8 @@
     [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"tab-selected-new"]];
     [[UITabBar appearance] setSelectedImageTintColor:[UIColor colorWithRed:255.0/255.0 green:203.0/255.0 blue:40.0/255.0 alpha:1.0]];
     
+    [Appirater appLaunched:YES];
+    
     return YES;
 }
 							
@@ -98,6 +108,7 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [Appirater appEnteredForeground:YES];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
